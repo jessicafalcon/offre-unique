@@ -47,30 +47,47 @@ PLACEHOLDER_SIRENS = {"123456789", "000000000", "111111111", "999999999", "98765
 
 
 @st.cache_data(ttl=86400, show_spinner=False)
+def _register_is_sole_trader(siren9: str) -> bool:
+    """Raises if the register is unreachable, so a network blip is never cached (only real answers are)."""
+    import requests
+    r = requests.get("https://recherche-entreprises.api.gouv.fr/search", params={"q": siren9, "per_page": 1}, timeout=4)
+    r.raise_for_status()
+    for x in r.json().get("results", []):
+        if x.get("siren") == siren9:
+            return bool((x.get("complements") or {}).get("est_entrepreneur_individuel")) \
+                or str(x.get("nature_juridique")) == "1000"
+    return False
+
+
 def is_sole_trader(siren9: str) -> bool | None:
     """Sole trader (entrepreneur individuel) per the public company register. None if the register is unreachable."""
-    import requests
     try:
-        r = requests.get("https://recherche-entreprises.api.gouv.fr/search",
-                         params={"q": siren9, "per_page": 1}, timeout=3)
-        for x in r.json().get("results", []):
-            if x.get("siren") == siren9:
-                return bool((x.get("complements") or {}).get("est_entrepreneur_individuel")) \
-                    or str(x.get("nature_juridique")) == "1000"
-        return False
-    except Exception:  # offline: do not block the demo
+        return _register_is_sole_trader(siren9)
+    except Exception:
         return None
 
 
+# Words that show a name belongs to a company, not a person (used when the register is unreachable)
+COMPANY_WORDS = re.compile(
+    r"(?i)\b(sas|sasu|sarl|eurl|sa|sca|snc|sci|scop|scic|gie|sem|spl|soci[ée]t[ée]|ste|ets|[ée]tablissements?|groupe|"
+    r"entreprise|association|asso|cie|compagnie|france|services?|industries?|international|holding|consulting|"
+    r"conseil|ing[ée]nierie|travaux|btp|bureau|cabinet|atelier|agence|syst[èe]mes?|technologies?|solutions?|"
+    r"environnement|construction|b[âa]timent|transports?|nettoyage|propret[ée]|restauration|r[ée]seaux?)\b|[&\d()]")
+
+
+def looks_like_person(name: str | None, n_wins: int) -> bool:
+    """Offline fallback: a short name with no company word and few contracts is treated as a possible sole trader."""
+    n = str(name or "").strip()
+    return bool(n) and not COMPANY_WORDS.search(n) and len(n.split()) <= 3 and n_wins < 10
+
+
+# Followed tenders are kept per visitor (browser session): with a public link, judges must not share one list
 def load_follows() -> dict:
-    try:
-        return json.loads(FOLLOWS.read_text()) if FOLLOWS.exists() else {}
-    except (OSError, ValueError):
-        return {}
+    return st.session_state.setdefault("follows", {})
 
 
 def save_follows(f: dict) -> None:
-    FOLLOWS.write_text(json.dumps(f, ensure_ascii=False, indent=1))
+    st.session_state["follows"] = f
 
 
 def days_left(iso) -> str:
@@ -231,6 +248,44 @@ def fact_sentences(r: pd.Series, siren: str = "") -> list[str]:
 
 
 scored, awards, metrics, metrics_boamp = load()
+
+# "Essayez avec" examples: SMEs in different sectors, all checked (legal entities, open tenders, notes pre-written)
+EXAMPLES = [("Point Contrôles", "834709248"), ("Bati Recyclage", "481447951"), ("Adimeo", "480980358")]
+NON_DIFFUSIBLE = re.compile(r"(?i)non[- ]diffusible|donn[ée]es personnelles")
+
+
+def _pick_example(s9: str) -> None:
+    st.session_state["q"] = s9
+
+
+def _norm(x) -> str:
+    import unicodedata
+    return unicodedata.normalize("NFKD", str(x or "")).encode("ascii", "ignore").decode().lower()
+
+
+@st.cache_data(show_spinner=False)
+def company_index(_awards: pd.DataFrame) -> pd.DataFrame:
+    """Companies that won public contracts: SIREN, usual name, number of contracts. Built once, shared by visitors."""
+    names = json.loads((ART / "company_names.json").read_text()) if (ART / "company_names.json").exists() else {}
+    n = _awards["company_siren"].value_counts()
+    d = pd.DataFrame({"siren": n.index.astype(str), "n": n.to_numpy()})
+    d["name"] = d["siren"].map(names)
+    d = d.dropna(subset=["name"])
+    d = d[d["siren"].map(siren_valid) & ~d["name"].str.contains(NON_DIFFUSIBLE)]  # opted out of publication
+    # names that look like a person's (possible sole traders) are not listed in search results
+    d = d[[not looks_like_person(nm, k) for nm, k in zip(d["name"], d["n"])]]
+    d["key"] = d["name"].map(_norm)
+    return d.sort_values("n", ascending=False).reset_index(drop=True)
+
+
+def search_companies(idx: pd.DataFrame, q: str, k: int = 12) -> pd.DataFrame:
+    words = [w for w in re.split(r"\W+", _norm(q)) if len(w) >= 2]
+    if not words:
+        return idx.iloc[0:0]
+    m = pd.Series(True, index=idx.index)
+    for w in words:
+        m &= idx["key"].str.contains(w, regex=False)
+    return idx[m].head(k)
 has_boamp = "source" in scored and (scored["source"] == "BOAMP").any()
 avg = metrics["test_single_bid_rate"] if metrics else None
 
@@ -243,11 +298,32 @@ st.caption("1 marché public sur 5 ne reçoit qu'une seule offre. Offre unique m
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Preuves"])
 
 with tab_main:
-    raw = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=20,
-                        help="9 chiffres (ou le SIRET, dont on garde les 9 premiers). Réservé aux sociétés.")
+    if "q" not in st.session_state:
+        st.session_state["q"] = os.environ.get("DEMO_SIREN", "")
+    q = st.text_input("Nom ou SIREN de votre entreprise", key="q", max_chars=80,
+                      help="Le nom d'une société (au moins 3 lettres) ou son SIREN à 9 chiffres (un SIRET marche aussi). "
+                           "Réservé aux sociétés : les entrepreneurs individuels sont exclus.")
+    ex = st.columns([1.1] + [2] * len(EXAMPLES))
+    ex[0].caption("Essayez :")
+    for col, (label, s9) in zip(ex[1:], EXAMPLES):
+        col.button(label, key=f"ex_{s9}", on_click=_pick_example, args=(s9,), use_container_width=True)
+    raw = q
+    if re.search(r"[A-Za-zÀ-ÿ]", q or "") and len(clean_siren(q)) < 9:  # a name, not a number
+        if len(q.strip()) < 3:
+            st.write("Tapez au moins 3 lettres du nom de l'entreprise.")
+            st.stop()
+        found = search_companies(company_index(awards), q)
+        if found.empty:
+            st.write("Aucune société de ce nom parmi celles qui ont gagné des marchés publics depuis 2019. "
+                     "Essayez une partie du nom, ou le SIREN.")
+            st.stop()
+        labels = {r.siren: f"{r.name} · {fr_int(r.n)} marché{'s' if r.n > 1 else ''} · SIREN {r.siren}"
+                  for r in found.itertuples()}
+        raw = st.selectbox(f"{len(found)} société{'s' if len(found) > 1 else ''} trouvée{'s' if len(found) > 1 else ''}",
+                           list(labels), format_func=labels.get)
     siren = clean_siren(raw)  # accepts spaces, dots and a full SIRET
     if not (raw or "").strip():
-        st.write("Entrez un SIREN pour voir les appels d'offres à venir qui vous correspondent.")
+        st.write("Entrez le nom ou le SIREN d'une entreprise pour voir les appels d'offres qui lui correspondent.")
         st.stop()
     if len(siren) < 9:
         st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
@@ -259,13 +335,22 @@ with tab_main:
         st.write("Ce numéro n'est pas un SIREN valide : sa clé de contrôle ne correspond pas. Vérifiez-le "
                  "(par exemple sur annuaire-entreprises.data.gouv.fr).")
         st.stop()
-    if is_sole_trader(siren):
+    sole = is_sole_trader(siren)
+    if sole:
         st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
                  "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
         st.stop()
     prof = profile_of(awards, siren)
     if not prof:
         st.write("Aucun marché gagné trouvé pour ce SIREN dans les données publiques.")
+        st.stop()
+    if NON_DIFFUSIBLE.search(str(prof.get("name") or "")):
+        st.write("Cette entité a demandé que ses données ne soient pas diffusées (statut « non diffusible » du "
+                 "répertoire SIRENE) : Offre unique n'affiche pas son profil.")
+        st.stop()
+    if sole is None and siren not in dict((s9, n) for n, s9 in EXAMPLES) and looks_like_person(prof["name"], prof["n_wins"]):
+        st.write("Le répertoire des entreprises est injoignable pour l'instant : impossible de vérifier qu'il ne s'agit "
+                 "pas d'un entrepreneur individuel. Par prudence, ce profil n'est pas affiché. Réessayez dans un instant.")
         st.stop()
 
     st.subheader(prof["name"] or f"Entreprise {prof['siren']}")
@@ -363,10 +448,13 @@ with tab_main:
         elif st.button("Rédiger la note go / no-go"):
             try:
                 from explain import facts_for, generate, save_cache
-                res = generate(facts_for(r, prof))
+                with st.spinner("Rédaction de la note par Gemma 4 (Featherless), chaque chiffre vérifié… environ 10 secondes"):
+                    res = generate(facts_for(r, prof))
                 notes[key] = res
                 save_cache(notes)
-                st.write(res["note"] if res["verified"] else "Note écartée : elle contenait des chiffres absents des données.")
+                st.write(res["note"] if res["verified"] else
+                         "Le modèle a proposé une note qui citait un chiffre absent des données : elle a été écartée. "
+                         "Les faits ci-dessus et la recommandation restent valables.")
             except Exception as e:  # keep the demo alive if the API fails
                 st.caption(f"Note indisponible ({e.__class__.__name__}).")
 
