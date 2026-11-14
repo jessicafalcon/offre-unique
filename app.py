@@ -475,6 +475,15 @@ st.html("""<style>
 [class*="st-key-ex_"] button p {color:#1d70b8; text-decoration:underline; text-underline-offset:3px; font-size:1rem;}
 [class*="st-key-ex_"] button:hover p {color:#003078; text-decoration-thickness:3px;}
 .st-key-detail h4 {font-size:1.3rem; line-height:1.3;}
+.ou-summary {border-collapse:collapse; width:100%; font-size:1.02rem; color:#0b0c0c;}
+.ou-summary th, .ou-summary td {border-bottom:1px solid #b1b4b6; padding:.55rem .5rem .55rem 0; text-align:left;
+  vertical-align:middle;}
+.ou-summary th {width:36%; font-weight:700;}
+.ou-icon {font-family:"Material Symbols Rounded"; font-size:1.25rem; vertical-align:-.25rem; margin-right:.35rem;
+  color:#1f6f65; font-weight:normal;}
+.st-key-banner {background:#e6f2f0; border-left:6px solid #1f6f65; padding:1.1rem 1.25rem;}
+.st-key-banner strong {font-size:1.35rem; line-height:1.3; color:#0b0c0c;}
+.st-key-banner p {font-size:1.1rem; color:#0b0c0c;}
 .st-key-go button {min-height:3.35rem; border-radius:0; font-weight:700; font-size:1.1rem; box-shadow:0 3px 0 #164f48;}
 .st-key-go button:focus-visible {outline:3px solid #ffdd00; outline-offset:0;}
 </style>""")
@@ -656,20 +665,49 @@ with tab_main:
     counts = t["reco"].value_counts() if "reco" in t else pd.Series(dtype=int)
 
     # --- "Votre entreprise": what we inferred from the contracts it has won
-    with st.container(border=True):
-        a, b = st.columns([3, 2], vertical_alignment="center")
+    with st.container(border=True, key="company"):
+        a, b = st.columns([1, 1], gap="large")
         with a:
-            st.caption("Votre entreprise, d'après ses marchés gagnés")
+            st.caption("Votre entreprise, d'après ses marchés publics gagnés")
             st.subheader(prof["name"] or f"Entreprise {prof['siren']}")
             icon, trade = trade_of(prof)
             size = SIZE_LABEL.get(company_size(siren)) if sole is not None else None
             depts = [k for k in list(prof["dept"])[:3] if k != "NA"]
-            bits = [f"{icon} **{trade}**" if trade else "", size or "",
-                    f"{fr_int(prof['n_wins'])} marché{'s' if prof['n_wins'] > 1 else ''} gagné{'s' if prof['n_wins'] > 1 else ''}",
-                    ("départements " if len(depts) > 1 else "département ") + ", ".join(depts) if depts else "",
-                    f"dernier en {pd.Timestamp(prof['last_win']):%m/%Y}" if pd.notna(prof.get("last_win")) else ""]
-            st.markdown(" · ".join(x for x in bits if x))
-            if not t.empty:
+            n_w = prof["n_wins"]
+            wins = f"{fr_int(n_w)}" + (f" · le dernier en {pd.Timestamp(prof['last_win']):%m/%Y}"
+                                         if pd.notna(prof.get("last_win")) else "")
+            icon_name = icon.removeprefix(":material/").removesuffix(":")
+            rows = [("Métier", f'<span class="ou-icon">{icon_name}</span>{html.escape(trade)}' if trade else ""),
+                    ("Taille", html.escape(size or "")),
+                    ("Marchés gagnés" if n_w > 1 else "Marché gagné", html.escape(wins)),
+                    ("Départements" if len(depts) > 1 else "Département", html.escape(", ".join(depts)))]
+            # GOV.UK summary list: key / value rows (values are escaped; the icon is Streamlit's Material font)
+            st.html('<table class="ou-summary">' + "".join(f"<tr><th>{k_}</th><td>{v_}</td></tr>"
+                                                         for k_, v_ in rows if v_) + "</table>")
+        if not t.empty:
+            with b, st.container(key="banner"):  # the answer in one sentence (GOV.UK notification banner)
+                n_al, n_et = int(counts.get("Aller", 0)), int(counts.get("À étudier", 0))
+                if n_al:
+                    top = t[t["reco"] == "Aller"].iloc[0]
+                    who = html.unescape(top["buyer_name"]) if isinstance(top.get("buyer_name"), str) else "un acheteur public"
+                    if pd.notna(top.get("due_date")):
+                        d = (pd.Timestamp(top["due_date"]).normalize() - pd.Timestamp.now().normalize()).days
+                        dl = "ferme aujourd'hui" if d <= 0 else ("ferme demain" if d == 1 else f"ferme dans {d} jours")
+                    elif pd.notna(top.get("pub_date")):
+                        dl = f"doit être publié en {pd.Timestamp(top['pub_date']):%m/%Y}"
+                    else:
+                        dl = ""
+                    plural = n_al > 1
+                    st.markdown(f"**{n_al} appel{'s' if plural else ''} d'offres à privilégier (« Aller »)**")
+                    lead = (f"Le premier, chez {who}" if plural else f"Il est chez {who}") + (f", {dl}." if dl else ".")
+                    st.markdown(lead + (f" {n_et} autre{'s' if n_et > 1 else ''} à étudier." if n_et else ""))
+                elif n_et:
+                    st.markdown(f"**Rien à privilégier aujourd'hui, mais {n_et} appel{'s' if n_et > 1 else ''} "
+                                f"d'offres à étudier**")
+                    st.markdown("Les autres appels d'offres de votre métier attirent la concurrence habituelle.")
+                else:
+                    st.markdown("**Rien à privilégier aujourd'hui**")
+                    st.markdown("Les appels d'offres de votre métier attirent la concurrence habituelle, ou plus.")
                 head = f"{len(t)} {'appel' if len(t) == 1 else 'appels'} d'offres dans votre métier"
                 if n_open:
                     head += f" · {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
@@ -677,14 +715,6 @@ with tab_main:
                 if level and level != "même métier, même département":
                     head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
                 st.caption(head)
-        if not t.empty:
-            with b:
-                m = st.columns(3)
-                if has_boamp:
-                    m[0].metric("Ouverts maintenant", n_open)
-                tot = f"sur les {len(t)} appels d'offres de votre métier, ouverts et à venir"
-                m[1].metric("Aller", int(counts.get("Aller", 0)), help=tot)
-                m[2].metric("À étudier", int(counts.get("À étudier", 0)), help=tot)
     if t.empty:
         st.write("Aucun achat à venir ne correspond à votre historique.")
         st.stop()
