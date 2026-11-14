@@ -1,0 +1,27 @@
+{
+ "date": "2026-11-14",
+ "definition": [
+  "Active company (same definition as find_demo.py): 10–200 public contracts won, at least one since 2025-01-01,",
+  "and at least 2 wins in the same 4-digit CPV class and département (in Île-de-France for the IDF figure)."
+ ],
+ "regions": {
+  "Île-de-France": {
+   "companies": 6683,
+   "with_aller": 2640,
+   "with_aller_open": 2537,
+   "with_any_tender": 6683,
+   "median_tenders": 22.0,
+   "share_with_aller": 0.3950321711806075,
+   "share_with_aller_open": 0.37961993116863685
+  },
+  "France": {
+   "companies": 31246,
+   "with_aller": 8599,
+   "with_aller_open": 8311,
+   "with_any_tender": 31243,
+   "median_tenders": 22.0,
+   "share_with_aller": 0.2752032260129297,
+   "share_with_aller_open": 0.26598604621391536
+  }
+ }
+}

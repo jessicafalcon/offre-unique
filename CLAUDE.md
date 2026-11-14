@@ -83,7 +83,8 @@ Only the last two steps should be needed today.
 - **Time split:** train on 2023–2024 (285,578 labelled contracts), test on 2025–2026 (320,228 contracts never seen). Single-bid rate on the test set: **20 %**.
 - **Main model (LightGBM):** AUC 0.694. Among the 10 % flagged riskiest, **49.6 %** got a single bid, against buyer history alone 42.2 % (AUC 0.639) and category rate 38.0 % (AUC 0.630).
 - **BOAMP variant** (no amount, duration or clauses, which BOAMP lacks): AUC 0.682, top-10 % precision 48.5 %. Still beats the baselines.
-- **Coverage:** 514 of 6,683 active Île-de-France companies (**8 %**) have at least 2 matching tenders at 35 % or more (APProch alone: 0.3 %). *Computed before the `min_wins=2` filter added this morning, so it may be a bit lower now. Rerun `find_demo.py --idf` before quoting it.*
+- **Coverage (recomputed 14 Nov with the calibrated rules, `coverage.py` → `artifacts/coverage.json`):** of active companies (10–200 contracts won, one since 2025, ≥ 2 wins in the same CPV class and département), **Île-de-France: 2,640 of 6,683 (40 %) have at least one "Aller" today, 2,537 (38 %) on a tender open now; France: 8,599 of 31,246 (28 %)**. Median 22 matching tenders per company. One Aller is a low bar (some come from loose CPV-class matches): say *"about 4 in 10 active companies in Île-de-France"*, not a precise figure.
+- *(Old, superseded:)* 514 of 6,683 active Île-de-France companies (**8 %**) have at least 2 matching tenders at 35 % or more (APProch alone: 0.3 %). *Computed before the `min_wins=2` filter added this morning, so it may be a bit lower now. Rerun `find_demo.py --idf` before quoting it.*
 
 ## 6. Design decisions (and why)
 
