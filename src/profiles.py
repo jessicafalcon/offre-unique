@@ -211,3 +211,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def similar_wins(awards: pd.DataFrame, siren: str, row: pd.Series, k: int = 5) -> tuple[pd.DataFrame, int]:
+    """The company's own past wins behind a match: same 4-digit CPV class (or division, if the match was
+    loosened to the division), same département first, most recent first. Returns (top k, total count)."""
+    w = awards[awards["company_siren"] == siren]
+    level = str(row.get("match_level") or "")
+    by_cls = "métier" in level and "cpv_cls" in w and str(row.get("cpv_cls")) != "NA"
+    col = "cpv_cls" if by_cls else "cpv_div"
+    w = w[w[col].astype(str) == str(row.get(col))].copy()
+    w["same_dept"] = w["dept"].astype(str) == str(row.get("dept"))
+    w = w.sort_values(["same_dept", "date"], ascending=[False, False])
+    return w.head(k), len(w)

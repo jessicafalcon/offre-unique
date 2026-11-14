@@ -16,7 +16,7 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 from common import ART, CLEAN  # noqa: E402
-from profiles import describe_profile, fit_table, load_all_scored, profile_of, relevant  # noqa: E402
+from profiles import describe_profile, fit_table, load_all_scored, profile_of, relevant, similar_wins  # noqa: E402
 
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
@@ -331,6 +331,23 @@ with tab_main:
         st.markdown(risk_line)
         for s in fact_sentences(r, prof["siren"]):
             st.write(s)
+        mine, n_mine = similar_wins(awards, prof["siren"], r)
+        if n_mine:
+            with st.expander(f"Vos contrats similaires ({n_mine})"):
+                st.dataframe(pd.DataFrame({
+                    "Date": pd.to_datetime(mine["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
+                    "Acheteur": mine["acheteur_nom"].fillna("").astype(str),
+                    "Objet": mine["objet"].fillna("").astype(str),
+                    "Dép.": mine["dept"].astype(str).replace({"NA": ""}),
+                    "Montant": mine["montant"].map(lambda v: "" if pd.isna(v) or v <= 0 else f"{fr_int(round(v))} €"),
+                    "Offres": mine["offres"].map(lambda v: "" if pd.isna(v) or v <= 0 else str(int(v))),
+                }), hide_index=True, width="stretch", column_config={
+                    "Date": st.column_config.TextColumn(width="small"),
+                    "Objet": st.column_config.TextColumn(width="large"),
+                    "Dép.": st.column_config.TextColumn(width="small"),
+                })
+                st.caption("Vos marchés gagnés dans la même catégorie d'achat, ce département d'abord · "
+                           "DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
 
         notes = load_notes()
         key = f"{prof['siren']}:{r.get('code')}"
