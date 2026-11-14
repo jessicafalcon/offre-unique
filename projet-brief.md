@@ -18,6 +18,7 @@ You are taking over a working project on the morning of a one-day hackathon. **T
 6. **Never print or commit `.env`.** It holds the Hémicycle, Anthropic and (later) Featherless keys.
 7. **Timeline:** decide on any extra by **11:30**, stop adding features at **16:30**, then rehearse twice with a timer. If a task risks breaking the demo, don't do it.
 8. The app UI and the notes are in **French**. Talk to me in English.
+9. **After ANY change to `app.py` (UI included), run `python tests/stage_check.py`. It must print `34 PASS / 0 FAIL`.** It replays the live demo path (Point Contrôles → SENEO → Suivre → Preuves), the backup and example companies, and the privacy edge cases (sole traders, non-diffusible entities, invalid SIRENs, name search). Don't push a UI change that breaks it. Keep: the SIREN / name-search block, `render_buyer_history` (Hémicycle panel), "Vos contrats similaires", the notes button with its spinner, Sources and Limites.
 
 ---
 
@@ -122,12 +123,13 @@ Only the last two steps should be needed today.
 - **On stage:**
   1. SENEO is selected by default (top row). Read the note.
   2. Click **Suivre cet appel d'offres**; it appears in the sidebar with "J-16".
-  3. Click the **Val-de-Marne contrôle technique** row (Passer, 14 %).
+  3. Click the **Val-de-Marne contrôle technique** row (Passer, 14 %). Point at its Hémicycle panel: the buyer's last 5 contracts got **6, 4, 4, 27 and 27 bids**, against **1, 1, 1, 1, 1** for SENEO.
   4. Back on SENEO, point at **"En direct d'Hémicycle"** (its last 5 comparable contracts, all single-bid) and click **Actualiser via Hémicycle** once: the timestamp updates (1 credit). Say: *"the buyer's latest contracts come live from Hémicycle's API."*
   5. Show the **Preuves** tab: 50 / 42 / 20, then the backtest line **Aller 41 % · À étudier 23 % · Passer 12 %**.
   - Say once: *"the notes are written by Gemma 4, an open-weight model on Featherless, and every number is checked."*
   - "Détail des marchés passés" is safe to open now (the misleading score-factors caption was removed).
   - Before the demo: `rm -f artifacts/follows.json` so the follow list starts empty.
+  - **Stage check passed 15:30 (26/26, headless):** cold start 1.6 s; SENEO 53 % · 2,7 × · J-16 · note · Hémicycle panel · "Vos contrats similaires (8)"; Suivre → sidebar "J-16 · 53 % · Aller" → Retirer; Preuves 50/42/20, backtest 41/23/12, coverage, 8-model table; backup Bati Recyclage ("titulaire sortant"); SIREN edge cases (sole trader refused, placeholder, invalid key 632041071, SIRET, spaces, Colas, La Poste). Re-run it after any UI change: `python tests/stage_check.py`.
 
 ## 8. What changed this morning (14 Nov, 07:40–08:50)
 
@@ -139,6 +141,22 @@ Backups: `src/explain.py.bak`, `src/profiles.py.bak`, `app.py.bak`, `artifacts/n
 4. `dedupe_tenders()` removed duplicate notices (EPT Grand-Orly; PEECS Anatole, whose two notices had buyer names "EPT Est Ensemble" vs "EST ENSEMBLE DAAJCP" but the same SIREN 200057875).
 5. Notes regenerated with Claude Haiku. Output checked by hand: all numbers match the facts.
 6. **"Suivre cet appel d'offres" made functional** (see §9).
+
+## 7b. Public link for judges (hands-on, live)
+
+Judges use the tool on their own devices. One command (repo root), detached from any terminal or Claude session, with `caffeinate` keeping the Mac awake while the tunnel runs (keep the lid open and the charger in):
+
+```bash
+scripts/public_link.sh start    # prints https://<random>.trycloudflare.com (also in run/url.txt)
+scripts/public_link.sh status   # processes + health check through the public link
+scripts/public_link.sh stop
+```
+
+- **Running since ~16:15: https://von-playback-addressing-reputation.trycloudflare.com** (port 8511).
+- **The running server reloads `app.py` when it changes**: a broken edit breaks the public link for everyone. Run `python tests/stage_check.py` before saving changes to `app.py` near the demo.
+- The URL changes each time cloudflared restarts: start it once, put the link on the slide / a QR code, don't restart it.
+- Quick tunnels have no uptime guarantee and depend on the venue wifi: have a phone hotspot ready.
+- Hardened at 16:00 for several visitors: company-name search + "Essayez" buttons (Point Contrôles, Bati Recyclage, Adimeo, all with pre-written notes); follows are per visitor (session), not a shared file; sole traders refused (register check; outages are never cached; if the register is unreachable, person-like names with < 10 contracts are refused); "non diffusible" SIRENE entities refused and hidden from search; note spinner; error details hidden (`.streamlit/config.toml`). Stage check: 34/34.
 
 ## 8b. What changed after the devil's-advocate review (14 Nov, 10:15–11:00)
 
@@ -237,6 +255,8 @@ In the EU, single bidding is a standard **warning sign** of weak competition. A 
 - *"It predicts how many bids a tender gets, not whether you win. That's why the note also shows the buyer's history and the outgoing holder, and a repeat holder downgrades a go to look closer."*
 - *"Is 53 % really 53 %?"* → *"Yes, it's calibrated: we fitted it on 2025 and checked it on 2026. And the go / no-go itself is backtested: on 2026 contracts, 'Aller' got a single bid 41 % of the time, 'Passer' 12 %."*
 - *"Doesn't a single bid mean an entrenched incumbent?"* → *"When a contract that last got one bid gets a second bidder, the previous holder loses it about 4 times in 5 (83 % in DECP 2019–26; 'previous' = same buyer and CPV group, so it's indicative)."*
+- **Notes model (benchmark, 14 Nov 15:00, `src/benchmark_llm.py` → Preuves table):** same 40 tenders, same prompt, one attempt, automatic checks. Gemma 4 31B **40/40** ($0.09 per 1,000 notes) · Mistral Large 2411 **40/40** ($0.17) · gpt-oss 120B 38/40 · Mistral Small 3.1 36/40 (invented "3 % sous la moyenne") · Claude Haiku 5.5 33/40 ($0.87, mostly 46-word notes) · GLM 5.3 Flash 7/40 · GLM 5.3 0/40 (spent its 1,500 tokens thinking, empty notes; $7.48) · Qwen 3.8 0/40. **We keep Gemma** (tie with Mistral Large, half the price, already generated). The partner's LLM-judge experiment preferred Haiku's style ~3:1 but flipped with the order in 25–47 % of cases, and compared against older Haiku notes: compliance and cost favour Gemma, style is a judgement call.
+- *"Why not GLM / Mistral?"* → *"We benchmarked eight models, GLM and three Mistral included. GLM 5.3 spent its whole budget thinking and returned empty notes. Mistral Large tied Gemma at 40 out of 40, so we kept the cheaper one. (Smile:) But if you're really French, you can switch to Mistral: it's one line in the config."*
 - *"Does it work for any company?"* → *"Yes, any company with a public contract history. Try one."* (Type Bati Recyclage `481447951`, or let the judge type theirs: sole traders are refused for privacy.)
 - *"Why only 3 go out of 62?"* → *"Because most tenders in its trade are competitive. A tool that said go to everything would be useless."*
 

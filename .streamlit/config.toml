@@ -1,5 +1,13 @@
 [client]
 toolbarMode = "minimal"
+showErrorDetails = false   # public link: never show tracebacks or file paths to visitors
+
+[server]
+headless = true
+runOnSave = false
+
+[browser]
+gatherUsageStats = false
 
 [theme]
 primaryColor = "#2E9E8F"

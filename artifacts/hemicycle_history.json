@@ -1590,5 +1590,251 @@
    "26290361000018"
   ],
   "credits_left": "10739"
+ },
+ "BOAMP-26-98438": {
+  "n": 67,
+  "n_lab": 67,
+  "level": "groupe CPV",
+  "single_share": 0.835820895522388,
+  "last_date": "2026-11-03",
+  "editions": [
+   {
+    "date": "2026-11-03",
+    "objet": "ARGOS MS04",
+    "offres": 1,
+    "titulaire_nom": "Sopra Steria Group"
+   },
+   {
+    "date": "2026-11-03",
+    "objet": "IE BFC Sirhus MS093 EPR Lot 5 compléments et dépenses recettes fléchées V1.0",
+    "offres": 1,
+    "titulaire_nom": "CGI France"
+   },
+   {
+    "date": "2026-10-20",
+    "objet": "22-14-023 MS002 Portail Services Demat Obsolescence Hors GED Eversuite",
+    "offres": 1,
+    "titulaire_nom": "Inetum"
+   },
+   {
+    "date": "2026-09-29",
+    "objet": "IE BFC SIRHUS MS085 Securisation exploitation",
+    "offres": 1,
+    "titulaire_nom": "CGI France"
+   },
+   {
+    "date": "2026-09-29",
+    "objet": "IE BFC SIRHUS MS 084",
+    "offres": 1,
+    "titulaire_nom": "CGI France"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:22",
+  "sirets": [
+   "18008901303720",
+   "18008901307994",
+   "18008901308414"
+  ],
+  "credits_left": "10717"
+ },
+ "BOAMP-26-107506": {
+  "n": 1,
+  "n_lab": 1,
+  "level": "division CPV",
+  "single_share": 1.0,
+  "last_date": "2025-03-03",
+  "editions": [
+   {
+    "date": "2025-03-03",
+    "objet": "Prestations de maintenance du site internet de la Camieg et ses téléservices",
+    "offres": 1,
+    "titulaire_nom": "Ameos"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:18",
+  "sirets": [
+   "49914777500021"
+  ],
+  "credits_left": "10727"
+ },
+ "BOAMP-26-101301": {
+  "n": 5,
+  "n_lab": 5,
+  "level": "groupe CPV",
+  "single_share": 0.4,
+  "last_date": "2026-08-17",
+  "editions": [
+   {
+    "date": "2026-08-17",
+    "objet": "Modélisation de 42 sites administratifs et sociaux du  Bas-Rhin avec le logiciel ArchiCad 29 sur la base de relevés effectués sur sites - Lo",
+    "offres": 12,
+    "titulaire_nom": "Archiloft"
+   },
+   {
+    "date": "2026-08-17",
+    "objet": "Modélisation de 42 sites administratifs et sociaux du  Bas-Rhin avec le logiciel ArchiCad 29 sur la base de relevés effectués sur sites - Lo",
+    "offres": 11,
+    "titulaire_nom": "Archiloft"
+   },
+   {
+    "date": "2026-08-17",
+    "objet": "Modélisation de 42 sites administratifs et sociaux du  Bas-Rhin avec le logiciel ArchiCad 29 sur la base de relevés effectués sur sites - Lo",
+    "offres": 12,
+    "titulaire_nom": "Archiloft"
+   },
+   {
+    "date": "2026-08-10",
+    "objet": "Droit d'usage, maintenance et prestations associées du logiciel AGEVAL pour la CeA",
+    "offres": 1,
+    "titulaire_nom": "Ageval Solutions"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "Maintenance, exploitation et prestations associées de la plateforme DOMIPHONE pour la télégestion et la télétransmission pour les services d",
+    "offres": 1,
+    "titulaire_nom": "Xelya"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:18",
+  "sirets": [
+   "20009433200018"
+  ],
+  "credits_left": "10726"
+ },
+ "BOAMP-26-104523": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "groupe CPV",
+  "single_share": 0.3333333333333333,
+  "last_date": "2026-11-07",
+  "editions": [
+   {
+    "date": "2026-11-07",
+    "objet": "Prestation de mise en oeuvre et d'animation d'une conférence de locataires du parc social dans le cadre de l'élaboration d'une charte de la ",
+    "offres": 4,
+    "titulaire_nom": "RES Publica"
+   },
+   {
+    "date": "2026-10-26",
+    "objet": "DIGITAL - Campagne Conseil Parisien de la Jeunesse",
+    "offres": 1,
+    "titulaire_nom": "O Connection (O Large - O Sport)"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Réalisation d'enquêtes de satisfaction auprès des usagers portant sur la qualité des services publics de la Ville de Paris",
+    "offres": 4,
+    "titulaire_nom": "Alice Ravanello"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:18",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": "10723"
+ },
+ "BOAMP-26-103902": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "groupe CPV",
+  "single_share": 0.6666666666666666,
+  "last_date": "2026-11-06",
+  "editions": [
+   {
+    "date": "2026-11-06",
+    "objet": "Maintenance et prestations associées de la solution DIGDASH utilisée par la collectivité parisienne",
+    "offres": 1,
+    "titulaire_nom": "Digdash"
+   },
+   {
+    "date": "2026-10-30",
+    "objet": "Accord-cadre à bons de commande pour le maintien en condition opérationnelle et l'accompagnement à l'évolution des infrastructures et servic",
+    "offres": 6,
+    "titulaire_nom": "Groupe Vital"
+   },
+   {
+    "date": "2026-03-25",
+    "objet": "SA1 ACBC_MAINTENANCE DU LOGICIEL HYDRA-LIVE SYSTEME GAO/STEA",
+    "offres": 1,
+    "titulaire_nom": "Setec Hydratec"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:18",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-103536": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "groupe CPV",
+  "single_share": 0.6666666666666666,
+  "last_date": "2026-11-06",
+  "editions": [
+   {
+    "date": "2026-11-06",
+    "objet": "Maintenance et prestations associées de la solution DIGDASH utilisée par la collectivité parisienne",
+    "offres": 1,
+    "titulaire_nom": "Digdash"
+   },
+   {
+    "date": "2026-10-30",
+    "objet": "Accord-cadre à bons de commande pour le maintien en condition opérationnelle et l'accompagnement à l'évolution des infrastructures et servic",
+    "offres": 6,
+    "titulaire_nom": "Groupe Vital"
+   },
+   {
+    "date": "2026-03-25",
+    "objet": "SA1 ACBC_MAINTENANCE DU LOGICIEL HYDRA-LIVE SYSTEME GAO/STEA",
+    "offres": 1,
+    "titulaire_nom": "Setec Hydratec"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:18",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "64327": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "groupe CPV",
+  "single_share": 0.6666666666666666,
+  "last_date": "2026-11-06",
+  "editions": [
+   {
+    "date": "2026-11-06",
+    "objet": "Maintenance et prestations associées de la solution DIGDASH utilisée par la collectivité parisienne",
+    "offres": 1,
+    "titulaire_nom": "Digdash"
+   },
+   {
+    "date": "2026-10-30",
+    "objet": "Accord-cadre à bons de commande pour le maintien en condition opérationnelle et l'accompagnement à l'évolution des infrastructures et servic",
+    "offres": 6,
+    "titulaire_nom": "Groupe Vital"
+   },
+   {
+    "date": "2026-03-25",
+    "objet": "SA1 ACBC_MAINTENANCE DU LOGICIEL HYDRA-LIVE SYSTEME GAO/STEA",
+    "offres": 1,
+    "titulaire_nom": "Setec Hydratec"
+   }
+  ],
+  "fetched_at": "2026-11-14T14:18",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
  }
 }

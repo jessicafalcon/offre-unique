@@ -32,6 +32,10 @@ MODELS = [  # (label, provider, model id, parallel requests)
     ("Gemma 4 31B (Featherless, open-weight)", "featherless", "google/gemma-4-31B-it", 2),
     ("gpt-oss 120B (Featherless, open-weight)", "featherless", "openai/gpt-oss-120b", 2),
     ("Qwen 3.8 27B (Featherless, open-weight)", "featherless", "Qwen/Qwen3.8-27B", 2),
+    ("GLM 5.3 (Featherless, open-weight)", "featherless", "zai-org/GLM-5.3", 2),
+    ("GLM 5.3 Flash (Featherless, open-weight)", "featherless", "zai-org/GLM-5.3-Flash", 2),
+    ("Mistral Large 2411 (Featherless, open-weight)", "featherless", "mistralai/Mistral-Large-Instruct-2411", 2),
+    ("Mistral Small 3.1 24B (Featherless, open-weight)", "featherless", "mistralai/Mistral-Small-3.1-24B-Instruct-2503", 2),
 ]
 ENGLISH = re.compile(r"\b(the|and|we|need|must|should|sentence|words?)\b", re.I)
 
@@ -91,6 +95,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--siren", default=os.environ.get("DEMO_SIREN"))
     ap.add_argument("--n", type=int, default=40)
+    ap.add_argument("--only", nargs="*", help="model ids to run; results are merged into the existing files")
     a = ap.parse_args()
     from profiles import fit_table, load_all_scored, profile_of, relevant
     awards = pd.read_parquet(CLEAN / "awards.parquet")
@@ -102,9 +107,10 @@ def main():
           f"{pd.Series([f['recommandation'] for f in facts_list]).value_counts().to_dict()}", flush=True)
 
     # Anthropic in parallel with the Featherless models, which run one after the other (concurrency limits)
+    models = [m for m in MODELS if not a.only or m[2] in a.only]
     with ThreadPoolExecutor(2) as ex:
-        fut_a = ex.submit(lambda: [run_model(*m, facts_list) for m in MODELS if m[1] == "anthropic"])
-        fut_f = ex.submit(lambda: [run_model(*m, facts_list) for m in MODELS if m[1] == "featherless"])
+        fut_a = ex.submit(lambda: [run_model(*m, facts_list) for m in models if m[1] == "anthropic"])
+        fut_f = ex.submit(lambda: [run_model(*m, facts_list) for m in models if m[1] == "featherless"])
         results = fut_a.result() + fut_f.result()
 
     order = [m[0] for m in MODELS]
@@ -112,10 +118,15 @@ def main():
     summary = {"date": pd.Timestamp.now().isoformat(timespec="minutes"), "company": prof["name"], "n": len(facts_list),
                "protocol": "mêmes faits, même consigne, une seule tentative par note, contrôles automatiques",
                "models": {lab: s for lab, s, _ in results}}
+    outputs = {lab: [{"code": c, "verdict_attendu": f["recommandation"], **r} for c, f, r in zip(codes, facts_list, res)]
+               for lab, _, res in results}
+    if a.only:  # merge with earlier runs (same tenders, same prompt)
+        old = json.loads((ART / "llm_benchmark.json").read_text())
+        summary = {**old, "models": {**old["models"], **summary["models"]}}
+        outputs = {**json.loads((ART / "llm_benchmark_outputs.json").read_text()), **outputs}
+    summary["models"] = {lab: summary["models"][lab] for lab in order if lab in summary["models"]}
     (ART / "llm_benchmark.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1))
-    (ART / "llm_benchmark_outputs.json").write_text(json.dumps(
-        {lab: [{"code": c, "verdict_attendu": f["recommandation"], **r} for c, f, r in zip(codes, facts_list, res)]
-         for lab, _, res in results}, ensure_ascii=False, indent=1))
+    (ART / "llm_benchmark_outputs.json").write_text(json.dumps(outputs, ensure_ascii=False, indent=1))
     print(f"saved {ART / 'llm_benchmark.json'}")
 
 

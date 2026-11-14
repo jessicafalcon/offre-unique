@@ -60,7 +60,9 @@
    "median_seconds": 3.3,
    "mean_out_tokens": 576.2,
    "mean_in_tokens": 637.8,
-   "wall_seconds": 70
+   "wall_seconds": 70,
+   "usd_per_1000_notes": 0.441,
+   "price_source": "featherless.ai model page (unit not stated; assumed per 1M tokens)"
   },
   "Qwen 3.8 27B (Featherless, open-weight)": {
    "provider": "featherless",
@@ -79,11 +81,92 @@
    "mean_out_tokens": 1500,
    "mean_in_tokens": 589.5,
    "wall_seconds": 902
+  },
+  "GLM 5.3 (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "zai-org/GLM-5.3",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 0,
+    "chiffres": 40,
+    "denominateur": 40,
+    "verdict": 0,
+    "format": 0,
+    "francais": 40
+   },
+   "median_seconds": 14.45,
+   "mean_out_tokens": 1500,
+   "mean_in_tokens": 629,
+   "wall_seconds": 323,
+   "usd_per_1000_notes": 7.481,
+   "price_source": "featherless.ai model page (unit not stated; assumed per 1M tokens)"
+  },
+  "GLM 5.3 Flash (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "zai-org/GLM-5.3-Flash",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 7,
+    "chiffres": 40,
+    "denominateur": 40,
+    "verdict": 10,
+    "format": 7,
+    "francais": 40
+   },
+   "median_seconds": 19.9,
+   "mean_out_tokens": 1404.8,
+   "mean_in_tokens": 629,
+   "wall_seconds": 420,
+   "usd_per_1000_notes": 0.797,
+   "price_source": "featherless.ai model page (unit not stated; assumed per 1M tokens)"
+  },
+  "Mistral Large 2411 (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "mistralai/Mistral-Large-Instruct-2411",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 40,
+    "chiffres": 40,
+    "denominateur": 40,
+    "verdict": 40,
+    "format": 40,
+    "francais": 40
+   },
+   "median_seconds": 8.7,
+   "mean_out_tokens": 71.7,
+   "mean_in_tokens": 732.7,
+   "wall_seconds": 197,
+   "usd_per_1000_notes": 0.174,
+   "price_source": "featherless.ai model page (unit not stated; assumed per 1M tokens)"
+  },
+  "Mistral Small 3.1 24B (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 36,
+    "chiffres": 36,
+    "denominateur": 40,
+    "verdict": 40,
+    "format": 40,
+    "francais": 40
+   },
+   "median_seconds": 3.45,
+   "mean_out_tokens": 55.0,
+   "mean_in_tokens": 544.9,
+   "wall_seconds": 99,
+   "usd_per_1000_notes": 0.14,
+   "price_source": "featherless.ai model page (unit not stated; assumed per 1M tokens)"
   }
  },
  "caveats": [
   "La consigne a été retouchée à 11:30 en lisant des notes de Gemma (ajout du pourcentage et de la virgule) : léger avantage possible pour Gemma.",
   "Haiku 5.5 réfléchit par défaut (effort medium) : ses jetons de sortie incluent cette réflexion, facturée.",
-  "Dans l'application, une note refusée est régénérée jusqu'à 2 fois : le taux final est plus haut que ce premier essai."
+  "Dans l'application, une note refusée est régénérée jusqu'à 2 fois : le taux final est plus haut que ce premier essai.",
+  "GLM 5.3 et GLM 5.3 Flash réfléchissent avant d'écrire : avec 1 500 jetons de sortie au maximum, ils ont souvent rendu une note vide."
  ]
 }

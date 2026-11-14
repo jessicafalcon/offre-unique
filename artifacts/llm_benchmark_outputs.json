@@ -3046,5 +3046,3053 @@
     "tout": false
    }
   }
+ ],
+ "GLM 5.3 (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 17.9,
+   "usage": {
+    "in": 656,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 17.5,
+   "usage": {
+    "in": 688,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 14.6,
+   "usage": {
+    "in": 659,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 14.5,
+   "usage": {
+    "in": 658,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 15.4,
+   "usage": {
+    "in": 578,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 15.3,
+   "usage": {
+    "in": 688,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 11.9,
+   "usage": {
+    "in": 651,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.3,
+   "usage": {
+    "in": 632,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 12.2,
+   "usage": {
+    "in": 620,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 11.7,
+   "usage": {
+    "in": 610,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 15.3,
+   "usage": {
+    "in": 626,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 15.6,
+   "usage": {
+    "in": 589,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 17.1,
+   "usage": {
+    "in": 620,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 15.2,
+   "usage": {
+    "in": 601,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.3,
+   "usage": {
+    "in": 605,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.9,
+   "usage": {
+    "in": 621,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.2,
+   "usage": {
+    "in": 674,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.4,
+   "usage": {
+    "in": 609,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 16.9,
+   "usage": {
+    "in": 623,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 17.2,
+   "usage": {
+    "in": 635,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 12.8,
+   "usage": {
+    "in": 598,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.3,
+   "usage": {
+    "in": 608,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.2,
+   "usage": {
+    "in": 627,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.5,
+   "usage": {
+    "in": 611,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 17.1,
+   "usage": {
+    "in": 559,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 15.9,
+   "usage": {
+    "in": 637,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 12.5,
+   "usage": {
+    "in": 613,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.2,
+   "usage": {
+    "in": 589,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.0,
+   "usage": {
+    "in": 604,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.1,
+   "usage": {
+    "in": 586,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 11.7,
+   "usage": {
+    "in": 646,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 10.9,
+   "usage": {
+    "in": 650,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 25.4,
+   "usage": {
+    "in": 657,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 24.9,
+   "usage": {
+    "in": 644,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 12.9,
+   "usage": {
+    "in": 647,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.3,
+   "usage": {
+    "in": 674,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 39.4,
+   "usage": {
+    "in": 630,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 39.7,
+   "usage": {
+    "in": 674,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.2,
+   "usage": {
+    "in": 649,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.2,
+   "usage": {
+    "in": 614,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  }
+ ],
+ "GLM 5.3 Flash (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 24.1,
+   "usage": {
+    "in": 656,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 21.3,
+   "usage": {
+    "in": 688,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 20.9,
+   "usage": {
+    "in": 659,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 19.9,
+   "usage": {
+    "in": 658,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'une offre unique est de 23 %, contre une moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires, dont 2 dans le département. À étudier, car la probabilité reste proche de la moyenne ou un peu au-dessus, sans écart net.",
+   "error": null,
+   "seconds": 28.9,
+   "usage": {
+    "in": 578,
+    "out": 1234
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 35.8,
+   "usage": {
+    "in": 688,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "",
+   "error": null,
+   "seconds": 21.3,
+   "usage": {
+    "in": 651,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 19.7,
+   "usage": {
+    "in": 632,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 19 %, proche de la moyenne de 20 % ; l'entreprise a gagné 5 contrats similaires et l'acheteur a passé 2 marchés comparables. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 13.0,
+   "usage": {
+    "in": 620,
+    "out": 1038
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, sous la moyenne de 20 %, sans historique de marchés comparables chez cet acheteur, malgré les 8 contrats similaires gagnés par l'entreprise. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 14.0,
+   "usage": {
+    "in": 610,
+    "out": 1200
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 18.6,
+   "usage": {
+    "in": 626,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 21.7,
+   "usage": {
+    "in": 589,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 20.4,
+   "usage": {
+    "in": 620,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "Avec 17 % de probabilité d'offre unique, inférieure à la moyenne de 20 %, et 8 contrats similaires gagnés par l'entreprise, la concurrence attendue est habituelle, sans historique comparable chez cet acheteur. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.1,
+   "usage": {
+    "in": 601,
+    "out": 605
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 25.4,
+   "usage": {
+    "in": 605,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, sous la moyenne de 20 %, l'acheteur n'a passé aucun marché comparable, et l'entreprise compte 35 contrats similaires gagnés. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 19.9,
+   "usage": {
+    "in": 621,
+    "out": 1005
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 17.3,
+   "usage": {
+    "in": 674,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 19.9,
+   "usage": {
+    "in": 609,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, sous la moyenne de 20 %, et l'entreprise a gagné 8 contrats similaires, sans historique comparable chez cet acheteur. Passer, car la concurrence attendue sera habituelle.",
+   "error": null,
+   "seconds": 20.2,
+   "usage": {
+    "in": 623,
+    "out": 1435
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 16.3,
+   "usage": {
+    "in": 635,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 21.2,
+   "usage": {
+    "in": 598,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 20.1,
+   "usage": {
+    "in": 608,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 19.9,
+   "usage": {
+    "in": 627,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 19.4,
+   "usage": {
+    "in": 611,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 16 %, sous la moyenne de 20 %, et l'entreprise a gagné 5 contrats similaires, dont 3 dans le même département. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.1,
+   "usage": {
+    "in": 559,
+    "out": 1160
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 15 %, inférieure à la moyenne de 20 %, et l'entreprise a remporté 8 contrats similaires, dont 3 dans le même département. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.6,
+   "usage": {
+    "in": 637,
+    "out": 1115
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 14.0,
+   "usage": {
+    "in": 613,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.9,
+   "usage": {
+    "in": 589,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "Avec 15 % de probabilité d'offre unique contre une moyenne de 20 %, la concurrence sera habituelle ; l'entreprise a remporté 35 contrats similaires et cet acheteur n'a passé aucun marché comparable. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence attendue sera habituelle.",
+   "error": null,
+   "seconds": 14.4,
+   "usage": {
+    "in": 604,
+    "out": 1348
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 15.1,
+   "usage": {
+    "in": 586,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 12.9,
+   "usage": {
+    "in": 646,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 13.4,
+   "usage": {
+    "in": 650,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, sous la moyenne de 20 %, signe d'une concurrence habituelle, bien que l'entreprise ait gagné 5 contrats similaires dont 3 dans le département. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 13.5,
+   "usage": {
+    "in": 657,
+    "out": 1053
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 30.5,
+   "usage": {
+    "in": 644,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 29.1,
+   "usage": {
+    "in": 647,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 22.0,
+   "usage": {
+    "in": 674,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 37.1,
+   "usage": {
+    "in": 630,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 51.3,
+   "usage": {
+    "in": 674,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 34.1,
+   "usage": {
+    "in": 649,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 16.8,
+   "usage": {
+    "in": 614,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  }
+ ],
+ "Mistral Large 2411 (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité d'offre unique est de 53%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 9.8,
+   "usage": {
+    "in": 773,
+    "out": 77
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité d'offre unique est de 51%, contre une moyenne de 20%, et l'entreprise a gagné 3 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 10.0,
+   "usage": {
+    "in": 812,
+    "out": 77
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité d'offre unique est de 37%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 9.5,
+   "usage": {
+    "in": 770,
+    "out": 77
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 30%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car un même titulaire a remporté les trois dernières éditions de ce marché.",
+   "error": null,
+   "seconds": 7.8,
+   "usage": {
+    "in": 761,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 23%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car probabilité proche de la moyenne ou un peu au-dessus, sans écart net.",
+   "error": null,
+   "seconds": 8.5,
+   "usage": {
+    "in": 666,
+    "out": 71
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 23%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.",
+   "error": null,
+   "seconds": 8.4,
+   "usage": {
+    "in": 810,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 20%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car probabilité proche de la moyenne ou un peu au-dessus, sans écart net.",
+   "error": null,
+   "seconds": 8.8,
+   "usage": {
+    "in": 761,
+    "out": 71
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 20%, égale à la moyenne, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.3,
+   "usage": {
+    "in": 744,
+    "out": 68
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 19%, contre une moyenne de 20%, et l'entreprise a déjà gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.9,
+   "usage": {
+    "in": 720,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.1,
+   "usage": {
+    "in": 705,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 % et l'entreprise a remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.8,
+   "usage": {
+    "in": 725,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.4,
+   "usage": {
+    "in": 688,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.2,
+   "usage": {
+    "in": 714,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.8,
+   "usage": {
+    "in": 700,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, et l'entreprise a déjà gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.6,
+   "usage": {
+    "in": 700,
+    "out": 71
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.4,
+   "usage": {
+    "in": 717,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.1,
+   "usage": {
+    "in": 787,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.3,
+   "usage": {
+    "in": 701,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 15.7,
+   "usage": {
+    "in": 719,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 14.6,
+   "usage": {
+    "in": 741,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 % et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 20.0,
+   "usage": {
+    "in": 692,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 % et l'entreprise a déjà remporté 46 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 19.9,
+   "usage": {
+    "in": 707,
+    "out": 71
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 % et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.9,
+   "usage": {
+    "in": 725,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.3,
+   "usage": {
+    "in": 709,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 16 %, contre une moyenne de 20 % ; l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.2,
+   "usage": {
+    "in": 644,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.3,
+   "usage": {
+    "in": 740,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15%, contre une moyenne de 20%, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.9,
+   "usage": {
+    "in": 715,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 % et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.3,
+   "usage": {
+    "in": 682,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.6,
+   "usage": {
+    "in": 703,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15%, contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.2,
+   "usage": {
+    "in": 678,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 % ; l'entreprise a remporté 3 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.8,
+   "usage": {
+    "in": 749,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 % et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.9,
+   "usage": {
+    "in": 760,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 % ; l'entreprise a déjà gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.5,
+   "usage": {
+    "in": 773,
+    "out": 70
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 %, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.9,
+   "usage": {
+    "in": 759,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15%, contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.1,
+   "usage": {
+    "in": 758,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14 %, contre une moyenne de 20 %, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 9.3,
+   "usage": {
+    "in": 795,
+    "out": 82
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14 %, contre une moyenne de 20 % et l'entreprise a déjà remporté 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 9.6,
+   "usage": {
+    "in": 734,
+    "out": 83
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14 %, contre une moyenne de 20 %, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 9.1,
+   "usage": {
+    "in": 789,
+    "out": 82
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14 %, contre une moyenne de 20 %; l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 9.4,
+   "usage": {
+    "in": 767,
+    "out": 82
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14%, contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 9.5,
+   "usage": {
+    "in": 715,
+    "out": 81
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  }
+ ],
+ "Mistral Small 3.1 24B (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité qu'une seule offre soit déposée est de 53 % contre une moyenne de 20 %, et l'entreprise a déjà remporté 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 24.6,
+   "usage": {
+    "in": 568,
+    "out": 62
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité qu'une seule offre soit déposée est de 51%, soit 2,6 fois la moyenne de 20%, et l'entreprise a déjà gagné 3 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 19.6,
+   "usage": {
+    "in": 582,
+    "out": 67
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité qu'une seule offre soit déposée est de 37 % contre une moyenne de 20 %, l'entreprise a déjà remporté 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 11.7,
+   "usage": {
+    "in": 565,
+    "out": 61
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'une offre unique est de 30 % contre une moyenne de 20 %, l'entreprise a remporté 35 contrats similaires. À étudier, car un même titulaire a remporté les dernières éditions de ce marché.",
+   "error": null,
+   "seconds": 3.5,
+   "usage": {
+    "in": 567,
+    "out": 50
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'une offre unique est de 23 %, soit 1,2 fois la moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires. À étudier, car la probabilité est proche de la moyenne ou un peu au-dessus, sans écart net.",
+   "error": null,
+   "seconds": 7.7,
+   "usage": {
+    "in": 501,
+    "out": 62
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'une offre unique est de 23 % contre une moyenne de 20 %, l'entreprise a remporté 35 contrats similaires. À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.",
+   "error": null,
+   "seconds": 2.3,
+   "usage": {
+    "in": 579,
+    "out": 52
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'une offre unique est de 20%, soit la moyenne, et l'entreprise a gagné 35 contrats similaires. À étudier, car la probabilité est proche de la moyenne, sans écart net.",
+   "error": null,
+   "seconds": 2.1,
+   "usage": {
+    "in": 557,
+    "out": 48
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 20%, soit la moyenne, et l'entreprise a remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.0,
+   "usage": {
+    "in": 547,
+    "out": 51
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 19 % contre 20 % en moyenne, l'entreprise a remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.0,
+   "usage": {
+    "in": 537,
+    "out": 54
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 % contre une moyenne de 20 % pour des marchés similaires, l'entreprise a remporté 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.8,
+   "usage": {
+    "in": 539,
+    "out": 60
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 %, soit 3 % sous la moyenne de 20 %, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.2,
+   "usage": {
+    "in": 548,
+    "out": 59
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 % contre 20 % en moyenne, l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.5,
+   "usage": {
+    "in": 516,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 7.9,
+   "usage": {
+    "in": 527,
+    "out": 48
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a remporté 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 4.9,
+   "usage": {
+    "in": 539,
+    "out": 48
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 % contre une moyenne de 20 % pour des marchés similaires, l'entreprise a remporté 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.1,
+   "usage": {
+    "in": 533,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20% pour des marchés similaires, l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 6.0,
+   "usage": {
+    "in": 549,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.6,
+   "usage": {
+    "in": 566,
+    "out": 54
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a remporté 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.8,
+   "usage": {
+    "in": 529,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 %, soit 3 % en dessous de la moyenne de 20 %, et l'entreprise a remporté 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.5,
+   "usage": {
+    "in": 538,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a remporté 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.4,
+   "usage": {
+    "in": 545,
+    "out": 49
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité qu'une seule offre soit déposée est de 17 % contre 20 % en moyenne, l'entreprise a remporté 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.2,
+   "usage": {
+    "in": 517,
+    "out": 58
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 17 %, soit 3 points de moins que la moyenne de 20 %, et l'entreprise a remporté 46 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.4,
+   "usage": {
+    "in": 526,
+    "out": 62
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 6.4,
+   "usage": {
+    "in": 539,
+    "out": 54
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 % contre une moyenne de 20 %, l'entreprise a remporté 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.3,
+   "usage": {
+    "in": 542,
+    "out": 54
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 16 % contre une moyenne de 20 %, et l'entreprise a déjà remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.4,
+   "usage": {
+    "in": 497,
+    "out": 50
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.3,
+   "usage": {
+    "in": 560,
+    "out": 48
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, l'entreprise a remporté 46 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 4.2,
+   "usage": {
+    "in": 539,
+    "out": 49
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 15 %, soit 5 % de moins que la moyenne, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.5,
+   "usage": {
+    "in": 509,
+    "out": 58
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 % contre une moyenne de 20 %, l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.3,
+   "usage": {
+    "in": 534,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15%, soit 5 points en dessous de la moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.8,
+   "usage": {
+    "in": 514,
+    "out": 62
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 % contre une moyenne de 20 %, l'entreprise a déjà gagné 3 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 4.7,
+   "usage": {
+    "in": 554,
+    "out": 49
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, soit 5 points de moins que la moyenne, et l'entreprise a remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.4,
+   "usage": {
+    "in": 557,
+    "out": 51
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 % contre une moyenne de 20 %, l'entreprise a déjà remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.4,
+   "usage": {
+    "in": 567,
+    "out": 49
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 15%, soit 5 points de moins que la moyenne de 20%, et l'entreprise a déjà remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.8,
+   "usage": {
+    "in": 561,
+    "out": 62
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, l'entreprise a remporté 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne.",
+   "error": null,
+   "seconds": 2.6,
+   "usage": {
+    "in": 560,
+    "out": 48
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 14 %, soit 0,7 fois la moyenne de 20 %, et l'entreprise a remporté 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 4.9,
+   "usage": {
+    "in": 576,
+    "out": 69
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 14%, soit 20% en moyenne, l'entreprise a remporté 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne.",
+   "error": null,
+   "seconds": 4.2,
+   "usage": {
+    "in": 545,
+    "out": 51
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 14 % contre une moyenne de 20 %, l'entreprise a remporté 46 contrats similaires, dont 4 dans le même département. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne.",
+   "error": null,
+   "seconds": 4.2,
+   "usage": {
+    "in": 575,
+    "out": 59
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 14 % contre une moyenne de 20 %, l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne.",
+   "error": null,
+   "seconds": 3.4,
+   "usage": {
+    "in": 560,
+    "out": 51
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'une offre unique est de 14 % contre une moyenne de 20 %, l'entreprise a remporté 8 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 2.9,
+   "usage": {
+    "in": 532,
+    "out": 62
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  }
  ]
 }

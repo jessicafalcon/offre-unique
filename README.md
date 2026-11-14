@@ -123,3 +123,21 @@ if isinstance(r.get("procedure_note"), str):
     st.warning(r["procedure_note"])
 ```
 Known gap: BOAMP notices under 90 k€ almost never carry a CPV code (1 %), so the pipeline drops 461 of 466 of them; the open tenders shown are almost all above 90 k€.
+
+## SIREN check (src/siren.py, added 14 Nov 15:15)
+
+`clean_siren(raw)` keeps the first 9 digits (spaces, dots and a full SIRET accepted); `siren_valid(s)` checks the
+Luhn key (La Poste 356000000 excepted) and rejects repeated-digit placeholders. The ~2.5 % of DECP company SIRENs
+that fail it are typos (checked: not in the national register). To use it in `app.py`, replace the
+`re.sub(...)` / `PLACEHOLDER_SIRENS` lines of the SIREN block with:
+
+```python
+from siren import clean_siren, siren_valid
+siren = clean_siren(raw)
+if len(siren) < 9:
+    st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
+    st.stop()
+if not siren_valid(siren):
+    st.write("Ce numéro n'est pas un SIREN valide (sa clé de contrôle ne correspond pas). Vérifiez-le.")
+    st.stop()
+```
