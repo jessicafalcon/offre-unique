@@ -266,6 +266,16 @@ EXAMPLES = [("Point Contrôles", "834709248"), ("Bati Recyclage", "481447951"), 
 NON_DIFFUSIBLE = re.compile(r"(?i)non[- ]diffusible|donn[ée]es personnelles")
 
 
+def _show_reco(t: pd.DataFrame, siren: str, reco: str) -> None:
+    """Banner shortcut: filter the list on one recommendation, switching to the list type that has some."""
+    kinds = [k for k in ("BOAMP", "APProch") if ((t["source"] == k) & (t["reco"] == reco)).any()]
+    if not kinds:
+        return
+    st.session_state[f"kind_{siren}"] = kinds[0]
+    for k in kinds:  # only where the option exists, else Streamlit rejects the value
+        st.session_state[f"flt_{siren}_{k}"] = reco
+
+
 def _pick_example(s9: str) -> None:
     st.session_state["q"] = s9
 
@@ -361,7 +371,7 @@ def render_detail(r: pd.Series, prof: dict) -> None:
         badges.append(f":{color}-badge[{icon} {reco}]")
     badges.append(":blue-badge[Ouvert maintenant · BOAMP]" if r.get("source") == "BOAMP"
                   else ":violet-badge[Projet d'achat · APProch]")
-    st.markdown(" ".join(badges))
+    st.container(key="badges").markdown(" ".join(badges))
 
     buyer = html.unescape(r["buyer_name"]) if isinstance(r.get("buyer_name"), str) else f"SIREN {r.get('buyer_siren')}"
     city = buyer_city(r)
@@ -491,7 +501,30 @@ st.html("""<style>
 [data-testid="stMainBlockContainer"] {max-width:1560px;}
 .stApp, .stApp [data-testid="stMarkdownContainer"] {color:#0b0c0c;}
 .stApp [data-testid="stMarkdown"] p, .stApp [data-testid="stMarkdown"] li {font-size:1.08rem; line-height:1.55;}
-.stApp [data-testid="stCaptionContainer"] p, .stApp [data-testid="stCaptionContainer"] {font-size:.98rem; color:#3b3f45;}
+.stApp [data-testid="stCaptionContainer"], .stApp [data-testid="stCaptionContainer"] p {font-size:.98rem;
+  color:#2b2f33 !important; opacity:1 !important;}
+.stApp [data-testid="stWidgetLabel"] p {color:#0b0c0c !important;}
+.st-key-badges p {font-size:1.12rem !important;}
+.st-key-badges span {font-size:1.05rem !important; padding:.15rem .45rem;}
+.ou-index {display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; border-left:6px solid #1f3a7a; background:#eef1f7;
+  padding:.8rem 1.1rem; margin:.5rem 0 .5rem 0; font-size:1.05rem;}
+.ou-index span {font-weight:800; width:100%; color:#0b0c0c;}
+.ou-index a {color:#1f3a7a; text-decoration:underline; text-underline-offset:3px; font-weight:600;}
+.ou-kicker {scroll-margin-top:4rem;}
+[class*="st-key-m_"], [class*="st-key-r_"] {padding:.9rem 1.1rem; height:100%;}
+[class*="st-key-m_"] [data-testid="stMetricLabel"] p, [class*="st-key-r_"] [data-testid="stMetricLabel"] p
+  {font-size:1.25rem !important; font-weight:800; color:#0b0c0c !important;}
+[class*="st-key-m_"] [data-testid="stMetricValue"], [class*="st-key-r_"] [data-testid="stMetricValue"] {font-size:2.6rem; font-weight:800;}
+.st-key-m_ours {background:#1f3a7a; border:3px solid #0b0c0c;}
+.st-key-m_ours [data-testid="stMetricLabel"] p, .st-key-m_ours [data-testid="stMetricValue"],
+  .st-key-m_ours [data-testid="stMetricValue"] div {color:#fff !important;}
+.st-key-m_base1, .st-key-m_base2 {background:#f3f2f1; border:1px solid #b1b4b6;}
+.st-key-r_go {background:#e7f4ec; border-left:10px solid #00703c;}
+.st-key-r_go [data-testid="stMetricLabel"] p, .st-key-r_go [data-testid="stMetricValue"] div {color:#005a30 !important;}
+.st-key-r_look {background:#fff4e0; border-left:10px solid #f0a000;}
+.st-key-r_look [data-testid="stMetricLabel"] p, .st-key-r_look [data-testid="stMetricValue"] div {color:#7a4600 !important;}
+.st-key-r_skip {background:#f3f2f1; border-left:10px solid #6f777b;}
+.st-key-r_skip [data-testid="stMetricLabel"] p, .st-key-r_skip [data-testid="stMetricValue"] div {color:#383f43 !important;}
 .stApp [data-testid="stMarkdownContainer"] a {color:#1f3a7a; text-underline-offset:3px;}
 .stApp button:focus-visible, .stApp a:focus-visible {outline:3px solid #ffdd00 !important; outline-offset:0;}
 .stApp button[role="tab"] p {font-size:1.15rem; font-weight:700;}
@@ -523,7 +556,11 @@ with tab_proof:
         test_years = f"{metrics['test_years'][0]}–{metrics['test_years'][1]}"
 
         # 1. The problem
-        st.html('<p class="ou-kicker">1 · Le constat</p>'
+        chapters = ["Le constat", "Ce que fait Offre unique", "Peut-on s'y fier ?", "Qui écrit les notes ?",
+                    "Pour qui ?", "Ce que l'outil ne dit pas"]
+        st.html('<nav class="ou-index"><span>Sommaire</span>' + "".join(
+            f'<a href="#ch{i}">{i} · {html.escape(c)}</a>' for i, c in enumerate(chapters, 1)) + "</nav>")
+        st.html('<p class="ou-kicker" id="ch1">1 · Le constat</p>'
                 f'<div class="ou-hero"><span class="big">1 marché sur 5</span>'
                 '<span class="txt">ne reçoit qu\'une seule offre.</span>'
                 f'<span class="sub">{avg_pct} % des {n_test} marchés publics de {test_years} dont on connaît le nombre '
@@ -531,7 +568,7 @@ with tab_proof:
                 'PME ne voient pas passer.</span></div>')
 
         # 2. What the tool does
-        st.html('<p class="ou-kicker">2 · Ce que fait Offre unique</p>')
+        st.html('<p class="ou-kicker" id="ch2">2 · Ce que fait Offre unique</p>')
         st.markdown("### Montrer à une PME les marchés où sa candidature compte le plus")
         with st.container(key="steps"):
             s1, s2, s3 = st.columns(3, gap="medium")
@@ -542,15 +579,16 @@ with tab_proof:
                         "ou Passer, avec une note vérifiée.")
 
         # 3. The proof
-        st.html('<p class="ou-kicker">3 · Peut-on s\'y fier ?</p>')
+        st.html('<p class="ou-kicker" id="ch3">3 · Peut-on s\'y fier ?</p>')
         st.markdown(f"### Testé sur {n_test} marchés que le modèle n'avait jamais vus")
         st.caption(f"Appris sur {metrics['train_years'][0]}–{metrics['train_years'][1]}, testé sur {test_years}. "
                    "Parmi les 10 % de marchés que chaque méthode juge les plus susceptibles de n'avoir qu'une offre, "
                    "part de ceux qui n'en ont reçu qu'une :")
         c1, c2, c3 = st.columns(3)
-        c1.metric("Notre score", f"{round(100 * res['model']['precision_top10'])} %")
-        c2.metric("Historique de l'acheteur seul", f"{round(100 * res['baseline_buyer_history']['precision_top10'])} %")
-        c3.metric("Moyenne, sans score", f"{avg_pct} %")
+        c1.container(key="m_ours").metric("Notre score", f"{round(100 * res['model']['precision_top10'])} %")
+        c2.container(key="m_base1").metric("Historique de l'acheteur seul",
+                                           f"{round(100 * res['baseline_buyer_history']['precision_top10'])} %")
+        c3.container(key="m_base2").metric("Moyenne, sans score", f"{avg_pct} %")
         bt_p = ART / "rules_backtest.json"
         bt = json.loads(bt_p.read_text()) if bt_p.exists() else {}
         g = bt.get("main", {}).get("groups", {})
@@ -558,8 +596,8 @@ with tab_proof:
             st.caption(f"Et les recommandations elles-mêmes, sur les marchés {bt['years']} : part de ceux qui n'ont reçu "
                        "qu'une offre.")
             k1, k2, k3 = st.columns(3)
-            for col, k in zip((k1, k2, k3), ("Aller", "À étudier", "Passer")):
-                col.metric(f"« {k} »", f"{round(100 * g[k]['single_rate'])} %", help=f"{fr_int(g[k]['n'])} marchés")
+            for col, k, key in zip((k1, k2, k3), ("Aller", "À étudier", "Passer"), ("r_go", "r_look", "r_skip")):
+                col.container(key=key).metric(f"« {k} »", f"{round(100 * g[k]['single_rate'])} %", help=f"{fr_int(g[k]['n'])} marchés")
         with st.expander("Détail technique"):
             names = {"model": "Notre score", "baseline_buyer_history": "Historique de l'acheteur",
                      "baseline_cpv_category": "Taux de la catégorie"}
@@ -582,7 +620,7 @@ with tab_proof:
                            f"score sans ces informations : {round(100 * mb['model']['precision_top10'])} % sur le même test.")
 
         # 4. The notes
-        st.html('<p class="ou-kicker">4 · Qui écrit les notes ?</p>')
+        st.html('<p class="ou-kicker" id="ch4">4 · Qui écrit les notes ?</p>')
         st.markdown("### Un modèle ouvert, et chaque chiffre vérifié")
         st.markdown("Gemma 4 31B (via Featherless) met les faits en deux phrases. Si un chiffre de la note n'est pas dans "
                     "les données, la note est écartée. La recommandation, elle, vient de trois règles explicites.")
@@ -606,7 +644,7 @@ with tab_proof:
         cov = json.loads(cov_p.read_text()).get("regions", {}) if cov_p.exists() else {}
         idf, fr = cov.get("Île-de-France"), cov.get("France")
         if idf and fr:
-            st.html('<p class="ou-kicker">5 · Pour qui ?</p>')
+            st.html('<p class="ou-kicker" id="ch5">5 · Pour qui ?</p>')
             st.markdown(f"### Pour qui ? Environ {round(10 * idf['share_with_aller'])} entreprises actives sur 10 "
                         "en Île-de-France")
             st.markdown(f"Aujourd'hui, {fr_int(idf['with_aller'])} des {fr_int(idf['companies'])} entreprises actives "
@@ -617,7 +655,7 @@ with tab_proof:
                        "métier et département. Un seul « Aller » suffit à être compté.")
 
         # 6. Limits and sources
-        st.html('<p class="ou-kicker">6 · Ce que l\'outil ne dit pas</p>')
+        st.html('<p class="ou-kicker" id="ch6">6 · Ce que l\'outil ne dit pas</p>')
         st.markdown("### Limites")
         st.markdown(
             "- Le score dit combien d'offres un marché reçoit d'habitude, **pas si vous le gagnerez**.\n"
@@ -768,6 +806,12 @@ with tab_main:
                 if level and level != "même métier, même département":
                     head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
                 st.caption(head)
+                shortcuts = [(k, int(counts.get(k, 0))) for k in ("Aller", "À étudier") if counts.get(k, 0)]
+                if shortcuts:
+                    with st.container(horizontal=True, gap="small"):
+                        for k, n in shortcuts:
+                            st.button(f"Voir {'les ' + str(n) if n > 1 else 'le'} « {k} »", key=f"show_{k}",
+                                      icon=RECO_STYLE[k][1], on_click=_show_reco, args=(t, siren, k))
     if t.empty:
         st.write("Aucun achat à venir ne correspond à votre historique.")
         st.stop()
@@ -781,7 +825,9 @@ with tab_main:
         kind = kinds[0]
         k1, k2 = st.columns([3, 2], vertical_alignment="bottom")
         if len(kinds) > 1:
-            kind = k1.segmented_control("Type d'avis", kinds, format_func=kind_lab.get, default=kinds[0],
+            if st.session_state.get(f"kind_{siren}") not in kinds:  # default via session state (banner shortcuts set it)
+                st.session_state[f"kind_{siren}"] = kinds[0]
+            kind = k1.segmented_control("Type d'avis", kinds, format_func=kind_lab.get,
                                         key=f"kind_{siren}", label_visibility="collapsed") or kinds[0]
         order = k2.segmented_control("Trier par", ["chances", "échéance"], default="chances", key=f"sort_{siren}",
                                      format_func={"chances": "Meilleures chances", "échéance": "Échéance"}.get,
@@ -791,7 +837,9 @@ with tab_main:
         sub = t[t["source"] == kind]
         rc = sub["reco"].value_counts()
         opts = ["Tous"] + [k for k in RECOS if rc.get(k, 0)]
-        flt = st.segmented_control("Recommandation", opts, default="Tous", key=f"flt_{siren}_{kind}",
+        if st.session_state.get(f"flt_{siren}_{kind}") not in opts:
+            st.session_state[f"flt_{siren}_{kind}"] = "Tous"
+        flt = st.segmented_control("Recommandation", opts, key=f"flt_{siren}_{kind}",
                                    format_func=lambda k: f"{k} ({len(sub) if k == 'Tous' else int(rc[k])})") or "Tous"
         if flt != "Tous":
             sub = sub[sub["reco"] == flt]
