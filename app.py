@@ -177,7 +177,7 @@ def fr_int(n: int) -> str:
 
 def when(r: pd.Series) -> str:
     if pd.notna(r.get("due_date")):
-        return fmt_date(r["due_date"])
+        return f"{fmt_date(r['due_date'])} · {days_left(r['due_date'])}"  # e.g. 30/11/2026 · J-16
     if pd.notna(r.get("pub_date")):
         return "publication " + pd.Timestamp(r["pub_date"]).strftime("%m/%Y")
     return ""

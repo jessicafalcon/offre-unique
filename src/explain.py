@@ -221,3 +221,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def recommend_row(row: pd.Series, profile: dict) -> str:
+    """Aller / À étudier / Passer for one tender row, with exactly the rules used in the notes (for maps, filters)."""
+    return facts_for(row, profile)["recommandation"]

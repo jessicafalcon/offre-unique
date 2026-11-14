@@ -147,7 +147,29 @@ def load_all_scored() -> pd.DataFrame:
             d["proba_raw"] = d["proba"]
             d["proba"] = calibrate(d["proba"], suffix)
             parts.append(d)
-    return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
+    if not parts:
+        return pd.DataFrame()
+    d = pd.concat(parts, ignore_index=True)
+    closed = d["due_date"].notna() & (d["due_date"] < pd.Timestamp.today().normalize())
+    return add_buyer_info(d[~closed].reset_index(drop=True))  # deadline passed: not an opportunity any more
+
+
+BUYER_COLS = {"type": "buyer_type", "lat": "buyer_lat", "lon": "buyer_lon", "address": "buyer_address",
+              "multi_site": "buyer_multi_site", "location_source": "buyer_location_source"}
+
+
+def add_buyer_info(d: pd.DataFrame) -> pd.DataFrame:
+    """Buyer type and location from artifacts/buyers.json (src/buyers.py). Columns stay empty if the file is missing."""
+    import json
+    from common import ART
+    p = ART / "buyers.json"
+    info = json.loads(p.read_text()) if p.exists() else {}
+    key = d["buyer_siren"].astype(str)
+    for k, col in BUYER_COLS.items():
+        d[col] = key.map(lambda s: (info.get(s) or {}).get(k))
+    d["buyer_type"] = d["buyer_type"].fillna("Inconnu")
+    d["buyer_multi_site"] = d["buyer_multi_site"].fillna(False).astype(bool)
+    return d
 
 
 def upcoming(purchases: pd.DataFrame) -> pd.DataFrame:
