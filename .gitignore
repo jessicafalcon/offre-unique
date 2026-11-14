@@ -1,10 +1,17 @@
-
-__pycache__/
+# secrets
 .env
+
+# local environment
 .venv/
+__pycache__/
 *.pyc
-artifacts/
-artifacts/follows.json
-data/
-reports/
+
+# over GitHub's 100 MB limit: share by AirDrop / Drive, or rebuild (see README)
+data/raw/decp.parquet
+data/clean/contracts.parquet
+data/clean/awards.parquet
+
+# local only
 backup_1015/
+artifacts/follows.json
+*.bak

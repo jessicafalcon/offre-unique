@@ -1,0 +1,72 @@
+{
+  "split_year": 2025,
+  "n_train": 285578,
+  "n_test": 320228,
+  "train_years": [
+    2023,
+    2024
+  ],
+  "test_years": [
+    2025,
+    2026
+  ],
+  "test_single_bid_rate": 0.19821502179696965,
+  "results": {
+    "model": {
+      "auc": 0.6938752291865917,
+      "avg_precision": 0.4165619092579223,
+      "precision_top10": 0.49609643370183,
+      "brier": 0.14699635158921123
+    },
+    "baseline_buyer_history": {
+      "auc": 0.6385614156386025,
+      "avg_precision": 0.3437231797341403,
+      "precision_top10": 0.4215227031415902,
+      "brier": 0.1502442086793966
+    },
+    "baseline_cpv_category": {
+      "auc": 0.6302085281098494,
+      "avg_precision": 0.312263276258978,
+      "precision_top10": 0.3801136718506027,
+      "brier": 0.15214462381745686
+    }
+  },
+  "calibration": {
+    "pred": [
+      0.0307,
+      0.0724,
+      0.102,
+      0.1311,
+      0.1636,
+      0.2015,
+      0.2458,
+      0.3044,
+      0.4045,
+      0.6586
+    ],
+    "obs": [
+      0.0647,
+      0.1017,
+      0.1293,
+      0.1375,
+      0.1478,
+      0.1728,
+      0.1913,
+      0.2381,
+      0.3029,
+      0.4961
+    ]
+  },
+  "importance_gain": {
+    "buyer_cpv_rate": 0.4955,
+    "dept": 0.1444,
+    "buyer_rate": 0.1275,
+    "cpv_rate": 0.0892,
+    "cpv_div": 0.0734,
+    "amount_band": 0.0362,
+    "duration_bin": 0.025,
+    "categorie": 0.0047,
+    "clause_sociale": 0.0028,
+    "clause_env": 0.0013
+  }
+}

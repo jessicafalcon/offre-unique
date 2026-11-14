@@ -60,3 +60,16 @@ python src/score.py --source boamp  # -> data/clean/scored_boamp.parquet
 
 The app, `find_demo.py`, `check_fit.py` and `explain.py` pick up both sources automatically.
 Test without network: `python tests/fake_boamp_pull.py` (after `tests/make_fake_data.py`).
+
+## Partner setup (hackathon, 14 Nov)
+
+Read `CLAUDE.md` (same as `projet-brief.md`) first: it has the current state, demo script and decisions.
+
+1. `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`
+2. `cp .env.example .env` and ask Jessica for the keys (never commit `.env`). Set `DEMO_SIREN=834709248`.
+3. Get the three files that are too big for GitHub and put them at the same paths:
+   `data/raw/decp.parquet`, `data/clean/contracts.parquet`, `data/clean/awards.parquet`.
+   Fastest: AirDrop from Jessica's laptop. Otherwise download DECP (see step 1b above) and run `python src/prepare.py`.
+4. `python -m streamlit run app.py`
+
+Everything else (model, calibration, notes, scored tenders) is in the repo. Work on a branch and open a PR; don't push to `main` during the demo prep.

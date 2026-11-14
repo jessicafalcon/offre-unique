@@ -1,0 +1,157 @@
+{
+  "798298899:BOAMP-26-103676": {
+    "note": "Probabilité d'offre unique de 49 %, contre 20 % en moyenne ; l'entreprise a gagné 20 contrats similaires, et l'acheteur a passé 54 marchés comparables, dont 54 % avec une seule offre. Aller : peu de concurrents attendus, sur un métier déjà exercé dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-110684": {
+    "note": "Probabilité d'offre unique de 49 %, contre 20 % en moyenne (2,5 fois), en lien avec ses 20 contrats similaires ; 54 % des marchés comparables de Siredom ont eu une seule offre. Aller : peu de concurrents attendus, métier déjà exercé dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-106848": {
+    "note": "Offre unique probable à 36 % contre 20 % en moyenne (1,8 fois) ; 16 contrats similaires gagnés dont 3 dans le département ; 2 marchés comparables de l'acheteur, tous à offre unique. Aller : peu de concurrents attendus, métier déjà exercé dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102943": {
+    "note": "La probabilité d'offre unique atteint 34 %, contre 20 % en moyenne ; l'entreprise a gagné 20 contrats similaires, dont 1 dans le département, et l'acheteur n'a passé aucun marché comparable. Aller, peu de concurrents attendus sur un métier déjà exercé dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:66062": {
+    "note": "Probabilité d'offre unique de 33 %, contre 20 % en moyenne, avec 1 seul marché comparable passé par cet acheteur ; l'entreprise a remporté 16 contrats similaires. Aller, peu de concurrents attendus, sur un métier que l'entreprise exerce déjà dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-107539": {
+    "note": "L'offre unique est probable à 33 % contre 20 % en moyenne, soit 1,7 fois plus ; l'entreprise a gagné 20 contrats similaires, dont 1 ici, et l'acheteur n'a passé aucun marché comparable. Aller, peu de concurrents attendus sur un métier déjà exercé ici.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102272": {
+    "note": "Probabilité d'offre unique de 33 %, contre 20 % en moyenne (1,7 fois), avec 16 contrats similaires remportés dont 1 dans le département, et aucun marché comparable passé par l'acheteur. Aller : peu de concurrents attendus, sur un métier déjà exercé dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102319": {
+    "note": "Probabilité d'offre unique de 33 %, contre 20 % en moyenne (1,7 fois), 16 contrats similaires gagnés dont 1 dans le département ; acheteur sans marché comparable. Aller, car peu de concurrents sont attendus sur un métier déjà exercé dans ce département.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-106509": {
+    "note": "La probabilité d'offre unique atteint 32 %, contre 20 % en moyenne, et l'acheteur a passé 12 marchés comparables, dont 50 % à offre unique, tandis que l'entreprise a remporté 16 contrats similaires. Aller, car peu de concurrents sont attendus sur un métier déjà exercé.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-107932": {
+    "note": "Offre unique probable à 30 %, contre 20 % en moyenne (1,5 fois), une opportunité ; 16 contrats similaires gagnés, 20 % d'offres uniques chez cet acheteur sur 41 marchés. À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-97489": {
+    "note": "Offre unique probable à 29 % contre 20 % en moyenne, avec 16 contrats similaires remportés dont 3 dans le département ; l'acheteur a eu une offre unique dans 33 % des 21 marchés comparables. À étudier : probabilité au-dessus de la moyenne, sans écart net.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-110097": {
+    "note": "Offre unique probable à 29 %, contre 20 % en moyenne, ce qui serait favorable ; l'entreprise a remporté 20 contrats similaires, dont 4 dans le département ; même titulaire sur les 2 dernières éditions. À étudier, la probabilité dépassant la moyenne sans écart net.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-101335": {
+    "note": "Probabilité d'offre unique de 20 %, égale à la moyenne, avec un seul contrat similaire gagné dont un dans le département, et aucun marché comparable de cet acheteur. Passer : probabilité d'offre unique proche de la moyenne, donc une concurrence habituelle est attendue.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:48758": {
+    "note": "Probabilité d'offre unique de 19 %, contre 20 % en moyenne ; l'entreprise a gagné 16 contrats similaires et l'acheteur a passé 8 marchés comparables sans offre unique. Passer, la probabilité d'offre unique étant proche de la moyenne : la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:47319": {
+    "note": "Probabilité d'offre unique de 19 % contre 20 % en moyenne, 1 contrat similaire gagné par l'entreprise, et aucun des 2 marchés comparables de l'acheteur n'a reçu une seule offre. Passer, car l'offre unique est proche de la moyenne : la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:60751": {
+    "note": "Probabilité d'offre unique de 19 %, contre 20 % en moyenne, avec 16 contrats similaires gagnés et 81 marchés comparables de l'acheteur, dont 30 % à offre unique. Passer : la concurrence sera habituelle, la probabilité d'offre unique étant proche de la moyenne.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:61233": {
+    "note": "Probabilité d'offre unique de 19 %, contre 20 % en moyenne, avec 20 contrats similaires gagnés dont 5 dans le département ; cet acheteur a eu 30 % d'offres uniques sur 81 marchés comparables. Passer : probabilité d'offre unique proche de la moyenne, concurrence habituelle attendue.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-105125": {
+    "note": "Probabilité d'offre unique de 18 %, proche de la moyenne de 20 %, avec 16 contrats similaires gagnés dont 2 dans le département, et aucun marché comparable passé par cet acheteur. Passer, probabilité d'offre unique proche de la moyenne : la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-109740": {
+    "note": "Probabilité d'offre unique de 18 % contre 20 % en moyenne ; l'entreprise a remporté 16 contrats similaires, dont 2 dans le département, et l'acheteur n'a passé aucun marché comparable. Passer, car la concurrence sera habituelle compte tenu d'une probabilité proche de la moyenne.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102175": {
+    "note": "Probabilité d'offre unique de 18 %, contre 20 % en moyenne (0,9 fois), avec 16 contrats similaires remportés, dont 2 dans le département ; aucun marché comparable de cet acheteur. Passer, la probabilité d'offre unique étant proche de la moyenne : concurrence habituelle attendue.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102480": {
+    "note": "Probabilité d'offre unique de 18 % contre 20 % en moyenne, avec 20 contrats similaires gagnés dont 1 dans le département, et aucun marché comparable passé par cet acheteur. Passer, car l'offre unique est proche de la moyenne : la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-109011": {
+    "note": "Probabilité d'offre unique de 16 %, contre 20 % en moyenne, avec 16 contrats similaires gagnés dont 2 dans le département et aucun marché comparable de cet acheteur. Passer, car la probabilité d'offre unique est proche de la moyenne : la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-105546": {
+    "note": "Offre unique probable à 16 % contre 20 % en moyenne (0,8 fois), avec 16 contrats similaires gagnés dont 3 dans le département, et aucun marché comparable de cet acheteur. Passer : probabilité d'offre unique proche de la moyenne, la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-100716": {
+    "note": "Probabilité d'offre unique de 16 %, contre 20 % en moyenne (0,8 fois) ; 16 contrats similaires gagnés, dont 3 dans le département ; aucun marché comparable passé par cet acheteur. Passer : la probabilité d'offre unique est proche de la moyenne, donc la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102698": {
+    "note": "Probabilité d'offre unique de 14 %, contre 20 % en moyenne, avec 16 contrats similaires gagnés et 0 % d'offres uniques sur les 8 marchés comparables de l'acheteur. Passer, car la probabilité d'offre unique est proche de la moyenne et la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-109907": {
+    "note": "Probabilité d'offre unique de 13 %, contre 20 % en moyenne, avec 16 contrats similaires gagnés dont 1 dans le département, et aucun marché comparable passé par cet acheteur. Passer : probabilité d'offre unique proche de la moyenne, la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-107097": {
+    "note": "Probabilité d'offre unique de 13 %, contre 20 % en moyenne (0,6 fois), 16 contrats similaires gagnés, dont 2 dans le département, et 3 marchés comparables sans offre unique. Passer : probabilité d'offre unique proche de la moyenne, la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-109347": {
+    "note": "La probabilité d'offre unique est de 12 %, contre 20 % en moyenne, et l'entreprise a remporté 16 contrats similaires alors que l'acheteur a passé 6 marchés comparables, aucun à offre unique. Passer : la concurrence sera habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-102913": {
+    "note": "Probabilité d'offre unique de 9 % contre 20 % en moyenne, 1 contrat similaire gagné dont 1 dans le département, aucun marché comparable passé par Bordeaux Métropole. Passer, car une probabilité d'offre unique plus faible que la moyenne laisse attendre une concurrence habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-104798": {
+    "note": "Probabilité d'offre unique de 9 %, contre 20 % en moyenne, avec 20 contrats similaires gagnés par l'entreprise (6 dans le département) et 3 marchés comparables de l'acheteur sans offre unique. Passer, car une concurrence habituelle est attendue.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  },
+  "798298899:BOAMP-26-104707": {
+    "note": "La probabilité d'offre unique est de 9 %, contre 20 % en moyenne, avec 20 contrats similaires gagnés dont 6 dans le département, et 0 % d'offres uniques sur les 3 marchés comparables de l'acheteur. Passer : probabilité inférieure à la moyenne, donc concurrence habituelle.",
+    "verified": true,
+    "model": "claude-haiku-5-5"
+  }
+}
