@@ -179,6 +179,8 @@ Git initialised (commits: baseline → fixes → calibration). Pre-change backup
 - APProch is mostly central State. BOAMP has no amount, hence the variant model.
 - The score describes past patterns, not causes. Repeat wins by the same company indicate nothing wrong in themselves.
 - AUC 0.69 is a moderate ranking. Present the score as useful, not precise.
+- **Small open tenders are missing:** BOAMP notices under 90 k€ almost never carry a CPV code (1 %), so the pipeline drops 461 of 466 of them. The open tenders shown are almost all above 90 k€, yet single bids are most frequent on small contracts (29 % under 40 k€). Next step: infer the CPV from the title.
+- **Map pins = the buyer's registered address** (SIRENE), not the worksite; 382 of 2,692 buyers are multi-site (State, regions, départements, central purchasing, 50+ establishments).
 
 ## 12. Open tasks, in priority order
 

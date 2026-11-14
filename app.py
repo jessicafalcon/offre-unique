@@ -450,11 +450,24 @@ with tab_proof:
             st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
             st.caption("Les notes de l'application sont écrites par Gemma 4 31B (modèle ouvert, via Featherless). "
                        + " ".join(bm.get("caveats", [])))
+        cov_p = ART / "coverage.json"
+        if cov_p.exists():
+            cov = json.loads(cov_p.read_text()).get("regions", {})
+            idf, fr = cov.get("Île-de-France"), cov.get("France")
+            if idf and fr:
+                st.write(f"**Pour qui ?** Aujourd'hui, {fr_int(idf['with_aller'])} des {fr_int(idf['companies'])} entreprises "
+                         f"actives d'Île-de-France ({round(100 * idf['share_with_aller'])} %) ont au moins un appel d'offres "
+                         f"« Aller », et {fr_int(fr['with_aller'])} sur {fr_int(fr['companies'])} en France "
+                         f"({round(100 * fr['share_with_aller'])} %).")
+                st.caption("Entreprise active : 10 à 200 marchés gagnés, dont un depuis 2025, et au moins 2 dans le même "
+                           "métier et département. Un seul « Aller » suffit à être compté.")
         st.subheader("Sources")
         st.write("Projets d'achats publics (APProch) et derniers marchés de chaque acheteur (« Marchés publics notifiés »), "
                  "via l'API Hémicycle ; historique complet pour l'entraînement du score : DECP consolidées (data.gouv.fr)"
                  + ("; appels d'offres ouverts du BOAMP (DILA)" if has_boamp else "")
-                 + ". Licence Ouverte 2.0 (Etalab).")
+                 + " ; type et adresse des acheteurs, vérification des entrepreneurs individuels : répertoire SIRENE "
+                   "(INSEE, via recherche-entreprises.api.gouv.fr). Licence Ouverte 2.0 (Etalab). "
+                   "Notes rédigées par Gemma 4 31B (modèle ouvert) via Featherless, chaque chiffre vérifié.")
         st.subheader("Limites")
         st.markdown(
             f"- Seuls {SHARE_LABELLED} des marchés publiés indiquent le nombre d'offres reçues : le score apprend sur ceux-là.\n"
@@ -463,7 +476,11 @@ with tab_proof:
             "- Le score décrit des régularités passées, pas des causes.\n"
             "- Un titulaire qui gagne plusieurs fois n'indique en soi aucune irrégularité.\n"
             "- Une offre unique ne signale pas en soi une irrégularité de l'acheteur : elle peut venir d'un marché étroit ou très spécialisé.\n"
-            "- Le score dit combien d'offres un marché reçoit d'habitude, pas si vous le gagnerez."
+            "- Le score dit combien d'offres un marché reçoit d'habitude, pas si vous le gagnerez.\n"
+            "- Les avis BOAMP de moins de 90 k€ n'ont presque jamais de code CPV : ils manquent dans la liste, "
+            "alors que les petits marchés sont ceux qui reçoivent le plus souvent une seule offre.\n"
+            "- Sur une carte, le point est l'adresse de l'acheteur (SIRENE), pas forcément le lieu des travaux.\n"
+            "- Seuls les marchés gagnés sont publiés : on ne connaît ni les offres perdues ni le taux de succès d'une entreprise."
         )
 
 

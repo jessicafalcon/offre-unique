@@ -151,7 +151,49 @@ def load_all_scored() -> pd.DataFrame:
         return pd.DataFrame()
     d = pd.concat(parts, ignore_index=True)
     closed = d["due_date"].notna() & (d["due_date"] < pd.Timestamp.today().normalize())
-    return add_buyer_info(d[~closed].reset_index(drop=True))  # deadline passed: not an opportunity any more
+    d = d[~closed].reset_index(drop=True)  # deadline passed: not an opportunity any more
+    return add_tender_tags(add_buyer_info(d))
+
+
+# BOAMP "famille": official size bracket of the notice (BOAMP gives no amount)
+FAMILLE = {"Marchés <90 k€ (MAPA)": ("< 90 k€", "Petit"),
+           "Marchés entre 90 k€ et seuils européens": ("90 k€ – seuils européens", "Moyen"),
+           "Marchés européens": ("Au-dessus des seuils européens", "Grand"),
+           "Délégation de service public": ("Concession (DSP)", "Grand")}
+# APProch: estimated amount band, mapped to the same three sizes (approximate: EU thresholds depend on the purchase)
+BAND = {"0 - 40k€": "Petit", "40k - 100k€": "Petit", "100k - 500k€": "Moyen", "500k - 1M€": "Moyen",
+        "1M - 5M€": "Grand", "5M - 10M€": "Grand", "10M - 50M€": "Grand", "50M - 100M€": "Grand", "+ 100M€": "Grand"}
+TWO_STAGE = ("restreint", "négoci", "negoci", "dialogue", "candidature", "concours", "partenariat")
+
+
+def add_tender_tags(d: pd.DataFrame) -> pd.DataFrame:
+    """Adds taille_marche (label), taille (Petit / Moyen / Grand), nature_achat (Travaux / Services / Fournitures)
+    and procedure_note (two-stage procedures: apply first, bid only if shortlisted)."""
+    from common import RAW
+    raw = {}
+    p = RAW / "boamp.parquet"
+    if p.exists():
+        b = pd.read_parquet(p, columns=["idweb", "famille_libelle", "procedure_libelle"])
+        raw = {f"BOAMP-{r.idweb}": (r.famille_libelle, r.procedure_libelle) for r in b.itertuples()}
+    size_label, size, proc_text = [], [], []
+    for code, src, band, proc_a in zip(d["code"].astype(str), d["source"],
+                                       d.get("montant_estime_du_marche", pd.Series(None, index=d.index)),
+                                       d.get("type_de_procedure", pd.Series(None, index=d.index))):
+        if src == "BOAMP":
+            fam, proc = raw.get(code, (None, None))
+            lab, sz = FAMILLE.get(fam, (None, None))
+        else:
+            proc = proc_a
+            band = band if isinstance(band, str) else None
+            lab, sz = (f"≈ {band.replace(' - ', ' – ')}" if band else None), BAND.get(band)
+        size_label.append(lab)
+        size.append(sz)
+        proc_text.append(str(proc or ""))
+    d["taille_marche"], d["taille"] = size_label, size
+    d["nature_achat"] = d["categorie"].where(d["categorie"].isin(["Travaux", "Services", "Fournitures"]))
+    d["procedure_note"] = [("Procédure en deux temps : candidature d'abord, offre seulement si vous êtes retenu"
+                            if any(k in t.lower() for k in TWO_STAGE) else None) for t in proc_text]
+    return d
 
 
 BUYER_COLS = {"type": "buyer_type", "lat": "buyer_lat", "lon": "buyer_lon", "address": "buyer_address",
