@@ -1,0 +1,89 @@
+{
+ "date": "2026-11-14T12:14",
+ "company": "Point Contrôles",
+ "n": 40,
+ "protocol": "mêmes faits, même consigne, une seule tentative par note, contrôles automatiques",
+ "models": {
+  "Claude Haiku 5.5 (Anthropic)": {
+   "provider": "anthropic",
+   "model": "claude-haiku-5-5",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 33,
+    "chiffres": 40,
+    "denominateur": 40,
+    "verdict": 39,
+    "format": 33,
+    "francais": 40
+   },
+   "median_seconds": 6.75,
+   "mean_out_tokens": 1558.5,
+   "mean_in_tokens": 943.0,
+   "wall_seconds": 73,
+   "usd_per_1000_notes": 0.874,
+   "price_source": "Anthropic API pricing (prompts < 100K tokens)"
+  },
+  "Gemma 4 31B (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "google/gemma-4-31B-it",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 40,
+    "chiffres": 40,
+    "denominateur": 40,
+    "verdict": 40,
+    "format": 40,
+    "francais": 40
+   },
+   "median_seconds": 8.1,
+   "mean_out_tokens": 55.4,
+   "mean_in_tokens": 611.4,
+   "wall_seconds": 198,
+   "usd_per_1000_notes": 0.093,
+   "price_source": "featherless.ai model page (unit not stated; assumed per 1M tokens)"
+  },
+  "gpt-oss 120B (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "openai/gpt-oss-120b",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 38,
+    "chiffres": 40,
+    "denominateur": 40,
+    "verdict": 40,
+    "format": 38,
+    "francais": 40
+   },
+   "median_seconds": 3.3,
+   "mean_out_tokens": 576.2,
+   "mean_in_tokens": 637.8,
+   "wall_seconds": 70
+  },
+  "Qwen 3.8 27B (Featherless, open-weight)": {
+   "provider": "featherless",
+   "model": "Qwen/Qwen3.8-27B",
+   "n": 40,
+   "errors": 0,
+   "pass": {
+    "tout": 0,
+    "chiffres": 18,
+    "denominateur": 40,
+    "verdict": 0,
+    "format": 0,
+    "francais": 22
+   },
+   "median_seconds": 46.5,
+   "mean_out_tokens": 1500,
+   "mean_in_tokens": 589.5,
+   "wall_seconds": 902
+  }
+ },
+ "caveats": [
+  "La consigne a été retouchée à 11:30 en lisant des notes de Gemma (ajout du pourcentage et de la virgule) : léger avantage possible pour Gemma.",
+  "Haiku 5.5 réfléchit par défaut (effort medium) : ses jetons de sortie incluent cette réflexion, facturée.",
+  "Dans l'application, une note refusée est régénérée jusqu'à 2 fois : le taux final est plus haut que ce premier essai."
+ ]
+}

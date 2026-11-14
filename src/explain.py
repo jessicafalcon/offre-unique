@@ -34,6 +34,9 @@ SYSTEM = (
     "2) la recommandation donnée dans le champ « recommandation » : commence la phrase par exactement ce mot "
     "(« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». "
     "Ne change jamais la recommandation. "
+    "Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, "
+    "puis le nombre de contrats similaires gagnés par l'entreprise. "
+    "Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. "
     "Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux. "
     "La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, "
     "pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés. "
@@ -134,24 +137,32 @@ def client():
     return OpenAI(base_url="https://api.featherless.ai/v1", api_key=key)
 
 
-def complete(user: str) -> str:
-    """One completion from the configured provider."""
-    if PROVIDER == "anthropic":
+def complete_with(provider: str, model: str, user: str, max_tokens: int | None = None) -> tuple[str, dict]:
+    """One completion from a given provider and model. Returns (text, token usage)."""
+    if provider == "anthropic":
         import anthropic
         if not os.environ.get("ANTHROPIC_API_KEY"):
             raise RuntimeError("Set ANTHROPIC_API_KEY in .env")
         r = anthropic.Anthropic().messages.create(
-            model=MODEL, max_tokens=4000, system=SYSTEM,
+            model=model, max_tokens=max_tokens or 4000, system=SYSTEM,
             messages=[{"role": "user", "content": user}],
         )
+        usage = {"in": r.usage.input_tokens, "out": r.usage.output_tokens}
         if getattr(r, "stop_reason", None) == "max_tokens":
-            return ""  # cut off before finishing: treated as a failure and retried
-        return "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
-    r = client().chat.completions.create(
-        model=MODEL, temperature=0.2, max_tokens=600,
+            return "", usage  # cut off before finishing: treated as a failure and retried
+        return "".join(b.text for b in r.content if getattr(b, "type", "") == "text"), usage
+    r = client().with_options(timeout=120).chat.completions.create(
+        model=model, temperature=0.2, max_tokens=max_tokens or 600,
         messages=[{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
     )
-    return r.choices[0].message.content or ""
+    u = getattr(r, "usage", None)
+    usage = {"in": getattr(u, "prompt_tokens", None), "out": getattr(u, "completion_tokens", None)}
+    return r.choices[0].message.content or "", usage
+
+
+def complete(user: str) -> str:
+    """One completion from the configured provider."""
+    return complete_with(PROVIDER, MODEL, user)[0]
 
 
 def generate(facts: dict, retries: int = 2) -> dict:

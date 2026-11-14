@@ -1,0 +1,1447 @@
+{
+ "BOAMP-26-107599": {
+  "n": 29,
+  "n_lab": 28,
+  "level": "groupe CPV",
+  "single_share": 0.7857142857142857,
+  "last_date": "2026-10-15",
+  "editions": [
+   {
+    "date": "2026-10-15",
+    "objet": "PRESTATIONS DE LOCALISATIONS D'OUVRAGES ENTERRES PAR SONDAGES DESTRUCTIFS POUR SENEO",
+    "offres": 1,
+    "titulaire_nom": "Parenge - Compagnie Parisienne d'Entreprises Générales"
+   },
+   {
+    "date": "2026-08-17",
+    "objet": "ACCOMPAGNEMENT DANS LES NEGOCIATIONS ET DANS L’ATTRIBUTION DU CONTRAT DE CONCESSION",
+    "offres": 1,
+    "titulaire_nom": "Espelia"
+   },
+   {
+    "date": "2026-07-15",
+    "objet": "Missions de maitrise d’œuvre AVP à AOR pour le renouvellement des conduites AEP Avenue Edouard Vaillant à Suresnes",
+    "offres": 1,
+    "titulaire_nom": "Safege"
+   },
+   {
+    "date": "2026-07-08",
+    "objet": "Etude de faisabilité – Dévoiements gare des Agnettes",
+    "offres": 1,
+    "titulaire_nom": "YXO Consultants"
+   },
+   {
+    "date": "2026-07-01",
+    "objet": "Mission d’étude pour la phase de réalisation (Missions de ACT à AOR) pour les Dévoiements des réseaux d’Eau Potable dans le cadre de l’opéra",
+    "offres": 1,
+    "titulaire_nom": "Safege"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:40",
+  "sirets": [
+   "25920021000021"
+  ],
+  "credits_left": "10747"
+ },
+ "BOAMP-26-102021": {
+  "n": 15,
+  "n_lab": 10,
+  "level": "groupe CPV",
+  "single_share": 0.8,
+  "last_date": "2026-03-30",
+  "editions": [
+   {
+    "date": "2026-03-30",
+    "objet": "MISSION DE MAITRISE DUVRE POUR LABANDON DU DOUBLET GEOTHERMIQUE DE MOULIN NEUF A LA COURNEUVE",
+    "offres": 1,
+    "titulaire_nom": "Geofluid"
+   },
+   {
+    "date": "2026-03-18",
+    "objet": "ACCORD-CADRE A MARCHES SUBSEQUENTS POUR DES MISSIONS DE COORDINATION SPS ET CONTROLES TECHNIQUES REGLEMENTAIRES",
+    "offres": 2,
+    "titulaire_nom": "Dekra Industrial"
+   },
+   {
+    "date": "2026-03-18",
+    "objet": "ACCORD-CADRE A MARCHES SUBSEQUENTS POUR DES MISSIONS DE COORDINATION SPS ET CONTROLES TECHNIQUES REGLEMENTAIRES - LOT 1 : COORDINATION SPS",
+    "offres": 3,
+    "titulaire_nom": "Presents (Sitetudes)"
+   },
+   {
+    "date": "2025-01-17",
+    "objet": "ACCORD CADRE A BONS DE COMMANDE POUR DES PRESTATIONS DETUDES GENERALES ET DASSISTANCE A MAITRISE DOUVRAGE DANS LE DOMAINE DU BATIMENT POUR L",
+    "offres": 1,
+    "titulaire_nom": "Gmgb"
+   },
+   {
+    "date": "2024-12-31",
+    "objet": "ACCORD CADRE A BONS DE COMMANDE POUR DES PRESTATIONS DE MAITRISE DOEUVRE POUR LE SMIREC",
+    "offres": 1,
+    "titulaire_nom": "Manergy"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "25930028300035",
+   "25930028300118",
+   "25930028300092"
+  ],
+  "credits_left": "10789"
+ },
+ "BOAMP-26-105339": {
+  "n": 4,
+  "n_lab": 4,
+  "level": "groupe CPV",
+  "single_share": 0.75,
+  "last_date": "2026-10-13",
+  "editions": [
+   {
+    "date": "2026-10-13",
+    "objet": "Mission de diagnostic bâtimentaire",
+    "offres": 3,
+    "titulaire_nom": "Egis Conseil"
+   },
+   {
+    "date": "2026-10-01",
+    "objet": "Accompagnement Diagnostiqueur Amiante sur matériel de désenfumage - Lycée Isaac Newton - 92110 CLICHY",
+    "offres": 1,
+    "titulaire_nom": "Sipam"
+   },
+   {
+    "date": "2026-09-29",
+    "objet": "2904 - Etudes préalables - Réalisation d'une mission d'assistance technique dans la rédaction d'un diagnostic sécurité incendie dans le cadr",
+    "offres": 1,
+    "titulaire_nom": "Gayetssi"
+   },
+   {
+    "date": "2026-09-24",
+    "objet": "Mission de piquetage d'emprise sans valeur foncière - CSI GONESSE (95)",
+    "offres": 1,
+    "titulaire_nom": "Geofit"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "23750007900312"
+  ],
+  "credits_left": "10788"
+ },
+ "66863": {
+  "n": 4,
+  "n_lab": 4,
+  "level": "division CPV",
+  "single_share": 0.25,
+  "last_date": "2026-07-08",
+  "editions": [
+   {
+    "date": "2026-07-08",
+    "objet": "Assistance technique à maîtrise d'ouvrage DCA - ATMO Innovation (lot 3)",
+    "offres": 2,
+    "titulaire_nom": "Ingerop Conseil et Ingénierie (ICI)"
+   },
+   {
+    "date": "2026-03-03",
+    "objet": "Assistance technique à maîtrise d'ouvrage DCA - ATMO Soutien",
+    "offres": 2,
+    "titulaire_nom": "Sopra Steria Group"
+   },
+   {
+    "date": "2026-03-03",
+    "objet": "Assistance technique à maîtrise d'ouvrage DCA - ATMO Métier",
+    "offres": 2,
+    "titulaire_nom": "Sopra Steria Group"
+   },
+   {
+    "date": "2025-03-12",
+    "objet": "Réalisation de tests, mesures et contrôles, selon les normes en vigueur sur le territoire français, permettant de garantir la compatibilité ",
+    "offres": 1,
+    "titulaire_nom": "Emitech"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "11001401600072",
+   "11001401600064",
+   "11001401600015"
+  ],
+  "credits_left": "10785"
+ },
+ "BOAMP-26-107321": {
+  "n": 7,
+  "n_lab": 7,
+  "level": "groupe CPV",
+  "single_share": 0.42857142857142855,
+  "last_date": "2026-10-05",
+  "editions": [
+   {
+    "date": "2026-10-05",
+    "objet": "AMO SECURISATION UDI MONTREUIL",
+    "offres": 1,
+    "titulaire_nom": "Amodiag Environnement"
+   },
+   {
+    "date": "2026-10-05",
+    "objet": "MISSION D'ASSITANCE A MAITRISE D'OUVRAGE POUR LA SECURISATION QUALITATIVE DE L'EAU DESTINEE A LA CONSOMMATION HUMAINE DE L'UNITE DE DISTRIBU",
+    "offres": 1,
+    "titulaire_nom": "Amodiag Environnement"
+   },
+   {
+    "date": "2026-07-31",
+    "objet": "VERIFICATIONS PERIODIQUES SUR MATERIEL DE LEVAGE ET COMPACTAGE",
+    "offres": 3,
+    "titulaire_nom": "Apave Exploitation France"
+   },
+   {
+    "date": "2026-07-31",
+    "objet": "VERIFICATIONS PERIODIQUES DES INSTALLATIONS TECHNIQUES SPORTIVES MATERIEL MACHINES ET OUTILS - VERIFICATIONS PERIODIQUES SUR MATERIEL DE LEV",
+    "offres": 3,
+    "titulaire_nom": "Apave Infrastructures et Construction France"
+   },
+   {
+    "date": "2026-07-31",
+    "objet": "VERIFICATIONS PERIODIQUES DES INSTALLATIONS TECHNIQUES SPORTIVES MATERIEL MACHINES ET OUTILS - VERIFICATIONS PERIODIQUES DES SYSTEMES DE SEC",
+    "offres": 3,
+    "titulaire_nom": "Apave Infrastructures et Construction France"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "20006902900011",
+   "20006902900060"
+  ],
+  "credits_left": "10783"
+ },
+ "BOAMP-26-95509": {
+  "n": 5,
+  "n_lab": 5,
+  "level": "groupe CPV",
+  "single_share": 0.6,
+  "last_date": "2025-05-27",
+  "editions": [
+   {
+    "date": "2025-05-27",
+    "objet": "MOE SECU AEP DN900",
+    "offres": 8,
+    "titulaire_nom": "Lorraine Conseils Assistance Maitrise d'Oeuvre et par Abreviation Lorraine Conseils AMO"
+   },
+   {
+    "date": "2025-02-07",
+    "objet": "SCHEMA DIRECTEUR EAU POTABLE",
+    "offres": 2,
+    "titulaire_nom": "Cabinet d'Études Marc Merlin"
+   },
+   {
+    "date": "2024-10-04",
+    "objet": "investigations hors du PPI (campagne de qualité, campagnes piézométriques, profils piézométriques, traçages hydrogéologiques)",
+    "offres": 1,
+    "titulaire_nom": "IRH Ingénieur Conseil"
+   },
+   {
+    "date": "2024-10-04",
+    "objet": "investigations dans le PPI",
+    "offres": 1,
+    "titulaire_nom": "IRH Ingénieur Conseil"
+   },
+   {
+    "date": "2023-10-19",
+    "objet": "MOE TVX DE REFECTION DES CANIVEAUX ET BARBACANES A MADINE",
+    "offres": 1,
+    "titulaire_nom": "Safege"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "20007790700026"
+  ],
+  "credits_left": "10782"
+ },
+ "BOAMP-26-103295": {
+  "n": 14,
+  "n_lab": 14,
+  "level": "groupe CPV",
+  "single_share": 0.5714285714285714,
+  "last_date": "2024-12-12",
+  "editions": [
+   {
+    "date": "2024-12-12",
+    "objet": "Marché subséquent relatif à la réalisation des études préliminaires et reprise de l'avant-projet (AVP) des espaces publics- ZAC Chêne Saint-",
+    "offres": 6,
+    "titulaire_nom": "Caudex"
+   },
+   {
+    "date": "2024-11-19",
+    "objet": "Marché subséquent à l'accord-cadre n°2015-001 relatif à la mission de maitrise d'oeuvre des aménagements définitifs dont le jardin métropoli",
+    "offres": 1,
+    "titulaire_nom": "Arcadis ESG"
+   },
+   {
+    "date": "2024-11-13",
+    "objet": "Marché subséquent relatif à la réalisation des missions DCE à AOR.",
+    "offres": 1,
+    "titulaire_nom": "Eodd Ingénieurs Conseils"
+   },
+   {
+    "date": "2024-10-09",
+    "objet": "Marché subséquent n°11 relatif à la mission de maitrise d' uvre des espaces publics : VISA - DET et AOR des abords des lots NM4-6-8 (phase 2",
+    "offres": 1,
+    "titulaire_nom": "Ingetec"
+   },
+   {
+    "date": "2024-10-03",
+    "objet": "Marché subséquent n°6 relatif à la mission de maîtrise d' uvre des espaces publics DCE 5 : AVP",
+    "offres": 1,
+    "titulaire_nom": "Architecture Studio"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "30821376800010",
+   "30821376800028"
+  ],
+  "credits_left": "10780"
+ },
+ "48934": {
+  "n": 1,
+  "n_lab": 1,
+  "level": "groupe CPV",
+  "single_share": 1.0,
+  "last_date": "2025-08-27",
+  "editions": [
+   {
+    "date": "2025-08-27",
+    "objet": "Etude de faisabilité pour des travaux d'aménagements intérieurs (amélioration de l'accueil et de l'accessibilité du rez-de-chaussée de la ma",
+    "offres": 1,
+    "titulaire_nom": "Cigma Ouest Saint Brieuc"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "11004601800013"
+  ],
+  "credits_left": "10779"
+ },
+ "BOAMP-26-109558": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "78439607900054"
+  ],
+  "credits_left": "10778"
+ },
+ "BOAMP-26-106882": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "24770010700136",
+   "24770010700029",
+   "24770010700037"
+  ],
+  "credits_left": "10775"
+ },
+ "BOAMP-26-109456": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "83371879400013"
+  ],
+  "credits_left": "10774"
+ },
+ "BOAMP-26-109615": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "78439607900054"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-107662": {
+  "n": 9,
+  "n_lab": 1,
+  "level": "groupe CPV",
+  "single_share": 1.0,
+  "last_date": "2026-07-13",
+  "editions": [
+   {
+    "date": "2026-07-13",
+    "objet": "DST 10-26 INVESTIGATIONS STRUCTURELLES : MAÇONNERIES & RECONNAISSANCE DES STRUCTURES POUR LA RESTAURATION  DE L EGLISE",
+    "offres": null,
+    "titulaire_nom": "Geopat"
+   },
+   {
+    "date": "2026-07-07",
+    "objet": "Dans le cadre des futurs travaux de restauration de l'église Notre-Dame-des-Vertus, la ville d’Aubervilliers souhaite réaliser un relevé pré",
+    "offres": 1,
+    "titulaire_nom": "Geopat"
+   },
+   {
+    "date": "2025-11-18",
+    "objet": "AMO POUR DES PROJETS DE CHALEUR RENOUVELABLE BÂTIMENT ET EN RESEAU",
+    "offres": null,
+    "titulaire_nom": "Manergy"
+   },
+   {
+    "date": "2025-11-18",
+    "objet": "AMO POUR L EFFICACITÉ ÉNERGÉTIQUE DES BÂTIMENTS NEUFS OU EN RENOVATION LOURDE",
+    "offres": null,
+    "titulaire_nom": "Initiative pour le Développement Durable - Ingénierie et Organisation"
+   },
+   {
+    "date": "2025-11-18",
+    "objet": "AMO POUR L EFFICACITÉ ÉNERGÉTIQUE DU PATRIMOINE BÂTI EXISTANT, LA QUALITE DE L'AIR INTERIEUR ET LA VENTILATION",
+    "offres": null,
+    "titulaire_nom": "Initiative pour le Développement Durable - Ingénierie et Organisation"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21930001900011",
+   "21930001900375"
+  ],
+  "credits_left": "10772"
+ },
+ "BOAMP-26-99792": {
+  "n": 2,
+  "n_lab": 0,
+  "level": "groupe CPV",
+  "single_share": null,
+  "last_date": "2023-01-25",
+  "editions": [
+   {
+    "date": "2023-01-25",
+    "objet": "Maitrise d'œuvre pour le réaménagement de la Place Saint-Louis",
+    "offres": null,
+    "titulaire_nom": "Ingetec"
+   },
+   {
+    "date": "2022-06-22",
+    "objet": "MISSIONS DE COORDINATION SECURITE ET PROTECTION DE LA SANTE",
+    "offres": null,
+    "titulaire_nom": "Socotec Construction"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21920033400015"
+  ],
+  "credits_left": "10771"
+ },
+ "BOAMP-26-100229": {
+  "n": 1,
+  "n_lab": 0,
+  "level": "groupe CPV",
+  "single_share": null,
+  "last_date": "2023-11-21",
+  "editions": [
+   {
+    "date": "2023-11-21",
+    "objet": "REAMENAGEMENT DU JARDIN DES ECOLES ET DES ABORDS DE LA PLACE SAINT-LOUIS",
+    "offres": null,
+    "titulaire_nom": "Le Studio Sanna Balde"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21920033400015"
+  ],
+  "credits_left": null
+ },
+ "23646": {
+  "n": 4,
+  "n_lab": 4,
+  "level": "division CPV",
+  "single_share": 0.25,
+  "last_date": "2026-07-08",
+  "editions": [
+   {
+    "date": "2026-07-08",
+    "objet": "Assistance technique à maîtrise d'ouvrage DCA - ATMO Innovation (lot 3)",
+    "offres": 2,
+    "titulaire_nom": "Ingerop Conseil et Ingénierie (ICI)"
+   },
+   {
+    "date": "2026-03-03",
+    "objet": "Assistance technique à maîtrise d'ouvrage DCA - ATMO Soutien",
+    "offres": 2,
+    "titulaire_nom": "Sopra Steria Group"
+   },
+   {
+    "date": "2026-03-03",
+    "objet": "Assistance technique à maîtrise d'ouvrage DCA - ATMO Métier",
+    "offres": 2,
+    "titulaire_nom": "Sopra Steria Group"
+   },
+   {
+    "date": "2025-03-12",
+    "objet": "Réalisation de tests, mesures et contrôles, selon les normes en vigueur sur le territoire français, permettant de garantir la compatibilité ",
+    "offres": 1,
+    "titulaire_nom": "Emitech"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "11001401600072",
+   "11001401600064",
+   "11001401600015"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-109616": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "78439607900054"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-95787": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "20008210500012"
+  ],
+  "credits_left": "10770"
+ },
+ "47191": {
+  "n": 6,
+  "n_lab": 6,
+  "level": "groupe CPV",
+  "single_share": 0.16666666666666666,
+  "last_date": "2024-06-11",
+  "editions": [
+   {
+    "date": "2024-06-11",
+    "objet": "Accord-cadre exécuté par l’émission de bons de commande pour la réalisation de missions de géomètre topographe, de géomètre expert, de géo d",
+    "offres": 6,
+    "titulaire_nom": "Geofit Expert"
+   },
+   {
+    "date": "2024-06-11",
+    "objet": "Accord-cadre exécuté par l’émission de bons de commande pour la réalisation de missions de géomètre topographe, de géomètre expert, de géo d",
+    "offres": 3,
+    "titulaire_nom": "Topo Services"
+   },
+   {
+    "date": "2024-06-11",
+    "objet": "Accord-cadre exécuté par l’émission de bons de commande pour la réalisation de missions de géomètre topographe, de géomètre expert, de géo d",
+    "offres": 2,
+    "titulaire_nom": "Mayotte Bureau d'Études"
+   },
+   {
+    "date": "2024-06-11",
+    "objet": "Accord-cadre exécuté par l’émission de bons de commande pour la réalisation de missions de géomètre topographe, de géomètre expert, de géo d",
+    "offres": 3,
+    "titulaire_nom": "Topo Services"
+   },
+   {
+    "date": "2024-06-11",
+    "objet": "Accord-cadre exécuté par l’émission de bons de commande pour la réalisation de missions de géomètre topographe, de géomètre expert, de géo d",
+    "offres": 4,
+    "titulaire_nom": "Etudis I.D.R"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "11009001600046"
+  ],
+  "credits_left": "10769"
+ },
+ "BOAMP-26-107214": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-22",
+  "editions": [
+   {
+    "date": "2026-10-22",
+    "objet": "Mission d'assistance à tnaîtrise d'ouvrage pour l'obtention des autorisations administratives nécessaires à la mise en oeuvre de plan de mis",
+    "offres": 2,
+    "titulaire_nom": "Naed"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Maîtrise d'œuvre des travaux de réhabilitation de la cuisine professionnelle du CEFP Villepreux 4 rue Amédée Brocard 78450 VILLEPREUX",
+    "offres": 5,
+    "titulaire_nom": "Idoneis"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": "10766"
+ },
+ "BOAMP-26-97051": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-22",
+  "editions": [
+   {
+    "date": "2026-10-22",
+    "objet": "Mission d'assistance à tnaîtrise d'ouvrage pour l'obtention des autorisations administratives nécessaires à la mise en oeuvre de plan de mis",
+    "offres": 2,
+    "titulaire_nom": "Naed"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Maîtrise d'œuvre des travaux de réhabilitation de la cuisine professionnelle du CEFP Villepreux 4 rue Amédée Brocard 78450 VILLEPREUX",
+    "offres": 5,
+    "titulaire_nom": "Idoneis"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-98368": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-22",
+  "editions": [
+   {
+    "date": "2026-10-22",
+    "objet": "Mission d'assistance à tnaîtrise d'ouvrage pour l'obtention des autorisations administratives nécessaires à la mise en oeuvre de plan de mis",
+    "offres": 2,
+    "titulaire_nom": "Naed"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Maîtrise d'œuvre des travaux de réhabilitation de la cuisine professionnelle du CEFP Villepreux 4 rue Amédée Brocard 78450 VILLEPREUX",
+    "offres": 5,
+    "titulaire_nom": "Idoneis"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-99646": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-22",
+  "editions": [
+   {
+    "date": "2026-10-22",
+    "objet": "Mission d'assistance à tnaîtrise d'ouvrage pour l'obtention des autorisations administratives nécessaires à la mise en oeuvre de plan de mis",
+    "offres": 2,
+    "titulaire_nom": "Naed"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Maîtrise d'œuvre des travaux de réhabilitation de la cuisine professionnelle du CEFP Villepreux 4 rue Amédée Brocard 78450 VILLEPREUX",
+    "offres": 5,
+    "titulaire_nom": "Idoneis"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-95610": {
+  "n": 7,
+  "n_lab": 7,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-07-21",
+  "editions": [
+   {
+    "date": "2026-07-21",
+    "objet": "Il s’agit de réaliser toutes les vérifications générales périodiques du parc de matériel de la DEVP en conformité avec la législation et de ",
+    "offres": 6,
+    "titulaire_nom": "Apave Exploitation France"
+   },
+   {
+    "date": "2026-04-16",
+    "objet": "INX VÉRIFICATIONS RÈGLEMENTAIRES PERIODIQUES DANS LES COLLÈGES ET LES CENTRES D’INFORMATION ET D’ORIENTATION DU VAL-DE-MARNE\\nLot 1 : Collèg",
+    "offres": 4,
+    "titulaire_nom": "Bureau Veritas Exploitation"
+   },
+   {
+    "date": "2026-04-16",
+    "objet": "INX VÉRIFICATIONS RÈGLEMENTAIRES PERIODIQUES DANS LES COLLÈGES ET LES CENTRES D’INFORMATION ET D’ORIENTATION DU VAL-DE-MARNE\\nLot 2 : Collèg",
+    "offres": 4,
+    "titulaire_nom": "Bureau Veritas Exploitation"
+   },
+   {
+    "date": "2026-01-20",
+    "objet": "INX PRESTATIONS DE REPERAGE DE MATERIAUX ET PRODUITS CONTENANT DE L’AMIANTE DANS LES OUVRAGES ET EQUIPEMENTS DU CONSEIL DEPARTEMENTAL DU VAL",
+    "offres": 27,
+    "titulaire_nom": "Qualitat Expertises"
+   },
+   {
+    "date": "2026-01-20",
+    "objet": "INX PRESTATIONS DE REPERAGE DE MATERIAUX ET PRODUITS CONTENANT DE L’AMIANTE DANS LES OUVRAGES ET EQUIPEMENTS DU CONSEIL DEPARTEMENTAL DU VAL",
+    "offres": 27,
+    "titulaire_nom": "ADX Groupe"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "22940028800010"
+  ],
+  "credits_left": "10765"
+ },
+ "BOAMP-26-103600": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "division CPV",
+  "single_share": 0.0,
+  "last_date": "2024-12-16",
+  "editions": [
+   {
+    "date": "2024-12-16",
+    "objet": "INX Diagnostic technique des équipements de CVC de l'Hôtel de police d'Auxerre\\nMission de MOE permettant de réaliser les travaux de remise ",
+    "offres": 5,
+    "titulaire_nom": "3 Ingénieurs Associés 3 I A"
+   },
+   {
+    "date": "2024-12-02",
+    "objet": "Réhabilitation d'un bâtiment Q de stockage en un atelier de maintenance automobile pour les services de la DEL",
+    "offres": 3,
+    "titulaire_nom": "Christian Zomeno"
+   },
+   {
+    "date": "2024-07-19",
+    "objet": "Le présent marché a pour objet de fixer le cadre de l’intervention du contrôleur technique conformément aux dispositions de l’article L125-1",
+    "offres": 6,
+    "titulaire_nom": "Apave Infrastructures et Construction France"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "11000201100044"
+  ],
+  "credits_left": "10764"
+ },
+ "BOAMP-26-106877": {
+  "n": 20,
+  "n_lab": 17,
+  "level": "division CPV",
+  "single_share": 0.11764705882352941,
+  "last_date": "2026-10-15",
+  "editions": [
+   {
+    "date": "2026-10-15",
+    "objet": "TRANSPORTS",
+    "offres": null,
+    "titulaire_nom": "Bureau d'Études d'Aménagements"
+   },
+   {
+    "date": "2026-10-15",
+    "objet": "aménagements cyclables",
+    "offres": null,
+    "titulaire_nom": "Okare Ingénierie"
+   },
+   {
+    "date": "2026-07-23",
+    "objet": "MISSION DE DIAGNOSTIC ET DE PROGRAMMATION  DU THÉÂTRE DE CORBEIL",
+    "offres": 8,
+    "titulaire_nom": "Mott Macdonald France"
+   },
+   {
+    "date": "2026-07-01",
+    "objet": "PRESTA ASSISTANCE MO OPE VOIRIE ESPACES PUBLICS SUR TERRITOIRE DE GPS",
+    "offres": 6,
+    "titulaire_nom": "Artelia"
+   },
+   {
+    "date": "2026-06-22",
+    "objet": "MISSION COORDINATION SECURITE/PROTECTION SANTE MEDIATHEQUE  DE L'AGORA",
+    "offres": 1,
+    "titulaire_nom": "Études et Synergies"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "20005922800011",
+   "20005922800078",
+   "20005922800029"
+  ],
+  "credits_left": "10761"
+ },
+ "66489": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-07-28",
+  "editions": [
+   {
+    "date": "2026-07-28",
+    "objet": "Prestations d'inspection et de diagnostic sur les ouvrages d'art et les portiques, potences et Hauts mâts (PPHM) départementaux",
+    "offres": 4,
+    "titulaire_nom": "Ginger Cebtp"
+   },
+   {
+    "date": "2026-02-18",
+    "objet": "Diagnostics immobilier à réaliser dans les bâtiments, ouvrages et installations techniques",
+    "offres": 12,
+    "titulaire_nom": "Fmdc Diagnostics"
+   },
+   {
+    "date": "2026-01-12",
+    "objet": "Vérifications périodiques à réaliser dans les bâtiments départementaux, ouvrages et installations techniques du Département des Hauts-de-Sei",
+    "offres": 3,
+    "titulaire_nom": "Bureau Veritas Exploitation"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "22920050600611",
+   "22920050600157",
+   "22920050600629"
+  ],
+  "credits_left": "10758"
+ },
+ "66389": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "division CPV",
+  "single_share": 0.3333333333333333,
+  "last_date": "2025-08-27",
+  "editions": [
+   {
+    "date": "2025-08-27",
+    "objet": "Etude de faisabilité pour des travaux d'aménagements intérieurs (amélioration de l'accueil et de l'accessibilité du rez-de-chaussée de la ma",
+    "offres": 1,
+    "titulaire_nom": "Cigma Ouest Saint Brieuc"
+   },
+   {
+    "date": "2024-10-16",
+    "objet": "Le marché porte sur la réalisation d’une étude et de cartographies pour la délimitation de plusieurs ensembles immobiliers ayant vocation à ",
+    "offres": 2,
+    "titulaire_nom": "La Manufacture du Patrimoine"
+   },
+   {
+    "date": "2024-07-23",
+    "objet": "Étude de faisabilité concernant des travaux de refonte de l'Aile Ouest du château de Saint-Germain-en-Laye (travaux d'aménagements muséograp",
+    "offres": 2,
+    "titulaire_nom": "Setec Organisation"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "11004601800013"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-104984": {
+  "n": 3,
+  "n_lab": 3,
+  "level": "groupe CPV",
+  "single_share": 0.3333333333333333,
+  "last_date": "2026-10-06",
+  "editions": [
+   {
+    "date": "2026-10-06",
+    "objet": "MISSION DE CONTROLE TECHNIQUE",
+    "offres": 7,
+    "titulaire_nom": "Dekra Industrial"
+   },
+   {
+    "date": "2026-02-27",
+    "objet": "REALISATION DE DIAGNOSTICS AMIANTE ET PLOMB \\r\\n",
+    "offres": 12,
+    "titulaire_nom": "Genovexpert"
+   },
+   {
+    "date": "2026-02-20",
+    "objet": "SUIVI PHYSICO-CHIMIQUE ET BIOLOGIQUE DES PIECES D'EAU",
+    "offres": 1,
+    "titulaire_nom": "I.D.Eaux"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "18004626000014"
+  ],
+  "credits_left": "10757"
+ },
+ "BOAMP-26-108818": {
+  "n": 8,
+  "n_lab": 8,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-08-04",
+  "editions": [
+   {
+    "date": "2026-08-04",
+    "objet": "ZAC PYTHON DUVERNOIS - Mission de CSPS pour la construction d'un équipements multisports et l'aménagement de ses abords",
+    "offres": 17,
+    "titulaire_nom": "Coordination Santé Sécurité (Degouy Coordination SPS)"
+   },
+   {
+    "date": "2026-08-03",
+    "objet": "Mission de coordination en matière de sécurité et de protection de la santé des travailleurs sur différents secteurs de la ZAC Paris Rive Ga",
+    "offres": 12,
+    "titulaire_nom": "Coordination Santé Sécurité (Degouy Coordination SPS)"
+   },
+   {
+    "date": "2025-08-19",
+    "objet": "Mission d'assistance à maitrise d'ouvrage en matière de qualité environnementale pour l'aménagement de la ZAC Python-Duvernois",
+    "offres": 10,
+    "titulaire_nom": "Sepia Conseils"
+   },
+   {
+    "date": "2025-04-07",
+    "objet": "Mission de contrôle technique pour le réseau d'assainissement de la rue Bruneseau",
+    "offres": 8,
+    "titulaire_nom": "Socotec Construction"
+   },
+   {
+    "date": "2025-02-20",
+    "objet": "Accord-cadre à bons de commande - Mission d'investigations et d'ingénierie en géotechnique et en qualité environnementale des sols - Opérati",
+    "offres": 9,
+    "titulaire_nom": "Geolia"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "70201772400072"
+  ],
+  "credits_left": "10756"
+ },
+ "BOAMP-26-103673": {
+  "n": 4,
+  "n_lab": 4,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2024-09-03",
+  "editions": [
+   {
+    "date": "2024-09-03",
+    "objet": "Investigations Complémentaires et Opérations de Localisation pour la détection, le géoréférencement et le marquage des réseaux.",
+    "offres": 22,
+    "titulaire_nom": "Geosat"
+   },
+   {
+    "date": "2024-09-03",
+    "objet": "Diagnostics avant travaux de voirie",
+    "offres": 22,
+    "titulaire_nom": "AC Environnement"
+   },
+   {
+    "date": "2024-09-03",
+    "objet": "Diagnostics liés aux travaux dans les immeubles bâtis",
+    "offres": 22,
+    "titulaire_nom": "A.R.C (Socobat Expertises)"
+   },
+   {
+    "date": "2024-09-03",
+    "objet": "Missions géotechniques",
+    "offres": 22,
+    "titulaire_nom": "Semofi"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "51254612800020"
+  ],
+  "credits_left": "10755"
+ },
+ "61245": {
+  "n": 14,
+  "n_lab": 14,
+  "level": "groupe CPV",
+  "single_share": 0.07142857142857142,
+  "last_date": "2026-11-02",
+  "editions": [
+   {
+    "date": "2026-11-02",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\n- EE et EM 16 rue Roquepine 75008\\n- EE 10 rue de Clichy",
+    "offres": 5,
+    "titulaire_nom": "Geoza"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\nEE 20 rue Etienne Marcel 75001\\nEE 28 rue Cambon 75001\\n",
+    "offres": 4,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "Modernisation des installations CVC de la Crèche Collective 8 rue Thorel 75002 PARIS",
+    "offres": 5,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-23",
+    "objet": "INX Rafraîchissement des établissements suivants :\\n- Ecole maternelle 167 rue de Bercy 75012 \\n- Ecole élémentaire 165 rue de Bercy 75012 \\",
+    "offres": 3,
+    "titulaire_nom": "Efficio"
+   },
+   {
+    "date": "2026-10-20",
+    "objet": "Accords-cadres de prestations de sécurité et protection de la santé en 5 lots séparés. - Accord-cadre multi attributaires à marchés subséque",
+    "offres": 4,
+    "titulaire_nom": "4G Ingénierie & Consulting"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "60748": {
+  "n": 6,
+  "n_lab": 6,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-06",
+  "editions": [
+   {
+    "date": "2026-10-06",
+    "objet": "SA3 ACBC DIAGNOSTIC BRANCHEMENT PARTICULIER CIRCO EST LOT 1",
+    "offres": 5,
+    "titulaire_nom": "Suez Eau France"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHNIQUES ANTIPOLLUTION  PTAC<3,5T VITRY L4",
+    "offres": 6,
+    "titulaire_nom": "Auto Contrôle Ivry"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHNIQUES ANTIPOLLUTION PTAC<3,5T - IVRY L3",
+    "offres": 7,
+    "titulaire_nom": "Action Contrôle Technique"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC_CTRL TECHNIQUES ANTIPOLLUTION PTAC<3,5T - EDISON L2",
+    "offres": 6,
+    "titulaire_nom": "Auto Contrôle Ivry"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHN ANTIPOLLUT° PTAC< 3,5T STOUEN POUCHET L1",
+    "offres": 5,
+    "titulaire_nom": "Auto Bilan la Garenne Colombes"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "61274": {
+  "n": 14,
+  "n_lab": 14,
+  "level": "groupe CPV",
+  "single_share": 0.07142857142857142,
+  "last_date": "2026-11-02",
+  "editions": [
+   {
+    "date": "2026-11-02",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\n- EE et EM 16 rue Roquepine 75008\\n- EE 10 rue de Clichy",
+    "offres": 5,
+    "titulaire_nom": "Geoza"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\nEE 20 rue Etienne Marcel 75001\\nEE 28 rue Cambon 75001\\n",
+    "offres": 4,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "Modernisation des installations CVC de la Crèche Collective 8 rue Thorel 75002 PARIS",
+    "offres": 5,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-23",
+    "objet": "INX Rafraîchissement des établissements suivants :\\n- Ecole maternelle 167 rue de Bercy 75012 \\n- Ecole élémentaire 165 rue de Bercy 75012 \\",
+    "offres": 3,
+    "titulaire_nom": "Efficio"
+   },
+   {
+    "date": "2026-10-20",
+    "objet": "Accords-cadres de prestations de sécurité et protection de la santé en 5 lots séparés. - Accord-cadre multi attributaires à marchés subséque",
+    "offres": 4,
+    "titulaire_nom": "4G Ingénierie & Consulting"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-104202": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.5,
+  "last_date": "2026-10-07",
+  "editions": [
+   {
+    "date": "2026-10-07",
+    "objet": "SAINT-JACQUES DE LA LANDE (35) – Quartier STEPHANT – LA MALTIERE –  Diagnostic des réseaux d'adduction (Adduction Eau Potable + Incendie) - ",
+    "offres": 1,
+    "titulaire_nom": "Techniques de Prospection et Applications en Environnement"
+   },
+   {
+    "date": "2026-04-01",
+    "objet": "AUXONNE (21) - Quartier Bonaparte - 511 RT - Réhabilitation du bâtiment 016 - Mission de contrôle technique",
+    "offres": 6,
+    "titulaire_nom": "Apave Infrastructures et Construction France"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "13000190200373",
+   "13000190200274",
+   "13000190200068"
+  ],
+  "credits_left": "10752"
+ },
+ "63076": {
+  "n": 14,
+  "n_lab": 14,
+  "level": "groupe CPV",
+  "single_share": 0.07142857142857142,
+  "last_date": "2026-11-02",
+  "editions": [
+   {
+    "date": "2026-11-02",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\n- EE et EM 16 rue Roquepine 75008\\n- EE 10 rue de Clichy",
+    "offres": 5,
+    "titulaire_nom": "Geoza"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\nEE 20 rue Etienne Marcel 75001\\nEE 28 rue Cambon 75001\\n",
+    "offres": 4,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "Modernisation des installations CVC de la Crèche Collective 8 rue Thorel 75002 PARIS",
+    "offres": 5,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-23",
+    "objet": "INX Rafraîchissement des établissements suivants :\\n- Ecole maternelle 167 rue de Bercy 75012 \\n- Ecole élémentaire 165 rue de Bercy 75012 \\",
+    "offres": 3,
+    "titulaire_nom": "Efficio"
+   },
+   {
+    "date": "2026-10-20",
+    "objet": "Accords-cadres de prestations de sécurité et protection de la santé en 5 lots séparés. - Accord-cadre multi attributaires à marchés subséque",
+    "offres": 4,
+    "titulaire_nom": "4G Ingénierie & Consulting"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "61273": {
+  "n": 14,
+  "n_lab": 14,
+  "level": "groupe CPV",
+  "single_share": 0.07142857142857142,
+  "last_date": "2026-11-02",
+  "editions": [
+   {
+    "date": "2026-11-02",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\n- EE et EM 16 rue Roquepine 75008\\n- EE 10 rue de Clichy",
+    "offres": 5,
+    "titulaire_nom": "Geoza"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "INX Création d’un système de rafraichissement FrDP sur les équipements suivants : \\nEE 20 rue Etienne Marcel 75001\\nEE 28 rue Cambon 75001\\n",
+    "offres": 4,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-29",
+    "objet": "Modernisation des installations CVC de la Crèche Collective 8 rue Thorel 75002 PARIS",
+    "offres": 5,
+    "titulaire_nom": "Thermi Fluides"
+   },
+   {
+    "date": "2026-10-23",
+    "objet": "INX Rafraîchissement des établissements suivants :\\n- Ecole maternelle 167 rue de Bercy 75012 \\n- Ecole élémentaire 165 rue de Bercy 75012 \\",
+    "offres": 3,
+    "titulaire_nom": "Efficio"
+   },
+   {
+    "date": "2026-10-20",
+    "objet": "Accords-cadres de prestations de sécurité et protection de la santé en 5 lots séparés. - Accord-cadre multi attributaires à marchés subséque",
+    "offres": 4,
+    "titulaire_nom": "4G Ingénierie & Consulting"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "61275": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-22",
+  "editions": [
+   {
+    "date": "2026-10-22",
+    "objet": "Mission d'assistance à tnaîtrise d'ouvrage pour l'obtention des autorisations administratives nécessaires à la mise en oeuvre de plan de mis",
+    "offres": 2,
+    "titulaire_nom": "Naed"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Maîtrise d'œuvre des travaux de réhabilitation de la cuisine professionnelle du CEFP Villepreux 4 rue Amédée Brocard 78450 VILLEPREUX",
+    "offres": 5,
+    "titulaire_nom": "Idoneis"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "64257": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-22",
+  "editions": [
+   {
+    "date": "2026-10-22",
+    "objet": "Mission d'assistance à tnaîtrise d'ouvrage pour l'obtention des autorisations administratives nécessaires à la mise en oeuvre de plan de mis",
+    "offres": 2,
+    "titulaire_nom": "Naed"
+   },
+   {
+    "date": "2026-10-19",
+    "objet": "Maîtrise d'œuvre des travaux de réhabilitation de la cuisine professionnelle du CEFP Villepreux 4 rue Amédée Brocard 78450 VILLEPREUX",
+    "offres": 5,
+    "titulaire_nom": "Idoneis"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "60992": {
+  "n": 6,
+  "n_lab": 6,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-06",
+  "editions": [
+   {
+    "date": "2026-10-06",
+    "objet": "SA3 ACBC DIAGNOSTIC BRANCHEMENT PARTICULIER CIRCO EST LOT 1",
+    "offres": 5,
+    "titulaire_nom": "Suez Eau France"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHNIQUES ANTIPOLLUTION  PTAC<3,5T VITRY L4",
+    "offres": 6,
+    "titulaire_nom": "Auto Contrôle Ivry"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHNIQUES ANTIPOLLUTION PTAC<3,5T - IVRY L3",
+    "offres": 7,
+    "titulaire_nom": "Action Contrôle Technique"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC_CTRL TECHNIQUES ANTIPOLLUTION PTAC<3,5T - EDISON L2",
+    "offres": 6,
+    "titulaire_nom": "Auto Contrôle Ivry"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHN ANTIPOLLUT° PTAC< 3,5T STOUEN POUCHET L1",
+    "offres": 5,
+    "titulaire_nom": "Auto Bilan la Garenne Colombes"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "61256": {
+  "n": 6,
+  "n_lab": 6,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-06",
+  "editions": [
+   {
+    "date": "2026-10-06",
+    "objet": "SA3 ACBC DIAGNOSTIC BRANCHEMENT PARTICULIER CIRCO EST LOT 1",
+    "offres": 5,
+    "titulaire_nom": "Suez Eau France"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHNIQUES ANTIPOLLUTION  PTAC<3,5T VITRY L4",
+    "offres": 6,
+    "titulaire_nom": "Auto Contrôle Ivry"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHNIQUES ANTIPOLLUTION PTAC<3,5T - IVRY L3",
+    "offres": 7,
+    "titulaire_nom": "Action Contrôle Technique"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC_CTRL TECHNIQUES ANTIPOLLUTION PTAC<3,5T - EDISON L2",
+    "offres": 6,
+    "titulaire_nom": "Auto Contrôle Ivry"
+   },
+   {
+    "date": "2026-08-06",
+    "objet": "SA3 ACBC CTRL TECHN ANTIPOLLUT° PTAC< 3,5T STOUEN POUCHET L1",
+    "offres": 5,
+    "titulaire_nom": "Auto Bilan la Garenne Colombes"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "21750001600019",
+   "21750001617666",
+   "21750001615967"
+  ],
+  "credits_left": null
+ },
+ "BOAMP-26-100133": {
+  "n": 1,
+  "n_lab": 1,
+  "level": "division CPV",
+  "single_share": 0.0,
+  "last_date": "2026-10-29",
+  "editions": [
+   {
+    "date": "2026-10-29",
+    "objet": "Elaboration du nouveau programme local de l'habitat de Saint-Lô Agglo",
+    "offres": 7,
+    "titulaire_nom": "Atopia"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "20006638900012",
+   "20006638900509",
+   "20006638900046"
+  ],
+  "credits_left": "10749"
+ },
+ "BOAMP-26-105710": {
+  "n": 2,
+  "n_lab": 2,
+  "level": "groupe CPV",
+  "single_share": 0.0,
+  "last_date": "2025-02-24",
+  "editions": [
+   {
+    "date": "2025-02-24",
+    "objet": "INX La présente consultation concerne les missions de détection et investigations complémentaires de réseaux\\nnécessaires à cinq projets iss",
+    "offres": 4,
+    "titulaire_nom": "Bourgogne Detection Réseaux (Detect Réseaux)"
+   },
+   {
+    "date": "2024-03-14",
+    "objet": "INX Le maître d’œuvre devra assurer les missions suivantes :\\nLes missions « de base » du MOE désigné seront les suivantes :\\nEP : Études pr",
+    "offres": 7,
+    "titulaire_nom": "Ingerop Conseil et Ingénierie (ICI)"
+   }
+  ],
+  "fetched_at": "2026-11-14T11:39",
+  "sirets": [
+   "24670048800017"
+  ],
+  "credits_left": "10748"
+ }
+}

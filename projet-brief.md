@@ -117,7 +117,9 @@ Only the last two steps should be needed today.
   1. SENEO is selected by default (top row). Read the note.
   2. Click **Suivre cet appel d'offres**; it appears in the sidebar with "J-16".
   3. Click the **Val-de-Marne contrôle technique** row (Passer, 14 %).
-  4. Show the **Preuves** tab: 50 / 42 / 20, then the backtest line **Aller 41 % · À étudier 23 % · Passer 12 %**.
+  4. Back on SENEO, point at **"En direct d'Hémicycle"** (its last 5 comparable contracts, all single-bid) and click **Actualiser via Hémicycle** once: the timestamp updates (1 credit). Say: *"the buyer's latest contracts come live from Hémicycle's API."*
+  5. Show the **Preuves** tab: 50 / 42 / 20, then the backtest line **Aller 41 % · À étudier 23 % · Passer 12 %**.
+  - Say once: *"the notes are written by Gemma 4, an open-weight model on Featherless, and every number is checked."*
   - "Détail des marchés passés" is safe to open now (the misleading score-factors caption was removed).
   - Before the demo: `rm -f artifacts/follows.json` so the follow list starts empty.
 
@@ -144,6 +146,8 @@ Git initialised (commits: baseline → fixes → calibration). Pre-change backup
 6. **Framing:** the app subtitle leads with "1 marché sur 5… les appels d'offres qui manquent de candidats, là où sa candidature compte le plus". New limit: "Le score dit combien d'offres un marché reçoit d'habitude, pas si vous le gagnerez."
 7. **Sole-trader warning** on the SIREN field. **Score-factors caption removed** from "Détail des marchés passés".
 8. **Notes regenerated** (Haiku): Point Contrôles top 40 + Moulinot 26, all 66 verified.
+9. **Featherless (11:30):** `LLM_PROVIDER=featherless`, `FEATHERLESS_MODEL=google/gemma-4-31B-it` (Qwen3.8-27B leaked its reasoning and was rejected by the check). Point Contrôles notes regenerated with Gemma; the prompt now asks for the %, the average and the company's similar contracts, and "Aller, car". Backups: `artifacts/notes_haiku.json`, `artifacts/notes_gemma_v1.json`. Moulinot notes are still Haiku.
+10. **Hémicycle live buyer history (11:40):** `src/hemicycle_history.py` queries `marches_publics` filtered by `acheteur_id` (1 credit per buyer SIRET, up to 3 per buyer), cached in `artifacts/hemicycle_history.json` per tender. Prefetched Point Contrôles' 62 tenders (45 credits). The app shows "Derniers marchés comparables de cet acheteur — En direct d'Hémicycle · consulté le …" with an **Actualiser via Hémicycle** button (live call, falls back to cache without network). Hémicycle's copy is less complete than data.gouv's DECP (SENEO: 49 contracts vs 62 in CPV group 713 alone), so the panel shows the latest contracts only, never a second percentage; the score and notes keep the full DECP. Prefetch another company: `python src/hemicycle_history.py --siren <SIREN> --top 40`.
 
 ## 9. "Suivre" feature (patch sent at 08:50; verify it's applied)
 

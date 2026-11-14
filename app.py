@@ -93,6 +93,55 @@ def render_follows(siren9: str) -> None:
         st.caption("Prochaine étape : rappels avant l'échéance et alerte si l'avis est modifié.")
 
 
+def editions_table(eds: list[dict]) -> None:
+    e = pd.DataFrame(eds)
+    past = pd.DataFrame({
+        "Date": pd.to_datetime(e["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
+        "Objet": e["objet"].fillna("").astype(str),
+        "Offres": e["offres"].map(lambda v: "" if v is None or pd.isna(v) or v <= 0 else str(int(v))),
+        "Titulaire": (e["titulaire_nom"] if "titulaire_nom" in e else pd.Series("", index=e.index))
+        .fillna("—").replace({"None": "—", "": "—"}).astype(str),
+    })
+    st.dataframe(past, hide_index=True, width="stretch", column_config={
+        "Date": st.column_config.TextColumn(width="small"),
+        "Objet": st.column_config.TextColumn(width="large"),
+        "Offres": st.column_config.TextColumn(width="small"),
+        "Titulaire": st.column_config.TextColumn(width="medium"),
+    })
+
+
+def render_buyer_history(r: pd.Series) -> None:
+    """Latest comparable contracts of the buyer, live from Hémicycle (cached), with the local DECP as fallback."""
+    from hemicycle_history import CACHE, NAMES, SIRET_MAP, history_for, load_json
+    code = str(r.get("code"))
+    h = load_json(CACHE).get(code)
+    st.markdown("**Derniers marchés comparables de cet acheteur**")
+    if h and h.get("editions"):
+        when_ = pd.Timestamp(h["fetched_at"]).strftime("%d/%m/%Y à %H:%M")
+        st.caption(f"En direct d'Hémicycle · jeu « Marchés publics notifiés » · consulté le {when_} · Licence Ouverte 2.0")
+        editions_table(h["editions"])
+    else:
+        eds = json.loads(r.get("hist_editions") or "[]")
+        if eds:
+            st.caption("DECP consolidées (data.gouv.fr) · Licence Ouverte 2.0")
+            editions_table(eds)
+        else:
+            st.caption("Aucun marché comparable de cet acheteur dans les données.")
+    if st.button("Actualiser via Hémicycle" if h else "Interroger Hémicycle", key=f"hemi_{code}",
+                 help="Interroge l'API Hémicycle en direct (1 crédit par établissement de l'acheteur)."):
+        try:
+            new = history_for(r, load_json(SIRET_MAP), load_json(NAMES))
+            if new is None:
+                st.caption("Acheteur sans établissement connu : rien à interroger.")
+            else:
+                cache = load_json(CACHE)
+                cache[code] = new
+                CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1))
+                st.rerun()
+        except Exception as e:  # keep the demo alive without network
+            st.caption(f"Hémicycle injoignable ({e.__class__.__name__}) : affichage des données en cache.")
+
+
 def fmt_date(d) -> str:
     return "" if pd.isna(d) else pd.Timestamp(d).strftime("%d/%m/%Y")
 
@@ -291,24 +340,7 @@ with tab_main:
             c2.link_button("Voir l'avis BOAMP" if r.get("source") == "BOAMP" else "Voir la consultation",
                            r["lien_vers_la_consultation"])
 
-        with st.expander("Détail des marchés passés"):
-            eds = pd.DataFrame(json.loads(r.get("hist_editions") or "[]"))
-            if not eds.empty:
-                past = pd.DataFrame({
-                    "Date": pd.to_datetime(eds["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
-                    "Objet": eds["objet"].fillna("").astype(str),
-                    "Offres": eds["offres"].map(lambda v: "" if pd.isna(v) or v <= 0 else str(int(v))),
-                    "Titulaire": (eds["titulaire_nom"] if "titulaire_nom" in eds else pd.Series("", index=eds.index))
-                    .fillna("—").replace({"None": "—", "": "—"}).astype(str),
-                })
-                st.dataframe(past, hide_index=True, width="stretch", column_config={
-                    "Date": st.column_config.TextColumn(width="small"),
-                    "Objet": st.column_config.TextColumn(width="large"),
-                    "Offres": st.column_config.TextColumn(width="small"),
-                    "Titulaire": st.column_config.TextColumn(width="medium"),
-                })
-            else:
-                st.caption("Aucun marché comparable de cet acheteur dans les données.")
+        render_buyer_history(r)
 
 with tab_proof:
     if not metrics:
@@ -353,9 +385,25 @@ with tab_proof:
             }), width="stretch")
             st.caption("AUC : capacité à classer les marchés du plus au moins risqué (0,5 = hasard). "
                        "Brier : erreur des probabilités (plus bas = mieux).")
+        bm_p = ART / "llm_benchmark.json"
+        if bm_p.exists():
+            bm = json.loads(bm_p.read_text())
+            st.subheader("Quel modèle écrit les notes ?")
+            st.write(f"Mêmes faits, même consigne, **une seule tentative** par note, sur {bm['n']} appels d'offres de "
+                     f"{bm['company']}. Une note est conforme si tous ses chiffres viennent des données, si elle garde la "
+                     "recommandation calculée par les règles, et si elle tient en 2 phrases et 45 mots, en français.")
+            rows = []
+            for lab, m in bm["models"].items():
+                usd = m.get("usd_per_1000_notes")
+                rows.append({"Modèle": lab, "Notes conformes": f"{m['pass']['tout']} / {m['n']}",
+                             "Temps médian": f"{fr_num(m['median_seconds'])} s" if m.get("median_seconds") else "—",
+                             "Coût pour 1 000 notes": f"{usd:.2f} $".replace(".", ",") if usd is not None else "n.d."})
+            st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+            st.caption("Les notes de l'application sont écrites par Gemma 4 31B (modèle ouvert, via Featherless). "
+                       + " ".join(bm.get("caveats", [])))
         st.subheader("Sources")
-        st.write("Projets d'achats publics (APProch), via l'API Hémicycle ; marchés publics notifiés "
-                 "(DECP consolidées, data.gouv.fr, également disponibles dans Hémicycle)"
+        st.write("Projets d'achats publics (APProch) et derniers marchés de chaque acheteur (« Marchés publics notifiés »), "
+                 "via l'API Hémicycle ; historique complet pour l'entraînement du score : DECP consolidées (data.gouv.fr)"
                  + ("; appels d'offres ouverts du BOAMP (DILA)" if has_boamp else "")
                  + ". Licence Ouverte 2.0 (Etalab).")
         st.subheader("Limites")
