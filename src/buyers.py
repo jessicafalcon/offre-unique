@@ -6,7 +6,7 @@ Source: recherche-entreprises.api.gouv.fr (SIRENE, Licence Ouverte). One call pe
 - buyer_type: from the legal form code (catégorie juridique INSEE), e.g. 7364 hospital, 7331 collège / lycée;
 - lat / lon / address: the buyer's busiest establishment in past contracts (artifacts/buyer_sirets.json),
   else its head office. This is where the BUYER is, not necessarily the worksite;
-- multi_site: State, regions, départements and buyers with 3+ open establishments buy for many sites,
+- multi_site: State, regions, départements, central purchasing bodies and buyers with 50+ open establishments buy for many sites,
   so their pin is only indicative.
 """
 from __future__ import annotations
@@ -28,7 +28,7 @@ EXACT = {
     "7210": "Commune", "7312": "Commune",
     "7220": "Département", "7230": "Région", "7225": "Collectivité territoriale", "7229": "Collectivité territoriale",
     "7364": "Hôpital, santé", "7365": "Hôpital, santé", "7366": "Santé, médico-social",
-    "7331": "Collège, lycée", "7362": "Collège, lycée",
+    "7331": "École, collège, lycée", "7362": "École, collège, lycée",
     "7383": "Université, recherche", "7384": "Université, recherche",
     "7371": "Logement social", "7372": "Pompiers (SDIS)", "7361": "Action sociale (CCAS)",
     "7373": "Culture",
@@ -41,11 +41,12 @@ PREFIX = [  # checked after EXACT
 ]
 NAME_HINTS = [  # when the legal form is generic, the name often says more
     (r"(?i)\b(chu|chr|ch |centre hospitalier|h[ôo]pital|ehpad|ap-hp|groupement hospitalier|ght)\b", "Hôpital, santé"),
-    (r"(?i)\b(lyc[ée]e|coll[èe]ge)\b", "Collège, lycée"),
+    (r"(?i)\b(lyc[ée]e|coll[èe]ge)\b", "École, collège, lycée"),
     (r"(?i)\buniversit|cnrs|inrae|inserm|[ée]cole (nationale|normale|centrale|des mines)", "Université, recherche"),
     (r"(?i)\b(resah|ugap|centrale d.achat)", "Centrale d'achat"),
 ]
-MULTI_TYPES = {"État, ministère", "Région", "Département", "Centrale d'achat"}
+MULTI_TYPES = {"État, ministère", "Région", "Département", "Centrale d'achat", "Collectivité territoriale"}
+MULTI_MIN_ESTABLISHMENTS = 50  # a town hall is a fair proxy for a town; a city with 50+ sites is not
 
 
 def buyer_type(nj: str, name: str) -> str:
@@ -92,11 +93,27 @@ def lookup(siren: str, siret: str | None) -> dict | None:
                 "lat": float(est["latitude"]) if est.get("latitude") else None,
                 "lon": float(est["longitude"]) if est.get("longitude") else None,
                 "address": est.get("adresse"), "location_source": src, "n_establishments": n_open,
-                "multi_site": t in MULTI_TYPES or n_open >= 3}
+                "multi_site": t in MULTI_TYPES or n_open >= MULTI_MIN_ESTABLISHMENTS}
     return None
 
 
+def recompute(out: dict) -> dict:
+    """Re-derive type and multi_site from the saved fields (after a mapping change), without calling the API."""
+    for v in out.values():
+        if v.get("nj") is not None or v.get("name"):
+            v["type"] = buyer_type(v.get("nj"), v.get("name") or "")
+            v["multi_site"] = v["type"] in MULTI_TYPES or (v.get("n_establishments") or 1) >= MULTI_MIN_ESTABLISHMENTS
+    return out
+
+
 def main():
+    import sys
+    if "--recompute" in sys.argv:
+        out = recompute(json.loads(OUT.read_text()))
+        OUT.write_text(json.dumps(out, ensure_ascii=False))
+        print(pd.Series([v.get("type") for v in out.values()]).value_counts().head(8).to_string())
+        print(f"multi-site: {sum(bool(v.get('multi_site')) for v in out.values()):,} / {len(out):,}")
+        return
     s = pd.concat([pd.read_parquet(CLEAN / f) for f in ("scored.parquet", "scored_boamp.parquet")])
     sirens = sorted(set(s["buyer_siren"].dropna().astype(str)) - {"NA", "nan", ""})
     sirets = json.loads((ART / "buyer_sirets.json").read_text()) if (ART / "buyer_sirets.json").exists() else {}
