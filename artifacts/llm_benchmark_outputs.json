@@ -1,0 +1,3050 @@
+{
+ "Claude Haiku 5.5 (Anthropic)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "Probabilité d'offre unique de 53 %, contre 20 % en moyenne, 8 contrats similaires gagnés, et 65 % des marchés connus de cet acheteur à offre unique. Aller, car cet acheteur reçoit souvent une seule offre et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 7.4,
+   "usage": {
+    "in": 973,
+    "out": 1563
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "Probabilité d'offre unique de 51 %, contre 20 % en moyenne, avec 3 contrats similaires gagnés, dont 1 dans le département ; 80 % de ses marchés connus ont une offre unique. Aller, car cet acheteur reçoit souvent une offre unique et l'entreprise exerce ce métier.",
+   "error": null,
+   "seconds": 15.0,
+   "usage": {
+    "in": 1049,
+    "out": 3504
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "Probabilité d'offre unique de 37 % contre 20 % en moyenne, 8 contrats similaires gagnés dont 1 dans le département ; 43 % des 263 marchés connus n'ont reçu qu'une offre. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise y exerce déjà.",
+   "error": null,
+   "seconds": 8.7,
+   "usage": {
+    "in": 969,
+    "out": 1770
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d'offre unique de 30 % contre 20 % en moyenne, avec 35 contrats similaires gagnés par l'entreprise et 3 marchés comparables de cet acheteur. À étudier, car un même titulaire a remporté les 3 dernières éditions de ce marché.",
+   "error": null,
+   "seconds": 9.6,
+   "usage": {
+    "in": 970,
+    "out": 1998
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique atteint 23 % contre 20 % en moyenne, l'entreprise a gagné 35 contrats similaires, dont 2 dans le département, et l'acheteur n'a passé aucun marché comparable. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+   "error": null,
+   "seconds": 5.3,
+   "usage": {
+    "in": 849,
+    "out": 1293
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d'offre unique de 23 %, contre 20 % en moyenne ; 35 contrats similaires gagnés, et 27 % des 11 marchés connus de l'acheteur ont reçu une seule offre. À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.",
+   "error": null,
+   "seconds": 8.3,
+   "usage": {
+    "in": 1036,
+    "out": 2046
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d'offre unique de 20 % contre une moyenne de 20 %, avec 35 contrats similaires gagnés ; l'acheteur a passé 5 marchés comparables, dont 60 % à offre unique parmi ceux connus. À étudier, car la probabilité est sans écart net avec la moyenne.",
+   "error": null,
+   "seconds": 8.7,
+   "usage": {
+    "in": 950,
+    "out": 1491
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 20 %, contre 20 % de moyenne, pour 5 contrats similaires gagnés ; l'acheteur a eu une offre unique dans 57 % des 14 marchés connus. Passer, car la probabilité n'est pas supérieure à la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.7,
+   "usage": {
+    "in": 944,
+    "out": 1788
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 19 %, contre 20 % en moyenne, avec 5 contrats similaires gagnés dont 1 dans le département ; 1 seul marché connu de l'acheteur, à offre unique. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 6.9,
+   "usage": {
+    "in": 926,
+    "out": 1739
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, et l'entreprise a gagné 8 contrats similaires ; l'acheteur n'a aucun marché comparable passé. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.6,
+   "usage": {
+    "in": 914,
+    "out": 1026
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre 20 % en moyenne ; l'entreprise a gagné 5 contrats similaires, dont 1 dans le département, et l'acheteur a passé 1 marché comparable. Passer, car la probabilité d'offre unique est sous la moyenne, donc la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.7,
+   "usage": {
+    "in": 937,
+    "out": 1375
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre 20 % en moyenne, et 35 contrats similaires gagnés par l'entreprise ; l'acheteur a passé 56 marchés comparables, nombre d'offres non renseigné. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.4,
+   "usage": {
+    "in": 880,
+    "out": 1241
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, avec 5 contrats similaires gagnés, dont 3 dans le même département. Passer, car la concurrence sera habituelle, la probabilité d'offre unique étant sous la moyenne.",
+   "error": null,
+   "seconds": 8.3,
+   "usage": {
+    "in": 936,
+    "out": 1871
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 % contre une moyenne de 20 %, l'entreprise ayant remporté 8 contrats similaires dont 3 dans le même département, sans marché comparable passé avec cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.5,
+   "usage": {
+    "in": 905,
+    "out": 993
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre 20 % en moyenne, et 35 contrats similaires gagnés par l'entreprise ; l'acheteur n'a aucun marché comparable passé. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.6,
+   "usage": {
+    "in": 906,
+    "out": 1230
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre une moyenne de 20 %, et 35 contrats similaires gagnés par l'entreprise, dont 1 dans le département. Passer, car la probabilité d'offre unique est sous la moyenne : une concurrence habituelle est attendue.",
+   "error": null,
+   "seconds": 6.2,
+   "usage": {
+    "in": 919,
+    "out": 1269
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre 20 % en moyenne, et 8 contrats similaires gagnés ; sur 5 marchés connus de cet acheteur, 60 % n'ont reçu qu'une offre. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 6.6,
+   "usage": {
+    "in": 1024,
+    "out": 1565
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, et l'entreprise a remporté 35 contrats similaires ; l'acheteur n'a aucun marché comparable passé. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 6.3,
+   "usage": {
+    "in": 899,
+    "out": 1327
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 %, contre une moyenne de 20 %, et l'entreprise a remporté 8 contrats similaires, sans historique comparable avec cet acheteur. Passer, car la probabilité d'offre unique étant inférieure à la moyenne, une concurrence habituelle est attendue.",
+   "error": null,
+   "seconds": 5.1,
+   "usage": {
+    "in": 955,
+    "out": 1077
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre une moyenne de 20 %, et 35 contrats similaires gagnés par l'entreprise ; l'acheteur n'a passé aucun marché comparable. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.2,
+   "usage": {
+    "in": 974,
+    "out": 1241
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 % contre 20 % en moyenne, 35 contrats similaires gagnés, et 5 marchés comparables de l'acheteur dont le nombre d'offres est non renseigné. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.2,
+   "usage": {
+    "in": 896,
+    "out": 1231
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre une moyenne de 20 %, et 46 contrats similaires gagnés par l'entreprise ; l'acheteur n'a passé aucun marché comparable. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.5,
+   "usage": {
+    "in": 917,
+    "out": 903
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre une moyenne de 20 %, et 5 contrats similaires gagnés, dont 1 dans le département ; acheteur : 4 marchés comparables, offres non renseignées. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 11.2,
+   "usage": {
+    "in": 932,
+    "out": 2621
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 17 %, contre une moyenne de 20 %, pour une entreprise ayant gagné 8 contrats similaires dont 3 dans le département ; l'acheteur n'a aucun marché comparable passé. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.5,
+   "usage": {
+    "in": 918,
+    "out": 1000
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 16 %, contre une moyenne de 20 %, et 5 contrats similaires gagnés ; aucun marché comparable passé par cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.0,
+   "usage": {
+    "in": 843,
+    "out": 1119
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 15 % contre 20 % en moyenne, 8 contrats similaires gagnés par l'entreprise, et 3 éditions consécutives remportées par le même titulaire chez cet acheteur. Passer, car la probabilité d'offre unique étant sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.1,
+   "usage": {
+    "in": 956,
+    "out": 1698
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, et l'entreprise a gagné 46 contrats similaires, dont 15 dans le même département, sans marché comparable passé avec cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.7,
+   "usage": {
+    "in": 920,
+    "out": 1322
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires. Cet acheteur n'a passé aucun marché comparable. Passer, car la concurrence sera habituelle, la probabilité d'offre unique étant sous la moyenne.",
+   "error": null,
+   "seconds": 5.6,
+   "usage": {
+    "in": 889,
+    "out": 1211
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 %, et l'entreprise a remporté 35 contrats similaires ; l'acheteur n'a passé aucun marché comparable. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.9,
+   "usage": {
+    "in": 913,
+    "out": 887
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique atteint 15 % contre une moyenne de 20 %, l'entreprise ayant gagné 35 contrats similaires, et cet acheteur n'a aucun marché comparable passé. Passer, car la probabilité d'offre unique est sous la moyenne, donc la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.2,
+   "usage": {
+    "in": 881,
+    "out": 1228
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 15 %, contre 20 % en moyenne ; 3 contrats similaires gagnés ; 17 % des marchés connus de cet acheteur n'ont reçu qu'une offre. Passer, car la probabilité d'offre unique sous la moyenne laisse prévoir une concurrence habituelle.",
+   "error": null,
+   "seconds": 8.2,
+   "usage": {
+    "in": 956,
+    "out": 2002
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 15 %, contre une moyenne de 20 %, avec 5 contrats similaires gagnés ; 21 % des 169 marchés connus de cet acheteur n'ont eu qu'une offre. Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.8,
+   "usage": {
+    "in": 970,
+    "out": 1338
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 15 % contre 20 % en moyenne, avec 5 contrats similaires gagnés ; 21 % des 169 marchés connus de cet acheteur ont reçu une seule offre. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.1,
+   "usage": {
+    "in": 985,
+    "out": 1560
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 15 % contre 20 % en moyenne, 5 contrats similaires gagnés dont 3 dans le département ; acheteur : 253 marchés comparables, 21 % à offre unique parmi 169 connus. Passer, car la probabilité d'offre unique est sous la moyenne, concurrence habituelle.",
+   "error": null,
+   "seconds": 10.3,
+   "usage": {
+    "in": 962,
+    "out": 2441
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 %, contre une moyenne de 20 %, et l'entreprise a remporté 5 contrats similaires, dont 3 dans le même département. Passer, car l'entreprise n'est pas titulaire sortant et la concurrence attendue reste habituelle.",
+   "error": null,
+   "seconds": 7.1,
+   "usage": {
+    "in": 969,
+    "out": 1404
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 14 % contre 20 % en moyenne, avec 46 contrats similaires gagnés ; aucune offre unique sur les 13 marchés connus de cet acheteur. Passer, car la probabilité d'offre unique est inférieure à la moyenne : davantage de concurrents sont attendus.",
+   "error": null,
+   "seconds": 7.8,
+   "usage": {
+    "in": 1049,
+    "out": 1820
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 14 % contre 20 % en moyenne ; l'entreprise a remporté 46 contrats similaires, et l'acheteur 3 marchés comparables, nombre d'offres non renseigné. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 7.3,
+   "usage": {
+    "in": 939,
+    "out": 1594
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 14 % contre 20 % en moyenne, 46 contrats similaires gagnés ; sur 2 marchés connus de l'acheteur, 100 % à offre unique. Passer, car la probabilité d'offre unique est inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 8.3,
+   "usage": {
+    "in": 1031,
+    "out": 1801
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 14 % contre 20 % en moyenne, avec 46 contrats similaires gagnés ; l'acheteur affiche 15 % d'offre unique sur 20 marchés renseignés. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 8.1,
+   "usage": {
+    "in": 964,
+    "out": 1901
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique de 14 % contre 20 % en moyenne, avec 8 contrats similaires gagnés ; 33 % des 3 marchés connus de l'acheteur avaient une seule offre. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne, signe de concurrence accrue.",
+   "error": null,
+   "seconds": 7.8,
+   "usage": {
+    "in": 916,
+    "out": 1850
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  }
+ ],
+ "Gemma 4 31B (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité d'offre unique est de 53% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 5.7,
+   "usage": {
+    "in": 640,
+    "out": 58
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité d'offre unique est de 51 % contre une moyenne de 20 %, et l'entreprise a gagné 3 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 4.9,
+   "usage": {
+    "in": 670,
+    "out": 58
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "La probabilité d'offre unique est de 37% contre une moyenne de 20%, avec 8 contrats similaires gagnés. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 10.8,
+   "usage": {
+    "in": 645,
+    "out": 54
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 30% contre une moyenne de 20%, avec 35 contrats similaires gagnés par l'entreprise. À étudier, car un même titulaire a remporté les dernières éditions de ce marché.",
+   "error": null,
+   "seconds": 5.7,
+   "usage": {
+    "in": 635,
+    "out": 52
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 23% contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+   "error": null,
+   "seconds": 13.7,
+   "usage": {
+    "in": 552,
+    "out": 52
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 23% contre une moyenne de 20%, avec 35 contrats similaires gagnés. À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.",
+   "error": null,
+   "seconds": 3.7,
+   "usage": {
+    "in": 679,
+    "out": 49
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "La probabilité d'offre unique est de 20%, identique à la moyenne, et l'entreprise a gagné 35 contrats similaires. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+   "error": null,
+   "seconds": 4.4,
+   "usage": {
+    "in": 635,
+    "out": 49
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 20% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.4,
+   "usage": {
+    "in": 622,
+    "out": 53
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 19% contre une moyenne de 20%, pour 5 contrats similaires gagnés. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.1,
+   "usage": {
+    "in": 603,
+    "out": 51
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 10.8,
+   "usage": {
+    "in": 588,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, avec 5 contrats similaires gagnés par l'entreprise. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.5,
+   "usage": {
+    "in": 608,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, avec 35 contrats similaires gagnés par l'entreprise. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 11.6,
+   "usage": {
+    "in": 576,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.7,
+   "usage": {
+    "in": 595,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 33.9,
+   "usage": {
+    "in": 582,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, avec 35 contrats similaires gagnés par l'entreprise. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 38.5,
+   "usage": {
+    "in": 584,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.6,
+   "usage": {
+    "in": 603,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.9,
+   "usage": {
+    "in": 657,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, pour 35 contrats similaires gagnés. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.8,
+   "usage": {
+    "in": 591,
+    "out": 52
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.8,
+   "usage": {
+    "in": 600,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, pour 35 contrats similaires gagnés. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 5.1,
+   "usage": {
+    "in": 611,
+    "out": 52
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, pour 35 contrats similaires gagnés. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 10.0,
+   "usage": {
+    "in": 581,
+    "out": 52
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 9.7,
+   "usage": {
+    "in": 585,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, pour 5 contrats similaires gagnés. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.0,
+   "usage": {
+    "in": 610,
+    "out": 51
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.6,
+   "usage": {
+    "in": 588,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 16% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 17.4,
+   "usage": {
+    "in": 534,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 17.8,
+   "usage": {
+    "in": 609,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.2,
+   "usage": {
+    "in": 598,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, avec 35 contrats similaires gagnés par l'entreprise. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.6,
+   "usage": {
+    "in": 571,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15 % contre une moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 7.5,
+   "usage": {
+    "in": 588,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 18.1,
+   "usage": {
+    "in": 563,
+    "out": 56
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 3 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 16.3,
+   "usage": {
+    "in": 624,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 12.9,
+   "usage": {
+    "in": 638,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 18.1,
+   "usage": {
+    "in": 647,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 8.0,
+   "usage": {
+    "in": 636,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 5 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.4,
+   "usage": {
+    "in": 637,
+    "out": 55
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14% contre une moyenne de 20%, avec 46 contrats similaires gagnés par l'entreprise. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 3.0,
+   "usage": {
+    "in": 656,
+    "out": 64
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14% contre une moyenne de 20%, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 4.1,
+   "usage": {
+    "in": 619,
+    "out": 64
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14% contre une moyenne de 20%, avec 46 contrats similaires gagnés. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 8.2,
+   "usage": {
+    "in": 660,
+    "out": 60
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14% contre une moyenne de 20%, et l'entreprise a gagné 46 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 12.4,
+   "usage": {
+    "in": 640,
+    "out": 64
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 14% contre une moyenne de 20%, et l'entreprise a gagné 8 contrats similaires. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 3.4,
+   "usage": {
+    "in": 595,
+    "out": 63
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  }
+ ],
+ "gpt-oss 120B (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "Probabilité d'offre unique 53 % contre une moyenne de 20 %, et l'entreprise a déjà remporté 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 3.7,
+   "usage": {
+    "in": 657,
+    "out": 474
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "Probabilité d'offre unique 51 % contre une moyenne de 20 %, ce qui dépasse largement la moyenne, et l’entreprise a déjà remporté 3 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 4.1,
+   "usage": {
+    "in": 692,
+    "out": 590
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "Le taux de probabilité d’une offre unique est de 37 % contre une moyenne de 20 %, et l’entreprise a déjà remporté 8 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+   "error": null,
+   "seconds": 2.9,
+   "usage": {
+    "in": 660,
+    "out": 524
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d’offre unique 30 % contre une moyenne de 20 %, l’entreprise a déjà remporté 35 contrats similaires, dont 2 dans le même département, et l’acheteur a mené 3 marchés comparables. À étudier, car un même titulaire a remporté les dernières éditions de ce marché.",
+   "error": null,
+   "seconds": 4.1,
+   "usage": {
+    "in": 663,
+    "out": 610
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d'offre unique 23 % contre une moyenne de 20 % ; l’entreprise a déjà remporté 35 contrats similaires. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+   "error": null,
+   "seconds": 4.1,
+   "usage": {
+    "in": 584,
+    "out": 544
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d'offre unique 23 % vs moyenne 20 %, entreprise a gagné 35 contrats similaires. À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.",
+   "error": null,
+   "seconds": 5.8,
+   "usage": {
+    "in": 693,
+    "out": 381
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "Probabilité d’offre unique 20 % contre une moyenne de 20 %, et l’entreprise a remporté 35 contrats similaires, dont un dans le même département. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+   "error": null,
+   "seconds": 4.8,
+   "usage": {
+    "in": 651,
+    "out": 592
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 20 % (moyenne 20 %), ce qui correspond à la moyenne, et l’entreprise a déjà remporté 5 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.8,
+   "usage": {
+    "in": 640,
+    "out": 504
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 19 % contre une moyenne de 20 %, l'entreprise a déjà gagné 5 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.9,
+   "usage": {
+    "in": 631,
+    "out": 526
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l'entreprise a déjà gagné 8 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.9,
+   "usage": {
+    "in": 620,
+    "out": 495
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre moyenne 20 %, l’entreprise a gagné 5 contrats similaires et l’acheteur n’a réalisé qu’un marché comparable. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.5,
+   "usage": {
+    "in": 636,
+    "out": 642
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a déjà remporté 35 contrats similaires, dont 2 dans le même département, et l’acheteur Paris La Défense a passé 56 marchés comparables. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.7,
+   "usage": {
+    "in": 603,
+    "out": 502
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a remporté 5 contrats similaires, dont 3 dans le même département, et l’acheteur n’a aucun historique de marchés comparables. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.2,
+   "usage": {
+    "in": 631,
+    "out": 593
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l'entreprise a déjà remporté 8 contrats similaires, dont 3 dans le même département, pour l'Opéra national de Paris. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.0,
+   "usage": {
+    "in": 613,
+    "out": 556
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a remporté 35 contrats similaires, dont un dans le même département, sans historique de cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.3,
+   "usage": {
+    "in": 616,
+    "out": 631
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a remporté 35 contrats similaires, dont un dans le même département, et l’acheteur n’a aucun marché comparable antérieur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.6,
+   "usage": {
+    "in": 631,
+    "out": 699
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a déjà remporté 8 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.6,
+   "usage": {
+    "in": 680,
+    "out": 689
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, et l’entreprise a déjà remporté 35 contrats similaires (dont 5 dans le même département) ; l’acheteur n’a aucun marché antérieur. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.6,
+   "usage": {
+    "in": 619,
+    "out": 570
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, soit 0,9 fois la moyenne, et l’entreprise a déjà remporté 8 contrats similaires (dont 2 dans le même département) ; aucun historique de cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.7,
+   "usage": {
+    "in": 634,
+    "out": 699
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l'entreprise a déjà gagné 35 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.4,
+   "usage": {
+    "in": 645,
+    "out": 598
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a déjà remporté 35 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.4,
+   "usage": {
+    "in": 609,
+    "out": 602
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a déjà remporté 46 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.8,
+   "usage": {
+    "in": 619,
+    "out": 500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 17 % contre une moyenne de 20 %, l’entreprise a remporté 5 contrats similaires, dont un dans le même département, et l’acheteur a déjà passé 4 marchés comparables. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.8,
+   "usage": {
+    "in": 634,
+    "out": 607
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d'offre unique est de 17 % contre une moyenne de 20 %, et l’entreprise a déjà remporté 8 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 4.6,
+   "usage": {
+    "in": 619,
+    "out": 769
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 16 % contre une moyenne de 20 %, soit 0,8 fois la moyenne, et l’entreprise a déjà remporté 5 contrats similaires (dont 3 dans le même département). Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.1,
+   "usage": {
+    "in": 573,
+    "out": 531
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d’offre unique 15 % contre une moyenne de 20 %, l’entreprise a déjà remporté 8 contrats similaires. Passer, car probabilité d’offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.3,
+   "usage": {
+    "in": 643,
+    "out": 382
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % vs moyenne 20 %, l'entreprise a gagné 46 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.7,
+   "usage": {
+    "in": 626,
+    "out": 480
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "La probabilité d’offre unique est de 15 % contre une moyenne de 20 %, soit 0,8 fois la moyenne, et l’entreprise a déjà remporté 35 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.5,
+   "usage": {
+    "in": 603,
+    "out": 581
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % versus moyenne 20 %, l'entreprise a déjà gagné 35 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.0,
+   "usage": {
+    "in": 618,
+    "out": 518
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % contre une moyenne de 20 %, l’entreprise a déjà remporté 35 contrats similaires, aucun historique avec cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.8,
+   "usage": {
+    "in": 598,
+    "out": 529
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % vs moyenne 20 %, entreprise a gagné 3 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 3.1,
+   "usage": {
+    "in": 652,
+    "out": 590
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % contre une moyenne de 20 %, l’entreprise a remporté 5 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne, la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.7,
+   "usage": {
+    "in": 655,
+    "out": 491
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % contre une moyenne de 20 %, l’entreprise a déjà remporté 5 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.6,
+   "usage": {
+    "in": 664,
+    "out": 480
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % (moyenne 20 %) et 5 contrats similaires gagnés. Passer, car probabilité d'offre unique sous la moyenne, concurrence habituelle.",
+   "error": null,
+   "seconds": 2.2,
+   "usage": {
+    "in": 653,
+    "out": 377
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 15 % contre une moyenne de 20 %, l'entreprise a déjà remporté 5 contrats similaires. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.",
+   "error": null,
+   "seconds": 2.7,
+   "usage": {
+    "in": 654,
+    "out": 507
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "Le marché présente une probabilité d'offre unique de 14 % contre une moyenne de 20 %, et l’entreprise a déjà remporté 46 contrats similaires. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 4.0,
+   "usage": {
+    "in": 683,
+    "out": 710
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 14 % contre une moyenne de 20 %, l’entreprise a remporté 46 contrats similaires. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 3.3,
+   "usage": {
+    "in": 642,
+    "out": 613
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 14 % vs moyenne 20 %, l’entreprise a gagné 46 contrats similaires. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 3.5,
+   "usage": {
+    "in": 683,
+    "out": 681
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 14 % vs moyenne 20 %, l'entreprise a gagné 46 contrats similaires. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 3.2,
+   "usage": {
+    "in": 657,
+    "out": 618
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "Probabilité d'offre unique 14 % contre une moyenne de 20 %, l’entreprise a déjà remporté 8 contrats similaires. Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.",
+   "error": null,
+   "seconds": 5.1,
+   "usage": {
+    "in": 626,
+    "out": 1062
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": true,
+    "format": true,
+    "francais": true,
+    "tout": true
+   }
+  }
+ ],
+ "Qwen 3.8 27B (Featherless, open-weight)": [
+  {
+   "code": "BOAMP-26-107599",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 31.2,
+   "usage": {
+    "in": 669,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-102021",
+   "verdict_attendu": "Aller",
+   "note": "",
+   "error": null,
+   "seconds": 33.2,
+   "usage": {
+    "in": 699,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105339",
+   "verdict_attendu": "Aller",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers, no new calculations. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must not change recommendation. Use « Aller, car », « Passer, car » or « À étudier, car », with comma. Only numbers present in facts, no new calculations. The share of markets with single offer refers to markets with known number of offers, not all comparable markets: never report this percentage to total number of markets. Don't explain model. No title, no list. Measured tone. Never qualify buyer or holder as suspect. End with a point.\n\nNeed craft 2 sentences. Facts:\nachat: Prestations d'études et de diagnostics Faune / Flore / Habitats dans les E.P.L.E et autres sites du ressort de la Région Ile de France\ntype: appel d'offres ouvert\nacheteur: Région Ile de France\ndate_limite_offres: 01/12/2026\nprobabilite_offre_unique_pct: 37\nmoyenne_offre_unique_pct: 20\npar_rapport_a_la_moyenne: 1,9 fois\ncontrats_similaires_gagnes_par_l_entreprise: 8\ndont_dans_le_meme_departement: 1\nmarches_comparables_passes_par_cet_acheteur: 313\ndont_marches_avec_nombre_d_offres_connu: 263\npart_de_ces_marches_connus_avec_une_seule_offre_pct: 43\nrecommandation: Aller\nraison: cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département\nl_entreprise_est_le_titulaire_sortant: false\n\nNeed exactly 2 sentences. Sentence 1 must include: probability unique offer compared to average, adequacy with company, buyer history if exists. Also always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. So sentence 1 should include 37%, 20%, 8. Could mention 1,9 times? It's a number present, but not required. Need compare to average. Could say \"La probabilité d'une offre unique est de 37 %, contre 20 % en moyenne, et l'entreprise a gagné 8 contrats similaires.\" That's 17 words? Let's count: La1 probabilité2 d'une3 offre4 unique5 est6 de7 37%8 contre9 20%10 en11 moyenne12 et13 l'entreprise14 a15 gagné16 817 contrats18 similaires19. Need also buyer history if exists. There is buyer history: 313 comparable markets, 263 known offers, 43% of known with single offer. But careful: \"part_de_ces_marches_connus_avec_une_seule_offre_pct\": 43 refers to markets with known number of offers. Need not report to total. Could include: \"sur 263 marchés connus, 43 % ont reçu une seule offre\". But sentence 1 already long. Need total max 45 words. Sentence 2: \"Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.\" Count: Aller1 car2 cet3 acheteur4 reçoit5 souvent6 une7 seule8 offre9 et10 l'entreprise11 exerce12 déjà13 ce14 métier15 dans16 ce17 département18. Total if sentence1 19 + 18 = 37. Need include buyer history in sentence1 maybe add 7 words: \"sur 263 marchés connus, 43 % ont reçu une seule offre\" count sur1 2632 marchés3 connus4 43%5 ont6 reçu7 une8 seule9 offre10. That would make sentence1 29, total 47 >45. Need optimize.\n\nNeed exactly 2 sentences, max 45 words. Sentence 1 must include probability, average, number contracts won, and buyer history if exists. Could combine compactly. Need maybe: \"Avec 37 % de probabilité d'offre unique contre 20 % en moyenne, l'entreprise a gagné 8 contrats similaires ; sur 263 marchés connus, 43 % ont reçu une seule offre.\" Count: Avec1 37%2 de3 probabilité4 d'offre5 unique6 contre7 20%8 en9 moyenne10 l'entreprise11 a12 gagné13 814 contrats15 similaires16 sur17 26318 marchés19 connus20 43%21 ont22 reçu23 une24 seule25 offre26. That's 26 words. Sentence2 18 = 44. Good. But punctuation: semicolon maybe okay? It's one sentence? \"Avec ... ; sur ...\" is one sentence with semicolon, ends point. Need exactly 2 sentences total. Semicolon doesn't create sentence. Good. But requirement: \"Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" It says then number of contracts. In my sentence: probability, average, then company won 8 contracts, then buyer history. Good.\n\nNeed \"par_rapport_a_la_moyenne\": 1,9 fois maybe not necessary. But \"comparée à la moyenne\" can be \"contre 20 % en moyenne\". Good.\n\nNeed \"adéquation avec l'entreprise\" maybe \"l'entreprise a gagné 8 contrats similaires\" shows adequacy. Could also mention same department? But not required? It says adéquation avec l'entreprise, historique de l'acheteur s'il existe. We have 8 contracts, 1 in same department. Could include \"dont 1 dans le même département\" but adds words. Need max 45. Current 44. Could replace something? Need maybe include same department to show adequacy? The reason field says exerce déjà ce métier dans ce département. But sentence 1 adequacy could be 8 contracts, maybe enough. But \"adéquation avec l'entreprise\" maybe should mention 8 contrats similaires. Good.\n\nNeed only numbers present: 37,20,8,263,43. We didn't use 313,1,1,9. That",
+   "error": null,
+   "seconds": 58.3,
+   "usage": {
+    "in": 565,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "66863",
+   "verdict_attendu": "À étudier",
+   "note": "Nous devons répondre en français, exactement 2 phrases complètes, 45 mots maximum au total.\nPhrase 1 : constat : probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe.\nDoit donner toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\nFait : probabilite_offre_unique_pct = 30, moyenne_offre_unique_pct = 20, contrats_similaires_gagnes = 35.\nHistorique acheteur : marches_comparables_passes_par_cet_acheteur = 3, nombre_d_offres = non renseigné. On peut mentionner 3 marchés comparables, offres non renseignées.\nPhrase 2 : recommandation donnée dans champ recommandation : commence par exactement « Aller », « À étudier » ou « Passer », puis donne sa raison avec champ raison.\nrecommandation = \"À étudier\", raison = \"un même titulaire a remporté les dernières éditions de ce marché\".\nDoit écrire « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. Donc phrase 2 commence par \"À étudier, car un même titulaire a remporté les dernières éditions de ce marché.\"\nContrainte : point de vue entreprise : forte probabilité qu'une seule offre soit déposée est une OPPORTUNITÉ, jamais un risque ni motif de prudence. Ici 30% vs 20%, 1,5 fois. Mais on ne doit pas calculer de nouveaux chiffres ? \"1,5 fois\" est dans les faits, on peut l'utiliser ou non. \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" Donc on peut dire 30 %, 20 %, 35, 3. Éviter 1,5 fois? C'est présent, mais pas nécessaire.\n45 mots max.\nPhrase 1 : \"La probabilité d'offre unique est de 30 %, contre 20 % en moyenne, et l'entreprise a gagné 35 contrats similaires.\"\nComptage mots : La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 30(7) %(8) contre(9) 20(10) %(11) en(12) moyenne(13) et(14) l'entreprise(15) a(16) gagné(17) 35(18) contrats(19) similaires(20).\nPhrase 2 : \"À étudier, car un même titulaire a remporté les dernières éditions de ce marché.\"\nComptage : À(1) étudier(2) car(3) un(4) même(5) titulaire(6) a(7) remporté(8) les(9) dernières(10) éditions(11) de(12) ce(13) marché(14).\nTotal 34 mots. OK.\nMais phrase 1 doit inclure \"historique de l'acheteur s'il existe\". Il existe : 3 marchés comparables passés par cet acheteur, nombre d'offres non renseigné. Il faut l'inclure? \"historique de l'acheteur s'il existe\" signifie si il y a des faits, on doit le mentionner? Probablement oui.\nAjouter : \"L'acheteur a passé 3 marchés comparables, offres non renseignées.\"\nPhrase 1 : \"La probabilité d'offre unique est de 30 %, contre 20 % en moyenne, l'entreprise a gagné 35 contrats similaires, et l'acheteur a passé 3 marchés comparables, offres non renseignées.\"\nComptage : La1 probabilité2 d'offre3 unique4 est5 de6 30%7 contre8 20%9 en10 moyenne11 l'entreprise12 a13 gagné14 3515 contrats16 similaires17 et18 l'acheteur19 a20 passé21 322 marchés23 comparables24 offres25 non26 renseignées27.\nPhrase 2 14 mots. Total 41 mots. OK.\nVérifier \"donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" Ordre : probabilité, moyenne, nombre contrats. Ma phrase : probabilité 30%, moyenne 20%, entreprise a gagné 35 contrats. OK.\n\"historique de l'acheteur s'il existe\" : 3 marchés comparables, offres non renseignées. OK.\n\"forte probabilité qu'une seule offre soit déposée est une OPPORTUNITÉ\" : ici 30% n'est pas forcément forte, mais on ne doit pas qualifier de risque. On peut dire \"opportunité\" ? Pas obligatoire. Mais le point de vue : une forte probabilité est opportunité. Ici 30 vs 20. On peut dire \"opportunité\" pour rester aligné. Mais 45 mots max.\nPhrase 1 : \"Avec 30 % de probabilité d'offre unique contre 20 % en moyenne, opportunité, l'entreprise a gagné 35 contrats similaires ; l'acheteur a passé 3 marchés comparables, offres non renseignées.\"\nComptage : Avec1 30%2 de3 probabilité4 d'offre5 unique6 contre7 20%8 en9 moyenne10 opportunité11 l'entreprise12 a13 gagné14 3515 contrats16 similaires17 l'acheteur18 a19 passé20 321 marchés22 comparables23 offres24 non25 renseignées26.\nPhrase 2 14. Total 40.\nMais \"Avec 30 % de probabilité d'offre unique contre 20 % en moyenne, opportunité,\" un peu maladroit.\n\"La probabilité d'offre unique de 30 %, contre 20 % en moyenne, est une opportunité ; l'entreprise a gagné 35 contrats similaires, et l'acheteur a passé 3 marchés comparables, offres non renseignées.\"\nComptage : La1 probabilité2 d'offre3 unique4 de5 30%6 contre7 20%8 en9 moyenne10 est11 une12 opportunité13 l'entreprise14 a15 gagné16 3517 contrats18 similaires19 et20 l'acheteur21 a22 passé23 324 marchés25 comparables26 offres27 non28 renseignées29",
+   "error": null,
+   "seconds": 56.3,
+   "usage": {
+    "in": 567,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106549",
+   "verdict_attendu": "À étudier",
+   "note": "We need answer in French exactly 2 sentences, max 45 words total. Need use only given numbers. Must include in sentence 1: probability unique offer percentage and average percentage, then number of similar contracts won by company. Also mention buyer history if exists? \"historique de l'acheteur s'il existe\" but buyer comparable markets 0, so maybe no history. Need sentence 2 start exactly with recommendation word: \"À étudier\" then comma? User says: commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation. Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise. Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 must start \"À étudier, car\" exactly? It says commence phrase par exactement ce mot, then later says write « À étudier, car » with comma. So second sentence: \"À étudier, car probabilité au-dessus de la moyenne, sans écart net.\" Need maybe include reason exactly? Use field raison: \"probabilité au-dessus de la moyenne, sans écart net\". Could be \"À étudier, car la probabilité est au-dessus de la moyenne, sans écart net.\" But must use only numbers? Reason has no numbers. Need total max 45 words. Sentence 1 must include 23%, 20%, 35. Maybe also \"1,2 fois\"? It says use only figures present, no new calculations. Could include 1,2 times? But sentence 1 requirement: probability and average then number contracts. It also says constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). Could mention 1,2 fois as comparison. But \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" 1,2 is present. Need not report share of single offer to total markets. We can say: \"La probabilité d'offre unique est de 23 %, contre 20 % en moyenne, soit 1,2 fois, et l'entreprise a gagné 35 contrats similaires.\" Count words? Let's count: La1 probabilité2 d'offre3 unique4 est5 de6 23%? maybe token? Need max 45 words total. French words: \"La probabilité d'offre unique est de 23 %, contre 20 % en moyenne, soit 1,2 fois, et l'entreprise a gagné 35 contrats similaires.\" Count: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 23(7) %(8?) contre(9) 20(10) %(11) en(12) moyenne(13) soit(14) 1,2(15) fois(16) et(17) l'entreprise(18) a(19) gagné(20) 35(21) contrats(22) similaires(23). If % counted as word maybe 25. Sentence 2: \"À étudier, car la probabilité est au-dessus de la moyenne, sans écart net.\" Count: À(1) étudier(2) car(3) la(4) probabilité(5) est(6) au-dessus(7) de(8) la(9) moyenne(10) sans(11) écart(12) net(13). Total ~36-38. Under 45. Need exactly 2 sentences. Ends with point. No title/list. Tone measured. Need not qualify buyer. Buyer history: 0 comparable markets. Could mention \"sans historique comparable\" but not necessary? The prompt says constat includes historique de l'acheteur s'il existe. Since 0, maybe mention no history? But sentence 1 already long. Could include \"acheteur sans historique comparable\" but need numbers? 0 is present. But requirement says in phrase 1 give probability, average, then number contracts. It doesn't forbid adding buyer history. But max 45. Could: \"La probabilité d'offre unique est de 23 %, contre 20 % en moyenne, soit 1,2 fois ; l'entreprise a gagné 35 contrats similaires, l'acheteur n'ayant aucun marché comparable.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 23%? Let's count words ignoring punctuation: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 23(7) %(8) contre(9) 20(10) %(11) en(12) moyenne(13) soit(14) 1,2(15) fois(16) l'entreprise(17) a(18) gagné(19) 35(20) contrats(21) similaires(22) l'acheteur(23) n'ayant(24) aucun(25) marché(26) comparable(27). Sentence2 13 total 40. Under 45. But \"aucun\" not a number? It's okay? It says use only figures present, no new calculations. \"aucun\" is not a figure. But maybe okay. However \"marchés_comparables_passes_par_cet_acheteur\": 0. Could say \"0 marché comparable\" but then number 0 present. \"l'acheteur a 0 marché comparable\" awkward. Maybe \"l'acheteur n'a aucun marché comparable\" uses no figure. Is that allowed? It says utilise uniquement les chiffres présents dans les faits, sans en calculer de nouveaux. It doesn't forbid non-numeric words. But if we mention 0, it's present. Could say \"l'acheteur a 0 marché comparable\". Count: l'acheteur(23) a(24) 0(25) marché(26) comparable(27). Good. But grammar: \"a 0 marché comparable\" acceptable? Maybe \"0 marché comparable\" as noun phrase. \"l'acheteur a 0 marché comparable\" okay. But \"marchés\" plural? 0 marché. Fine.\n\nNeed ensure sentence 1: \"donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" It says then number. If we add buyer history after number, okay? It says puis le nombre, maybe immediately after average? We can structure: probability",
+   "error": null,
+   "seconds": 47.6,
+   "usage": {
+    "in": 497,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107321",
+   "verdict_attendu": "À étudier",
+   "note": "Nous devons répondre en français, exactement 2 phrases complètes, 45 mots maximum au total.\nPhrase 1: constat: probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe.\nDoit donner toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\nPhrase 2: recommandation donnée dans le champ « recommandation » : commence par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ».\nNe change jamais la recommandation.\nUtilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\nLa part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\nN'explique pas le fonctionnement du modèle. Pas de titre, pas de liste. Ton mesuré. Ne qualifie jamais un acheteur ou un titulaire de suspect. Termine par un point.\n\nFait:\nprobabilite_offre_unique_pct: 23\nmoyenne_offre_unique_pct: 20\ncontrats_similaires_gagnes_par_l_entreprise: 35\nrecommandation: À étudier\nraison: les marchés passés de cet acheteur ont souvent reçu plusieurs offres\n\nPhrase 1: \"La probabilité d'offre unique est de 23 % contre une moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires.\"\nComptage: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 23(7) %(8) contre(9) une(10) moyenne(11) de(12) 20(13) %(14) et(15) l'entreprise(16) a(17) gagné(18) 35(19) contrats(20) similaires(21).\nPhrase 2: \"À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.\"\nComptage: À(1) étudier(2) car(3) les(4) marchés(5) passés(6) de(7) cet(8) acheteur(9) ont(10) souvent(11) reçu(12) plusieurs(13) offres(14).\nTotal: 21 + 14 = 35 mots.\nVérifions les contraintes:\n- 2 phrases complètes: oui.\n- 45 mots maximum: 35 mots.\n- Phrase 1: probabilité d'offre unique (23 %) comparée à la moyenne (20 %), adéquation avec l'entreprise (35 contrats similaires gagnés).\n- Phrase 2: commence par \"À étudier, car\" (avec virgule), raison exacte.\n- Utilise UNIQUEMENT les chiffres présents: 23, 20, 35.\n- Ne rapporte jamais la part de marchés avec une seule offre au nombre total: on ne l'utilise pas, c'est ok.\n- Termine par un point: oui.\n\nPeut-on améliorer la phrase 1 pour inclure l'historique de l'acheteur ? \"historique de l'acheteur s'il existe\".\nFait: marches_comparables_passes_par_cet_acheteur: 11, dont_marches_avec_nombre_d_offres_connu: 11, part_de_ces_marches_connus_avec_une_seule_offre_pct: 27.\nMais la contrainte dit: \"La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\"\nSi on veut inclure l'historique: \"sur 11 marchés connus, 27 % ont une seule offre\".\nPhrase 1: \"La probabilité d'offre unique est de 23 % contre 20 % de moyenne, l'entreprise a gagné 35 contrats similaires, et 27 % des 11 marchés connus de cet acheteur ont une seule offre.\"\nComptage: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 23(7) %(8) contre(9) 20(10) %(11) de(12) moyenne(13) l'entreprise(14) a(15) gagné(16) 35(17) contrats(18) similaires(19) et(20) 27(21) %(22) des(23) 11(24) marchés(25) connus(26) de(27) cet(28) acheteur(29) ont(30) une(31) seule(32) offre(33).\nPhrase 2: \"À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.\" (14 mots)\nTotal: 47 mots. Trop long (max 45).\n\nRéduire:\n\"Probabilité d'offre unique de 23 % contre 20 % de moyenne, 35 contrats similaires gagnés, et 27 % des 11 marchés connus de cet acheteur ont une seule offre.\"\nComptage: Probabilité(1) d'offre(2) unique(3) de(4) 23(5) %(6) contre(7) 20(8) %(9) de(10) moyenne(11) 35(12) contrats(13) similaires(14) gagnés(15) et(16) 27(17) %(18) des(19) 11(20) marchés(21) connus(22) de(23) cet(24) acheteur(25) ont(26) une(27) seule(28) offre(29).\nPhrase 2: \"À étudier, car les marchés passés de cet acheteur ont souvent reçu plusieurs offres.\" (14 mots)\nTotal: 43 mots.\n\nVérifions:\n\"Probabilité d'offre unique de 23 % contre 20 % de moyenne, 35 contrats similaires gagnés, et 27 % des 11 marchés connus de cet acheteur ont une seule offre. À étudier, car les marchés passés de cet acheteur ont",
+   "error": null,
+   "seconds": 47.5,
+   "usage": {
+    "in": 579,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95509",
+   "verdict_attendu": "À étudier",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers, no new calculations. Need sentence 1: constat (probability unique offer compared to average, adequacy with company, buyer history if exists). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2 recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must not change recommendation. Use « Aller, car », « Passer, car » or « À étudier, car », with comma. Need only numbers present in facts, no new calculations. The share of markets with single offer refers to markets with known number of offers, not all comparable markets: never report that percentage to total number of markets. Don't explain model. No title, no list. Measured tone. Never qualify buyer or holder as suspect. End with period.\n\nFacts:\nachat: Détection...\ntype: appel d'offres ouvert\nacheteur: Syndicat des Eaux de la Région Messine\ndate_limite_offres: 17/11/2026\nprobabilite_offre_unique_pct: 20\nmoyenne_offre_unique_pct: 20\npar_rapport_a_la_moyenne: 1,0 fois\ncontrats_similaires_gagnes_par_l_entreprise: 35\ndont_dans_le_meme_departement: 1\nmarches_comparables_passes_par_cet_acheteur: 5\ndont_marches_avec_nombre_d_offres_connu: 5\npart_de_ces_marches_connus_avec_une_seule_offre_pct: 60\nrecommandation: À étudier\nraison: probabilité au-dessus de la moyenne, sans écart net\nl_entreprise_est_le_titulaire_sortant: false\n\nNeed exactly 2 sentences. Sentence 1 must include: probability unique offer compared to average, adequacy with company, buyer history if exists. It says: \"Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" So phrase 1 should include 20%, 20%, then 35. Also maybe buyer history: 5 marchés comparables, 5 known, 60% single offer. But careful: \"La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\" We can say \"sur 5 marchés connus, 60 % ont une seule offre\" but that's reporting to known markets, okay. But total comparable is 5 and known is 5, so it's same, but instruction says never report that percentage to total number of markets. Since known=5, saying \"sur 5 marchés connus\" is okay? It says se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables. If we say \"sur 5 marchés connus\" it's known. But maybe avoid total? Could say \"l'acheteur a 5 marchés comparables, dont 5 avec nombre d'offres connu, et 60 % de ces marchés connus ont une seule offre\". That's long. Need max 45 words total. Need 2 sentences.\n\nSentence 2 must start exactly with \"À étudier, car\" and reason field: \"probabilité au-dessus de la moyenne, sans écart net\". But facts say probability 20, average 20, par rapport 1.0 fois. Reason says above average, no clear gap. We must not change recommendation, use reason. Could say \"À étudier, car probabilité au-dessus de la moyenne, sans écart net.\" That's 8? À(1) étudier(2) car(3) probabilité(4) au-dessus(5) de(6) la(7) moyenne(8) sans(9) écart(10) net(11). But if sentence 1 long, total <=45.\n\nNeed exactly 2 complete sentences. End with period. No list.\n\nNeed ensure sentence 1 includes probability and average and number contracts. Also \"adéquation avec l'entreprise\" maybe \"l'entreprise a gagné 35 contrats similaires\". Buyer history if exists: include 5 marchés comparables, 60% known single offer. But max words.\n\nLet's draft:\n\"La probabilité d'offre unique est de 20 %, égale à la moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires, dont 1 dans le même département, sur 5 marchés comparables de l'acheteur, dont 5 connus avec 60 % d'offres uniques.\"\nCount words? Need French counting. Let's count carefully.\nLa1 probabilité2 d'offre3 unique4 est5 de6 20%7 égale8 à9 la10 moyenne11 de12 20%13 et14 l'entreprise15 a16 gagné17 3518 contrats19 similaires20 dont21 122 dans23 le24 même25 département26 sur27 528 marchés29 comparables30 de31 l'acheteur32 dont33 534 connus35 avec36 60%37 d'offres38 uniques39.\nSentence 2: \"À étudier, car probabilité au-dessus de la moyenne, sans écart net.\" Count: À1 étudier2 car3 probabilité4 au-dessus5 de6 la7 moyenne8 sans9 écart10 net11. Total 50 >45. Need reduce.\n\nNeed max 45 total. We can shorten sentence 1. Must include 20%, 20%, 35. Also buyer history if exists? It says \"historique de l'acheteur s'il existe\" in constat. We have buyer history: 5 marchés comparables, 5 known, 60% single. Need include? It says phrase 1: le constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). So likely must include buyer history if exists. But max 45. Need concise.\n\nMaybe: \"Probabilité d'offre unique 20 %, moyenne 20 %, 35 contrats similaires gagnés ; l'acheteur a 5 marchés comparables, 5 connus, 60 % uniques.\" Count: Probabilité1 d'offre2 unique3 20%4 moyenne5 20%6 357 contrats8 similaires9 gagnés",
+   "error": null,
+   "seconds": 45.1,
+   "usage": {
+    "in": 552,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103295",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need first sentence: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Need second sentence recommendation exactly starts with word from field: \"Passer\" then \"Passer, car\" with comma, then reason with field raison. Do not change recommendation. Need not explain model. No title/list. Measured tone. Never qualify buyer/holder suspect. End with period.\n\nNeed ensure 2 sentences. Sentence 1 includes: probabilite 20%, moyenne 20%, contrats similaires gagnés 5. Also buyer history if exists: maybe \"l'acheteur a passé 60 marchés comparables, dont 14 avec nombre d'offres connu, 57 % avec une seule offre\". But careful: \"La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\" So if mention 57%, must phrase as among known offers. Could include: \"Sur 14 marchés comparables de cet acheteur dont le nombre d'offres est connu, 57 % ont reçu une seule offre.\" That's okay. But word count max 45 total. Need 2 sentences. Let's draft.\n\nSentence1: \"La probabilité d'offre unique est de 20 %, égale à la moyenne de 20 %, et l'entreprise a gagné 5 contrats similaires.\" Count words? La1 probabilité2 d'offre3 unique4 est5 de6 20%7 égale8 à9 la10 moyenne11 de12 20%13 et14 l'entreprise15 a16 gagné17 518 contrats19 similaires20. Good. But need buyer history if exists? \"historique de l'acheteur s'il existe\" maybe should include if exists. We have buyer history. Need include? It says 1) le constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). So likely include buyer history. But max 45 words. Need include 57% among known? Could be: \"La probabilité d'offre unique est de 20 %, égale à la moyenne de 20 %, l'entreprise a gagné 5 contrats similaires, et 57 % des 14 marchés connus de cet acheteur ont une seule offre.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 20%7 égale8 à9 la10 moyenne11 de12 20%13 l'entreprise14 a15 gagné16 517 contrats18 similaires19 et20 57%21 des22 1423 marchés24 connus25 de26 cet27 acheteur28 ont29 une30 seule31 offre32. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count Passer1 car2 probabilité3 d'offre4 unique5 sous6 la7 moyenne8 la9 concurrence10 sera11 habituelle12. Total 44. But is \"sous la moyenne\" false? probability 20 equal average 20. The given raison says \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\" but facts: 20 vs 20, par_rapport 1.0 fois. The instruction: \"puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation.\" It says use field raison. But if field raison says sous la moyenne while facts equal? We must not change recommendation, but can we change reason? \"donne sa raison avec le champ « raison »\" likely use the reason text. But also \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" The reason text has no numbers. But it says \"probabilité d'offre unique sous la moyenne\" which contradicts facts. Are we allowed to output that? It says \"donne sa raison avec le champ « raison »\" maybe must include that exact reason? But also \"Ne change jamais la recommandation.\" It doesn't say don't change reason, but \"avec le champ raison\" suggests use it. However if reason is inconsistent with facts, maybe we should adapt? The user says: \"2) la recommandation donnée dans le champ « recommandation » : commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation.\" So likely second sentence: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But that includes \"sous la moyenne\" not a number, but contradicts first sentence. Is that acceptable? The instruction says use only numbers present, no new numbers. It doesn't forbid qualitative inconsistency? But as careful problem solver, maybe we should not assert false. But \"donne sa raison avec le champ raison\" could mean use the reason field, maybe exact. Yet if exact reason conflicts with facts, maybe we need to preserve recommendation but can rephrase reason? It says \"avec le champ « raison »\" not \"exactement\". But \"Ne change jamais la recommandation\" only recommendation. Could say \"Passer, car la probabilité d'offre unique est égale à la moyenne, la concurrence sera habituelle.\" But that changes reason. The field raison is \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". If we don't use it, maybe fail. Need infer expected from benchmark: They likely expect second sentence starts with recommendation and includes reason field, maybe exact or close. But they also require first sentence includes probability and average. If reason says sous la moyenne but facts equal, maybe test data intentionally has mismatch? We must follow facts? \"Tu reçois des faits calculés... Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" It doesn't say facts are always consistent with reason. But \"donne sa raison avec le champ raison\" likely means output that reason. However if reason contains \"sous la moyenne\" and first sentence says égale, that's contradictory. Could we phrase first sentence not saying égale? It must compare probability to average. Could say \"La probabilité d'offre unique est de 20 %, pour une moyenne de 20 %, l'entreprise a gagné 5 contrats similaires, et 57 % des 14 marchés connus de cet acheteur ont une seule offre.\" That doesn't explicitly say égale or sous. Then second says \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habit",
+   "error": null,
+   "seconds": 45.1,
+   "usage": {
+    "in": 547,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "48934",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers, no new calculations. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation exactly from field: starts with exactly word (« Aller », « À étudier » or « Passer »), then reason with field « raison ». Must write « Aller, car », « Passer, car » or « À étudier, car », with comma. Do not change recommendation. Here recommendation Passer, reason \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need sentence 2 start exactly \"Passer, car\" then reason? It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Then says Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 likely \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But need complete sentence? It is a sentence? It ends with point. It starts with Passer. Good.\n\nSentence 1 must include: probability 19%, average 20%, number similar contracts won 5. Also adequacy with company, buyer history if exists. Facts: buyer history: marchés comparables passés par cet acheteur: 2, dont nombre offres connu:1, part de ces marchés connus avec une seule offre 100%. But instruction: La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés. We can mention buyer history if exists. Need be careful not to say 100% of 2 markets. Could say \"l'acheteur a passé 2 marchés comparables, dont 1 avec nombre d'offres connu et une seule offre\". But that uses 100? Not necessary. Need include adequacy with company: 5 similar contracts won, 1 in same department maybe. But sentence 1 must give probability, average, then number contracts won. Could include \"l'entreprise a gagné 5 contrats similaires, dont 1 dans le même département\". Need compare probability to average: 19% vs 20%, maybe \"presque égale\" or \"légèrement sous\". But only use numbers? \"sous la moyenne\" is from reason. Need no new calculations. \"19 % contre 20 %\" okay. \"1,0 fois\" maybe not needed. Need exactly 2 sentences, max 45 words total. Let's draft:\n\n\"La probabilité d'offre unique est de 19 % contre 20 % en moyenne, l'entreprise a gagné 5 contrats similaires, dont 1 dans le même département, et l'acheteur a passé 2 marchés comparables, dont 1 avec nombre d'offres connu et une seule offre. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\n\nCount words. Need French punctuation. Let's count: La1 probabilité2 d'offre3 unique4 est5 de6 19%7 contre8 20%9 en10 moyenne11 l'entreprise12 a13 gagné14 515 contrats16 similaires17 dont18 119 dans20 le21 même22 département23 et24 l'acheteur25 a26 passé27 228 marchés29 comparables30 dont31 132 avec33 nombre34 d'offres35 connu36 et37 une38 seule39 offre40. Passer41 car42 probabilité43 d'offre44 unique45 sous46 la47 moyenne48 :49 la50 concurrence51 sera52 habituelle53. Too long >45. Need max 45 total. Need shorten.\n\nNeed exactly 2 sentences. Sentence 1 must include probability, average, number contracts won. Also adequacy and buyer history if exists. Could compress: \"19 % d'offre unique contre 20 % en moyenne, 5 contrats similaires gagnés, 1 dans le même département, acheteur : 2 marchés comparables, 1 connu avec une seule offre. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\n\nCount: 19%1 d'offre2 unique3 contre4 20%5 en6 moyenne7 58 contrats9 similaires10 gagnés11 112 dans13 le14 même15 département16 acheteur17 :18 219 marchés20 comparables21 122 connu23 avec24 une25 seule26 offre27. Passer28 car29 probabilité30 d'offre31 unique32 sous33 la34 moyenne35 :36 la37 concurrence38 sera39 habituelle40. 40 words? Need count punctuation maybe not words. It's 40. But sentence 1 starts with number, is it complete? \"19 % d'offre unique contre 20 % en moyenne, 5 contrats similaires gagnés, 1 dans le même département, acheteur : 2 marchés comparables, 1 connu avec une seule offre.\" It's a fragment? They ask 2 phrases complètes. Need complete sentences. Could make \"La probabilité d'offre unique est de 19 % contre 20 % en moyenne, l'entreprise a gagné 5 contrats similaires, dont 1 dans le même département, et l'acheteur a passé 2 marchés comparables, dont 1 connu avec une seule offre.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 19%7 contre8 20%9 en10 moyenne11 l'entreprise12 a13 gagné14 515 contrats16 similaires17 dont18 119 dans20 le21 même22 département23 et24 l'acheteur25 a26 passé27 228 marchés29 comparables30 dont31 132 connu33 avec34 une35 seule36 offre37. Sentence2: Passer38 car39 probabilité40 d'offre41 unique42 sous43 la44 moyenne45 :46 la47 concurrence48 sera49 habituelle50. 50 >45. Need reduce.\n\nNeed include buyer history if exists. Could omit some? \"historique de",
+   "error": null,
+   "seconds": 50.1,
+   "usage": {
+    "in": 537,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109558",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must not change recommendation. Need write « Aller, car », « Passer, car » or « À étudier, car », with comma. Recommendation is Passer, reason: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need sentence 2 start exactly \"Passer, car\" then reason? It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Also says Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So second sentence should be \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But must be complete sentence? It is imperative? Maybe okay. Need total max 45 words. Need only numbers present: 17, 20, 0,9? \"par_rapport_a_la_moyenne\": \"0,9 fois\" maybe can use? But says use only chiffres présents dans faits, sans en calculer de nouveaux. We can mention 17%, 20%, 8 contracts. Buyer history: 0 marchés comparables passés par cet acheteur. Need include if exists? \"historique de l'acheteur s'il existe\" maybe include 0? It says s'il existe, but field is 0. Could mention no comparable markets? But numbers only: 0. Need sentence 1: \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, avec 8 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" Count words? Let's count: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 17(7) %(8?) Usually % maybe word? Need max 45 words total. We can avoid % symbol? But must give percentage. Could write \"17 pour cent\" but numbers? \"17 %\" likely token? Need safe. Sentence 1: \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, avec 8 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" Count if % as word? Let's count manually: La 1, probabilité 2, d'offre 3, unique 4, est 5, de 6, 17 7, % 8, contre 9, 20 10, % 11, de 12, moyenne 13, avec 14, 8 15, contrats 16, similaires 17, gagnés 18, et 19, 0 20, marché 21, comparable 22, de 23, cet 24, acheteur 25. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count: Passer 1, car 2, probabilité 3, d'offre 4, unique 5, sous 6, la 7, moyenne 8, la 9, concurrence 10, sera 11, habituelle 12. Total 37 if % counted. Good. Need exactly 2 sentences. Sentence 1 ends period, sentence 2 ends period. Need no title/list. Tone measured. Need not explain model. Need not qualify buyer. Need point at end. Need ensure second starts exactly \"Passer, car\". It does. But \"Passer, car probabilité...\" maybe grammatically? It's a sentence? Could be \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" But reason field exact? It says donne sa raison avec le champ « raison ». Could use exact reason? It says with field raison, not necessarily exact? But likely use reason. Need start exactly word Passer, then comma car. If we add \"la\" after car, still starts Passer, car. But reason field: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Could write \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" That's a bit fragment but acceptable? They require 2 phrases complètes. Maybe \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" This uses reason but adds la/est. Is that allowed? It says donne sa raison avec le champ « raison ». Could be okay. But if strict, use exact reason after car? \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Is that a complete sentence? It lacks verb? \"Passer\" imperative, subordinate clause without verb? Could be considered not complete. Need 2 complete sentences. Maybe second: \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" Complete. It starts exactly \"Passer, car\". It uses reason. Word count: Passer1 car2 la3 probabilité4 d'offre5 unique6 est7 sous8 la9 moyenne10 la11 concurrence12 sera13 habituelle14. Total with sentence1 25+14=39. Good.\n\nNeed sentence 1: must give probability unique compared to average, adequacy with company, buyer history if exists. \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, avec 8 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" Does this express adequacy? \"avec 8 contrats similaires gagnés\" indicates adequacy. Buyer history: 0 marché comparable. Good. But \"0 marché comparable de cet acheteur\" maybe awkward. Could be \"0 marché comparable passé par cet acheteur\" but \"passé\" number? It's in field. Use only numbers, words okay. Count: La1 probabilité2 d'offre3 unique4 est5 de6 17 7 %8 contre9 20 10 %11 de12 moyenne13 avec14 8 15 contrats16 similaires17 gagnés18 et19 0 20 marché21 comparable22 passé23 par24 cet25 acheteur26. Total 26. Sentence2 14 total 40. Good. Need \"marchés",
+   "error": null,
+   "seconds": 50.0,
+   "usage": {
+    "in": 539,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106882",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field raison. Must write « Aller, car », « Passer, car » or « À étudier, car », with comma. Do not change recommendation. Recommendation is Passer, reason: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need sentence 2 start exactly \"Passer, car\" then reason? It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Also says Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 should be \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But maybe need complete sentence. It starts with Passer, car... okay. Need total max 45 words. Need exactly 2 sentences. Need no title/list. End with point. Need only numbers present: 17, 20, 0,9? 5, 1, 1? We can use 17%, 20%, 5. Need mention buyer history if exists: buyer passed 1 comparable market, offers unknown. But maybe not necessary? \"historique de l'acheteur s'il existe\" means include if exists. There is 1 comparable market passed by buyer, offers non renseigné. Need include? Sentence 1 must include probability, average, number similar contracts won. Also adequacy with company and buyer history if exists. Need concise.\n\nDraft:\n\"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, avec 5 contrats similaires gagnés et un marché comparable passé par l'acheteur sans offres renseignées. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\n\nCount words? French word counting: La(1) probabilité2 d'offre3 unique4 est5 de6 17%? maybe \"17 %\" as one or two? Need max 45 words, likely safe. Let's count roughly: La 1, probabilité 2, d'offre 3, unique 4, est 5, de 6, 17 7, % 8? contre 9, 20 10, % 11, en 12, moyenne 13, avec 14, 5 15, contrats 16, similaires 17, gagnés 18, et 19, un 20, marché 21, comparable 22, passé 23, par 24, l'acheteur 25, sans 26, offres 27, renseignées 28. Passer 29, car 30, probabilité 31, d'offre 32, unique 33, sous 34, la 35, moyenne 36, : 37? la 38, concurrence 39, sera 40, habituelle 41. Under 45. But need exactly 2 sentences. First ends period, second ends period. Good.\n\nBut check \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" We used 17,20,5,1? \"un marché comparable\" uses 1 implicitly? The fact has 1. Is \"un\" a number? It's present as 1? It says chiffres présents, maybe words? Better avoid \"un\" if not numeric? But \"un\" is a number word, but fact has 1. Could be okay. But to be safe, use \"1 marché comparable\"? But then number 1 present. Sentence: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, avec 5 contrats similaires gagnés et 1 marché comparable passé par l'acheteur sans offres renseignées.\" This uses 1. Count maybe 30. Good. But \"sans offres renseignées\" from \"non renseigné\". Good.\n\nNeed \"adéquation avec l'entreprise\" maybe 5 contrats similaires gagnés shows adequacy. Good.\n\nNeed \"probabilité d'offre unique comparée à la moyenne\" we have 17 vs 20. \"par_rapport_a_la_moyenne\": \"0,9 fois\" maybe should include? It says constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). Could include 0,9 times? But only numbers present. Maybe \"0,9 fois la moyenne\". But sentence length. Need always give percentage probability and average, then number contracts. It doesn't require 0,9. But \"comparée à la moyenne\" can be by percentages.\n\nNeed point of view: strong probability single offer is opportunity, never risk. But recommendation is Passer due to probability under average: usual competition. We must not change. We can phrase neutral. \"sous la moyenne\" not risk. Good.\n\nNeed exactly 2 complete sentences. First: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, avec 5 contrats similaires gagnés et 1 marché comparable passé par l'acheteur sans offres renseignées.\" Is that complete? Subject La probabilité, verb est. Yes. Second: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Is that a complete sentence? It starts with imperative? \"Passer\" infinitive, maybe not complete? Requirement says start phrase by exactly word, then reason. It may accept. But \"complete sentences\" maybe need \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" But must use field raison? It says donne sa raison avec le champ « raison ». Could adapt? Need not change recommendation. The reason field is \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". We can use exactly? It says avec le champ raison, likely use that text. But sentence \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" is not grammatically complete? It is a recommendation phrase, maybe acceptable. To make complete: \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" This changes reason slightly but conveys. It adds \"la\" and \"est\". Is that allowed?",
+   "error": null,
+   "seconds": 49.4,
+   "usage": {
+    "in": 548,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109456",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2 recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must not change recommendation. Use exactly \"Passer, car\" with comma. Need only numbers present in facts, no new calculations. Need not explain model. No title/list. Measured tone. Never qualify buyer or holder as suspect. End with period.\n\nFacts: achat Marchés de topographies, type appel d'offres ouvert, acheteur Paris La Défense, date 21/12/2026, prob 17, moyenne 20, par rapport 0,9 fois, contrats similaires gagnés 35, dont même département 2, marchés comparables passés par acheteur 56, nombre d'offres de ces marchés non renseigné, recommandation Passer, raison probabilité d'offre unique sous la moyenne : la concurrence sera habituelle, titulaire sortant false.\n\nNeed exactly 2 sentences. Sentence 1 must include: probability unique offer compared to average, adequacy with company, buyer history if exists. \"Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" So sentence1 should have 17 %, 20 %, then 35. Also mention buyer history if exists: 56 marchés comparables passés par cet acheteur, but nombre d'offres non renseigné. Need not report single-offer share to total markets. We can say \"Paris La Défense a passé 56 marchés comparables, sans nombre d'offres connu.\" But need sentence 1 complete. Need max 45 words total. Let's draft.\n\nSentence1: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 35 contrats similaires, dont 2 dans le même département, pour un acheteur ayant passé 56 marchés comparables.\" Count words? La(1) probabilité2 d'offre3 unique4 est5 de6 17%? maybe 17 % as one? Let's count carefully. French words: \"La\" 1, \"probabilité\" 2, \"d'offre\" 3, \"unique\" 4, \"est\" 5, \"de\" 6, \"17\" 7, \"%,\" 8? Usually % separate? Need max 45 words, likely okay. \"contre\" 9, \"20\" 10, \"%,\" 11, \"en\" 12, \"moyenne,\" 13, \"et\" 14, \"l'entreprise\" 15, \"a\" 16, \"gagné\" 17, \"35\" 18, \"contrats\" 19, \"similaires,\" 20, \"dont\" 21, \"2\" 22, \"dans\" 23, \"le\" 24, \"même\" 25, \"département,\" 26, \"pour\" 27, \"un\" 28, \"acheteur\" 29, \"ayant\" 30, \"passé\" 31, \"56\" 32, \"marchés\" 33, \"comparables.\" 34. Sentence2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count: Passer,1 car2 probabilité3 d'offre4 unique5 sous6 la7 moyenne8 :? la9 concurrence10 sera11 habituelle12. Total 46 if sentence1 34 + 12 = 46. Need <=45. Need reduce.\n\nMaybe sentence1 shorter. Need include 17%, 20%, 35, adequacy, buyer history if exists. Could omit \"dont 2 dans même département\" maybe adequacy with company can be 35 contracts. Buyer history: 56 marchés comparables. Need mention number of offers non renseigné? \"historique de l'acheteur s'il existe\" maybe 56 marchés comparables. Could say \"L'acheteur a passé 56 marchés comparables.\" Need sentence1: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 35 contrats similaires, l'acheteur ayant passé 56 marchés comparables.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 17%? Let's count tokens: \"La\"1 \"probabilité\"2 \"d'offre\"3 \"unique\"4 \"est\"5 \"de\"6 \"17\"7 \"%,\"8 \"contre\"9 \"20\"10 \"%,\"11 \"en\"12 \"moyenne,\"13 \"et\"14 \"l'entreprise\"15 \"a\"16 \"gagné\"17 \"35\"18 \"contrats\"19 \"similaires,\"20 \"l'acheteur\"21 \"ayant\"22 \"passé\"23 \"56\"24 \"marchés\"25 \"comparables.\"26. Sentence2 12 => total 38. Good. But does sentence1 include \"adéquation avec l'entreprise\"? It says entreprise a gagné 35 contrats similaires, that's adequacy. Buyer history: l'acheteur ayant passé 56 marchés comparables. Good. Need \"probabilité d'offre unique comparée à la moyenne\" yes 17 vs 20. Need \"historique de l'acheteur s'il existe\" yes 56. Need not mention non renseigné? Maybe not necessary. But \"historique\" maybe should include that number of offers non renseigné? It says buyer history if exists. We have 56 marchés comparables, nombre d'offres non renseigné. Could include \"sans nombre d'offres connu\" but adds words. Need max 45, can include. Sentence1: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 35 contrats similaires, l'acheteur ayant passé 56 marchés comparables sans nombre d'offres connu.\" Count: previous 26 + \"sans\"27 \"nombre\"28 \"d'offres\"29 \"connu\"30. Sentence2 12 total 4",
+   "error": null,
+   "seconds": 49.5,
+   "usage": {
+    "in": 516,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109781",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need first sentence: constat (probability unique offer compared to average, adequacy with company, buyer history if exists). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Need second sentence recommendation exactly starts with word from field: \"Passer\" then comma? User says: commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Also says: Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So second sentence must start \"Passer, car\" and reason. Need not change recommendation. Need only numbers present in facts, no new calculations. Facts: prob 17, moyenne 20, par_rapport 0,9 fois, contrats similaires gagnés 5, dont même département 3, marchés comparables passés par acheteur 0, recommandation Passer, raison \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need maybe include buyer history if exists: 0 comparable markets passed by buyer. But first sentence must include probability, average, then number of similar contracts won. Could include buyer history? \"historique de l'acheteur s'il existe\" means if exists. Here 0 comparable markets passed by buyer, maybe mention no comparable history? But must use only numbers present. Could say \"Aucun marché comparable passé par cet acheteur\" but that's not a number? It uses 0? Need maybe include 0. But first sentence must always give probability and average, then number of similar contracts won. It can also include buyer history. Need exactly 2 sentences, max 45 words. Need measured tone. Strong probability single offer is opportunity, but here probability below average, recommendation Passer. Need not call buyer suspect. End with point.\n\nDraft:\n\"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 5 contrats similaires, sans marché comparable passé par cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\nCount words? Let's count French words maybe punctuation attached. Sentence1: La(1) probabilité(2) d'offre(3?) unique(4) est(5) de(6) 17(7) %,(8?) contre(9) 20(10) %(11) en(12) moyenne,(13) et(14) l'entreprise(15) a(16) gagné(17) 5(18) contrats(19) similaires,(20) sans(21) marché(22) comparable(23) passé(24) par(25) cet(26) acheteur.(27)\nSentence2: Passer,(28) car(29) probabilité(30) d'offre(31) unique(32) sous(33) la(34) moyenne(35) :(36?) la(37) concurrence(38) sera(39) habituelle.(40)\nTotal maybe 40 if punctuation not words. Under 45. Need exactly 2 complete sentences. It has colon in second, okay? It says reason with field raison. The field contains colon. Could include exactly? \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" That's fine. But first sentence: \"sans marché comparable passé par cet acheteur\" uses 0? It doesn't state 0. Is that okay? It says historique de l'acheteur s'il existe. Since 0, maybe no history. But \"sans marché comparable\" is derived from 0, not a new number. It uses only facts. Could be okay. But requirement: \"Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" It does: 17%, 20%, then 5. Good.\n\nNeed ensure no new calculations. \"0,9 fois\" not used. Could include? Not necessary. But maybe \"par rapport à la moyenne\" should be included? It says constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). We compare by saying contre 20% en moyenne. Adequacy? \"l'entreprise a gagné 5 contrats similaires\" indicates adequacy. Buyer history: \"sans marché comparable passé par cet acheteur\". Good.\n\nNeed maybe use \"17 %\" and \"20 %\" with space? French. Word count maybe okay. Need exactly 2 sentences. Ensure second starts exactly \"Passer, car\". It does.\n\nPotential issue: \"probabilité d'offre unique\" is a strong opportunity if high, but here below average. Recommendation Passer. Fine.\n\nNeed maybe avoid colon? It's okay. But \"raison\" field includes colon; if we include colon, sentence still complete? \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" It's a sentence with colon. Fine.\n\nCheck max 45 words. Let's count more rigorously with typical tokenization: \n1 La\n2 probabilité\n3 d'offre\n4 unique\n5 est\n6 de\n7 17\n8 %\n9 contre\n10 20\n11 %\n12 en\n13 moyenne\n14 et\n15 l'entreprise\n16 a\n17 gagné\n18 5\n19 contrats\n20 similaires\n21 sans\n22 marché\n23 comparable\n24 passé\n25 par\n26 cet\n27 acheteur\n28 Passer\n29 car\n30 probabilité\n31 d'offre\n32 unique\n33 sous\n34 la\n35 moyenne\n36 la\n37 concurrence\n38 sera\n39 habituelle\nMaybe 39. Under 45.\n\nNeed maybe \"marchés comparables passés par cet acheteur\" is 0, but phrase \"sans marché comparable passé\" singular? Could be \"sans marché comparable passé par cet acheteur\" okay. But if 0, no market. Could say \"l'acheteur n'a passé aucun marché comparable\" but \"aucun\" not number? It's okay but maybe uses no number. But requirement only use chiffres présents, not necessarily all. \"aucun\" is not a chiffre. Fine. But \"sans marché comparable passé\" might imply zero. Good.\n\nNeed ensure first sentence includes \"adéquation avec l'entreprise\" maybe \"l'entreprise a gagné 5 contrats similaires",
+   "error": null,
+   "seconds": 46.4,
+   "usage": {
+    "in": 527,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109615",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need first sentence: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Need second sentence recommendation exactly starts with word from field: \"Passer\" then comma? User says: commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation. Dans la phrase 1... Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So second sentence must start exactly \"Passer, car\" and reason. Need not change recommendation. Need only numbers present: 17, 20, 0,9? 8, 3, 0. Need not calculate new. Could mention 0 buyer history? \"historique de l'acheteur s'il existe\" if exists. Here marches comparables passes by buyer = 0. Could say \"aucun historique comparable\" but 0 is number present. Need first sentence include probability 17%, average 20%, then number similar contracts won 8. Also adequacy with company? maybe \"adéquate\" due to 8 contracts. Buyer history if exists: 0 comparable markets. Need exactly 2 sentences. Max 45 words. Need end with point. No title/list. Tone measured. Strong probability single offer is opportunity, but here 17 below average 20, reason says concurrence habituelle. Recommendation Passer. Need not say risk? It's okay. Need ensure second sentence starts exactly \"Passer, car\". Could be: \"La probabilité d'offre unique est de 17 % contre 20 % en moyenne, avec 8 contrats similaires gagnés et 0 marché comparable de cet acheteur. Passer, car la probabilité d'offre unique sous la moyenne indique une concurrence habituelle.\" Count words? Let's count: La1 probabilité2 d'offre3 unique4 est5 de6 17%? maybe \"17 %\" as one or two? Need max 45. Let's count carefully French words: \"La\" 1, \"probabilité\" 2, \"d'offre\" 3, \"unique\" 4, \"est\" 5, \"de\" 6, \"17\" 7, \"%\" maybe not word? Usually token? To be safe count as word? \"17 %\" maybe two. \"contre\" 8/9, \"20\" 9/10, \"%\" 10/11, \"en\" 11/12, \"moyenne\" 12/13, \"avec\" 13/14, \"8\" 14/15, \"contrats\" 15/16, \"similaires\" 16/17, \"gagnés\" 17/18, \"et\" 18/19, \"0\" 19/20, \"marché\" 20/21, \"comparable\" 21/22, \"de\" 22/23, \"cet\" 23/24, \"acheteur\" 24/25. Second: \"Passer\" 26, \"car\" 27, \"la\" 28, \"probabilité\" 29, \"d'offre\" 30, \"unique\" 31, \"sous\" 32, \"la\" 33, \"moyenne\" 34, \"indique\" 35, \"une\" 36, \"concurrence\" 37, \"habituelle\" 38. Under 45. Need exactly 2 sentences. First includes probability and average and number contracts. It also includes buyer history 0. Adequacy? \"avec 8 contrats similaires gagnés\" implies adequacy. Could be enough. Need \"par rapport à la moyenne\" maybe not necessary? It says constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). We compare by \"contre\". Good.\n\nNeed ensure only numbers present: 17,20,8,0. We didn't use 0,9 or 3. That's okay? \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" Means don't use numbers not present, not necessarily all. Good.\n\nNeed maybe \"probabilité d'offre unique\" is 17% and average 20%. Need \"nombre de contrats similaires gagnés par l'entreprise\" exactly 8. Good.\n\nNeed second sentence reason with field raison: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". We can adapt but must give reason with field. Could use exact? \"Passer, car la probabilité d'offre unique sous la moyenne indique une concurrence habituelle.\" That's close. But field says \"sera habituelle\". Could use exact: \"Passer, car la probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But punctuation colon inside sentence? It would be one sentence? \"Passer, car la probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" It's a sentence with colon, ends point. Starts exactly \"Passer, car\". Is that acceptable? It uses field reason almost exact. But maybe awkward. Could be \"Passer, car la probabilité d'offre unique sous la moyenne indique que la concurrence sera habituelle.\" That's reason. Need not exact field? \"donne sa raison avec le champ « raison »\" likely use content. We can paraphrase.\n\nNeed check if first sentence: \"La probabilité d'offre unique est de 17 % contre 20 % en moyenne, avec 8 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" Does it say adequacy? \"avec 8 contrats similaires gagnés\" yes. But maybe need explicitly \"adéquate\"? Could add \"adéquate\" but word count. \"La probabilité d'offre unique est de 17 % contre 20 % en moyenne, l'adéquation est soutenue par 8 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 17 7 %8 contre9 20 10 %11 en12 moyenne13 l'adéquation14 est15 soutenue16 par17 8 18 contrats19 similaires20 gagnés21 et22 0 23 marché24 comparable25 de26 cet27 acheteur28",
+   "error": null,
+   "seconds": 46.2,
+   "usage": {
+    "in": 539,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-104170",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat (probability unique offer compared to average, adequacy with company, buyer history if exists). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2 recommendation exactly starts with word from field: \"Passer\" then \"Passer, car\" with comma, then reason with field raison. Do not change recommendation. Need not calculate new numbers. Need not explain model. No title/list. Measured tone. Never qualify buyer/holder suspect. End with period.\n\nFacts: achat, type, acheteur, date, probabilite_offre_unique_pct=17, moyenne_offre_unique_pct=20, par_rapport_a_la_moyenne=0,9 fois, contrats_similaires_gagnes=35, dont_meme_departement=1, marches_comparables_passes_par_cet_acheteur=0, recommandation=Passer, raison=\"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\", titulaire_sortant false.\n\nNeed exactly 2 sentences. Max 45 words total. Sentence 1 must include 17%, 20%, then 35. Could mention buyer history: 0 marchés comparables passés par cet acheteur. But need concise. \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 35 contrats similaires.\" That's 17? Let's count: La1 probabilité2 d'offre3 unique4 est5 de6 17%7 contre8 20%9 en10 moyenne11 et12 l'entreprise13 a14 gagné15 3516 contrats17 similaires18. Good. But need \"par rapport à la moyenne\" maybe 0,9 fois? It says constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). We can include 0,9 fois? But only use given numbers. Could: \"La probabilité d'offre unique est de 17 %, soit 0,9 fois la moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 17%7 soit8 0,99 fois10 la11 moyenne12 de13 20%14 et15 l'entreprise16 a17 gagné18 3519 contrats20 similaires21. Good. But need buyer history if exists: 0 marchés comparables. Could add \"acheteur sans marché comparable\" but no number? It says historique de l'acheteur s'il existe. Since 0, maybe mention \"l'acheteur n'a passé aucun marché comparable\". But word limit. Need exactly 2 sentences total max 45. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count: Passer1 car2 probabilité3 d'offre4 unique5 sous6 la7 moyenne8 la9 concurrence10 sera11 habituelle12. Total 21+12=33. Good. But sentence 1 maybe include buyer history: \"La probabilité d'offre unique est de 17 %, soit 0,9 fois la moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires, l'acheteur n'en ayant passé aucun comparable.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 17%7 soit8 0,99 fois10 la11 moyenne12 de13 20%14 et15 l'entreprise16 a17 gagné18 3519 contrats20 similaires21 l'acheteur22 n'en23 ayant24 passé25 aucun26 comparable27. Total 27+12=39. Good under 45. But is \"n'en ayant passé aucun comparable\" grammatical? \"l'acheteur n'en ayant passé aucun comparable\" maybe awkward. Could \"l'acheteur n'ayant passé aucun marché comparable\" count: l'acheteur22 n'ayant23 passé24 aucun25 marché26 comparable27. Same. Sentence: \"La probabilité d'offre unique est de 17 %, soit 0,9 fois la moyenne de 20 %, et l'entreprise a gagné 35 contrats similaires, l'acheteur n'ayant passé aucun marché comparable.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 17%7 soit8 0,99 fois10 la11 moyenne12 de13 20%14 et15 l'entreprise16 a17 gagné18 3519 contrats20 similaires21 l'acheteur22 n'ayant23 passé24 aucun25 marché26 comparable27. Good. But \"0,9 fois\" is given. Need \"par_rapport_a_la_moyenne\": 0,9 fois. Good.\n\nNeed exactly 2 sentences. The first ends with period? If we have comma then second sentence. Need final period. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" It starts exactly \"Passer\". It includes comma. It uses reason field exactly? It says donne sa raison avec le champ « raison ». Could use exact reason string after \"Passer, car \". The reason contains colon. \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". That's fine. But sentence 2 starts with \"Passer, car probabilité...\" Is that a complete sentence? It is imperative? \"Passer, car ...\" maybe okay. Need exactly 2 complete sentences. Could be \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" But must use field raison? It says donne sa raison avec le champ « raison ». Probably can rephrase? But safer to use exact reason? It says \"recommandation donnée dans le champ « recommandation » : commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation.\" It might expect use reason field. Could output \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" That's not fully grammatical but acceptable? Maybe \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" But that changes reason slightly. It says avec le champ raison, likely use its content. Need not exact? To be safe, use exact",
+   "error": null,
+   "seconds": 46.6,
+   "usage": {
+    "in": 533,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-104471",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need include: sentence 1: constat (probability unique offer compared to average, adequacy with company, buyer history if exists). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Use only numbers in facts, no new calculations. Sentence 2 recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must write « Aller, car », « Passer, car » or « À étudier, car », with comma. Do not change recommendation. Recommendation is Passer, reason: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need sentence 2 start exactly \"Passer, car\" then reason? It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Also says Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 should be \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But need complete sentence? It is a sentence maybe. Ends with point. Need total max 45 words. Need sentence 1 include probability 17%, average 20%, then number of similar contracts won 35. Also adequacy with company, buyer history if exists. Buyer history: marches comparables passes by cet acheteur = 0. Could mention no comparable contracts by buyer? Need use only numbers present. \"0\" is present. Need not calculate. Need compare probability to average: 17% vs 20%. \"0,9 fois\" present but maybe not needed. Need not report share of single-offer markets to total markets. We can say \"Avec 17 % de probabilité d'offre unique contre 20 % en moyenne, l'entreprise a gagné 35 contrats similaires, sans historique comparable de cet acheteur.\" Count words? Let's count: Avec(1) 17(2) %(3?) Usually words? Need max 45 words total. Percent sign maybe token? We need be safe. French words: \"Avec 17 % de probabilité d'offre unique contre 20 % en moyenne, l'entreprise a gagné 35 contrats similaires, sans historique comparable de cet acheteur.\" Count: Avec 1, 17 2, % 3? de 4, probabilité 5, d'offre 6, unique 7, contre 8, 20 9, % 10, en 11, moyenne 12, l'entreprise 13, a 14, gagné 15, 35 16, contrats 17, similaires 18, sans 19, historique 20, comparable 21, de 22, cet 23, acheteur 24. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count: Passer 1, car 2, probabilité 3, d'offre 4, unique 5, sous 6, la 7, moyenne 8, la 9, concurrence 10, sera 11, habituelle 12. Total 36 if % counted. Good. But need exactly 2 complete sentences. Sentence 1 is complete? \"Avec 17 % ... acheteur.\" It's a sentence with subject l'entreprise. Good. Sentence 2 starts with Passer, car... Is it complete? Imperative? It's a recommendation phrase, likely acceptable. Need \"commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »)\" If we write \"Passer, car...\" starts with Passer. Good. Need \"Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule.\" We do. Need reason with field raison exactly? It says donne sa raison avec le champ « raison ». Could use exact reason text. We should include exact: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Good.\n\nNeed ensure no new numbers. We use 17, 20, 35. Could mention 0? Not necessary? It says buyer history s'il existe. There is 0 comparable markets. Could mention \"sans historique comparable\" without number. But maybe should include 0? \"0 marché comparable de cet acheteur\" uses 0. But sentence length. Need include adequacy with company: 35 contracts similar won. Good.\n\nPotential issue: \"probabilité d'offre unique sous la moyenne\" in reason says under average, but 17 vs 20 yes. Need not say opportunity? The perspective says strong probability single offer is opportunity, but here probability below average, recommendation Passer. Fine.\n\nNeed exactly 2 sentences. Ensure no colon? Colon okay? It says termine par un point. Sentence 2 has colon inside, ends point. Sentence 1 ends point. Total two sentences? Colon doesn't create sentence. Good.\n\nNeed max 45 words. Let's count more carefully with French punctuation. If % considered separate? Usually word count by spaces: \"Avec 17 % de probabilité d'offre unique contre 20 % en moyenne, l'entreprise a gagné 35 contrats similaires, sans historique comparable de cet acheteur.\" Tokens by spaces: Avec(1) 17(2) %(3) de(4) probabilité(5) d'offre(6) unique(7) contre(8) 20(9) %(10) en(11) moyenne,(12) l'entreprise(13) a(14) gagné(15) 35(16) contrats(17) similaires,(18) sans(19) historique(20) comparable(21) de(22) cet(23) acheteur.(24)\nSentence2: Passer,(1) car(2) probabilité(3) d'offre(4) unique(5) sous(6) la(7) moyenne(8) :(9?) la(10) concurrence(11) sera(12) habituelle.(13) If colon attached to previous? \"moyenne :\" maybe one token? By spaces: Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle. Tokens: Passer,(1) car(2) probabilité(3) d'offre(4) unique(5) sous(6) la(7) moyenne(8) :(9) la(10) concurrence(11) sera(12) habituelle.(13). Total 37. Good",
+   "error": null,
+   "seconds": 46.6,
+   "usage": {
+    "in": 549,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107662",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 23.5,
+   "usage": {
+    "in": 689,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109362",
+   "verdict_attendu": "Passer",
+   "note": "Nous devons répondre en français, exactement 2 phrases complètes, 45 mots maximum au total.\nPhrase 1: constat: probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe.\nDoit donner toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\nUtiliser uniquement les chiffres présents dans les faits, sans en calculer de nouveaux.\nFait: probabilite_offre_unique_pct = 17, moyenne_offre_unique_pct = 20, par_rapport_a_la_moyenne = 0,9 fois, contrats_similaires_gagnes_par_l_entreprise = 35, dont_dans_le_meme_departement = 5, marches_comparables_passes_par_cet_acheteur = 0.\nPhrase 1 doit inclure: 17%, 20%, 35 contrats similaires gagnés. Peut-être aussi 0 historique acheteur? \"historique de l'acheteur s'il existe\" -> 0 marchés comparables passés par cet acheteur.\nPhrase 2: recommandation donnée dans le champ « recommandation »: commence par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ».\nRecommandation: Passer. Raison: probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\nDoit écrire « Passer, car » avec la virgule.\nPhrase 2: \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\"\nVérifions les mots.\nPhrase 1: \"La probabilité d'offre unique est de 17 % contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable pour cet acheteur.\"\nMots: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 17(7) %(8) contre(9) 20(10) %(11) en(12) moyenne(13), avec(14) 35(15) contrats(16) similaires(17) gagnés(18) et(19) 0(20) marché(21) comparable(22) pour(23) cet(24) acheteur(25).\nPhrase 2: \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\"\nMots: Passer,(1) car(2) la(3) probabilité(4) d'offre(5) unique(6) est(7) sous(8) la(9) moyenne(10), la(11) concurrence(12) sera(13) habituelle(14).\nTotal mots: 25 + 14 = 39 mots. < 45.\nVérifions les contraintes:\n- exactement 2 phrases complètes: oui.\n- 45 mots maximum: 39 mots.\n- Phrase 1: constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe).\n\"La probabilité d'offre unique est de 17 % contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable pour cet acheteur.\"\nDonne le pourcentage de probabilité (17 %) ET la moyenne en pourcentage (20 %), puis le nombre de contrats similaires gagnés (35).\n- Phrase 2: commence par exactement \"Passer\", puis \"car\" avec virgule. \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\"\n- Ne change jamais la recommandation: Passer.\n- Utilise UNIQUEMENT les chiffres présents dans les faits: 17, 20, 35, 0. (0,9 fois n'est pas utilisé, pas besoin).\n- Ne rapporte jamais la part de marchés avec une seule offre au nombre total de marchés: non fait.\n- N'explique pas le fonctionnement du modèle: non.\n- Pas de titre, pas de liste: non.\n- Ton mesuré: oui.\n- Ne qualifie jamais un acheteur ou un titulaire de suspect: non.\n- Termine par un point: oui.\n\nPeut-on améliorer la phrase 1 pour inclure l'adéquation? \"avec 35 contrats similaires gagnés\" montre l'adéquation.\n\"La probabilité d'offre unique est de 17 % contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable pour cet acheteur.\"\nEst-ce que \"17 %\" compte comme 1 mot ou 2? En général, \"17 %\" est 1 ou 2 mots selon le compteur. Même si 2, total ~41 mots.\nComptons précisément:\nLa (1) probabilité (2) d'offre (3) unique (4) est (5) de (6) 17 (7) % (8) contre (9) 20 (10) % (11) en (12) moyenne (13), avec (14) 35 (15) contrats (16) similaires (17) gagnés (18) et (19) 0 (20) marché (21) comparable (22) pour (23) cet (24) acheteur (25).\nPasser, (26) car (27) la (28) probabilité (29) d'offre (30) unique (31) est (32) sous (33) la (34) moyenne (35), la (36) concurrence (37) sera (38) habituelle (39).\n39 mots.\n\nVérifions \"historique de l'acheteur s'il existe\". Le fait est \"marches_comparables_passes_par_cet_acheteur\": 0. Donc \"0 marché comparable pour cet acheteur\" est correct.\n\"adéquation avec l'entreprise\": 35 contrats similaires gagnés.\n\"probabilité d'offre unique comparée à la moyenne\": 17 % contre 20 % en moyenne.\nTout est respecté.\nOn peut écrire \"17 %\" ou \"17 %\". Le texte dit \"17\" et \"20\". J'écrirai \"17 %\" et \"20 %\".\nPhrase 1: La probabilité d'offre unique est de 17 % contre",
+   "error": null,
+   "seconds": 53.0,
+   "usage": {
+    "in": 529,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-75101",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat (probability unique offer compared to average, adequacy with company, buyer history if exists). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2 recommendation exactly starts with word from field: \"Passer\" then \"Passer, car\" with comma, then reason with field raison. Need not change recommendation. Need only numbers present, no new calculations. Need not explain model. No title/list. Measured tone. Never qualify buyer/holder suspect. End with period.\n\nFacts: achat DSP... type open, acheteur Ville de Levallois, date 14/12/2026, prob 17, moyenne 20, par rapport 0,9 fois, contrats similaires gagnés 8, dont même département 2, marchés comparables passés par cet acheteur 0, recommandation Passer, raison \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\", titulaire sortant false.\n\nNeed exactly 2 sentences. Max 45 words total. Sentence 1 must include: probability 17%, average 20%, then number of similar contracts won by company (8). Also adequacy with company, buyer history if exists. Buyer history: 0 comparable markets passed by this buyer. Need mention? \"historique de l'acheteur s'il existe\" maybe if exists; here 0, can mention no comparable markets? But numbers only: 0. Need not calculate. Could say: \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, avec 8 contrats similaires gagnés et 0 marché comparable passé par cet acheteur.\" That's one sentence. Count words? Let's count: La1 probabilité2 d'offre3 unique4 est5 de6 17%? maybe \"17 %\" as one or two? Need max 45 total, likely safe. contre7 20%? 8, avec9 8? Let's count carefully if \"17 %\" maybe two tokens? We can minimize.\n\nSentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Need exactly starts with \"Passer, car\". It includes reason. Count words: Passer,1 car2 probabilité3 d'offre4 unique5 sous6 la7 moyenne8 : la9 concurrence10 sera11 habituelle12. Total maybe 12. Sentence1 maybe 20. Total under 45.\n\nNeed ensure sentence 1 includes \"adéquation avec l'entreprise\" maybe \"adéquat\" or \"cohérent\"? We can say \"adéquat pour l'entreprise\". But must include number of similar contracts won. Need maybe \"8 contrats similaires gagnés\". Buyer history if exists: \"0 marché comparable passé par cet acheteur\". Need not say suspect.\n\nPotential final:\n\"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, adéquate pour l'entreprise avec 8 contrats similaires gagnés et 0 marché comparable passé par cet acheteur. Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\n\nCheck exactly 2 sentences? First ends period, second ends period. Good.\nWord count: Let's count with spaces, punctuation attached maybe.\nSentence1: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 17(7) %(8?) contre(9) 20(10) %(11?) de(12) moyenne,(13) adéquate(14) pour(15) l'entreprise(16) avec(17) 8(18) contrats(19) similaires(20) gagnés(21) et(22) 0(23) marché(24) comparable(25) passé(26) par(27) cet(28) acheteur.(29)\nIf % separate, 29. Sentence2: Passer,(30) car(31) probabilité(32) d'offre(33) unique(34) sous(35) la(36) moyenne(37) :(38?) la(39) concurrence(40) sera(41) habituelle.(42) If colon separate maybe 42. Under 45. If \"17 %\" counted as two, still under. Need maybe \"17 %\" with space? French typography. Could use \"17 %\" and \"20 %\". Fine.\n\nBut requirement: \"Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" It says then number of similar contracts won. In my sentence: probability, average, adéquate... avec 8 contrats... It's after average but with other words. Should be okay? Maybe \"puis\" means immediately after? To be safe: \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, 8 contrats similaires gagnés, adéquate pour l'entreprise et 0 marché comparable passé par cet acheteur.\" But grammar? Need complete sentence. \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, avec 8 contrats similaires gagnés, adéquate pour l'entreprise, et 0 marché comparable passé par cet acheteur.\" It gives number after average. Good.\n\nNeed \"adéquation avec l'entreprise\" maybe \"adéquate pour l'entreprise\". But probability adéquate? Maybe \"l'adéquation avec l'entreprise est soutenue par 8 contrats similaires gagnés\". Need include buyer history. Could be: \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, 8 contrats similaires gagnés, adéquate pour l'entreprise, et 0 marché comparable passé par cet acheteur.\" This is a bit awkward but complete? Subject \"La probabilité ... est de 17 % contre 20 % de moyenne, 8 contrats similaires gagnés, adéquate pour l'entreprise, et 0 marché comparable passé par cet acheteur.\" Not grammatically perfect. Need 2 complete sentences. Better: \"La probabilité d'offre unique est de 17 % contre 20 % de moyenne, avec 8 contrats similaires gagnés, ce qui est adéquat pour l'entreprise, et 0 marché comparable passé par cet acheteur.\" Count maybe 30. It includes number after average. \"ce qui est adéquat\" maybe okay. But \"adéquation avec l'entreprise\" required? It",
+   "error": null,
+   "seconds": 46.8,
+   "usage": {
+    "in": 538,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103338",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 33.1,
+   "usage": {
+    "in": 646,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99792",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 30.6,
+   "usage": {
+    "in": 614,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99012",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 26.6,
+   "usage": {
+    "in": 620,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-100229",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat (probabilité d'offre unique comparée à moyenne, adéquation avec entreprise, historique acheteur s'il existe). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must not change recommendation. Use « Aller, car », « Passer, car » or « À étudier, car », with comma. Here recommendation Passer, reason \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need sentence 2 start exactly \"Passer, car\" then reason? It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Also says Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 should be \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But must be complete sentence? It is a sentence fragment? They require 2 phrases complètes. \"Passer, car ...\" is not complete? Maybe acceptable as imperative? Need exactly 2 sentences. Could be \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" But must use field raison? It says donne sa raison avec le champ « raison ». Could use exact reason? Need not change recommendation. We can adapt? \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" That's 10 words? Let's count. Need total <=45. Sentence 1 must include probability 17%, moyenne 20%, then number contracts similaires gagnés 5. Also mention adequacy with company and buyer history if exists. Buyer history: 4 marchés comparables passés par cet acheteur, nombre d'offres non renseigné. Need not report single-offer share to total markets. We can say: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 5 contrats similaires, dont 1 dans le même département, sur 4 marchés comparables de l'acheteur.\" Count words? Need exactly 2 sentences, max 45 total. Let's count carefully. French punctuation: numbers maybe words? We need 45 mots maximum. Let's draft:\nSentence1: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 5 contrats similaires, dont 1 dans le même département, sur 4 marchés comparables de l'acheteur.\"\nCount: La1 probabilité2 d'offre3 unique4 est5 de6 17%? maybe \"17\" as word? In word count, numbers count as words. Let's count tokens separated by spaces: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 17(7) %(8?) Usually % attached? If \"17 %\" two tokens? Better avoid %? But must give pourcentage. Could write \"17 %\" maybe two words? Need safe under 45. Let's count with spaces: \"La probabilité d'offre unique est de 17 %, contre 20 % en moyenne, et l'entreprise a gagné 5 contrats similaires, dont 1 dans le même département, sur 4 marchés comparables de l'acheteur.\"\nTokens: La1 probabilité2 d'offre3 unique4 est5 de6 17%? If \"17 %,\" maybe 17 and % separate? Let's assume each space separated: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 17(7) %(8) contre(9) 20(10) %(11) en(12) moyenne(13) et(14) l'entreprise(15) a(16) gagné(17) 5(18) contrats(19) similaires(20) dont(21) 1(22) dans(23) le(24) même(25) département(26) sur(27) 4(28) marchés(29) comparables(30) de(31) l'acheteur(32). 32 words if % separate. Sentence2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Tokens: Passer,1 car2 probabilité3 d'offre4 unique5 sous6 la7 moyenne8 :? la9 concurrence10 sera11 habituelle12. Total 44. Under 45. But is sentence 2 complete? It's an imperative/fragment. They require 2 phrases complètes. Maybe \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" Count: Passer,1 car2 la3 probabilité4 d'offre5 unique6 est7 sous8 la9 moyenne,10 la11 concurrence12 sera13 habituelle14. Total 46 if sentence1 32. Too high. Need reduce sentence1.\n\nNeed exactly 2 sentences. Sentence1 must include probability, average, number contracts won. Also adequacy with company, buyer history if exists. Could be concise: \"Avec 17 % de probabilité d'offre unique contre 20 % en moyenne, l'entreprise a gagné 5 contrats similaires, dont 1 local, sur 4 marchés de l'acheteur.\" Count: Avec1 17%? Let's count spaces: Avec(1) 17(2) %(3) de(4) probabilité(5) d'offre(6) unique(7) contre(8) 20(9) %(10) en(11) moyenne,(12) l'entreprise(13) a(14) gagné(15) 5(16) contrats(17) similaires,(18) dont(19) 1(20) local,(21) sur(22) 4(23) marchés(24) de(25) l'acheteur.(26). Sentence2 12 => 38. Good. But \"dont 1 local\" uses number 1 from facts? yes dont_dans_le_meme_departement:1. \"local\" maybe not exact? Could say \"dont 1 dans le même département\" adds words. Need buyer history: \"sur 4 marchés",
+   "error": null,
+   "seconds": 46.1,
+   "usage": {
+    "in": 539,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-96848",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 22.8,
+   "usage": {
+    "in": 621,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "36614",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 29.9,
+   "usage": {
+    "in": 571,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "23646",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 24.7,
+   "usage": {
+    "in": 644,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-109616",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must write « Aller, car », « Passer, car » or « À étudier, car », with comma. Do not change recommendation. Recommendation is Passer. So sentence 2 must start exactly \"Passer, car\" and reason: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need maybe include exactly? \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" But must start exactly \"Passer, car\". Need 2 sentences total. Sentence 1 must include 15%, 20%, 46. Also buyer history if exists: marches comparables passes by buyer = 0. Could mention \"aucun marché comparable passé par cet acheteur\". Need adequacy with company: 46 similar contracts won, 15 in same department? The instruction says then number of contrats similaires gagnés par l'entreprise. It doesn't require same department, but can include? Only use given numbers. Need max 45 words total. Need exactly 2 sentences. Need no title/list. Tone measured. Strong probability single offer is opportunity, but here probability below average, recommendation Passer. Need not call buyer suspect. End with point.\n\nDraft:\n\"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 46 contrats similaires gagnés et aucun marché comparable passé par cet acheteur. Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\"\nCount words? Let's count French words: La(1) probabilité2 d'offre3 unique4 est5 de6 15%? maybe \"15 %\" as one? contre7 20%? en8 moyenne9 avec10 4611 contrats12 similaires13 gagnés14 et15 aucun16 marché17 comparable18 passé19 par20 cet21 acheteur22. Passer23, car24 la25 probabilité26 d'offre27 unique28 est29 sous30 la31 moyenne32, la33 concurrence34 sera35 habituelle36. 36 words. Good. But sentence 1: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 46 contrats similaires gagnés et aucun marché comparable passé par cet acheteur.\" Does it include adequacy? \"avec 46 contrats similaires gagnés\" maybe adequacy. It says then number of contrats similaires gagnés. Good. Buyer history: aucun marché comparable passé. Good.\n\nNeed exactly 2 sentences. It has two. Ends with point. Need \"Passer, car\" exactly. It starts second sentence with Passer, car. Good.\n\nCheck max 45. Good.\n\nPotential issue: \"15 %\" and \"20 %\" maybe counted as two words? Still under. Need use only numbers present: 15,20,46,0? We used 0 as \"aucun\" not number. Is that allowed? It says utilise uniquement les chiffres présents dans les faits, sans en calculer de nouveaux. \"aucun\" is not a number, but conveys 0. Could be okay? Maybe safer to use \"0 marché comparable passé par cet acheteur\" but then number 0 present. Sentence: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 46 contrats similaires gagnés et 0 marché comparable passé par cet acheteur.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 15%7 contre8 20%9 en10 moyenne11 avec12 4613 contrats14 similaires15 gagnés16 et17 0 18 marché19 comparable20 passé21 par22 cet23 acheteur24. Passer25 car26 la27 probabilité28 d'offre29 unique30 est31 sous32 la33 moyenne34 la35 concurrence36 sera37 habituelle38. 38. Good. But \"0 marché\" maybe awkward but acceptable. It uses number 0. The instruction: \"historique de l'acheteur s'il existe\" and marches comparables =0. Could say \"0 marché comparable passé par cet acheteur\". Good.\n\nNeed \"probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe\". We have probability compared to average, 46 contracts, 0 buyer history. Good.\n\nNeed \"Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\" We have 15%, 20%, then 46. Good.\n\nNeed \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\" We use 15,20,46,0. Good.\n\nNeed \"La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\" We don't.\n\nNeed \"N'explique pas le fonctionnement du modèle.\" ok.\n\nNeed \"Pas de titre, pas de liste.\" ok.\n\nNeed \"Ton mesuré.\" ok.\n\nNeed \"Ne qualifie jamais un acheteur ou un titulaire de suspect.\" ok.\n\nNeed \"Termine par un point.\" ok.\n\nPotential issue: \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" The reason field is \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". We can use colon? Sentence: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" But must be complete sentence? It says 2 phrases complètes. \"Passer, car probabilité...\" maybe not complete? Better \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" It's a complete sentence? It has imperative? \"Passer\" is infinitive, but required start. It's okay? Maybe \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" It's a sentence with imperative? In",
+   "error": null,
+   "seconds": 48.7,
+   "usage": {
+    "in": 539,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106337",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field « raison ». Must not change recommendation. Use \"Passer, car\" with comma. Need measured tone. No title/list. End with period.\n\nFacts: achat FOUILLES ARCHEOLOGIQUES - GEUDERTHEIM, type appel d'offres ouvert, acheteur AFUA Die BINN GEUDERTHEIM, date 11/12/2026, prob 15, moyenne 20, par rapport 0,8 fois, contrats similaires gagnés 35, dont même département 2, marchés comparables passés par cet acheteur 0, recommandation Passer, raison \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\", titulaire sortant false.\n\nNeed exactly 2 sentences. Sentence 1 must include: probability 15%, average 20%, number of similar contracts won 35. Also adequacy with company? \"adéquation avec l'entreprise\" maybe mention 35 contrats similaires gagnés. Buyer history if exists: 0 marchés comparables passés par cet acheteur. But max 45 words total. Need concise.\n\nSentence 1: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" Count words? Let's count French words: La(1) probabilité(2) d'offre(3?) Usually d'offre one word? Need be safe. Let's count tokens separated by spaces: La 1, probabilité 2, d'offre 3, unique 4, est 5, de 6, 15 7, %, 8? maybe punctuation attached. contre 9, 20 10, % 11, en 12, moyenne 13, avec 14, 35 15, contrats 16, similaires 17, gagnés 18, et 19, 0 20, marché 21, comparable 22, de 23, cet 24, acheteur 25. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count: Passer, 1 car 2 probabilité 3 d'offre 4 unique 5 sous 6 la 7 moyenne 8 : la 9 concurrence 10 sera 11 habituelle 12. Total 37. Good under 45. But sentence 2 must start exactly with word « Passer » then \"Passer, car\" with comma. It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Also says Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 should be \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" That's okay. But maybe reason field includes colon; can use as is. Need exactly 2 complete sentences. Sentence 1 complete? It is a statement. Ends period. Sentence 2 complete? Imperative? \"Passer, car ...\" maybe not complete? It is a recommendation phrase, likely acceptable. Could be \"Passer, car la probabilité d'offre unique est sous la moyenne : la concurrence sera habituelle.\" But must use reason field? It says donne sa raison avec le champ « raison ». Could use exact reason? Probably can paraphrase but use field. Need only numbers present. If add \"la\" no number. Fine.\n\nNeed ensure sentence 1 includes \"probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe\". It includes probability, average, 35 contracts, 0 buyer comparable. Adequacy? 35 contracts similaires gagnés indicates adequacy. Could mention \"adéquate\" but no need? It says constat (probabilité ... adéquation avec l'entreprise, historique ...). Need maybe \"l'adéquation est soutenue par 35 contrats similaires gagnés\". But word count.\n\nPotential sentence 1: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" This covers. But \"adéquation avec l'entreprise\" maybe not explicit. Could say \"L'adéquation est soutenue par 35 contrats similaires gagnés, avec 0 marché comparable de cet acheteur.\" But must include probability and average before number? It says Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés. So order: probability, average, then number. Could be: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, puis 35 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" \"puis\" awkward. Better: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable de cet acheteur.\" It gives number after average. Adequacy implied by \"avec 35 contrats similaires gagnés\". Maybe enough.\n\nNeed max 45 words. Let's count more carefully with French punctuation. Sentence1: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, avec 35 contrats similaires gagnés et 0 marché comparable de cet acheteur.\"\nWords by spaces: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 15(7) %,(8) contre(9) 20(10) %(11) en(12) moyenne,(13) avec(14) 35(15) contrats(16) similaires(17) gagnés(18) et(19) 0(20) marché(21) comparable(22) de(23) cet(24) acheteur.(25)\nSentence2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\nWords: Passer,(1) car(",
+   "error": null,
+   "seconds": 43.5,
+   "usage": {
+    "in": 509,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-105878",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 45.9,
+   "usage": {
+    "in": 620,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95787",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 30.2,
+   "usage": {
+    "in": 601,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "47191",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 65.1,
+   "usage": {
+    "in": 658,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-107214",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 51.6,
+   "usage": {
+    "in": 663,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-97051",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers, no new calculations. Need sentence 1: constat: probability unique offer compared to average, adequacy with company, buyer history if exists. Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Sentence 2: recommendation given in field: start exactly with word (« Aller », « À étudier » or « Passer »), then give reason with field raison. Must write « Aller, car », « Passer, car » or « À étudier, car », with comma. Recommendation is Passer, reason: \"probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\". Need not change recommendation. Need point at end. No title/list. Tone measured. Never qualify buyer or holder suspect. Strong probability single offer is opportunity, but here probability below average, so competition usual. Need exactly 2 sentences. Max 45 words total. Need include numbers: probabilite 15, moyenne 20, contrats similaires gagnés 5. Maybe buyer history: 253 marchés comparables, 169 known, 21% single offer. But max 45 words. Need sentence 1 include probability, average, number contracts won. Could include buyer history if exists? \"historique de l'acheteur s'il existe\" maybe should include if data exists. But word limit. Need exactly 2 sentences. Let's draft:\n\"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, et l'entreprise a gagné 5 contrats similaires.\" Count words? La1 probabilité2 d'offre3 unique4 est5 de6 15%7 contre8 20%9 en10 moyenne11 et12 l'entreprise13 a14 gagné15 516 contrats17 similaires18. Sentence 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count Passer19 car20 probabilité21 d'offre22 unique23 sous24 la25 moyenne26 la27 concurrence28 sera29 habituelle30. Total 30 words. But sentence 2 starts with \"Passer, car\" exactly? It says commence la phrase par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation. Dans la phrase 1... Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. So sentence 2 should start \"Passer, car\" then reason. If reason contains colon, okay? \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" It starts Passer, car. Good. But maybe need complete sentence? It is a sentence fragment? \"Passer, car ...\" is imperative? It's okay? They ask 2 phrases complètes. \"Passer, car ...\" maybe not complete? Could be \"Nous passons, car...\" but must start exactly with word Passer. \"Passer, car ...\" is an infinitive phrase, maybe acceptable? They explicitly require start with exactly word and write \"Passer, car\". Could be considered complete? Maybe \"Passer, car la probabilité d'offre unique est sous la moyenne, la concurrence sera habituelle.\" But reason field exact? \"donne sa raison avec le champ « raison »\" likely use reason text, can adapt? It says Ne change jamais la recommandation. Maybe reason should be from field. We can use exact reason after car. But if exact reason includes colon, sentence: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" That's not grammatically complete? It's a recommendation phrase. They likely accept.\n\nNeed ensure sentence 1 includes buyer history if exists? It says 1) le constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe). We have buyer history: 253 marchés comparables, 169 known, 21% single offer. But max 45 words. Need include? \"s'il existe\" maybe if exists include. We have data. But if include all, word count may exceed. Need exactly 2 sentences, max 45. Let's try include concise buyer history: \"La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, l'entreprise a gagné 5 contrats similaires, et l'acheteur a 21 % d'offres uniques connues.\" Count: La1 probabilité2 d'offre3 unique4 est5 de6 15%7 contre8 20%9 en10 moyenne11 l'entreprise12 a13 gagné14 515 contrats16 similaires17 et18 l'acheteur19 a20 21%21 d'offres22 uniques23 connues24. Sentence 2 12? \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\" Count Passer1 car2 probabilité3 d'offre4 unique5 sous6 la7 moyenne8 la9 concurrence10 sera11 habituelle12. Total 36. Good. But sentence 1: \"l'acheteur a 21 % d'offres uniques connues\" uses 21 from part_de_ces_marches_connus_avec_une_seule_offre_pct. It says part de marchés avec une seule offre se rapporte aux marchés dont nombre d'offres connu, pas à tous. Need not report percentage to total. Saying \"21 % d'offres uniques connues\" maybe okay? It says \"d'offres uniques connues\" not \"marchés\". Better: \"21 % de marchés connus avec une seule offre\". Count: La probabilité d'offre unique est de 15 %, contre 20 % en moyenne, l'entreprise a gagné 5 contrats similaires, et l'acheteur a 21 % de marchés connus avec une seule offre. Count: La1 probabilité2 d'offre3 unique4 est5 de6 15%7 contre8 20%9 en10 moyenne11 l'entreprise12 a13 gagné14 515 contrats16 similaires17 et18 l'acheteur19 a20 21%21 de22 marchés23 connus24 avec25 une26 seule27 offre28. Sentence 2 12 total 40. Good. But \"l'acheteur a 21 % de marchés connus avec une seule offre\" maybe implies 21% of known markets. Good. Need maybe mention 169",
+   "error": null,
+   "seconds": 63.0,
+   "usage": {
+    "in": 567,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-98368",
+   "verdict_attendu": "Passer",
+   "note": "Nous devons répondre en français, exactement 2 phrases complètes, 45 mots maximum au total.\nContraintes:\n- Point de vue entreprise: forte probabilité offre unique = opportunité, jamais risque.\n- Phrase 1: constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe).\n- Phrase 2: recommandation donnée dans le champ « recommandation »: commence par exactement ce mot (« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». Ne change jamais la recommandation.\n- Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, puis le nombre de contrats similaires gagnés par l'entreprise.\n- Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule.\n- Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\n- La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\n- N'explique pas le fonctionnement du modèle.\n- Pas de titre, pas de liste.\n- Ton mesuré.\n- Ne qualifie jamais un acheteur ou un titulaire de suspect.\n- Termine par un point.\n\nFaits:\nachat: Etudes géotechniques...\ntype: appel d'offres ouvert\nacheteur: Ville de Paris\ndate_limite_offres: 16/11/2026\nprobabilite_offre_unique_pct: 15\nmoyenne_offre_unique_pct: 20\npar_rapport_a_la_moyenne: 0,8 fois\ncontrats_similaires_gagnes_par_l_entreprise: 5\ndont_dans_le_meme_departement: 3\nmarches_comparables_passes_par_cet_acheteur: 253\ndont_marches_avec_nombre_d_offres_connu: 169\npart_de_ces_marches_connus_avec_une_seule_offre_pct: 21\nrecommandation: Passer\nraison: probabilité d'offre unique sous la moyenne : la concurrence sera habituelle\nl_entreprise_est_le_titulaire_sortant: false\n\nPhrase 1 doit contenir:\n- probabilité d'offre unique: 15%\n- moyenne: 20%\n- nombre de contrats similaires gagnés: 5\n- comparaison à la moyenne (0,8 fois)\n- adéquation avec l'entreprise (5 contrats gagnés, dont 3 dans le même département)\n- historique de l'acheteur s'il existe (253 marchés comparables, 169 avec nombre d'offres connu, 21% avec une seule offre)\nAttention: \"Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux.\"\nPeut-on utiliser 0,8 fois? Oui, c'est un chiffre présent.\nPeut-on utiliser 253, 169, 21? Oui.\nMais il faut rester sous 45 mots au total pour les 2 phrases.\nComptons les mots.\nPhrase 1: \"Avec 15 % de probabilité d'offre unique contre 20 % de moyenne, soit 0,8 fois, et 5 contrats similaires gagnés, l'acheteur a passé 253 marchés, dont 169 connus avec 21 % d'offres uniques.\"\nMots: Avec(1) 15(2) %(3) de(4) probabilité(5) d'offre(6) unique(7) contre(8) 20(9) %(10) de(11) moyenne(12), soit(13) 0,8(14) fois(15), et(16) 5(17) contrats(18) similaires(19) gagnés(20), l'acheteur(21) a(22) passé(23) 253(24) marchés(25), dont(26) 169(27) connus(28) avec(29) 21(30) %(31) d'offres(32) uniques(33). -> 33 mots.\nPhrase 2: \"Passer, car probabilité d'offre unique sous la moyenne : la concurrence sera habituelle.\"\nMots: Passer,(1) car(2) probabilité(3) d'offre(4) unique(5) sous(6) la(7) moyenne(8) :(9) la(10) concurrence(11) sera(12) habituelle(13). -> 13 mots.\nTotal: 46 mots. Trop long (max 45).\n\nIl faut réduire.\nPhrase 1: \"Avec 15 % de probabilité d'offre unique contre 20 % de moyenne, soit 0,8 fois, et 5 contrats similaires gagnés, l'acheteur a passé 253 marchés, dont 169 connus avec 21 % d'offres uniques.\"\nOn peut raccourcir: \"Avec 15 % de probabilité d'offre unique contre 20 % de moyenne, soit 0,8 fois, et 5 contrats similaires gagnés, l'acheteur a passé 253 marchés, dont 169 connus avec 21 % d'offres uniques.\"\nComptage exact:\nAvec (1)\n15 (2)\n% (3)\nde (4)\nprobabilité (5)\nd'offre (6)\nunique (7)\ncontre (8)\n20 (9)\n% (10)\nde (11)\nmoyenne (12),\nsoit (13)\n0,8 (14)\nfois (15),\net (16)\n5 (17)\ncontrats (18)\nsimilaires (19)\ngagnés (20),\nl'acheteur (21)\na (22)\npassé (23)\n253 (24)\nmarchés (25),\ndont (26)\n169 (27)\nconnus (28)\navec (29)\n21 (30)\n% (31)\nd'offres (32)\nuniques (33).\n\nPhrase 2:\nPasser, (1)\ncar (2)",
+   "error": null,
+   "seconds": 54.7,
+   "usage": {
+    "in": 561,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-99646",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 30.2,
+   "usage": {
+    "in": 664,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-95610",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 53.7,
+   "usage": {
+    "in": 689,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-103600",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 80.1,
+   "usage": {
+    "in": 647,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "BOAMP-26-106877",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 67.3,
+   "usage": {
+    "in": 689,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66489",
+   "verdict_attendu": "Passer",
+   "note": "",
+   "error": null,
+   "seconds": 32.4,
+   "usage": {
+    "in": 666,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": true,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": true,
+    "tout": false
+   }
+  },
+  {
+   "code": "66389",
+   "verdict_attendu": "Passer",
+   "note": "We need answer in French exactly 2 complete sentences, max 45 words total. Need use only given numbers, no new calculations. Need sentence 1: constat (probability unique offer compared to average, adequacy with company, buyer history if exists). Must always give percentage probability unique offer AND average percentage, then number of similar contracts won by company. Need mention buyer history if exists? \"historique de l'acheteur s'il existe\" likely include if data exists: buyer passed 14 comparable markets, 3 known offers, 33% of known with single offer. But must not report that percentage to total markets. Need careful: \"La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés.\" So if mention 33%, must phrase as among 3 known-offer markets, not 14. But maybe to keep word count, can omit buyer history? It says s'il existe, so if exists should include? \"1) le constat (probabilité d'offre unique comparée à la moyenne, adéquation avec l'entreprise, historique de l'acheteur s'il existe)\" likely include all if available. But max 45 words, 2 sentences. Need sentence 2 recommendation exactly starts with \"Passer, car\" and reason with field raison. Reason: \"probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus\". But user says point of view: strong probability single offer is opportunity, never risk. Here probability 14% lower than average 20%, so more competitors expected. Recommendation Passer. Need not change. Sentence 2: \"Passer, car probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus.\" That's 15? Let's count. Passer(1) car(2) probabilité(3) d'offre(4) unique(5) nettement(6) inférieure(7) à(8) la(9) moyenne(10) plus(11) de(12) concurrents(13) que(14) d'habitude(15) sont(16) attendus(17). Actually colon not word. 17 words. Need total <=45, so sentence1 <=28 words.\n\nSentence1 must include: probability 14%, average 20%, number similar contracts won 8. Also adequacy with company? \"adéquation avec l'entreprise\" maybe mention 8 contrats similaires gagnés, dont 3 dans même département? But only need number? It says \"puis le nombre de contrats similaires gagnés par l'entreprise.\" So include 8. Could include 3 same department? It says only use numbers present. Could include but word count. Need buyer history if exists: 14 comparable markets, 3 known offers, 33% of known with single offer. But if include all, sentence1 may be long. Need exactly 2 sentences. Let's draft:\n\"La probabilité d'offre unique est de 14 %, contre 20 % en moyenne, avec 8 contrats similaires gagnés, dont 3 dans le même département, et 33 % des 3 marchés connus de cet acheteur avec une seule offre.\"\nCount: La1 probabilité2 d'offre3 unique4 est5 de6 14%? maybe \"14 %\" as one? Let's count words: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 14(7) %(8?) Usually percent sign maybe separate? To be safe count tokens? Need 45 max. Let's count as words separated by spaces: \"La probabilité d'offre unique est de 14 %, contre 20 % en moyenne, avec 8 contrats similaires gagnés, dont 3 dans le même département, et 33 % des 3 marchés connus de cet acheteur avec une seule offre.\"\nWords: La1 probabilité2 d'offre3 unique4 est5 de6 14%? If \"14 %\" two tokens? Let's assume \"14 %\" maybe 2? We need safe. Let's count with spaces: La(1) probabilité(2) d'offre(3) unique(4) est(5) de(6) 14(7) %(8) contre(9) 20(10) %(11) en(12) moyenne(13) avec(14) 8(15) contrats(16) similaires(17) gagnés(18) dont(19) 3(20) dans(21) le(22) même(23) département(24) et(25) 33(26) %(27) des(28) 3(29) marchés(30) connus(31) de(32) cet(33) acheteur(34) avec(35) une(36) seule(37) offre(38). 38 words if % separate. Plus sentence2 17 =55 >45. Need shorter.\n\nNeed include required: probability 14%, average 20%, number 8. Buyer history if exists maybe can be concise: \"acheteur : 33 % des 3 marchés connus avec une seule offre\". But still. Maybe omit \"dont 3 même département\" to save. Need \"adéquation avec l'entreprise\" maybe 8 contrats similaires gagnés suffices? Could mention \"8 contrats similaires gagnés\". Buyer history: \"33 % des 3 marchés connus de cet acheteur avec une seule offre\". Need not mention 14 total to avoid confusion. But \"historique de l'acheteur s'il existe\" maybe include 14? It says facts include 14 comparable markets passed by buyer, 3 known offers, 33% of known. To be safe include 14? But phrase \"14 marchés comparables, dont 3 connus, 33 % avec une seule offre\" could be 12 words. Need total <=45.\n\nLet's design minimal sentence1: \"Probabilité d'offre unique : 14 % contre 20 % en moyenne, 8 contrats similaires gagnés, acheteur : 33 % des 3 marchés connus avec une seule offre.\"\nCount: Probabilité1 d'offre2 unique3 :4? colon not word. 14%? Let's count spaces: Probabilité(1) d'offre(2) unique(3) 14(4) %(5) contre(6) 20(7) %(8) en(9) moyenne(10) 8(11) contrats(1",
+   "error": null,
+   "seconds": 33.2,
+   "usage": {
+    "in": 532,
+    "out": 1500
+   },
+   "checks": {
+    "chiffres": false,
+    "denominateur": true,
+    "verdict": false,
+    "format": false,
+    "francais": false,
+    "tout": false
+   }
+  }
+ ]
+}

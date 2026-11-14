@@ -385,6 +385,22 @@ with tab_proof:
             }), width="stretch")
             st.caption("AUC : capacité à classer les marchés du plus au moins risqué (0,5 = hasard). "
                        "Brier : erreur des probabilités (plus bas = mieux).")
+        bm_p = ART / "llm_benchmark.json"
+        if bm_p.exists():
+            bm = json.loads(bm_p.read_text())
+            st.subheader("Quel modèle écrit les notes ?")
+            st.write(f"Mêmes faits, même consigne, **une seule tentative** par note, sur {bm['n']} appels d'offres de "
+                     f"{bm['company']}. Une note est conforme si tous ses chiffres viennent des données, si elle garde la "
+                     "recommandation calculée par les règles, et si elle tient en 2 phrases et 45 mots, en français.")
+            rows = []
+            for lab, m in bm["models"].items():
+                usd = m.get("usd_per_1000_notes")
+                rows.append({"Modèle": lab, "Notes conformes": f"{m['pass']['tout']} / {m['n']}",
+                             "Temps médian": f"{fr_num(m['median_seconds'])} s" if m.get("median_seconds") else "—",
+                             "Coût pour 1 000 notes": f"{usd:.2f} $".replace(".", ",") if usd is not None else "n.d."})
+            st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+            st.caption("Les notes de l'application sont écrites par Gemma 4 31B (modèle ouvert, via Featherless). "
+                       + " ".join(bm.get("caveats", [])))
         st.subheader("Sources")
         st.write("Projets d'achats publics (APProch) et derniers marchés de chaque acheteur (« Marchés publics notifiés »), "
                  "via l'API Hémicycle ; historique complet pour l'entraînement du score : DECP consolidées (data.gouv.fr)"
