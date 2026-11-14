@@ -41,6 +41,25 @@ def load_notes() -> dict:
 
 FOLLOWS = ART / "follows.json"
 
+# Fake identifiers found in the contract data (e.g. 123456789 appears on 43 rows)
+PLACEHOLDER_SIRENS = {"123456789", "000000000", "111111111", "999999999", "987654321"}
+
+
+@st.cache_data(ttl=86400, show_spinner=False)
+def is_sole_trader(siren9: str) -> bool | None:
+    """Sole trader (entrepreneur individuel) per the public company register. None if the register is unreachable."""
+    import requests
+    try:
+        r = requests.get("https://recherche-entreprises.api.gouv.fr/search",
+                         params={"q": siren9, "per_page": 1}, timeout=3)
+        for x in r.json().get("results", []):
+            if x.get("siren") == siren9:
+                return bool((x.get("complements") or {}).get("est_entrepreneur_individuel")) \
+                    or str(x.get("nature_juridique")) == "1000"
+        return False
+    except Exception:  # offline: do not block the demo
+        return None
+
 
 def load_follows() -> dict:
     try:
@@ -223,13 +242,23 @@ st.caption("1 marché public sur 5 ne reçoit qu'une seule offre. Offre unique m
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Preuves"])
 
 with tab_main:
-    siren = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=14,
-                          help="Réservé aux sociétés. N'entrez pas le SIREN d'un entrepreneur individuel : "
-                               "son profil serait celui d'une personne.").strip()
-    prof = profile_of(awards, siren[:9]) if siren else None
-    if not siren:
+    raw = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=20,
+                        help="9 chiffres (ou le SIRET, dont on garde les 9 premiers). Réservé aux sociétés.")
+    siren = re.sub(r"\D", "", raw or "")[:9]  # accepts spaces, dots and a full SIRET
+    if not (raw or "").strip():
         st.write("Entrez un SIREN pour voir les appels d'offres à venir qui vous correspondent.")
         st.stop()
+    if len(siren) < 9:
+        st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
+        st.stop()
+    if siren in PLACEHOLDER_SIRENS:
+        st.write("Ce numéro est un identifiant fictif présent dans certaines données, pas une entreprise.")
+        st.stop()
+    if is_sole_trader(siren):
+        st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
+                 "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
+        st.stop()
+    prof = profile_of(awards, siren)
     if not prof:
         st.write("Aucun marché gagné trouvé pour ce SIREN dans les données publiques.")
         st.stop()
@@ -248,7 +277,10 @@ with tab_main:
         n_open = int((t["source"] == "BOAMP").sum()) if "source" in t else 0
         head = f"{len(t)} appels d'offres dans votre métier, les moins disputés d'abord"
         if n_open:
-            head += f" · {n_open} ouverts maintenant"
+            head += f" · {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
+        level = str(t["match_level"].iloc[0]) if "match_level" in t else ""
+        if level and level != "même métier, même département":
+            head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
         st.caption(head)
         cols = {}
         if has_boamp:

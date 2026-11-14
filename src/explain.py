@@ -73,7 +73,7 @@ def recommend(proba: float, avg: float | None, n_dept: int, hist_single: float |
         return "À étudier", "peu de concurrents attendus, mais l'entreprise n'a pas encore travaillé dans ce département"
     if not buyer_ok:
         return "À étudier", "les marchés passés de cet acheteur ont souvent reçu plusieurs offres"
-    return "À étudier", "probabilité au-dessus de la moyenne, sans écart net"
+    return "À étudier", "probabilité proche de la moyenne ou un peu au-dessus, sans écart net"
 
 
 def facts_for(row: pd.Series, profile: dict | None) -> dict:

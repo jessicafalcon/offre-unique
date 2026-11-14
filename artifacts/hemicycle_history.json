@@ -1443,5 +1443,152 @@
    "24670048800017"
   ],
   "credits_left": "10748"
+ },
+ "BOAMP-26-101166": {
+  "n": 39,
+  "n_lab": 36,
+  "level": "groupe CPV",
+  "single_share": 0.4444444444444444,
+  "last_date": "2026-04-01",
+  "editions": [
+   {
+    "date": "2026-04-01",
+    "objet": "2023-M336LOT03 MS5 FOURNITURE DE STATIONS COMPLETES",
+    "offres": 1,
+    "titulaire_nom": "Ovive"
+   },
+   {
+    "date": "2026-03-30",
+    "objet": "2025-M205LOT02 TRANSPORT ET VALORISATION CSR TRIVALANDES",
+    "offres": 1,
+    "titulaire_nom": "Piveteau Bois (Vivre en Bois Piveteau Bois)"
+   },
+   {
+    "date": "2026-03-24",
+    "objet": "2026-M121 EXPLOIT UVEOR TRIVALANDES",
+    "offres": 1,
+    "titulaire_nom": "Générale de Valorisation"
+   },
+   {
+    "date": "2026-03-20",
+    "objet": "2025-M206 EXPLOIT UVEOR TRIVALONNE",
+    "offres": 1,
+    "titulaire_nom": "Urbaser Environnement"
+   },
+   {
+    "date": "2025-12-19",
+    "objet": "2025-M498LOT05 PAVILLONS COMPOSTAGE",
+    "offres": 1,
+    "titulaire_nom": "Valdefis"
+   }
+  ],
+  "fetched_at": "2026-11-14T12:36",
+  "sirets": [
+   "25850296200040",
+   "25850296200081"
+  ],
+  "credits_left": "10743"
+ },
+ "BOAMP-26-97880": {
+  "n": 17,
+  "n_lab": 8,
+  "level": "groupe CPV",
+  "single_share": 0.5,
+  "last_date": "2026-04-01",
+  "editions": [
+   {
+    "date": "2026-04-01",
+    "objet": "Exploitation du site des Brieulles",
+    "offres": 1,
+    "titulaire_nom": "Seche ECO Industries"
+   },
+   {
+    "date": "2025-11-17",
+    "objet": "Transport des déchets issus des déchèteries Lot no1",
+    "offres": 1,
+    "titulaire_nom": "Transports Brangeon (Brangeon Transports et Logistique)"
+   },
+   {
+    "date": "2025-11-09",
+    "objet": "Transport des déchets issus des déchèteries Lot no2",
+    "offres": 2,
+    "titulaire_nom": "Boiscompost"
+   },
+   {
+    "date": "2025-05-05",
+    "objet": "Mise à disposition de FMA et transport de déchets dans le cadre du marché d'exploitation de deux quais de transfert",
+    "offres": 4,
+    "titulaire_nom": "SA Inter Transports des Marais"
+   },
+   {
+    "date": "2025-04-29",
+    "objet": "2025-GIEXPQDT-Exploitation des deux centres de transfert de déchets",
+    "offres": 2,
+    "titulaire_nom": "Collectes Valorisation Énergie Déchets - Coved"
+   }
+  ],
+  "fetched_at": "2026-11-14T12:36",
+  "sirets": [
+   "25440252200018"
+  ],
+  "credits_left": "10742"
+ },
+ "BOAMP-26-97217": {
+  "n": 15,
+  "n_lab": 15,
+  "level": "groupe CPV",
+  "single_share": 0.3333333333333333,
+  "last_date": "2025-04-22",
+  "editions": [
+   {
+    "date": "2025-04-22",
+    "objet": "LOT 2 CARTONS PAPIERS",
+    "offres": 1,
+    "titulaire_nom": "Brangeon Recyclage Atlantique (Fers)"
+   },
+   {
+    "date": "2025-04-22",
+    "objet": "LOT 1 BOIS",
+    "offres": 1,
+    "titulaire_nom": "Brangeon Recyclage Atlantique (Fers)"
+   },
+   {
+    "date": "2025-04-22",
+    "objet": "LOT 1 BOIS",
+    "offres": 1,
+    "titulaire_nom": "Brangeon Recyclage Atlantique (Fers)"
+   },
+   {
+    "date": "2025-04-22",
+    "objet": "LOT 2 CARTONS PAPIERS",
+    "offres": 1,
+    "titulaire_nom": "Brangeon Recyclage Atlantique (Fers)"
+   },
+   {
+    "date": "2025-03-31",
+    "objet": "PRESTATION DE TRANSFERT DES DECHETS ISSUS DU TERRITOIRE DE LA CCPG",
+    "offres": 1,
+    "titulaire_nom": "Houdelot Negoce SARL"
+   }
+  ],
+  "fetched_at": "2026-11-14T12:36",
+  "sirets": [
+   "20004133300267",
+   "20004133300259"
+  ],
+  "credits_left": "10740"
+ },
+ "BOAMP-26-106452": {
+  "n": 0,
+  "n_lab": 0,
+  "level": "division CPV",
+  "single_share": null,
+  "last_date": null,
+  "editions": [],
+  "fetched_at": "2026-11-14T12:36",
+  "sirets": [
+   "26290361000018"
+  ],
+  "credits_left": "10739"
  }
 }
