@@ -15,3 +15,4 @@ data/clean/awards.parquet
 backup_1015/
 artifacts/follows.json
 *.bak
+run/

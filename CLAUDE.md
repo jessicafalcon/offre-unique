@@ -144,14 +144,16 @@ Backups: `src/explain.py.bak`, `src/profiles.py.bak`, `app.py.bak`, `artifacts/n
 
 ## 7b. Public link for judges (hands-on, live)
 
-Judges use the tool on their own devices. Run from the repo root, in two terminals, and keep the laptop awake and plugged in:
+Judges use the tool on their own devices. One command (repo root), detached from any terminal or Claude session, with `caffeinate` keeping the Mac awake while the tunnel runs (keep the lid open and the charger in):
 
 ```bash
-caffeinate -dimsu &                                                       # no sleep while presenting
-python -m streamlit run app.py --server.port 8510 --server.headless true  # terminal 1
-cloudflared tunnel --url http://localhost:8510 --no-autoupdate            # terminal 2: prints https://<random>.trycloudflare.com
+scripts/public_link.sh start    # prints https://<random>.trycloudflare.com (also in run/url.txt)
+scripts/public_link.sh status   # processes + health check through the public link
+scripts/public_link.sh stop
 ```
 
+- **Running since ~16:15: https://von-playback-addressing-reputation.trycloudflare.com** (port 8511).
+- **The running server reloads `app.py` when it changes**: a broken edit breaks the public link for everyone. Run `python tests/stage_check.py` before saving changes to `app.py` near the demo.
 - The URL changes each time cloudflared restarts: start it once, put the link on the slide / a QR code, don't restart it.
 - Quick tunnels have no uptime guarantee and depend on the venue wifi: have a phone hotspot ready.
 - Hardened at 16:00 for several visitors: company-name search + "Essayez" buttons (Point Contrôles, Bati Recyclage, Adimeo, all with pre-written notes); follows are per visitor (session), not a shared file; sole traders refused (register check; outages are never cached; if the register is unreachable, person-like names with < 10 contracts are refused); "non diffusible" SIRENE entities refused and hidden from search; note spinner; error details hidden (`.streamlit/config.toml`). Stage check: 34/34.
