@@ -36,6 +36,8 @@ SYSTEM = (
     "Ne change jamais la recommandation. "
     "Dans la phrase 1, donne toujours le pourcentage de probabilité d'offre unique ET la moyenne en pourcentage, "
     "puis le nombre de contrats similaires gagnés par l'entreprise. "
+    "Si les faits donnent la part des marchés connus de l'acheteur avec une seule offre, cite-la aussi dans la phrase 1, "
+    "avec le nombre de marchés au nombre d'offres connu. Écris les pourcentages avec une espace : « 26 % ». "
     "Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. "
     "Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux. "
     "La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, "
