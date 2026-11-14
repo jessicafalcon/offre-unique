@@ -482,11 +482,7 @@ def render_detail(r: pd.Series, prof: dict) -> None:
 st.html("""<style>
 /* "Pie bavarde" palette: black #0B0C0C, navy #1F3A7A, white; light navy tint #EEF1F7 for panels */
 .ou-header {background:#0b0c0c; color:#fff; padding:1rem 1.25rem; margin:-.5rem 0 .5rem 0; border-bottom:8px solid #1f3a7a; display:flex; align-items:center; gap:1rem;}
-.ou-header img {width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
-.ou-hero {position:relative; padding-right:9.5rem !important;}
-.ou-hero img {position:absolute; right:1.5rem; top:50%; transform:translateY(-50%); width:120px; height:120px;
-  border-radius:50%; object-fit:cover; border:3px solid #fff;}
-@media (max-width:640px) {.ou-hero {padding-right:1.75rem !important;} .ou-hero img {display:none;}}
+.ou-header img {width:104px; height:104px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
 .ou-welcome {display:flex; align-items:center; gap:1.25rem; margin-bottom:.4rem;}
 .ou-welcome img {width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
 .ou-welcome h2 {font-size:2.1rem; font-weight:700; line-height:1.15; margin:0 0 .3rem 0; padding:0; color:#0b0c0c;}
@@ -499,8 +495,8 @@ st.html("""<style>
 [data-testid="stButtonGroup"] button p {font-size:1.05rem !important;}
 .stApp [data-testid="stBaseButton-secondary"] p, .stApp [data-testid="stBaseLinkButton-secondary"] p
   {font-size:1.05rem !important;}
-.ou-header b {font-size:1.75rem; letter-spacing:.01em;}
-.ou-header span {display:block; opacity:.92; font-size:1.05rem; margin-top:.2rem;}
+.ou-header b {font-size:2.5rem; letter-spacing:.01em; line-height:1.1;}
+.ou-header span {display:block; opacity:.95; font-size:1.3rem; margin-top:.35rem;}
 .st-key-start {background:#eef1f7; padding:1.25rem 1.5rem 1rem 1.5rem; border-radius:0;}
 .st-key-start h2 {font-size:2.1rem; font-weight:700; padding-top:0; line-height:1.15;}
 .ou-lead {font-size:1.2rem; margin:.25rem 0 .9rem 0; color:#0b0c0c;}
@@ -527,9 +523,12 @@ st.html("""<style>
 [data-testid="stMainBlockContainer"] {max-width:1560px;}
 .stApp, .stApp [data-testid="stMarkdownContainer"] {color:#0b0c0c;}
 .stApp [data-testid="stMarkdown"] p, .stApp [data-testid="stMarkdown"] li {font-size:1.08rem; line-height:1.55;}
-.stApp [data-testid="stCaptionContainer"], .stApp [data-testid="stCaptionContainer"] p {font-size:.98rem;
+.stApp [data-testid="stCaptionContainer"], .stApp [data-testid="stCaptionContainer"] p {font-size:1.04rem;
   color:#2b2f33 !important; opacity:1 !important;}
-.stApp [data-testid="stWidgetLabel"] p {color:#0b0c0c !important;}
+.stApp [data-testid="stWidgetLabel"] p {color:#0b0c0c !important; font-size:1.1rem !important; font-weight:600;}
+[data-testid="stSidebar"] p, [data-testid="stSidebar"] [data-testid="stCaptionContainer"] {font-size:1.05rem !important;}
+[data-testid="stSidebar"] h3 {font-size:1.4rem;}
+[data-testid="stTooltipContent"] p, [data-baseweb="tooltip"] p {font-size:1rem !important;}
 .st-key-badges p {font-size:1.12rem !important;}
 .st-key-badges span {font-size:1.05rem !important; padding:.15rem .45rem;}
 .ou-index {display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; border-left:6px solid #1f3a7a; background:#eef1f7;
@@ -553,7 +552,9 @@ st.html("""<style>
 .st-key-r_skip [data-testid="stMetricLabel"] p, .st-key-r_skip [data-testid="stMetricValue"] div {color:#383f43 !important;}
 .stApp [data-testid="stMarkdownContainer"] a {color:#1f3a7a; text-underline-offset:3px;}
 .stApp button:focus-visible, .stApp a:focus-visible {outline:3px solid #ffdd00 !important; outline-offset:0;}
-.stApp button[role="tab"] p {font-size:1.15rem; font-weight:700;}
+[data-testid="stTab"] {padding:.6rem 1.1rem !important; height:auto !important;}
+[data-testid="stTab"] p {font-size:1.35rem !important; font-weight:700;}
+[data-testid="stTab"][aria-selected="true"] p {color:#1f3a7a !important;}
 .st-key-note {border-left:8px solid #b1b4b6; padding:.3rem 0 .3rem 1.1rem; margin:.25rem 0;}
 .st-key-note p {font-size:1.15rem !important; line-height:1.55 !important;}
 .st-key-risk p {font-size:1.25rem !important;}
@@ -562,9 +563,11 @@ st.html("""<style>
 .ou-hero {background:#0b0c0c; color:#fff; padding:1.6rem 1.75rem; border-left:8px solid #1f3a7a; margin:.5rem 0 1rem 0;}
 .ou-hero .big {font-size:3.4rem; font-weight:800; line-height:1; display:block;}
 .ou-hero .txt {font-size:1.35rem; font-weight:600; display:block; margin-top:.5rem;}
-.ou-hero .sub {font-size:1.08rem; opacity:.9; display:block; margin-top:.6rem;}
-.ou-kicker {color:#1f3a7a; font-weight:800; letter-spacing:.06em; font-size:.95rem; text-transform:uppercase; margin:1.4rem 0 0 0;}
+.ou-hero .sub {font-size:1.2rem; opacity:.95; display:block; margin-top:.7rem; line-height:1.5;}
+.ou-kicker {color:#1f3a7a; font-weight:800; letter-spacing:.05em; font-size:1.45rem; text-transform:uppercase; margin:2.2rem 0 .2rem 0; padding-bottom:.35rem; border-bottom:3px solid #1f3a7a;}
 .st-key-steps [data-testid="stColumn"] {background:#eef1f7; padding:1rem 1.1rem; border-top:6px solid #1f3a7a;}
+.st-key-steps strong {font-size:1.25rem;}
+.st-key-steps p {font-size:1.12rem !important;}
 </style>""")
 st.html(f'<div class="ou-header"><img src="{MASCOT}" alt="Mascotte QtFetcher, une pie bavarde">'
         '<div><b>QtFetcher</b><span>Les marchés publics qui manquent de candidats, pour les PME qui y répondent'
@@ -588,7 +591,7 @@ with tab_proof:
         st.html('<nav class="ou-index"><span>Sommaire</span>' + "".join(
             f'<a href="#ch{i}">{i} · {html.escape(c)}</a>' for i, c in enumerate(chapters, 1)) + "</nav>")
         st.html('<p class="ou-kicker" id="ch1">1 · Le constat</p>'
-                f'<div class="ou-hero"><img src="{MASCOT}" alt=""><span class="big">1 marché sur 5</span>'
+                f'<div class="ou-hero"><span class="big">1 marché sur 5</span>'
                 '<span class="txt">ne reçoit qu\'une seule offre.</span>'
                 f'<span class="sub">{avg_pct} % des {n_test} marchés publics de {test_years} dont on connaît le nombre '
                 'd\'offres. Moins de candidats, c\'est moins de choix pour l\'acheteur public, et des contrats que les '
