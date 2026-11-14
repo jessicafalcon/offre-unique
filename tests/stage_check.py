@@ -17,7 +17,9 @@ RESULTS = {"pass": 0, "fail": 0}
 def ok(c, msg):
     RESULTS["pass" if c else "fail"] += 1
     print(("PASS " if c else "FAIL ") + msg)
-t0 = time.time(); at = AppTest.from_file(APP, default_timeout=300).run(); cold = time.time() - t0
+t0 = time.time(); at = AppTest.from_file(APP, default_timeout=300)
+at.session_state["entered"] = True  # skip the welcome page (tested separately in tests/welcome_check.py)
+at.run(); cold = time.time() - t0
 ok(not at.exception, f"cold start {cold:.1f}s, no exception")
 ok(at.subheader[0].value == "Point Contrôles", "demo company loads by default")
 cap = [c.value for c in at.caption if "appels d'offres dans" in c.value]

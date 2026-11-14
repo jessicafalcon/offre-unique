@@ -481,8 +481,8 @@ def render_detail(r: pd.Series, prof: dict) -> None:
 # GOV.UK patterns (start page, hint text, focus ring, inset text), not its brand. Missing selectors fail silently.
 st.html("""<style>
 /* "Pie bavarde" palette: black #0B0C0C, navy #1F3A7A, white; light navy tint #EEF1F7 for panels */
-.ou-header {background:#0b0c0c; color:#fff; padding:1rem 1.25rem; margin:-.5rem 0 .5rem 0; border-bottom:8px solid #1f3a7a; display:flex; align-items:center; gap:1rem;}
-.ou-header img {width:104px; height:104px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
+.ou-header {background:#0b0c0c; color:#fff; padding:1.4rem 1.6rem; margin:-.5rem 0 .5rem 0; border-bottom:8px solid #1f3a7a; display:flex; align-items:center; gap:1rem;}
+.ou-header img {width:132px; height:132px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
 .ou-welcome {display:flex; align-items:center; gap:1.25rem; margin-bottom:.4rem;}
 .ou-welcome img {width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
 .ou-welcome h2 {font-size:2.1rem; font-weight:700; line-height:1.15; margin:0 0 .3rem 0; padding:0; color:#0b0c0c;}
@@ -495,8 +495,22 @@ st.html("""<style>
 [data-testid="stButtonGroup"] button p {font-size:1.05rem !important;}
 .stApp [data-testid="stBaseButton-secondary"] p, .stApp [data-testid="stBaseLinkButton-secondary"] p
   {font-size:1.05rem !important;}
-.ou-header b {font-size:2.5rem; letter-spacing:.01em; line-height:1.1;}
-.ou-header span {display:block; opacity:.95; font-size:1.3rem; margin-top:.35rem;}
+.ou-splash {min-height:82vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:1rem;}
+.ou-splash img {width:min(320px,62vw); height:auto; border-radius:50%; border:6px solid #1f3a7a;}
+.ou-splash h1 {font-size:clamp(3.2rem,9vw,6rem); font-weight:800; color:#0b0c0c; margin:.7rem 0 .2rem 0; padding:0;
+  line-height:1;}
+.ou-splash .motto {font-size:clamp(1.5rem,3.2vw,2.3rem); font-weight:700; color:#1f3a7a; max-width:950px; margin:.4rem 0;
+  line-height:1.25;}
+.ou-splash .what {font-size:clamp(1.15rem,2vw,1.4rem); color:#0b0c0c; max-width:780px; margin:.6rem 0 0 0; line-height:1.5;}
+.ou-splash .go {margin-top:2rem; font-size:1.25rem; font-weight:700; color:#fff; background:#1f3a7a; padding:.7rem 1.4rem;
+  box-shadow:0 3px 0 #0b0c0c;}
+.st-key-enter {position:fixed; inset:0; z-index:1000;}
+.st-key-enter button {width:100vw; height:100vh; opacity:0; cursor:pointer; border:0;}
+.st-key-enter button:focus-visible {opacity:1; background:transparent; color:transparent; outline:6px solid #ffdd00 !important;
+  outline-offset:-6px;}
+.ou-header b {font-size:3.4rem; letter-spacing:.01em; line-height:1.05;}
+.ou-header span {display:block; opacity:.95; font-size:1.55rem; margin-top:.4rem;}
 .st-key-start {background:#eef1f7; padding:1.25rem 1.5rem 1rem 1.5rem; border-radius:0;}
 .st-key-start h2 {font-size:2.1rem; font-weight:700; padding-top:0; line-height:1.15;}
 .ou-lead {font-size:1.2rem; margin:.25rem 0 .9rem 0; color:#0b0c0c;}
@@ -569,6 +583,19 @@ st.html("""<style>
 .st-key-steps strong {font-size:1.25rem;}
 .st-key-steps p {font-size:1.12rem !important;}
 </style>""")
+# Welcome page: name, motto, what it does, the mascot. A click anywhere (an invisible full-screen button, also
+# reachable with Tab + Enter) enters the app; the choice is kept for the visit (session state).
+MOTTO = "Les marchés publics qui manquent de candidats, pour les PME qui y répondent"
+if not st.session_state.get("entered"):
+    big = "data:image/jpeg;base64," + __import__("base64").b64encode((MASCOT_DIR / "mascot_480.jpg").read_bytes()).decode()
+    st.html(f'<div class="ou-splash"><img src="{big}" alt="Mascotte QtFetcher, une pie bavarde">'
+            f'<h1>QtFetcher</h1><p class="motto">{MOTTO}</p>'
+            '<p class="what">Entrez le SIREN de votre entreprise : QtFetcher trouve les appels d\'offres de votre métier '
+            'qui risquent de ne recevoir qu\'une seule offre, et vous dit lesquels valent votre candidature.</p>'
+            '<p class="go">Cliquez n\'importe où pour commencer →</p></div>')
+    st.button("Commencer", key="enter", on_click=lambda: st.session_state.update(entered=True))
+    st.stop()
+
 st.html(f'<div class="ou-header"><img src="{MASCOT}" alt="Mascotte QtFetcher, une pie bavarde">'
         '<div><b>QtFetcher</b><span>Les marchés publics qui manquent de candidats, pour les PME qui y répondent'
         '</span></div></div>')
