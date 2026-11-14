@@ -1,4 +1,4 @@
-"""Offre unique: upcoming public tenders where a company would face little competition.
+"""QtFetcher (Offre unique project): upcoming public tenders where a company would face little competition.
 
     python -m streamlit run app.py
 Reads only precomputed files: data/clean/scored.parquet, awards.parquet, artifacts/metrics.json, notes.json
@@ -24,7 +24,11 @@ from explain import recommend_row  # noqa: E402
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
 
-st.set_page_config(page_title="Offre unique", layout="wide", initial_sidebar_state="collapsed")
+MASCOT_DIR = Path(__file__).parent / "images"
+st.set_page_config(page_title="QtFetcher", page_icon=str(MASCOT_DIR / "mascot_64.png"), layout="wide",
+                   initial_sidebar_state="collapsed")
+MASCOT = "data:image/jpeg;base64," + __import__("base64").b64encode(
+    (MASCOT_DIR / "mascot_240.jpg").read_bytes()).decode()
 
 
 @st.cache_data
@@ -146,16 +150,16 @@ def editions_table(eds: list[dict]) -> None:
     e = pd.DataFrame(eds)
     past = pd.DataFrame({
         "Date": pd.to_datetime(e["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
-        "Objet": e["objet"].fillna("").astype(str),
         "Offres": e["offres"].map(lambda v: "" if v is None or pd.isna(v) or v <= 0 else str(int(v))),
+        "Objet": e["objet"].fillna("").astype(str),
         "Titulaire": (e["titulaire_nom"] if "titulaire_nom" in e else pd.Series("", index=e.index))
         .fillna("—").replace({"None": "—", "": "—"}).astype(str),
     })
     st.dataframe(past, hide_index=True, width="stretch", column_config={
-        "Date": st.column_config.TextColumn(width="small"),
-        "Objet": st.column_config.TextColumn(width="large"),
-        "Offres": st.column_config.TextColumn(width="small"),
-        "Titulaire": st.column_config.TextColumn(width="medium"),
+        "Date": st.column_config.TextColumn(width=98),
+        "Offres": st.column_config.TextColumn(width=64, help="Nombre d'offres reçues"),
+        "Objet": st.column_config.TextColumn(width=170),
+        "Titulaire": st.column_config.TextColumn(width=120),
     })
 
 
@@ -167,12 +171,13 @@ def render_buyer_history(r: pd.Series) -> None:
     st.markdown("**Derniers marchés comparables de cet acheteur**")
     if h and h.get("editions"):
         when_ = pd.Timestamp(h["fetched_at"]).strftime("%d/%m/%Y à %H:%M")
-        st.caption(f"En direct d'Hémicycle · jeu « Marchés publics notifiés » · consulté le {when_} · Licence Ouverte 2.0")
+        st.caption(f":material/sync: **En direct d'Hémicycle**, consulté le {when_}  \n"
+                   "Source : jeu « Marchés publics notifiés », Licence Ouverte 2.0")
         editions_table(h["editions"])
     else:
         eds = json.loads(r.get("hist_editions") or "[]")
         if eds:
-            st.caption("DECP consolidées (data.gouv.fr) · Licence Ouverte 2.0")
+            st.caption("Source : DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
             editions_table(eds)
         else:
             st.caption("Aucun marché comparable de cet acheteur dans les données.")
@@ -376,15 +381,19 @@ def render_detail(r: pd.Series, prof: dict) -> None:
     buyer = html.unescape(r["buyer_name"]) if isinstance(r.get("buyer_name"), str) else f"SIREN {r.get('buyer_siren')}"
     city = buyer_city(r)
     btype = r.get("buyer_type")
-    meta = [buyer + (f" ({city})" if city else ""),
-            btype if isinstance(btype, str) and btype != "Inconnu" else "",
-            r.get("taille_marche") if isinstance(r.get("taille_marche"), str) else "",
-            duration_text(r.get("duree_previsionnelle_du_marche"))]
+    facts_rows = [("Acheteur", buyer + (f" ({city})" if city else "")),
+                  ("Type d'acheteur", btype if isinstance(btype, str) and btype != "Inconnu" else ""),
+                  ("Taille", r.get("taille_marche") if isinstance(r.get("taille_marche"), str) else ""),
+                  ("Durée", duration_text(r.get("duree_previsionnelle_du_marche")))]
     if r.get("source") != "BOAMP" and pd.notna(r.get("pub_date")):  # project: planned publication (no start date in APProch)
-        meta.append(f"publication prévue le {fmt_date(r['pub_date'])}")
+        facts_rows.append(("Publication prévue", fmt_date(r["pub_date"])))
     if pd.notna(r.get("due_date")):
-        meta.append(f"offres dues le {fmt_date(r['due_date'])} · {days_left(r['due_date'])}")
-    st.caption(" · ".join(m for m in meta if m and m not in {"None", "nan"}))
+        d = (pd.Timestamp(r["due_date"]).normalize() - pd.Timestamp.now().normalize()).days
+        left = "dernier jour" if d == 0 else (f"dans {d} jour{'s' if d > 1 else ''}" if d > 0 else "clos")
+        facts_rows.append(("Date limite", f"{fmt_date(r['due_date'])} ({left})"))
+    st.html('<table class="ou-summary ou-compact">' + "".join(
+        f"<tr><th>{k}</th><td>{html.escape(str(v))}</td></tr>"
+        for k, v in facts_rows if v and str(v) not in {"None", "nan"}) + "</table>")
     if isinstance(r.get("procedure_note"), str):
         st.caption(f":material/info: {r['procedure_note']}.")
 
@@ -415,7 +424,7 @@ def render_detail(r: pd.Series, prof: dict) -> None:
         except Exception as e:  # keep the demo alive if the API fails
             st.caption(f"Note indisponible ({e.__class__.__name__}).")
 
-    c1, c2 = st.columns([1, 1])
+    c1 = c2 = st.container(horizontal=True, gap="small")  # buttons at their natural width
     if key in load_follows():
         c1.button("Suivi", icon=":material/check:", disabled=True, key=f"fd_{key}")
     elif c1.button("Suivre cet appel d'offres", icon=":material/bookmark_add:", key=f"f_{key}"):
@@ -463,8 +472,8 @@ def render_detail(r: pd.Series, prof: dict) -> None:
                 "Objet": st.column_config.TextColumn(width="large"),
                 "Dép.": st.column_config.TextColumn(width="small"),
             })
-            st.caption("Vos marchés gagnés dans la même catégorie d'achat, ce département d'abord · "
-                       "DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
+            st.caption("Vos marchés gagnés dans la même catégorie d'achat, ce département d'abord.  \n"
+                       "Source : DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
     render_buyer_history(r)
 
 
@@ -472,7 +481,24 @@ def render_detail(r: pd.Series, prof: dict) -> None:
 # GOV.UK patterns (start page, hint text, focus ring, inset text), not its brand. Missing selectors fail silently.
 st.html("""<style>
 /* "Pie bavarde" palette: black #0B0C0C, navy #1F3A7A, white; light navy tint #EEF1F7 for panels */
-.ou-header {background:#0b0c0c; color:#fff; padding:1rem 1.25rem; margin:-.5rem 0 .5rem 0; border-bottom:8px solid #1f3a7a;}
+.ou-header {background:#0b0c0c; color:#fff; padding:1rem 1.25rem; margin:-.5rem 0 .5rem 0; border-bottom:8px solid #1f3a7a; display:flex; align-items:center; gap:1rem;}
+.ou-header img {width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
+.ou-hero {position:relative; padding-right:9.5rem !important;}
+.ou-hero img {position:absolute; right:1.5rem; top:50%; transform:translateY(-50%); width:120px; height:120px;
+  border-radius:50%; object-fit:cover; border:3px solid #fff;}
+@media (max-width:640px) {.ou-hero {padding-right:1.75rem !important;} .ou-hero img {display:none;}}
+.ou-welcome {display:flex; align-items:center; gap:1.25rem; margin-bottom:.4rem;}
+.ou-welcome img {width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid #fff; flex:none;}
+.ou-welcome h2 {font-size:2.1rem; font-weight:700; line-height:1.15; margin:0 0 .3rem 0; padding:0; color:#0b0c0c;}
+@media (max-width:640px) {.ou-welcome img {width:72px; height:72px;}}
+.ou-compact {font-size:1rem; margin:.2rem 0 .6rem 0;}
+.ou-compact th, .ou-compact td {padding:.32rem .5rem .32rem 0;}
+.ou-compact th {width:34%;}
+[data-testid="stExpander"] summary p {font-size:1.15rem !important; font-weight:600;}
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"] {font-size:1.4rem !important;}
+[data-testid="stButtonGroup"] button p {font-size:1.05rem !important;}
+.stApp [data-testid="stBaseButton-secondary"] p, .stApp [data-testid="stBaseLinkButton-secondary"] p
+  {font-size:1.05rem !important;}
 .ou-header b {font-size:1.75rem; letter-spacing:.01em;}
 .ou-header span {display:block; opacity:.92; font-size:1.05rem; margin-top:.2rem;}
 .st-key-start {background:#eef1f7; padding:1.25rem 1.5rem 1rem 1.5rem; border-radius:0;}
@@ -540,8 +566,9 @@ st.html("""<style>
 .ou-kicker {color:#1f3a7a; font-weight:800; letter-spacing:.06em; font-size:.95rem; text-transform:uppercase; margin:1.4rem 0 0 0;}
 .st-key-steps [data-testid="stColumn"] {background:#eef1f7; padding:1rem 1.1rem; border-top:6px solid #1f3a7a;}
 </style>""")
-st.html('<div class="ou-header"><b>Offre unique</b><span>Les marchés publics qui manquent de candidats, '
-        'pour les PME qui y répondent</span></div>')
+st.html(f'<div class="ou-header"><img src="{MASCOT}" alt="Mascotte QtFetcher, une pie bavarde">'
+        '<div><b>QtFetcher</b><span>Les marchés publics qui manquent de candidats, pour les PME qui y répondent'
+        '</span></div></div>')
 
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Comment ça marche"])
 
@@ -556,19 +583,19 @@ with tab_proof:
         test_years = f"{metrics['test_years'][0]}–{metrics['test_years'][1]}"
 
         # 1. The problem
-        chapters = ["Le constat", "Ce que fait Offre unique", "Peut-on s'y fier ?", "Qui écrit les notes ?",
+        chapters = ["Le constat", "Ce que fait QtFetcher", "Peut-on s'y fier ?", "Qui écrit les notes ?",
                     "Pour qui ?", "Ce que l'outil ne dit pas"]
         st.html('<nav class="ou-index"><span>Sommaire</span>' + "".join(
             f'<a href="#ch{i}">{i} · {html.escape(c)}</a>' for i, c in enumerate(chapters, 1)) + "</nav>")
         st.html('<p class="ou-kicker" id="ch1">1 · Le constat</p>'
-                f'<div class="ou-hero"><span class="big">1 marché sur 5</span>'
+                f'<div class="ou-hero"><img src="{MASCOT}" alt=""><span class="big">1 marché sur 5</span>'
                 '<span class="txt">ne reçoit qu\'une seule offre.</span>'
                 f'<span class="sub">{avg_pct} % des {n_test} marchés publics de {test_years} dont on connaît le nombre '
                 'd\'offres. Moins de candidats, c\'est moins de choix pour l\'acheteur public, et des contrats que les '
                 'PME ne voient pas passer.</span></div>')
 
         # 2. What the tool does
-        st.html('<p class="ou-kicker" id="ch2">2 · Ce que fait Offre unique</p>')
+        st.html('<p class="ou-kicker" id="ch2">2 · Ce que fait QtFetcher</p>')
         st.markdown("### Montrer à une PME les marchés où sa candidature compte le plus")
         with st.container(key="steps"):
             s1, s2, s3 = st.columns(3, gap="medium")
@@ -683,9 +710,10 @@ with tab_main:
     # GOV.UK-style question page: question as label, hint under it, one big input, one main button
     with st.container(key="start"):
         if not str(st.session_state.get("q") or "").strip():  # landing screen only: results need the room
-            st.markdown("## Quels marchés publics valent votre candidature ?")
-            st.html('<p class="ou-lead">1 marché public sur 5 ne reçoit qu\'une seule offre. Trouvez ceux de votre '
-                    'métier qui manquent de candidats : c\'est là que votre offre compte le plus.</p>')
+            st.html(f'<div class="ou-welcome"><img src="{MASCOT}" alt=""><div>'
+                    '<h2>Quels marchés publics valent votre candidature ?</h2>'
+                    '<p class="ou-lead">1 marché public sur 5 ne reçoit qu\'une seule offre. Trouvez ceux de votre '
+                    'métier qui manquent de candidats : c\'est là que votre offre compte le plus.</p></div></div>')
         st.html('<p class="ou-label">Quel est le SIREN ou le nom de votre entreprise ?</p>')
         st.caption("Le SIREN a 9 chiffres : il figure sur votre extrait Kbis ou sur annuaire-entreprises.data.gouv.fr. "
                    "Un SIRET marche aussi. Réservé aux sociétés.")
@@ -713,9 +741,7 @@ with tab_main:
         raw = st.selectbox(f"{len(found)} société{'s' if len(found) > 1 else ''} trouvée{'s' if len(found) > 1 else ''}",
                            list(labels), format_func=labels.get)
     siren = clean_siren(raw)  # accepts spaces, dots and a full SIRET
-    if not (raw or "").strip():
-        st.write("Entrez le nom ou le SIREN de votre entreprise : Offre unique trouve les appels d'offres de votre "
-                 "métier où vous aurez le moins de concurrents.")
+    if not (raw or "").strip():  # landing screen: the start panel above already says what to do
         st.stop()
     if len(siren) < 9:
         st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
@@ -729,7 +755,7 @@ with tab_main:
         st.stop()
     sole = is_sole_trader(siren)
     if sole:
-        st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
+        st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, QtFetcher "
                  "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
         st.stop()
     prof = profile_of(awards, siren)
@@ -738,7 +764,7 @@ with tab_main:
         st.stop()
     if NON_DIFFUSIBLE.search(str(prof.get("name") or "")):
         st.write("Cette entité a demandé que ses données ne soient pas diffusées (statut « non diffusible » du "
-                 "répertoire SIRENE) : Offre unique n'affiche pas son profil.")
+                 "répertoire SIRENE) : QtFetcher n'affiche pas son profil.")
         st.stop()
     if sole is None and siren not in dict((s9, n) for n, s9 in EXAMPLES) and looks_like_person(prof["name"], prof["n_wins"]):
         st.write("Le répertoire des entreprises est injoignable pour l'instant : impossible de vérifier qu'il ne s'agit "
@@ -765,7 +791,7 @@ with tab_main:
             size = SIZE_LABEL.get(company_size(siren)) if sole is not None else None
             depts = [k for k in list(prof["dept"])[:3] if k != "NA"]
             n_w = prof["n_wins"]
-            wins = f"{fr_int(n_w)}" + (f" · le dernier en {pd.Timestamp(prof['last_win']):%m/%Y}"
+            wins = f"{fr_int(n_w)}" + (f" (le dernier en {pd.Timestamp(prof['last_win']):%m/%Y})"
                                          if pd.notna(prof.get("last_win")) else "")
             icon_name = icon.removeprefix(":material/").removesuffix(":")
             rows = [("Métier", f'<span class="ou-icon">{icon_name}</span>{html.escape(trade)}' if trade else ""),
@@ -801,10 +827,10 @@ with tab_main:
                     st.markdown("Les appels d'offres de votre métier attirent la concurrence habituelle, ou plus.")
                 head = f"{len(t)} {'appel' if len(t) == 1 else 'appels'} d'offres dans votre métier"
                 if n_open:
-                    head += f" · {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
+                    head += f", dont {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
                 level = str(t["match_level"].iloc[0]) if "match_level" in t else ""
                 if level and level != "même métier, même département":
-                    head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
+                    head += f". Critère élargi : {level} (peu d'avis dans vos départements)"
                 st.caption(head)
                 shortcuts = [(k, int(counts.get(k, 0))) for k in ("Aller", "À étudier") if counts.get(k, 0)]
                 if shortcuts:
@@ -906,10 +932,13 @@ with tab_main:
                 render_detail(sub.iloc[idx], prof)
 
     st.divider()
-    st.caption("Sources : appels d'offres ouverts du BOAMP (DILA) · projets d'achats APProch et derniers marchés des "
-               "acheteurs via l'API Hémicycle · marchés passés : DECP consolidées (data.gouv.fr) · entreprises et "
-               "acheteurs : SIRENE (INSEE). Licence Ouverte 2.0 (Etalab). Notes rédigées par Gemma 4 31B (Featherless), "
-               "chaque chiffre vérifié. Limites et méthode : onglet « Comment ça marche ».")
+    st.caption("**Sources**, toutes sous Licence Ouverte 2.0 (Etalab) :  \n"
+               "Appels d'offres ouverts : BOAMP (DILA)  \n"
+               "Projets d'achats (APProch) et derniers marchés des acheteurs : API Hémicycle  \n"
+               "Marchés passés : DECP consolidées (data.gouv.fr)  \n"
+               "Entreprises et acheteurs : répertoire SIRENE (INSEE)  \n"
+               "Notes : Gemma 4 31B (Featherless), chaque chiffre vérifié.  \n"
+               "Limites et méthode : onglet « Comment ça marche ».")
 
 
 if siren and prof:
