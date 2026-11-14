@@ -18,6 +18,7 @@ You are taking over a working project on the morning of a one-day hackathon. **T
 6. **Never print or commit `.env`.** It holds the Hémicycle, Anthropic and (later) Featherless keys.
 7. **Timeline:** decide on any extra by **11:30**, stop adding features at **16:30**, then rehearse twice with a timer. If a task risks breaking the demo, don't do it.
 8. The app UI and the notes are in **French**. Talk to me in English.
+9. **After ANY change to `app.py` (UI included), run `python tests/stage_check.py`. It must print `34 PASS / 0 FAIL`.** It replays the live demo path (Point Contrôles → SENEO → Suivre → Preuves), the backup and example companies, and the privacy edge cases (sole traders, non-diffusible entities, invalid SIRENs, name search). Don't push a UI change that breaks it. Keep: the SIREN / name-search block, `render_buyer_history` (Hémicycle panel), "Vos contrats similaires", the notes button with its spinner, Sources and Limites.
 
 ---
 
@@ -128,7 +129,7 @@ Only the last two steps should be needed today.
   - Say once: *"the notes are written by Gemma 4, an open-weight model on Featherless, and every number is checked."*
   - "Détail des marchés passés" is safe to open now (the misleading score-factors caption was removed).
   - Before the demo: `rm -f artifacts/follows.json` so the follow list starts empty.
-  - **Stage check passed 15:30 (26/26, headless):** cold start 1.6 s; SENEO 53 % · 2,7 × · J-16 · note · Hémicycle panel · "Vos contrats similaires (8)"; Suivre → sidebar "J-16 · 53 % · Aller" → Retirer; Preuves 50/42/20, backtest 41/23/12, coverage, 8-model table; backup Bati Recyclage ("titulaire sortant"); SIREN edge cases (sole trader refused, placeholder, invalid key 632041071, SIRET, spaces, Colas, La Poste). Re-run it after any UI change: ask Claude, or `python <scratchpad>/stage_check.py`.
+  - **Stage check passed 15:30 (26/26, headless):** cold start 1.6 s; SENEO 53 % · 2,7 × · J-16 · note · Hémicycle panel · "Vos contrats similaires (8)"; Suivre → sidebar "J-16 · 53 % · Aller" → Retirer; Preuves 50/42/20, backtest 41/23/12, coverage, 8-model table; backup Bati Recyclage ("titulaire sortant"); SIREN edge cases (sole trader refused, placeholder, invalid key 632041071, SIRET, spaces, Colas, La Poste). Re-run it after any UI change: `python tests/stage_check.py`.
 
 ## 8. What changed this morning (14 Nov, 07:40–08:50)
 
