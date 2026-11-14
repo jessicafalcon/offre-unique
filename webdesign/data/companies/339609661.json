@@ -1,0 +1,37 @@
+{
+ "siren": "339609661",
+ "nom": "IDVERDE",
+ "sigle": null,
+ "categorie_entreprise": "ETI",
+ "tranche_effectif": "51",
+ "annee_effectif": "2024",
+ "naf": "81.30Z",
+ "section_naf": "N",
+ "nature_juridique": "5710",
+ "date_creation": "1986-10-01",
+ "nb_etablissements_ouverts": 119,
+ "siege": {
+  "adresse": "IMMEUBLE WORKSTATION 25 QUAI DU PRESIDENT PAUL DOUMER 92400 COURBEVOIE",
+  "commune": "COURBEVOIE",
+  "code_postal": "92400",
+  "departement": "92",
+  "lat": "48.8916846515587",
+  "lon": "2.25758376671713"
+ },
+ "finances": {
+  "2025": {
+   "ca": 561666470,
+   "resultat_net": -5341755
+  }
+ },
+ "labels": {
+  "rge": false,
+  "ess": false,
+  "societe_mission": false,
+  "organisme_formation": false,
+  "qualiopi": false
+ },
+ "entrepreneur_individuel": false,
+ "source": "API Recherche d'entreprises (data.gouv.fr) · Sirene (Insee), Licence Ouverte 2.0",
+ "fetched_at": "2026-11-14T13:02:39"
+}

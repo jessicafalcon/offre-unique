@@ -1,0 +1,37 @@
+{
+ "siren": "798298899",
+ "nom": "MOULINOT COMPOST & BIOGAZ",
+ "sigle": null,
+ "categorie_entreprise": "PME",
+ "tranche_effectif": "22",
+ "annee_effectif": "2024",
+ "naf": "38.11Z",
+ "section_naf": "E",
+ "nature_juridique": "5710",
+ "date_creation": "2013-10-25",
+ "nb_etablissements_ouverts": 3,
+ "siege": {
+  "adresse": "ZAC DE LA CERISAIE AVENUE JEAN MOULIN 93240 STAINS",
+  "commune": "STAINS",
+  "code_postal": "93240",
+  "departement": "93",
+  "lat": "48.957036059",
+  "lon": "2.3932728318"
+ },
+ "finances": {
+  "2024": {
+   "ca": 10866171,
+   "resultat_net": -2359387
+  }
+ },
+ "labels": {
+  "rge": false,
+  "ess": false,
+  "societe_mission": false,
+  "organisme_formation": true,
+  "qualiopi": true
+ },
+ "entrepreneur_individuel": false,
+ "source": "API Recherche d'entreprises (data.gouv.fr) · Sirene (Insee), Licence Ouverte 2.0",
+ "fetched_at": "2026-11-14T13:00:04"
+}

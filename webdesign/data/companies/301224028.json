@@ -1,0 +1,37 @@
+{
+ "siren": "301224028",
+ "nom": "SARL ANDREATTA",
+ "sigle": null,
+ "categorie_entreprise": "PME",
+ "tranche_effectif": "11",
+ "annee_effectif": "2024",
+ "naf": "43.33Z",
+ "section_naf": "F",
+ "nature_juridique": "5710",
+ "date_creation": "1974-01-01",
+ "nb_etablissements_ouverts": 1,
+ "siege": {
+  "adresse": "43 RUE CAPITAINE JEAN LEFORT 56100 LORIENT",
+  "commune": "LORIENT",
+  "code_postal": "56100",
+  "departement": "56",
+  "lat": "47.7426310084354",
+  "lon": "-3.37164617953313"
+ },
+ "finances": {
+  "2024": {
+   "ca": 0,
+   "resultat_net": 94647
+  }
+ },
+ "labels": {
+  "rge": false,
+  "ess": false,
+  "societe_mission": false,
+  "organisme_formation": false,
+  "qualiopi": false
+ },
+ "entrepreneur_individuel": false,
+ "source": "API Recherche d'entreprises (data.gouv.fr) · Sirene (Insee), Licence Ouverte 2.0",
+ "fetched_at": "2026-11-14T13:01:45"
+}

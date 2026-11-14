@@ -1,0 +1,37 @@
+{
+ "siren": "423618628",
+ "nom": "MAS ENTREPRISE",
+ "sigle": null,
+ "categorie_entreprise": "PME",
+ "tranche_effectif": "03",
+ "annee_effectif": "2024",
+ "naf": "43.34Z",
+ "section_naf": "F",
+ "nature_juridique": "5499",
+ "date_creation": "1999-07-01",
+ "nb_etablissements_ouverts": 1,
+ "siege": {
+  "adresse": "10 BOULEVARD AMPERE 13014 MARSEILLE",
+  "commune": "MARSEILLE",
+  "code_postal": "13014",
+  "departement": "13",
+  "lat": "43.337140753",
+  "lon": "5.3741986767"
+ },
+ "finances": {
+  "2024": {
+   "ca": 0,
+   "resultat_net": -127695
+  }
+ },
+ "labels": {
+  "rge": false,
+  "ess": false,
+  "societe_mission": false,
+  "organisme_formation": false,
+  "qualiopi": false
+ },
+ "entrepreneur_individuel": false,
+ "source": "API Recherche d'entreprises (data.gouv.fr) · Sirene (Insee), Licence Ouverte 2.0",
+ "fetched_at": "2026-11-14T13:09:33"
+}

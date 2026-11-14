@@ -1,0 +1,18 @@
+[client]
+toolbarMode = "minimal"
+
+[theme]
+primaryColor = "#2E9E8F"
+backgroundColor = "#F8FAFC"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#0F172A"
+font = "'Work Sans':https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+baseRadius = "12px"
+borderColor = "#E2E8F0"
+showWidgetBorder = true
+
+[theme.sidebar]
+backgroundColor = "#1E293B"
+textColor = "#F1F5F9"
+secondaryBackgroundColor = "#334155"
+borderColor = "#334155"

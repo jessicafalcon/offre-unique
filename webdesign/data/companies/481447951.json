@@ -1,0 +1,37 @@
+{
+ "siren": "481447951",
+ "nom": "BATI RECYCLAGE",
+ "sigle": null,
+ "categorie_entreprise": "PME",
+ "tranche_effectif": "12",
+ "annee_effectif": "2024",
+ "naf": "38.21Z",
+ "section_naf": "E",
+ "nature_juridique": "5710",
+ "date_creation": "2005-04-15",
+ "nb_etablissements_ouverts": 5,
+ "siege": {
+  "adresse": "7 RUE DU BOIS IMBERT 85280 LA FERRIERE",
+  "commune": "LA FERRIERE",
+  "code_postal": "85280",
+  "departement": "85",
+  "lat": "46.702077491",
+  "lon": "-1.333967871"
+ },
+ "finances": {
+  "2025": {
+   "ca": 14599108,
+   "resultat_net": 916309
+  }
+ },
+ "labels": {
+  "rge": false,
+  "ess": false,
+  "societe_mission": false,
+  "organisme_formation": false,
+  "qualiopi": false
+ },
+ "entrepreneur_individuel": false,
+ "source": "API Recherche d'entreprises (data.gouv.fr) · Sirene (Insee), Licence Ouverte 2.0",
+ "fetched_at": "2026-11-14T13:38:58"
+}

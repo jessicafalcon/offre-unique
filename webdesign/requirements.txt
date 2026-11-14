@@ -1,0 +1,4 @@
+# Redesigned pages (webdesign/): the main app's requirements plus the ECharts component.
+#   pip install -r webdesign/requirements.txt      (from the repo root)
+-r ../requirements.txt
+streamlit-echarts==0.7.0

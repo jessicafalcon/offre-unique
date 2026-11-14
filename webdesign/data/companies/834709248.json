@@ -1,0 +1,37 @@
+{
+ "siren": "834709248",
+ "nom": "POINT CONTROLES",
+ "sigle": null,
+ "categorie_entreprise": "PME",
+ "tranche_effectif": "11",
+ "annee_effectif": "2024",
+ "naf": "71.20B",
+ "section_naf": "M",
+ "nature_juridique": "5710",
+ "date_creation": "2018-01-15",
+ "nb_etablissements_ouverts": 1,
+ "siege": {
+  "adresse": "1 ALLEE EMILE COHL 77200 TORCY",
+  "commune": "TORCY",
+  "code_postal": "77200",
+  "departement": "77",
+  "lat": "48.8332240009924",
+  "lon": "2.66080630219063"
+ },
+ "finances": {
+  "2025": {
+   "ca": 0,
+   "resultat_net": 211082
+  }
+ },
+ "labels": {
+  "rge": false,
+  "ess": false,
+  "societe_mission": false,
+  "organisme_formation": false,
+  "qualiopi": false
+ },
+ "entrepreneur_individuel": false,
+ "source": "API Recherche d'entreprises (data.gouv.fr) · Sirene (Insee), Licence Ouverte 2.0",
+ "fetched_at": "2026-11-14T12:59:59"
+}
