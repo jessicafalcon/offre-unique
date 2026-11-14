@@ -79,6 +79,7 @@ Only the last two steps should be needed today.
 
 ## 5. Model and results (real data)
 
+- **Calibration and rules backtest (11:00):** see §8b. Displayed percentages are calibrated.
 - **Time split:** train on 2023–2024 (285,578 labelled contracts), test on 2025–2026 (320,228 contracts never seen). Single-bid rate on the test set: **20 %**.
 - **Main model (LightGBM):** AUC 0.694. Among the 10 % flagged riskiest, **49.6 %** got a single bid, against buyer history alone 42.2 % (AUC 0.639) and category rate 38.0 % (AUC 0.630).
 - **BOAMP variant** (no amount, duration or clauses, which BOAMP lacks): AUC 0.682, top-10 % precision 48.5 %. Still beats the baselines.
@@ -94,6 +95,7 @@ Only the last two steps should be needed today.
 - **Trade matching** (`relevant()` in `src/profiles.py`): 4-digit CPV classes in the company's départements, loosening level by level only if fewer than 5 tenders fit (levels in `MATCH_LEVELS`). 2-digit divisions were too broad (a roadworks firm was shown HVAC). **Since this morning:** at least 2 similar past wins (`min_wins=2`), falling back to 1 if nothing is left.
 - **Duplicates** (since this morning): `dedupe_tenders()` keeps one row per buyer (`buyer_siren`, falling back to `buyer_name`) + normalised title (lowercase, no accents, a leading reference like "26.AO.VD.061 -" and the word "et" removed), keeping the highest score.
 - **Go / no-go rules** in `recommend()` in `src/explain.py` (current version):
+  - *(Superseded at 11:00, see §8b: ratio is now calibrated, Passer below 1.0×, plus the B2 incumbent rules.)*
   - **Passer** if ratio = proba / average < 1.2. Worded "inférieure à la moyenne : plus de concurrents que d'habitude" below **0.75×**, "proche de la moyenne : concurrence habituelle" from 0.75× to 1.2×.
   - **Aller** if ratio ≥ 1.5 **and** a past win of this kind in the département **and** the buyer's single-bid share ≥ 30 % (or unknown). If the buyer's history is known, the reason mentions it ("cet acheteur reçoit souvent une seule offre…").
   - **À étudier** otherwise (no local win, or buyer often gets several bids, or 1.2–1.5×).
@@ -101,20 +103,22 @@ Only the last two steps should be needed today.
 - **The LLM only writes the note.** Its prompt frames a single bid as an opportunity and receives checkable facts only. **Number check:** every number in a note must appear in the facts, and the note must end with a full stop. Otherwise it's rejected and the app shows a "Rédiger la note go / no-go" button. Notes are cached in `artifacts/notes.json`, keyed `"{siren}:{code}"`, with `note`, `verified`, `model`.
 - **Naming companies is allowed** (legal entities, public data). Careful with sole traders, whose names are personal names.
 
-## 7. Demo
+## 7. Demo (changed at ~11:00: new company, calibrated numbers)
 
-- **Company: Moulinot Compost & Biogaz**, SIREN `798298899`, a PME (checked on annuaire-entreprises). Food-waste collection and composting, 48 public contracts won, mainly in départements 93 and 75.
-- **After this morning's fixes:** **26 matching tenders. Aller 9, À étudier 3, Passer 14.** The app header shows how many are open now (BOAMP). Check it and put it in the demo line.
-- **Top:** two SIREDOM tenders (Essonne waste syndicate), both 49 %, 2.5× the average, deadlines 23/11/2026 and 04/12/2026. SIREDOM got a single bid on 54 % of its 54 comparable contracts (yes, 54 and 54 %; it's real).
-- **Counter-example:** Espaces TP (`753310598`, PME, Paris roadworks): top score only 12 %, because Paris roadworks are competitive. The tool doesn't flatter.
-- **Rejected candidates:** Yvelines Restauration (large company); AXA, MMA (top of `find_demo`, not SMEs).
-- **Demo line:** *"Moulinot has [N] open tenders matching its trade. The top one is SIREDOM, closing on 23 November: a 49 % chance of a single bid, 2.5× the average, and this buyer got one bid on more than half of its comparable contracts. Of 26 tenders, the tool says go for 9, look closer at 3 and skip 14."*
+- **Company: Point Contrôles**, SIREN `834709248` (`DEMO_SIREN` in `.env`), **PME** (recherche-entreprises: SAS, NAF 71.20B technical testing, Seine-et-Marne). Technical inspection and health-and-safety coordination (CSPS), 101 public contracts won, départements 75, 77, 94.
+- **In the app:** **62 matching tenders, 39 open now. Aller 3, À étudier 4, Passer 55.** Most tenders in its trade are competitive, and the tool says so.
+- **Lead: SENEO** (water syndicate, Nanterre, 92), *"Mission de coordination SPS… refonte du bâtiment administratif"*, offers due **30/11/2026** (J-16). **53 %** chance of a single bid (calibrated), **2,7 ×** the average. 65 % of SENEO's 60 comparable contracts with a known bid count got a single bid (CPV group 713, mostly engineering studies won by Safege, YXO, Egis: private firms, no semi-public operator). No installed holder. Note: "Aller".
+- **Counter-example (Passer), same trade and département:** *"Prestations de contrôle technique construction… Département du Val-de-Marne"* (94), due 18/11. **14 %**. None of its 13 comparable contracts got a single bid; about 12 bids on average.
+- **Don't click** the other two Aller tenders (water-pump operations at Villetaneuse; Région IDF faune/flore studies). They match at CPV-class level only and the trade fit is weak.
+- **Why not Moulinot any more:** SIREDOM, its top tender, mostly goes to Semavert / Semaer / Semaval (8 of 14 single-bid wins; Semavert is an ETI at SIREDOM's Vert-le-Grand site with a SEM on its board). Bulky-waste tenders are also a weak fit for a composting company. With calibrated rules, Moulinot has only 2 Aller, both SIREDOM. Moulinot still works in the app (notes regenerated), but don't lead with it.
+- **Rejected candidates:** Malvern Panalytical, Miltenyi, Horiba (top of the clean-Aller search, but multinational subsidiaries and RESAH medical lots); Atelier des Giboulées (PME, but its top Aller is a trade mismatch).
+- **Demo line:** *"Point Contrôles, an SME in Seine-et-Marne, has 39 open tenders in its trade. The top one is SENEO, closing on 30 November: a 53 % chance of a single bid, 2.7 times the average, and 65 % of this buyer's comparable contracts got one bid. And for the Val-de-Marne inspection contract, in its own département, the tool says skip: 12 bids on average. Of 62 tenders it says go for 3, look closer at 4, skip 55."*
 - **On stage:**
-  1. Open the SIREDOM tender that closes on 23/11 (Aller). Read the note.
-  2. Click **Suivre cet appel d'offres**; it appears in the sidebar with "J-9".
-  3. Click **Grand Cubzaguais** (Passer, 12 %, 6 comparable contracts, none single-bid).
-  4. Show the **Preuves** tab.
-  - **Don't open "Détail des marchés passés".** Its "historique de l'acheteur (21 %)" factor is the model's fallback average, not real history.
+  1. SENEO is selected by default (top row). Read the note.
+  2. Click **Suivre cet appel d'offres**; it appears in the sidebar with "J-16".
+  3. Click the **Val-de-Marne contrôle technique** row (Passer, 14 %).
+  4. Show the **Preuves** tab: 50 / 42 / 20, then the backtest line **Aller 41 % · À étudier 23 % · Passer 12 %**.
+  - "Détail des marchés passés" is safe to open now (the misleading score-factors caption was removed).
   - Before the demo: `rm -f artifacts/follows.json` so the follow list starts empty.
 
 ## 8. What changed this morning (14 Nov, 07:40–08:50)
@@ -127,6 +131,19 @@ Backups: `src/explain.py.bak`, `src/profiles.py.bak`, `app.py.bak`, `artifacts/n
 4. `dedupe_tenders()` removed duplicate notices (EPT Grand-Orly; PEECS Anatole, whose two notices had buyer names "EPT Est Ensemble" vs "EST ENSEMBLE DAAJCP" but the same SIREN 200057875).
 5. Notes regenerated with Claude Haiku. Output checked by hand: all numbers match the facts.
 6. **"Suivre cet appel d'offres" made functional** (see §9).
+
+## 8b. What changed after the devil's-advocate review (14 Nov, 10:15–11:00)
+
+Git initialised (commits: baseline → fixes → calibration). Pre-change backups in `backup_1015/` (old notes and scored parquet files) and `artifacts/notes_before_calibration.json`.
+
+1. **Bid-share denominator bug fixed.** "54 % des 54 marchés" was false: the share is over contracts with a known bid count (26 for SIREDOM). `score.py` now writes `hist_n_lab`; the app and the note facts use it. `pairing_ok()` in `explain.py` rejects notes that pair the share with the total count. (The old number check only verified that numbers *exist* in the facts.)
+2. **Calibration.** Raw LightGBM outputs ran high (raw 49 % ≈ 36 % observed). `src/backtest_rules.py` refits the 2023–24 model in memory (AUC check vs `metrics.json`: 0.6939 / 0.6818, exact), fits isotonic calibration on 2025, writes `artifacts/calibration{,_boamp}.json`. `load_all_scored()` now returns a calibrated `proba` and keeps `proba_raw`. The production model is unchanged. (The brief's task C said to use `artifacts/model.txt`, but it was refit on all years including the test years, so testing it on them would leak.)
+3. **Rules on the calibrated ratio.** Passer below **1.0×** (was 1.2×); Aller ≥ 1.5× unchanged. Thresholds chosen on 2025, reported on 2026: **Aller 41 % single-bid (17,946 contracts), À étudier 23 %, Passer 12 %** → `artifacts/rules_backtest.json`, shown in Preuves.
+4. **B2 applied:** outgoing holder → Aller ("renouvellement à défendre"); another holder with streak ≥ 2 → À étudier. D applied (limits + "titulaire sortant" sentence).
+5. **Sources fixed:** DECP is credited to data.gouv.fr (it was wrongly "via Hémicycle"); APProch via the Hémicycle API.
+6. **Framing:** the app subtitle leads with "1 marché sur 5… les appels d'offres qui manquent de candidats, là où sa candidature compte le plus". New limit: "Le score dit combien d'offres un marché reçoit d'habitude, pas si vous le gagnerez."
+7. **Sole-trader warning** on the SIREN field. **Score-factors caption removed** from "Détail des marchés passés".
+8. **Notes regenerated** (Haiku): Point Contrôles top 40 + Moulinot 26, all 66 verified.
 
 ## 9. "Suivre" feature (patch sent at 08:50; verify it's applied)
 
@@ -156,6 +173,8 @@ Backups: `src/explain.py.bak`, `src/profiles.py.bak`, `app.py.bak`, `artifacts/n
 ## 12. Open tasks, in priority order
 
 Time-box each one. Stop at 16:30 whatever happens.
+
+*Status at 11:00: A, B, C, D done (§8b). Left: E (slides + video), F (Featherless), G (optional).*
 
 ### A. Verify the app (10 min, do first)
 Header shows 26 tenders and N open. The SIREDOM note shows. "Voir l'avis BOAMP" opens the notice. "Suivre" works (§9). Then `cp artifacts/notes.json artifacts/notes_claude.json`.
@@ -195,15 +214,18 @@ In the EU, single bidding is a standard **warning sign** of weak competition. A 
 
 - Problem (20 s): 1 public contract in 5 gets a single bid; less competition means worse value for public money and fewer contracts for SMEs.
 - Who it's for (15 s): an SME that bids.
-- Live demo (90 s): Moulinot → SIREDOM (Aller) → Suivre → Grand Cubzaguais (Passer) → note.
-- Proof (30 s): Preuves tab.
+- Live demo (90 s): Point Contrôles → SENEO (Aller) → note → Suivre → Val-de-Marne contrôle technique (Passer).
+- Proof (30 s): Preuves tab: 50 / 42 / 20, then the backtest Aller 41 % · À étudier 23 % · Passer 12 %.
 - Close (15 s): *"Each SME that bids turns a single-bid tender into a competitive one."* Buyer side and alerts as next steps.
 
 **Lines for questions**
 - *"The go / no-go is three explicit rules. The LLM only writes them up, and any number it writes is checked against the data."*
 - *"We trained on 2023–24 and tested on 320,000 contracts from 2025–26 the model never saw."*
 - *"If every SME used it, the scores would drop. That's the point: more bids on those tenders."*
-- *"It predicts how many bids a tender gets, not whether you win. That's why the note also shows the buyer's history and the outgoing holder."* (true once task B is done)
+- *"It predicts how many bids a tender gets, not whether you win. That's why the note also shows the buyer's history and the outgoing holder, and a repeat holder downgrades a go to look closer."*
+- *"Is 53 % really 53 %?"* → *"Yes, it's calibrated: we fitted it on 2025 and checked it on 2026. And the go / no-go itself is backtested: on 2026 contracts, 'Aller' got a single bid 41 % of the time, 'Passer' 12 %."*
+- *"Doesn't a single bid mean an entrenched incumbent?"* → *"When a contract that last got one bid gets a second bidder, the previous holder loses it about 4 times in 5 (83 % in DECP 2019–26; 'previous' = same buyer and CPV group, so it's indicative)."*
+- *"Why only 3 go out of 62?"* → *"Because most tenders in its trade are competitive. A tool that said go to everything would be useless."*
 
 ## 14. Files
 
