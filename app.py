@@ -16,6 +16,7 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 from common import ART, CLEAN  # noqa: E402
+from siren import clean_siren, siren_valid  # noqa: E402
 from profiles import describe_profile, fit_table, load_all_scored, profile_of, relevant, similar_wins  # noqa: E402
 
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
@@ -244,7 +245,7 @@ tab_main, tab_proof = st.tabs(["Appels d'offres", "Preuves"])
 with tab_main:
     raw = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=20,
                         help="9 chiffres (ou le SIRET, dont on garde les 9 premiers). Réservé aux sociétés.")
-    siren = re.sub(r"\D", "", raw or "")[:9]  # accepts spaces, dots and a full SIRET
+    siren = clean_siren(raw)  # accepts spaces, dots and a full SIRET
     if not (raw or "").strip():
         st.write("Entrez un SIREN pour voir les appels d'offres à venir qui vous correspondent.")
         st.stop()
@@ -253,6 +254,10 @@ with tab_main:
         st.stop()
     if siren in PLACEHOLDER_SIRENS:
         st.write("Ce numéro est un identifiant fictif présent dans certaines données, pas une entreprise.")
+        st.stop()
+    if not siren_valid(siren):
+        st.write("Ce numéro n'est pas un SIREN valide : sa clé de contrôle ne correspond pas. Vérifiez-le "
+                 "(par exemple sur annuaire-entreprises.data.gouv.fr).")
         st.stop()
     if is_sole_trader(siren):
         st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
