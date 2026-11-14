@@ -1,0 +1,145 @@
+{
+  "split_year": 2025,
+  "n_train": 285627,
+  "n_test": 321004,
+  "test_single_bid_rate": 0.19811279610222926,
+  "bootstrap_reps": 40,
+  "bootstrap_unit": "buyer",
+  "results": {
+    "main/base": {
+      "auc": 0.6947077513109405,
+      "avg_precision": 0.4148744112067859,
+      "precision_top10": 0.49601246105919006,
+      "brier": 0.14695891715000306,
+      "importance_of_added": 0.0
+    },
+    "main/tfidf": {
+      "auc": 0.7195439540536621,
+      "avg_precision": 0.45033657170784747,
+      "precision_top10": 0.5416822429906542,
+      "brier": 0.14196046728836892,
+      "vs_base": {
+        "diff_mean": 0.0250843767704578,
+        "ci95": [
+          0.021099821502496334,
+          0.02907548085948185
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.4166
+    },
+    "main/emb_rate": {
+      "auc": 0.6976356556819497,
+      "avg_precision": 0.4176963889132156,
+      "precision_top10": 0.5018068535825545,
+      "brier": 0.1462382019309099,
+      "vs_base": {
+        "diff_mean": 0.002888001474485413,
+        "ci95": [
+          0.0016474950792285837,
+          0.0038589610854913655
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.0509
+    },
+    "main/emb_dims": {
+      "auc": 0.6994827852102934,
+      "avg_precision": 0.4221317544975416,
+      "precision_top10": 0.5059813084112149,
+      "brier": 0.14518796805208573,
+      "vs_base": {
+        "diff_mean": 0.004868392879083134,
+        "ci95": [
+          0.0034367814743530927,
+          0.006843364865904497
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.2699
+    },
+    "main/tfidf+emb": {
+      "auc": 0.7194811621057633,
+      "avg_precision": 0.4501450938938578,
+      "precision_top10": 0.5402492211838006,
+      "brier": 0.1419813370175128,
+      "vs_base": {
+        "diff_mean": 0.024980597533489288,
+        "ci95": [
+          0.02092406327202293,
+          0.029137259387876376
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.446
+    },
+    "boamp/base": {
+      "auc": 0.6813451934338403,
+      "avg_precision": 0.39018378870947545,
+      "precision_top10": 0.48258566978193146,
+      "brier": 0.14968189365061152,
+      "importance_of_added": 0.0
+    },
+    "boamp/tfidf": {
+      "auc": 0.711796498781286,
+      "avg_precision": 0.4385735395344329,
+      "precision_top10": 0.5277570093457944,
+      "brier": 0.14356523320012038,
+      "vs_base": {
+        "diff_mean": 0.03074182454587755,
+        "ci95": [
+          0.026796901662815877,
+          0.035038860983263496
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.4793
+    },
+    "boamp/emb_rate": {
+      "auc": 0.6869489023702393,
+      "avg_precision": 0.40169139078092553,
+      "precision_top10": 0.490809968847352,
+      "brier": 0.14831164891103707,
+      "vs_base": {
+        "diff_mean": 0.0055528267476575716,
+        "ci95": [
+          0.004396079932066918,
+          0.006905659950736364
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.0645
+    },
+    "boamp/emb_dims": {
+      "auc": 0.6924129114943054,
+      "avg_precision": 0.4122155817983208,
+      "precision_top10": 0.49909657320872275,
+      "brier": 0.14634152463637243,
+      "vs_base": {
+        "diff_mean": 0.011077900072236089,
+        "ci95": [
+          0.009087352606379648,
+          0.01386305545186656
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.2933
+    },
+    "boamp/tfidf+emb": {
+      "auc": 0.7126744933773705,
+      "avg_precision": 0.4393890853098135,
+      "precision_top10": 0.5271651090342679,
+      "brier": 0.14327958693031656,
+      "vs_base": {
+        "diff_mean": 0.031605473534855454,
+        "ci95": [
+          0.02804946148838747,
+          0.03579352190973395
+        ],
+        "share_positive": 1.0
+      },
+      "importance_of_added": 0.4642
+    }
+  },
+  "peak_note": "mem at end 1.20 GB"
+}

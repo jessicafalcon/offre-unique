@@ -1,0 +1,18 @@
+awards 2023-2025: 890,937 · 2026: 192,029 · mem 1.42 GB
+pool 155,423 contracts · 13,704 eligible companies · sample 300
+sample wins kept · mem 0.47 GB
+pool vectors (155423, 128) · mem 1.15 GB
+  50/300 companies · 321s · mem 1.13 GB
+  100/300 companies · 650s · mem 1.13 GB
+  150/300 companies · 997s · mem 1.13 GB
+  200/300 companies · 1358s · mem 1.14 GB
+  250/300 companies · 1804s · mem 1.08 GB
+  300/300 companies · 2303s · mem 0.64 GB
+| Méthode | Rappel @20 | Rappel @50 | Rappel @100 | Mieux / moins bien que les règles (@50) |
+|---|---|---|---|---|
+| rules | 11.7 % | 18.6 % | 23.4 % | – |
+| rules+emb | 15.4 % | 22.4 % | 27.2 % | 27 % / 12 % |
+| emb | 16.3 % | 20.9 % | 25.2 % | 33 % / 23 % |
+| emb+cpv2 | 9.9 % | 13.9 % | 17.5 % | 23 % / 34 % |
+
+Règles : sélection médiane de 162 contrats, qui contient 36.9 % des marchés gagnés en 2026.

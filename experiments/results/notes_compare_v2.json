@@ -1,0 +1,86 @@
+{
+  "n_eval": 56,
+  "few_shot_keys": [
+    "834709248:BOAMP-26-102021",
+    "834709248:BOAMP-26-105339",
+    "798298899:BOAMP-26-106848",
+    "798298899:BOAMP-26-102272",
+    "834709248:BOAMP-26-109616",
+    "834709248:BOAMP-26-95787"
+  ],
+  "judge": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "summary": {
+    "claude-haiku-5-5 (référence, notes existantes)": {
+      "accepted": 1.0,
+      "two_sentences": 0.9642857142857143,
+      "max_45_words": 1.0,
+      "starts_with_reco": 0.9642857142857143,
+      "reco_unchanged": 1.0,
+      "starts_upper": 1.0,
+      "french": 1.0
+    },
+    "google/gemma-4-31B-it": {
+      "accepted": 1.0,
+      "accepted_first_try": 1.0,
+      "two_sentences": 1.0,
+      "max_45_words": 1.0,
+      "starts_with_reco": 1.0,
+      "reco_unchanged": 1.0,
+      "starts_upper": 1.0,
+      "french": 1.0,
+      "cost_usd": 0.0052,
+      "calls": 56,
+      "sec_per_call": 6.4,
+      "wall_min": 3.1,
+      "judge_vs_haiku": {
+        "candidate": 10,
+        "haiku": 38,
+        "tie": 0,
+        "invalid": 8
+      },
+      "judge_cost_usd": 0.1225
+    },
+    "Qwen/Qwen3.8-27B": {
+      "accepted": 1.0,
+      "accepted_first_try": 1.0,
+      "two_sentences": 1.0,
+      "max_45_words": 1.0,
+      "starts_with_reco": 1.0,
+      "reco_unchanged": 1.0,
+      "starts_upper": 1.0,
+      "french": 1.0,
+      "cost_usd": 0.0227,
+      "calls": 56,
+      "sec_per_call": 2.6,
+      "wall_min": 1.2,
+      "judge_vs_haiku": {
+        "candidate": 11,
+        "haiku": 32,
+        "tie": 0,
+        "invalid": 13
+      },
+      "judge_cost_usd": 0.1361
+    },
+    "openai/gpt-oss-120b": {
+      "accepted": 1.0,
+      "accepted_first_try": 1.0,
+      "two_sentences": 1.0,
+      "max_45_words": 1.0,
+      "starts_with_reco": 1.0,
+      "reco_unchanged": 1.0,
+      "starts_upper": 1.0,
+      "french": 1.0,
+      "cost_usd": 0.016,
+      "calls": 56,
+      "sec_per_call": 3.2,
+      "wall_min": 1.5,
+      "judge_vs_haiku": {
+        "candidate": 9,
+        "haiku": 34,
+        "tie": 0,
+        "invalid": 13
+      },
+      "judge_cost_usd": 0.13
+    }
+  }
+}

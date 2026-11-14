@@ -1,0 +1,9 @@
+labelled 606,631 · train 285,627 · test 321,004 · mem 0.63 GB
+tfidf feature done · 84s · mem 0.80 GB
+embeddings: 0 titles without a vector
+embedding features done · 132s · mem 1.28 GB
+main  base      AUC 0.6947  top10 0.496  · 225s · mem 1.15 GB
+main  tfidf     AUC 0.7195  top10 0.542  ΔAUC +0.0252 [+0.0217, +0.0291]  · 633s · mem 1.16 GB
+main  emb_rate  AUC 0.6976  top10 0.502  ΔAUC +0.0029 [+0.0020, +0.0039]  · 1423s · mem 1.15 GB
+
+[killed]
