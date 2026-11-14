@@ -500,7 +500,7 @@ st.html("""<style>
 .ou-splash img {width:min(320px,62vw); height:auto; border-radius:50%; border:6px solid #1f3a7a;}
 .ou-splash h1 {font-size:clamp(3.2rem,9vw,6rem); font-weight:800; color:#0b0c0c; margin:.7rem 0 .2rem 0; padding:0;
   line-height:1;}
-.ou-splash .motto {font-size:clamp(1.5rem,3.2vw,2.3rem); font-weight:700; color:#1f3a7a; max-width:950px; margin:.4rem 0;
+.ou-splash .motto {font-size:clamp(1.9rem,4.2vw,3rem); font-weight:700; color:#1f3a7a; max-width:950px; margin:.4rem 0;
   line-height:1.25;}
 .ou-splash .what {font-size:clamp(1.15rem,2vw,1.4rem); color:#0b0c0c; max-width:780px; margin:.6rem 0 0 0; line-height:1.5;}
 .ou-splash .go {margin-top:2rem; font-size:1.25rem; font-weight:700; color:#fff; background:#1f3a7a; padding:.7rem 1.4rem;
@@ -585,7 +585,7 @@ st.html("""<style>
 </style>""")
 # Welcome page: name, motto, what it does, the mascot. A click anywhere (an invisible full-screen button, also
 # reachable with Tab + Enter) enters the app; the choice is kept for the visit (session state).
-MOTTO = "Les marchés publics qui manquent de candidats, pour les PME qui y répondent"
+MOTTO = "Tant pie pour vos concurrents\u202f!"  # pun: "tant pis" + the magpie ("pie") mascot
 if not st.session_state.get("entered"):
     big = "data:image/jpeg;base64," + __import__("base64").b64encode((MASCOT_DIR / "mascot_480.jpg").read_bytes()).decode()
     st.html(f'<div class="ou-splash"><img src="{big}" alt="Mascotte QtFetcher, une pie bavarde">'
@@ -597,8 +597,7 @@ if not st.session_state.get("entered"):
     st.stop()
 
 st.html(f'<div class="ou-header"><img src="{MASCOT}" alt="Mascotte QtFetcher, une pie bavarde">'
-        '<div><b>QtFetcher</b><span>Les marchés publics qui manquent de candidats, pour les PME qui y répondent'
-        '</span></div></div>')
+        f'<div><b>QtFetcher</b><span>{MOTTO}</span></div></div>')
 
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Comment ça marche"])
 
