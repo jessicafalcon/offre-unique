@@ -122,12 +122,13 @@ Only the last two steps should be needed today.
 - **On stage:**
   1. SENEO is selected by default (top row). Read the note.
   2. Click **Suivre cet appel d'offres**; it appears in the sidebar with "J-16".
-  3. Click the **Val-de-Marne contrôle technique** row (Passer, 14 %).
+  3. Click the **Val-de-Marne contrôle technique** row (Passer, 14 %). Point at its Hémicycle panel: the buyer's last 5 contracts got **6, 4, 4, 27 and 27 bids**, against **1, 1, 1, 1, 1** for SENEO.
   4. Back on SENEO, point at **"En direct d'Hémicycle"** (its last 5 comparable contracts, all single-bid) and click **Actualiser via Hémicycle** once: the timestamp updates (1 credit). Say: *"the buyer's latest contracts come live from Hémicycle's API."*
   5. Show the **Preuves** tab: 50 / 42 / 20, then the backtest line **Aller 41 % · À étudier 23 % · Passer 12 %**.
   - Say once: *"the notes are written by Gemma 4, an open-weight model on Featherless, and every number is checked."*
   - "Détail des marchés passés" is safe to open now (the misleading score-factors caption was removed).
   - Before the demo: `rm -f artifacts/follows.json` so the follow list starts empty.
+  - **Stage check passed 15:30 (26/26, headless):** cold start 1.6 s; SENEO 53 % · 2,7 × · J-16 · note · Hémicycle panel · "Vos contrats similaires (8)"; Suivre → sidebar "J-16 · 53 % · Aller" → Retirer; Preuves 50/42/20, backtest 41/23/12, coverage, 8-model table; backup Bati Recyclage ("titulaire sortant"); SIREN edge cases (sole trader refused, placeholder, invalid key 632041071, SIRET, spaces, Colas, La Poste). Re-run it after any UI change: ask Claude, or `python <scratchpad>/stage_check.py`.
 
 ## 8. What changed this morning (14 Nov, 07:40–08:50)
 
