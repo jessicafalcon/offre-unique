@@ -10,4 +10,14 @@ runOnSave = false
 gatherUsageStats = false
 
 [theme]
-primaryColor = "#2E9E8F"
+# "Pie bavarde" palette: black, navy (the blue sheen of the magpie's wings), white
+base = "light"
+primaryColor = "#1F3A7A"
+textColor = "#0B0C0C"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EEF1F7"
+linkColor = "#1F3A7A"
+borderColor = "#B1B4B6"
+dataframeHeaderBackgroundColor = "#EEF1F7"
+baseFontSize = 17
+baseRadius = "small"

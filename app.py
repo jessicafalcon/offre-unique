@@ -329,15 +329,18 @@ def trade_of(prof: dict) -> tuple[str, str]:
     return f":material/{TRADE_ICONS.get(main[0], 'work')}:", ", ".join(cpv_label(k) for k in main)
 
 
-def short_when(r: pd.Series) -> str:
-    """List column: '30/11 · J-16' when close, the full date when far, or the planned publication month."""
+def date_only(r: pd.Series) -> str:
+    """List column 'Date limite': the deadline when known (projects show 'Publication prévue' separately)."""
     if pd.notna(r.get("due_date")):
-        d = pd.Timestamp(r["due_date"])
-        if (d.normalize() - pd.Timestamp.now().normalize()).days <= 120:
-            return f"{d:%d/%m} · {days_left(d)}"
-        return f"{d:%d/%m/%Y}"
-    if pd.notna(r.get("pub_date")):
-        return "publication " + pd.Timestamp(r["pub_date"]).strftime("%m/%Y")
+        return f"{pd.Timestamp(r['due_date']):%d/%m/%Y}"
+    return ""
+
+
+def countdown(r: pd.Series) -> str:
+    """List column 'Délai': J-16 when the deadline is within 4 months, else empty."""
+    if pd.notna(r.get("due_date")):
+        d = (pd.Timestamp(r["due_date"]).normalize() - pd.Timestamp.now().normalize()).days
+        return days_left(r["due_date"]) if d <= 120 else ""
     return ""
 
 
@@ -367,10 +370,10 @@ def render_detail(r: pd.Series, prof: dict) -> None:
             btype if isinstance(btype, str) and btype != "Inconnu" else "",
             r.get("taille_marche") if isinstance(r.get("taille_marche"), str) else "",
             duration_text(r.get("duree_previsionnelle_du_marche"))]
+    if r.get("source") != "BOAMP" and pd.notna(r.get("pub_date")):  # project: planned publication (no start date in APProch)
+        meta.append(f"publication prévue le {fmt_date(r['pub_date'])}")
     if pd.notna(r.get("due_date")):
         meta.append(f"offres dues le {fmt_date(r['due_date'])} · {days_left(r['due_date'])}")
-    elif pd.notna(r.get("pub_date")):
-        meta.append(f"publication prévue en {pd.Timestamp(r['pub_date']).strftime('%m/%Y')}")
     st.caption(" · ".join(m for m in meta if m and m not in {"None", "nan"}))
     if isinstance(r.get("procedure_note"), str):
         st.caption(f":material/info: {r['procedure_note']}.")
@@ -458,84 +461,105 @@ def render_detail(r: pd.Series, prof: dict) -> None:
 # Small custom CSS: Streamlit has no setting for input border thickness, focus colour, page width or panel tints.
 # GOV.UK patterns (start page, hint text, focus ring, inset text), not its brand. Missing selectors fail silently.
 st.html("""<style>
-.ou-header {background:#1f6f65; color:#fff; padding:.9rem 1.25rem; margin:-.5rem 0 0 0; border-bottom:6px solid #2E9E8F;}
-.ou-header b {font-size:1.6rem; letter-spacing:.01em;}
-.ou-header span {display:block; opacity:.9; font-size:.95rem; margin-top:.15rem;}
-.ou-phase {border-bottom:1px solid #b1b4b6; padding:.45rem 0; font-size:.9rem; color:#0b0c0c;}
-.ou-phase strong {display:inline-block; background:#1f6f65; color:#fff; padding:.05rem .45rem; margin-right:.5rem;
-  font-size:.8rem; letter-spacing:.05em;}
-.st-key-start {background:#f3f2f1; padding:1.25rem 1.5rem 1rem 1.5rem; border-radius:0;}
-.st-key-start h2 {font-size:2rem; font-weight:700; padding-top:0; line-height:1.15;}
-.ou-lead {font-size:1.15rem; margin:.25rem 0 .9rem 0; color:#0b0c0c;}
-.ou-label {font-size:1.2rem; font-weight:700; margin:0; color:#0b0c0c;}
+/* "Pie bavarde" palette: black #0B0C0C, navy #1F3A7A, white; light navy tint #EEF1F7 for panels */
+.ou-header {background:#0b0c0c; color:#fff; padding:1rem 1.25rem; margin:-.5rem 0 .5rem 0; border-bottom:8px solid #1f3a7a;}
+.ou-header b {font-size:1.75rem; letter-spacing:.01em;}
+.ou-header span {display:block; opacity:.92; font-size:1.05rem; margin-top:.2rem;}
+.st-key-start {background:#eef1f7; padding:1.25rem 1.5rem 1rem 1.5rem; border-radius:0;}
+.st-key-start h2 {font-size:2.1rem; font-weight:700; padding-top:0; line-height:1.15;}
+.ou-lead {font-size:1.2rem; margin:.25rem 0 .9rem 0; color:#0b0c0c;}
+.ou-label {font-size:1.3rem; font-weight:700; margin:0; color:#0b0c0c;}
 .st-key-q [data-testid="stTextInputRootElement"] {border:2px solid #0b0c0c !important; border-radius:0 !important;
-  background:#fff !important; min-height:3.35rem;}
+  background:#fff !important; min-height:3.4rem;}
 .st-key-q [data-testid="stTextInputRootElement"]:focus-within {outline:3px solid #ffdd00; outline-offset:0;
   box-shadow:inset 0 0 0 2px #0b0c0c;}
-.st-key-q [data-testid="stTextInputField"] {font-size:1.3rem !important; color:#0b0c0c; background:#fff !important;}
-[class*="st-key-ex_"] button p {color:#1d70b8; text-decoration:underline; text-underline-offset:3px; font-size:1rem;}
-[class*="st-key-ex_"] button:hover p {color:#003078; text-decoration-thickness:3px;}
-.st-key-detail h4 {font-size:1.3rem; line-height:1.3;}
-[data-testid="stMainBlockContainer"] {max-width:1560px;}
-.stApp, .stApp [data-testid="stMarkdownContainer"] {color:#0b0c0c;}
-.stApp [data-testid="stMarkdown"] p, .stApp [data-testid="stMarkdown"] li {font-size:1.05rem; line-height:1.5;}
-.stApp [data-testid="stMarkdownContainer"] a {color:#1d70b8; text-underline-offset:3px;}
-.stApp button:focus-visible, .stApp a:focus-visible {outline:3px solid #ffdd00 !important; outline-offset:0;}
-.stApp button[role="tab"] p {font-size:1.08rem; font-weight:600;}
-.st-key-note {border-left:6px solid #b1b4b6; padding:.3rem 0 .3rem 1.1rem; margin:.25rem 0;}
-.st-key-note p {font-size:1.12rem !important; line-height:1.55 !important;}
-.st-key-risk p {font-size:1.2rem !important;}
-.st-key-company {border-radius:0;}
-.ou-summary {border-collapse:collapse; width:100%; font-size:1.02rem; color:#0b0c0c;}
+.st-key-q [data-testid="stTextInputField"] {font-size:1.35rem !important; color:#0b0c0c; background:#fff !important;}
+.st-key-go button {min-height:3.4rem; border-radius:0; font-weight:700; box-shadow:0 3px 0 #0b0c0c;}
+.st-key-go button p, .st-key-go button span {font-size:1.15rem !important; font-weight:700; color:#fff !important;}
+[class*="st-key-ex_"] button p {color:#1f3a7a; text-decoration:underline; text-underline-offset:3px; font-size:1.05rem;}
+[class*="st-key-ex_"] button:hover p {color:#0b0c0c; text-decoration-thickness:3px;}
+.st-key-detail h4 {font-size:1.35rem; line-height:1.3;}
+.ou-summary {border-collapse:collapse; width:100%; font-size:1.08rem; color:#0b0c0c;}
 .ou-summary th, .ou-summary td {border-bottom:1px solid #b1b4b6; padding:.55rem .5rem .55rem 0; text-align:left;
   vertical-align:middle;}
 .ou-summary th {width:36%; font-weight:700;}
-.ou-icon {font-family:"Material Symbols Rounded"; font-size:1.25rem; vertical-align:-.25rem; margin-right:.35rem;
-  color:#1f6f65; font-weight:normal;}
-.st-key-banner {background:#e6f2f0; border-left:6px solid #1f6f65; padding:1.1rem 1.25rem;}
-.st-key-banner strong {font-size:1.35rem; line-height:1.3; color:#0b0c0c;}
-.st-key-banner p {font-size:1.1rem; color:#0b0c0c;}
-.st-key-go button {min-height:3.35rem; border-radius:0; font-weight:700; font-size:1.1rem; box-shadow:0 3px 0 #164f48;}
-.st-key-go button:focus-visible {outline:3px solid #ffdd00; outline-offset:0;}
+.ou-icon {font-family:"Material Symbols Rounded"; font-size:1.3rem; vertical-align:-.25rem; margin-right:.35rem;
+  color:#1f3a7a; font-weight:normal;}
+.st-key-banner {background:#eef1f7; border-left:8px solid #1f3a7a; padding:1.1rem 1.25rem;}
+.st-key-banner strong {font-size:1.45rem; line-height:1.3; color:#0b0c0c;}
+.st-key-banner p {font-size:1.15rem !important; color:#0b0c0c;}
+[data-testid="stMainBlockContainer"] {max-width:1560px;}
+.stApp, .stApp [data-testid="stMarkdownContainer"] {color:#0b0c0c;}
+.stApp [data-testid="stMarkdown"] p, .stApp [data-testid="stMarkdown"] li {font-size:1.08rem; line-height:1.55;}
+.stApp [data-testid="stCaptionContainer"] p, .stApp [data-testid="stCaptionContainer"] {font-size:.98rem; color:#3b3f45;}
+.stApp [data-testid="stMarkdownContainer"] a {color:#1f3a7a; text-underline-offset:3px;}
+.stApp button:focus-visible, .stApp a:focus-visible {outline:3px solid #ffdd00 !important; outline-offset:0;}
+.stApp button[role="tab"] p {font-size:1.15rem; font-weight:700;}
+.st-key-note {border-left:8px solid #b1b4b6; padding:.3rem 0 .3rem 1.1rem; margin:.25rem 0;}
+.st-key-note p {font-size:1.15rem !important; line-height:1.55 !important;}
+.st-key-risk p {font-size:1.25rem !important;}
+.st-key-company {border-radius:0;}
+/* "Comment ça marche": a story in chapters */
+.ou-hero {background:#0b0c0c; color:#fff; padding:1.6rem 1.75rem; border-left:8px solid #1f3a7a; margin:.5rem 0 1rem 0;}
+.ou-hero .big {font-size:3.4rem; font-weight:800; line-height:1; display:block;}
+.ou-hero .txt {font-size:1.35rem; font-weight:600; display:block; margin-top:.5rem;}
+.ou-hero .sub {font-size:1.08rem; opacity:.9; display:block; margin-top:.6rem;}
+.ou-kicker {color:#1f3a7a; font-weight:800; letter-spacing:.06em; font-size:.95rem; text-transform:uppercase; margin:1.4rem 0 0 0;}
+.st-key-steps [data-testid="stColumn"] {background:#eef1f7; padding:1rem 1.1rem; border-top:6px solid #1f3a7a;}
 </style>""")
 st.html('<div class="ou-header"><b>Offre unique</b><span>Les marchés publics qui manquent de candidats, '
-        'pour les PME qui y répondent</span></div>'
-        '<div class="ou-phase"><strong>PROTOTYPE</strong>Hackathon Open Data · données publiques uniquement</div>')
+        'pour les PME qui y répondent</span></div>')
 
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Comment ça marche"])
 
 with tab_proof:
+    # A story in six short chapters: the problem, the tool, the proof, the notes, who it is for, the limits.
     if not metrics:
         st.write("Lancez `python src/train.py` pour générer les résultats.")
     else:
         res = metrics["results"]
-        st.markdown("### Le score fonctionne-t-il ?")
-        st.write(f"Le modèle a appris sur les marchés de {metrics['train_years'][0]}–{metrics['train_years'][1]} "
-                 f"({fr_int(metrics['n_train'])} marchés), puis a été testé sur {fr_int(metrics['n_test'])} marchés de "
-                 f"{metrics['test_years'][0]}–{metrics['test_years'][1]} qu'il n'avait jamais vus.")
-        st.write("Parmi les 10 % de marchés jugés les plus à risque, part de ceux qui n'ont reçu qu'une seule offre :")
+        avg_pct = round(100 * avg)
+        n_test = fr_int(metrics["n_test"])
+        test_years = f"{metrics['test_years'][0]}–{metrics['test_years'][1]}"
+
+        # 1. The problem
+        st.html('<p class="ou-kicker">1 · Le constat</p>'
+                f'<div class="ou-hero"><span class="big">1 marché sur 5</span>'
+                '<span class="txt">ne reçoit qu\'une seule offre.</span>'
+                f'<span class="sub">{avg_pct} % des {n_test} marchés publics de {test_years} dont on connaît le nombre '
+                'd\'offres. Moins de candidats, c\'est moins de choix pour l\'acheteur public, et des contrats que les '
+                'PME ne voient pas passer.</span></div>')
+
+        # 2. What the tool does
+        st.html('<p class="ou-kicker">2 · Ce que fait Offre unique</p>')
+        st.markdown("### Montrer à une PME les marchés où sa candidature compte le plus")
+        with st.container(key="steps"):
+            s1, s2, s3 = st.columns(3, gap="medium")
+            s1.markdown("**:material/badge: Votre SIREN**\n\nVos marchés gagnés disent votre métier et vos départements.")
+            s2.markdown("**:material/travel_explore: Vos appels d'offres**\n\nCeux de votre métier : ouverts maintenant "
+                        "(BOAMP) et à venir (APProch).")
+            s3.markdown("**:material/fact_check: Une recommandation**\n\nLa chance d'offre unique, puis Aller, À étudier "
+                        "ou Passer, avec une note vérifiée.")
+
+        # 3. The proof
+        st.html('<p class="ou-kicker">3 · Peut-on s\'y fier ?</p>')
+        st.markdown(f"### Testé sur {n_test} marchés que le modèle n'avait jamais vus")
+        st.caption(f"Appris sur {metrics['train_years'][0]}–{metrics['train_years'][1]}, testé sur {test_years}. "
+                   "Parmi les 10 % de marchés que chaque méthode juge les plus susceptibles de n'avoir qu'une offre, "
+                   "part de ceux qui n'en ont reçu qu'une :")
         c1, c2, c3 = st.columns(3)
         c1.metric("Notre score", f"{round(100 * res['model']['precision_top10'])} %")
         c2.metric("Historique de l'acheteur seul", f"{round(100 * res['baseline_buyer_history']['precision_top10'])} %")
-        c3.metric("Moyenne, sans score", f"{round(100 * avg)} %")
+        c3.metric("Moyenne, sans score", f"{avg_pct} %")
         bt_p = ART / "rules_backtest.json"
-        if bt_p.exists():
-            bt = json.loads(bt_p.read_text())
-            g = bt.get("main", {}).get("groups", {})
-            if g:
-                st.write(f"**Les recommandations, testées sur les marchés {bt['years']}** (seuils et calibration fixés sur "
-                         f"{bt['fit_years']}, avant de regarder {bt['years']}) : part de marchés qui n'ont reçu qu'une offre.")
-                k1, k2, k3 = st.columns(3)
-                for col, k in zip((k1, k2, k3), ("Aller", "À étudier", "Passer")):
-                    col.metric(f"« {k} »", f"{round(100 * g[k]['single_rate'])} %", help=f"{fr_int(g[k]['n'])} marchés")
-                st.caption("Sans la condition « déjà gagné ce métier dans ce département », qui dépend de l'entreprise. "
-                           "Les pourcentages affichés dans l'application sont calibrés : un score de 30 % correspond "
-                           "à environ 30 % d'offres uniques observées.")
-        if metrics_boamp:
-            mb = metrics_boamp["results"]
-            st.caption(f"Appels d'offres ouverts (BOAMP) : ces avis ne donnent ni montant ni durée, ils sont notés par une "
-                       f"version du score sans ces informations. Sur le même test : "
-                       f"{round(100 * mb['model']['precision_top10'])} % parmi les 10 % les plus à risque.")
+        bt = json.loads(bt_p.read_text()) if bt_p.exists() else {}
+        g = bt.get("main", {}).get("groups", {})
+        if g:
+            st.caption(f"Et les recommandations elles-mêmes, sur les marchés {bt['years']} : part de ceux qui n'ont reçu "
+                       "qu'une offre.")
+            k1, k2, k3 = st.columns(3)
+            for col, k in zip((k1, k2, k3), ("Aller", "À étudier", "Passer")):
+                col.metric(f"« {k} »", f"{round(100 * g[k]['single_rate'])} %", help=f"{fr_int(g[k]['n'])} marchés")
         with st.expander("Détail technique"):
             names = {"model": "Notre score", "baseline_buyer_history": "Historique de l'acheteur",
                      "baseline_cpv_category": "Taux de la catégorie"}
@@ -545,56 +569,74 @@ with tab_proof:
                 "Précision top 10 %": (100 * tbl["precision_top10"]).round(1).astype(str) + " %",
                 "Brier": tbl["brier"].round(3),
             }), width="stretch")
-            st.caption("AUC : capacité à classer les marchés du plus au moins risqué (0,5 = hasard). "
+            st.caption("AUC : capacité à classer les marchés du plus au moins susceptible d'offre unique (0,5 = hasard). "
                        "Brier : erreur des probabilités (plus bas = mieux).")
+            if g:
+                st.caption(f"Recommandations : seuils et calibration fixés sur {bt['fit_years']}, avant de regarder "
+                           f"{bt['years']} ; sans la condition « déjà gagné ce métier dans ce département », qui dépend de "
+                           "l'entreprise. Les pourcentages affichés sont calibrés : un score de 30 % correspond à environ "
+                           "30 % d'offres uniques observées.")
+            if metrics_boamp:
+                mb = metrics_boamp["results"]
+                st.caption(f"Appels d'offres ouverts (BOAMP) : sans montant ni durée, ils sont notés par une version du "
+                           f"score sans ces informations : {round(100 * mb['model']['precision_top10'])} % sur le même test.")
+
+        # 4. The notes
+        st.html('<p class="ou-kicker">4 · Qui écrit les notes ?</p>')
+        st.markdown("### Un modèle ouvert, et chaque chiffre vérifié")
+        st.markdown("Gemma 4 31B (via Featherless) met les faits en deux phrases. Si un chiffre de la note n'est pas dans "
+                    "les données, la note est écartée. La recommandation, elle, vient de trois règles explicites.")
         bm_p = ART / "llm_benchmark.json"
         if bm_p.exists():
             bm = json.loads(bm_p.read_text())
-            st.markdown("### Quel modèle écrit les notes ?")
-            st.write(f"Mêmes faits, même consigne, **une seule tentative** par note, sur {bm['n']} appels d'offres de "
-                     f"{bm['company']}. Une note est conforme si tous ses chiffres viennent des données, si elle garde la "
-                     "recommandation calculée par les règles, et si elle tient en 2 phrases et 45 mots, en français.")
-            rows = []
-            for lab, m in bm["models"].items():
-                usd = m.get("usd_per_1000_notes")
-                rows.append({"Modèle": lab, "Notes conformes": f"{m['pass']['tout']} / {m['n']}",
-                             "Temps médian": f"{fr_num(m['median_seconds'])} s" if m.get("median_seconds") else "—",
-                             "Coût pour 1 000 notes": f"{usd:.2f} $".replace(".", ",") if usd is not None else "n.d."})
-            st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
-            st.caption("Les notes de l'application sont écrites par Gemma 4 31B (modèle ouvert, via Featherless). "
-                       + " ".join(bm.get("caveats", [])))
+            with st.expander(f"Les {len(bm['models'])} modèles comparés"):
+                st.caption(f"Mêmes faits, même consigne, une seule tentative par note, sur {bm['n']} appels d'offres de "
+                           f"{bm['company']}. Conforme : tous les chiffres viennent des données, la recommandation est "
+                           "gardée, 2 phrases et 45 mots au plus, en français. " + " ".join(bm.get("caveats", [])))
+                rows = []
+                for lab, m in bm["models"].items():
+                    usd = m.get("usd_per_1000_notes")
+                    rows.append({"Modèle": lab, "Notes conformes": f"{m['pass']['tout']} / {m['n']}",
+                                 "Temps médian": f"{fr_num(m['median_seconds'])} s" if m.get("median_seconds") else "—",
+                                 "Coût pour 1 000 notes": f"{usd:.2f} $".replace(".", ",") if usd is not None else "n.d."})
+                st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+
+        # 5. Who it is for
         cov_p = ART / "coverage.json"
-        if cov_p.exists():
-            cov = json.loads(cov_p.read_text()).get("regions", {})
-            idf, fr = cov.get("Île-de-France"), cov.get("France")
-            if idf and fr:
-                st.write(f"**Pour qui ?** Aujourd'hui, {fr_int(idf['with_aller'])} des {fr_int(idf['companies'])} entreprises "
-                         f"actives d'Île-de-France ({round(100 * idf['share_with_aller'])} %) ont au moins un appel d'offres "
-                         f"« Aller », et {fr_int(fr['with_aller'])} sur {fr_int(fr['companies'])} en France "
-                         f"({round(100 * fr['share_with_aller'])} %).")
-                st.caption("Entreprise active : 10 à 200 marchés gagnés, dont un depuis 2025, et au moins 2 dans le même "
-                           "métier et département. Un seul « Aller » suffit à être compté.")
-        st.markdown("### Sources")
-        st.write("Projets d'achats publics (APProch) et derniers marchés de chaque acheteur (« Marchés publics notifiés »), "
-                 "via l'API Hémicycle ; historique complet pour l'entraînement du score : DECP consolidées (data.gouv.fr)"
-                 + ("; appels d'offres ouverts du BOAMP (DILA)" if has_boamp else "")
-                 + " ; type et adresse des acheteurs, vérification des entrepreneurs individuels : répertoire SIRENE "
-                   "(INSEE, via recherche-entreprises.api.gouv.fr). Licence Ouverte 2.0 (Etalab). "
-                   "Notes rédigées par Gemma 4 31B (modèle ouvert) via Featherless, chaque chiffre vérifié.")
+        cov = json.loads(cov_p.read_text()).get("regions", {}) if cov_p.exists() else {}
+        idf, fr = cov.get("Île-de-France"), cov.get("France")
+        if idf and fr:
+            st.html('<p class="ou-kicker">5 · Pour qui ?</p>')
+            st.markdown(f"### Pour qui ? Environ {round(10 * idf['share_with_aller'])} entreprises actives sur 10 "
+                        "en Île-de-France")
+            st.markdown(f"Aujourd'hui, {fr_int(idf['with_aller'])} des {fr_int(idf['companies'])} entreprises actives "
+                        f"d'Île-de-France ont au moins un appel d'offres « Aller », et {fr_int(fr['with_aller'])} sur "
+                        f"{fr_int(fr['companies'])} en France ({round(100 * fr['share_with_aller'])} %). Chaque PME qui "
+                        "répond transforme un marché à offre unique en marché disputé.")
+            st.caption("Entreprise active : 10 à 200 marchés gagnés, dont un depuis 2025, et au moins 2 dans le même "
+                       "métier et département. Un seul « Aller » suffit à être compté.")
+
+        # 6. Limits and sources
+        st.html('<p class="ou-kicker">6 · Ce que l\'outil ne dit pas</p>')
         st.markdown("### Limites")
         st.markdown(
-            f"- Seuls {SHARE_LABELLED} des marchés publiés indiquent le nombre d'offres reçues : le score apprend sur ceux-là.\n"
+            "- Le score dit combien d'offres un marché reçoit d'habitude, **pas si vous le gagnerez**.\n"
+            f"- Seuls {SHARE_LABELLED} des marchés publiés indiquent le nombre d'offres reçues : le score apprend sur "
+            "ceux-là.\n"
+            "- Une offre unique ne signale pas en soi une irrégularité de l'acheteur : elle peut venir d'un marché étroit "
+            "ou très spécialisé. Un titulaire qui gagne plusieurs fois n'indique en soi aucune irrégularité.\n"
+            "- Le score décrit des régularités passées, pas des causes.\n"
             + ("- Les appels d'offres ouverts (BOAMP) ne donnent pas de montant : leur score s'en passe.\n" if has_boamp else
                "- Les achats à venir (APProch) viennent surtout de l'État ; beaucoup de collectivités n'y publient pas.\n") +
-            "- Le score décrit des régularités passées, pas des causes.\n"
-            "- Un titulaire qui gagne plusieurs fois n'indique en soi aucune irrégularité.\n"
-            "- Une offre unique ne signale pas en soi une irrégularité de l'acheteur : elle peut venir d'un marché étroit ou très spécialisé.\n"
-            "- Le score dit combien d'offres un marché reçoit d'habitude, pas si vous le gagnerez.\n"
-            "- Les avis BOAMP de moins de 90 k€ n'ont presque jamais de code CPV : ils manquent dans la liste, "
-            "alors que les petits marchés sont ceux qui reçoivent le plus souvent une seule offre.\n"
-            "- Sur une carte, le point est l'adresse de l'acheteur (SIRENE), pas forcément le lieu des travaux.\n"
-            "- Seuls les marchés gagnés sont publiés : on ne connaît ni les offres perdues ni le taux de succès d'une entreprise."
-        )
+            "- Les avis BOAMP de moins de 90 k€ n'ont presque jamais de code CPV : ils manquent dans la liste, alors que "
+            "les petits marchés sont ceux qui reçoivent le plus souvent une seule offre.\n"
+            "- Seuls les marchés gagnés sont publiés : on ne connaît ni les offres perdues ni le taux de succès d'une "
+            "entreprise.")
+        st.markdown("### Sources")
+        st.markdown("Appels d'offres ouverts : BOAMP (DILA) · projets d'achats (APProch) et derniers marchés de chaque "
+                    "acheteur (« Marchés publics notifiés ») : API Hémicycle · historique complet pour le score : DECP "
+                    "consolidées (data.gouv.fr) · entreprises et acheteurs : répertoire SIRENE (INSEE, via "
+                    "recherche-entreprises.api.gouv.fr). **Licence Ouverte 2.0 (Etalab).**")
 
 
 with tab_main:
@@ -730,7 +772,7 @@ with tab_main:
         st.write("Aucun achat à venir ne correspond à votre historique.")
         st.stop()
 
-    left, right = st.columns([3, 2], gap="large")
+    left, right = st.columns([5, 3], gap="large")
     with left:
         kinds = [k for k in ("BOAMP", "APProch") if (t["source"] == k).any()]
         n_by = t["source"].value_counts()
@@ -764,28 +806,47 @@ with tab_main:
             "Achat": sub["libelle"].astype(str),
             "Acheteur": [html.unescape(str(b)) + (f" · {d}" if d not in {"NA", "nan", "None", ""} else "")
                          for b, d in zip(sub["buyer_name"].fillna(sub["buyer_siren"]), sub["dept"].astype(str))],
-            "Échéance": [short_when(row) for _, row in sub.iterrows()],
+            **({"Publication prévue": [f"{pd.Timestamp(d):%d/%m/%Y}" if pd.notna(d) else "" for d in sub["pub_date"]]}
+               if kind == "APProch" else {}),
+            "Date limite": [date_only(row) for _, row in sub.iterrows()],
+            **({"Échéance": [countdown(row) for _, row in sub.iterrows()]}  # shown as "Délai" (J-16)
+               if kind != "APProch" else {}),
             "Offre unique": (100 * sub["proba"]).round().astype(int),
-            "× moyenne": [f"{fr_num(p / avg)} ×" if avg else "" for p in sub["proba"]],
+            "vs moyenne": [f"{fr_num(p / avg)} fois" if avg else "" for p in sub["proba"]],
         })
         ev = st.dataframe(
             view, hide_index=True, width="stretch", height=min(39 + 35 * len(view), 520),
             on_select="rerun", selection_mode="single-row", key=f"list_{siren}_{kind}_{flt}_{order}",
             column_config={
-                "Avis": st.column_config.TextColumn(width=82),
-                "Achat": st.column_config.TextColumn(width=222),
-                "Acheteur": st.column_config.TextColumn("Acheteur · dép.", width=150),
-                "Échéance": st.column_config.TextColumn(width=100),
+                "Avis": st.column_config.TextColumn(width=82, help="Notre recommandation : Aller, À étudier ou Passer"),
+                "Achat": st.column_config.TextColumn(width=176, help="Objet de l'appel d'offres"),
+                "Acheteur": st.column_config.TextColumn("Acheteur · dép.", width=135,
+                                                        help="Acheteur public et département d'exécution"),
+                "Publication prévue": st.column_config.TextColumn(width=105, help="Date à laquelle l'acheteur prévoit "
+                                                                  "de publier l'appel d'offres (APProch)"),
+                "Date limite": st.column_config.TextColumn(width=95, help="Date limite de remise des offres, "
+                                                           "quand l'acheteur l'a annoncée"),
+                "Échéance": st.column_config.TextColumn("Délai", width=62,
+                                                        help="Jours restants : J-16 = il reste 16 jours pour répondre"),
                 "Offre unique": st.column_config.ProgressColumn(
-                    width=105, min_value=0, max_value=100, format="%d %%",
-                    help="Chance qu'une seule offre soit déposée (calibrée)"),
-                "× moyenne": st.column_config.TextColumn("× moy.", width=62),
+                    width=100, min_value=0, max_value=100, format="%d %%",
+                    help="Chance qu'une seule entreprise réponde, d'après les marchés passés"),
+                "vs moyenne": st.column_config.TextColumn("vs moyenne", width=102,
+                                                          help="Par rapport à un marché moyen : 2,7 fois = 2,7 fois plus de "
+                                                               "chances d'offre unique"),
             },
         )
-        foot = "Cliquez sur une ligne pour voir la note et l'avis · % = chance qu'une seule offre soit déposée"
-        if avg is not None:
-            foot += f" · moyenne : {round(100 * avg)} %"
-        st.caption(foot)
+        st.caption("Cliquez sur une ligne pour voir la note et l'avis.")
+        with st.expander("Comment lire ce tableau", icon=":material/help:"):
+            st.markdown(
+                "- **Avis** : notre recommandation. **Aller** = à privilégier ; **À étudier** = à regarder de près ; "
+                "**Passer** = la concurrence sera habituelle ou forte.\n"
+                f"- **Offre unique** : la chance qu'une seule entreprise réponde, d'après les marchés passés "
+                f"(en moyenne : {round(100 * avg) if avg else 20} %).\n"
+                f"- **vs moyenne** : « 2,7 fois » = 2,7 fois plus de chances d'offre unique qu'un marché moyen.\n"
+                "- **Date limite** : dernier jour pour déposer une offre. **Délai** : jours restants (J-16 = dans 16 jours).\n"
+                "- **Publication prévue** (projets à venir) : date à laquelle l'acheteur prévoit de publier l'appel "
+                "d'offres. APProch ne donne pas de date de début du marché.")
         rows = ev.selection.rows if ev and ev.selection else []
         idx = rows[0] if rows and rows[0] < len(sub) else 0
 
