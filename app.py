@@ -379,14 +379,15 @@ def render_detail(r: pd.Series, prof: dict) -> None:
     risk_line = f"**{risk} %** de chances qu'une seule offre soit déposée"
     if avg:
         risk_line += f" ({fr_num(float(r['proba']) / avg)} × la moyenne)"
-    st.markdown(risk_line)
+    with st.container(key="risk"):
+        st.markdown(risk_line)
 
     notes = load_notes()
     key = f"{prof['siren']}:{r.get('code')}"
     note = notes.get(key)
     has_note = bool(note and note.get("verified") and note.get("note", "").strip())
     if has_note:
-        with st.container(border=True):
+        with st.container(key="note"):  # GOV.UK inset text
             st.write(note["note"])
     elif st.button("Rédiger la note go / no-go", icon=":material/edit_note:"):
         try:
@@ -475,6 +476,16 @@ st.html("""<style>
 [class*="st-key-ex_"] button p {color:#1d70b8; text-decoration:underline; text-underline-offset:3px; font-size:1rem;}
 [class*="st-key-ex_"] button:hover p {color:#003078; text-decoration-thickness:3px;}
 .st-key-detail h4 {font-size:1.3rem; line-height:1.3;}
+[data-testid="stMainBlockContainer"] {max-width:1560px;}
+.stApp, .stApp [data-testid="stMarkdownContainer"] {color:#0b0c0c;}
+.stApp [data-testid="stMarkdown"] p, .stApp [data-testid="stMarkdown"] li {font-size:1.05rem; line-height:1.5;}
+.stApp [data-testid="stMarkdownContainer"] a {color:#1d70b8; text-underline-offset:3px;}
+.stApp button:focus-visible, .stApp a:focus-visible {outline:3px solid #ffdd00 !important; outline-offset:0;}
+.stApp button[role="tab"] p {font-size:1.08rem; font-weight:600;}
+.st-key-note {border-left:6px solid #b1b4b6; padding:.3rem 0 .3rem 1.1rem; margin:.25rem 0;}
+.st-key-note p {font-size:1.12rem !important; line-height:1.55 !important;}
+.st-key-risk p {font-size:1.2rem !important;}
+.st-key-company {border-radius:0;}
 .ou-summary {border-collapse:collapse; width:100%; font-size:1.02rem; color:#0b0c0c;}
 .ou-summary th, .ou-summary td {border-bottom:1px solid #b1b4b6; padding:.55rem .5rem .55rem 0; text-align:left;
   vertical-align:middle;}
