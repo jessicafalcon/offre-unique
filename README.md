@@ -73,3 +73,29 @@ Read `CLAUDE.md` (same as `projet-brief.md`) first: it has the current state, de
 4. `python -m streamlit run app.py`
 
 Everything else (model, calibration, notes, scored tenders) is in the repo. Work on a branch and open a PR; don't push to `main` during the demo prep.
+
+## For the UI: buyer type and map (added 14 Nov, 13:00)
+
+`load_all_scored()` now adds, for every tender: `buyer_type` (Commune, Hôpital santé, Collège lycée, Région, État ministère…),
+`buyer_lat`, `buyer_lon`, `buyer_address`, `buyer_multi_site` and `buyer_location_source`.
+Source: public company register (SIRENE via recherche-entreprises.api.gouv.fr), built by `python src/buyers.py`
+into `artifacts/buyers.json`. **The pin is where the buyer is, not the worksite.** For multi-site buyers
+(State, regions, départements, Ville de Paris, central purchasing bodies) say so instead of implying a precise place.
+
+Paste-ready snippet for `app.py`, after `t = relevant(...)`:
+
+```python
+from explain import recommend_row
+t["reco"] = [recommend_row(r, prof) for _, r in t.iterrows()]
+
+types = sorted(t["buyer_type"].dropna().unique())
+pick = st.multiselect("Type d'acheteur", types)
+if pick:
+    t = t[t["buyer_type"].isin(pick)].reset_index(drop=True)
+
+COLORS = {"Aller": "#1a9850", "À étudier": "#fdae61", "Passer": "#bdbdbd"}
+m = t.dropna(subset=["buyer_lat", "buyer_lon"]).assign(color=lambda d: d["reco"].map(COLORS))
+st.map(m, latitude="buyer_lat", longitude="buyer_lon", color="color", size=300)
+st.caption("Point = adresse de l'acheteur (registre SIRENE), pas forcément le lieu des travaux. "
+           f"{int(m['buyer_multi_site'].sum())} acheteurs multi-sites : position indicative.")
+```

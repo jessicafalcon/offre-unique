@@ -20,7 +20,7 @@
     "model": "google/gemma-4-31B-it"
   },
   "834709248:BOAMP-26-106549": {
-    "note": "La probabilité d'offre unique est de 23% contre une moyenne de 20%, avec 35 contrats similaires gagnés. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+    "note": "La probabilité d'offre unique est de 23% contre une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car probabilité proche de la moyenne ou un peu au-dessus, sans écart net.",
     "verified": true,
     "model": "google/gemma-4-31B-it"
   },
@@ -30,7 +30,7 @@
     "model": "google/gemma-4-31B-it"
   },
   "834709248:BOAMP-26-95509": {
-    "note": "La probabilité d'offre unique est de 20% pour une moyenne de 20%, avec 35 contrats similaires gagnés par l'entreprise. À étudier, car probabilité au-dessus de la moyenne, sans écart net.",
+    "note": "La probabilité d'offre unique est de 20% pour une moyenne de 20%, et l'entreprise a gagné 35 contrats similaires. À étudier, car probabilité proche de la moyenne ou un peu au-dessus, sans écart net.",
     "verified": true,
     "model": "google/gemma-4-31B-it"
   },
@@ -328,5 +328,40 @@
     "note": "Probabilité d'offre unique de 12 %, contre 20 % en moyenne ; 20 contrats similaires gagnés ; 0 % d'offre unique sur les 3 marchés connus de l'acheteur. Passer, car la probabilité d'offre unique est nettement inférieure à la moyenne et davantage de concurrents sont attendus.",
     "verified": true,
     "model": "claude-haiku-5-5"
+  },
+  "481447951:BOAMP-26-101166": {
+    "note": "La probabilité d'offre unique est de 34% contre une moyenne de 20%, et l'entreprise a gagné 33 contrats similaires. Aller, car l'entreprise est le titulaire sortant : un renouvellement à défendre.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
+  },
+  "481447951:BOAMP-26-97880": {
+    "note": "La probabilité d'offre unique est de 31% contre une moyenne de 20%, et l'entreprise a gagné 23 contrats similaires. Aller, car cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
+  },
+  "481447951:BOAMP-26-97217": {
+    "note": "La probabilité d'offre unique est de 28% contre une moyenne de 20%, avec 33 contrats similaires gagnés. À étudier, car la probabilité est proche de la moyenne ou un peu au-dessus, sans écart net.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
+  },
+  "481447951:BOAMP-26-108036": {
+    "note": "La probabilité d'offre unique est de 23% contre une moyenne de 20%, avec 23 contrats similaires gagnés par l'entreprise. À étudier, car la probabilité est proche de la moyenne ou un peu au-dessus, sans écart net.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
+  },
+  "481447951:BOAMP-26-106452": {
+    "note": "La probabilité d'offre unique est de 20%, identique à la moyenne, et l'entreprise a gagné 23 contrats similaires. À étudier, car la probabilité est proche de la moyenne ou un peu au-dessus, sans écart net.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
+  },
+  "481447951:BOAMP-26-98881": {
+    "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 23 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
+  },
+  "481447951:BOAMP-26-97619": {
+    "note": "La probabilité d'offre unique est de 15% contre une moyenne de 20%, et l'entreprise a gagné 23 contrats similaires. Passer, car la probabilité d'offre unique est sous la moyenne et la concurrence sera habituelle.",
+    "verified": true,
+    "model": "google/gemma-4-31B-it"
   }
 }

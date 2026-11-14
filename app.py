@@ -16,7 +16,7 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 from common import ART, CLEAN  # noqa: E402
-from profiles import describe_profile, fit_table, load_all_scored, profile_of, relevant  # noqa: E402
+from profiles import describe_profile, fit_table, load_all_scored, profile_of, relevant, similar_wins  # noqa: E402
 
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
@@ -40,6 +40,25 @@ def load_notes() -> dict:
 
 
 FOLLOWS = ART / "follows.json"
+
+# Fake identifiers found in the contract data (e.g. 123456789 appears on 43 rows)
+PLACEHOLDER_SIRENS = {"123456789", "000000000", "111111111", "999999999", "987654321"}
+
+
+@st.cache_data(ttl=86400, show_spinner=False)
+def is_sole_trader(siren9: str) -> bool | None:
+    """Sole trader (entrepreneur individuel) per the public company register. None if the register is unreachable."""
+    import requests
+    try:
+        r = requests.get("https://recherche-entreprises.api.gouv.fr/search",
+                         params={"q": siren9, "per_page": 1}, timeout=3)
+        for x in r.json().get("results", []):
+            if x.get("siren") == siren9:
+                return bool((x.get("complements") or {}).get("est_entrepreneur_individuel")) \
+                    or str(x.get("nature_juridique")) == "1000"
+        return False
+    except Exception:  # offline: do not block the demo
+        return None
 
 
 def load_follows() -> dict:
@@ -158,7 +177,7 @@ def fr_int(n: int) -> str:
 
 def when(r: pd.Series) -> str:
     if pd.notna(r.get("due_date")):
-        return fmt_date(r["due_date"])
+        return f"{fmt_date(r['due_date'])} · {days_left(r['due_date'])}"  # e.g. 30/11/2026 · J-16
     if pd.notna(r.get("pub_date")):
         return "publication " + pd.Timestamp(r["pub_date"]).strftime("%m/%Y")
     return ""
@@ -223,13 +242,23 @@ st.caption("1 marché public sur 5 ne reçoit qu'une seule offre. Offre unique m
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Preuves"])
 
 with tab_main:
-    siren = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=14,
-                          help="Réservé aux sociétés. N'entrez pas le SIREN d'un entrepreneur individuel : "
-                               "son profil serait celui d'une personne.").strip()
-    prof = profile_of(awards, siren[:9]) if siren else None
-    if not siren:
+    raw = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=20,
+                        help="9 chiffres (ou le SIRET, dont on garde les 9 premiers). Réservé aux sociétés.")
+    siren = re.sub(r"\D", "", raw or "")[:9]  # accepts spaces, dots and a full SIRET
+    if not (raw or "").strip():
         st.write("Entrez un SIREN pour voir les appels d'offres à venir qui vous correspondent.")
         st.stop()
+    if len(siren) < 9:
+        st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
+        st.stop()
+    if siren in PLACEHOLDER_SIRENS:
+        st.write("Ce numéro est un identifiant fictif présent dans certaines données, pas une entreprise.")
+        st.stop()
+    if is_sole_trader(siren):
+        st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
+                 "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
+        st.stop()
+    prof = profile_of(awards, siren)
     if not prof:
         st.write("Aucun marché gagné trouvé pour ce SIREN dans les données publiques.")
         st.stop()
@@ -248,7 +277,10 @@ with tab_main:
         n_open = int((t["source"] == "BOAMP").sum()) if "source" in t else 0
         head = f"{len(t)} appels d'offres dans votre métier, les moins disputés d'abord"
         if n_open:
-            head += f" · {n_open} ouverts maintenant"
+            head += f" · {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
+        level = str(t["match_level"].iloc[0]) if "match_level" in t else ""
+        if level and level != "même métier, même département":
+            head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
         st.caption(head)
         cols = {}
         if has_boamp:
@@ -299,6 +331,23 @@ with tab_main:
         st.markdown(risk_line)
         for s in fact_sentences(r, prof["siren"]):
             st.write(s)
+        mine, n_mine = similar_wins(awards, prof["siren"], r)
+        if n_mine:
+            with st.expander(f"Vos contrats similaires ({n_mine})"):
+                st.dataframe(pd.DataFrame({
+                    "Date": pd.to_datetime(mine["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
+                    "Acheteur": mine["acheteur_nom"].fillna("").astype(str),
+                    "Objet": mine["objet"].fillna("").astype(str),
+                    "Dép.": mine["dept"].astype(str).replace({"NA": ""}),
+                    "Montant": mine["montant"].map(lambda v: "" if pd.isna(v) or v <= 0 else f"{fr_int(round(v))} €"),
+                    "Offres": mine["offres"].map(lambda v: "" if pd.isna(v) or v <= 0 else str(int(v))),
+                }), hide_index=True, width="stretch", column_config={
+                    "Date": st.column_config.TextColumn(width="small"),
+                    "Objet": st.column_config.TextColumn(width="large"),
+                    "Dép.": st.column_config.TextColumn(width="small"),
+                })
+                st.caption("Vos marchés gagnés dans la même catégorie d'achat, ce département d'abord · "
+                           "DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
 
         notes = load_notes()
         key = f"{prof['siren']}:{r.get('code')}"

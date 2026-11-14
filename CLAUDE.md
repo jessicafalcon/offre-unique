@@ -83,7 +83,8 @@ Only the last two steps should be needed today.
 - **Time split:** train on 2023–2024 (285,578 labelled contracts), test on 2025–2026 (320,228 contracts never seen). Single-bid rate on the test set: **20 %**.
 - **Main model (LightGBM):** AUC 0.694. Among the 10 % flagged riskiest, **49.6 %** got a single bid, against buyer history alone 42.2 % (AUC 0.639) and category rate 38.0 % (AUC 0.630).
 - **BOAMP variant** (no amount, duration or clauses, which BOAMP lacks): AUC 0.682, top-10 % precision 48.5 %. Still beats the baselines.
-- **Coverage:** 514 of 6,683 active Île-de-France companies (**8 %**) have at least 2 matching tenders at 35 % or more (APProch alone: 0.3 %). *Computed before the `min_wins=2` filter added this morning, so it may be a bit lower now. Rerun `find_demo.py --idf` before quoting it.*
+- **Coverage (recomputed 14 Nov with the calibrated rules, `coverage.py` → `artifacts/coverage.json`):** of active companies (10–200 contracts won, one since 2025, ≥ 2 wins in the same CPV class and département), **Île-de-France: 2,640 of 6,683 (40 %) have at least one "Aller" today, 2,537 (38 %) on a tender open now; France: 8,599 of 31,246 (28 %)**. Median 22 matching tenders per company. One Aller is a low bar (some come from loose CPV-class matches): say *"about 4 in 10 active companies in Île-de-France"*, not a precise figure.
+- *(Old, superseded:)* 514 of 6,683 active Île-de-France companies (**8 %**) have at least 2 matching tenders at 35 % or more (APProch alone: 0.3 %). *Computed before the `min_wins=2` filter added this morning, so it may be a bit lower now. Rerun `find_demo.py --idf` before quoting it.*
 
 ## 6. Design decisions (and why)
 
@@ -111,6 +112,11 @@ Only the last two steps should be needed today.
 - **Counter-example (Passer), same trade and département:** *"Prestations de contrôle technique construction… Département du Val-de-Marne"* (94), due 18/11. **14 %**. None of its 13 comparable contracts got a single bid; about 12 bids on average.
 - **Don't click** the other two Aller tenders (water-pump operations at Villetaneuse; Région IDF faune/flore studies). They match at CPV-class level only and the trade fit is weak.
 - **Why not Moulinot any more:** SIREDOM, its top tender, mostly goes to Semavert / Semaer / Semaval (8 of 14 single-bid wins; Semavert is an ETI at SIREDOM's Vert-le-Grand site with a SEM on its board). Bulky-waste tenders are also a weak fit for a composting company. With calibrated rules, Moulinot has only 2 Aller, both SIREDOM. Moulinot still works in the app (notes regenerated), but don't lead with it.
+- **Backup company (for "does it work for another sector?"): Bati Recyclage**, SIREN `481447951`, PME (12 employees, SAS, NAF 38.21Z waste treatment, Vendée). 7 tenders: 2 Aller, 3 À étudier, 2 Passer, all notes (Gemma) and Hémicycle history pre-loaded. Shows what Point Contrôles doesn't:
+  - **Trivalis (85)**, operation of transfer centres and composting platforms, closes 14/12: *"Vous êtes le titulaire sortant : ce marché est un renouvellement à défendre"* → Aller.
+  - **Syndicat Mixte Centre (44)**, waste valorisation from déchèteries, closes 16/11: Aller, 31 %, 56 % of 9 known contracts single-bid.
+  - Household-waste collection (79): Brangeon won the last 3 times (shown in the facts), À étudier (1.4×, below the 1.5× Aller threshold).
+- **Stress test (12:30), 14 cases, no crash, every company loads in < 1 s:** 8 random companies across sectors, Colas (17,136 contracts), a sole trader, placeholder `123456789`, letters, a full SIRET, a SIREN with spaces. Fixed: sole traders are now **refused** (live check on recherche-entreprises.api.gouv.fr, legal form 1000; if offline, the app doesn't block); placeholder SIRENs refused; SIRET and spaces accepted; "1 ouvert"; the list says when the match widened to all of France. Live note (Gemma, 12.6 s) and live Hémicycle query (2.1 s) tested on a random company. For any company without pre-loaded notes, "Rédiger la note go / no-go" writes one in about 10 s.
 - **Rejected candidates:** Malvern Panalytical, Miltenyi, Horiba (top of the clean-Aller search, but multinational subsidiaries and RESAH medical lots); Atelier des Giboulées (PME, but its top Aller is a trade mismatch).
 - **Demo line:** *"Point Contrôles, an SME in Seine-et-Marne, has 39 open tenders in its trade. The top one is SENEO, closing on 30 November: a 53 % chance of a single bid, 2.7 times the average, and 65 % of this buyer's comparable contracts got one bid. And for the Val-de-Marne inspection contract, in its own département, the tool says skip: 12 bids on average. Of 62 tenders it says go for 3, look closer at 4, skip 55."*
 - **On stage:**
@@ -229,6 +235,7 @@ In the EU, single bidding is a standard **warning sign** of weak competition. A 
 - *"It predicts how many bids a tender gets, not whether you win. That's why the note also shows the buyer's history and the outgoing holder, and a repeat holder downgrades a go to look closer."*
 - *"Is 53 % really 53 %?"* → *"Yes, it's calibrated: we fitted it on 2025 and checked it on 2026. And the go / no-go itself is backtested: on 2026 contracts, 'Aller' got a single bid 41 % of the time, 'Passer' 12 %."*
 - *"Doesn't a single bid mean an entrenched incumbent?"* → *"When a contract that last got one bid gets a second bidder, the previous holder loses it about 4 times in 5 (83 % in DECP 2019–26; 'previous' = same buyer and CPV group, so it's indicative)."*
+- *"Does it work for any company?"* → *"Yes, any company with a public contract history. Try one."* (Type Bati Recyclage `481447951`, or let the judge type theirs: sole traders are refused for privacy.)
 - *"Why only 3 go out of 62?"* → *"Because most tenders in its trade are competitive. A tool that said go to everything would be useless."*
 
 ## 14. Files
