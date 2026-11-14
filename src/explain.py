@@ -55,10 +55,11 @@ def recommend(proba: float, avg: float | None, n_dept: int, hist_single: float |
     buyer_ok = hist_single is None or hist_single >= 0.30
     if is_incumbent:
         return "Aller", "l'entreprise est le titulaire sortant : un renouvellement à défendre"
+    # Thresholds on the calibrated ratio, chosen on 2025 and backtested on 2026 (src/backtest_rules.py)
     if ratio < 0.75:
-        return "Passer", "probabilité d'offre unique inférieure à la moyenne : plus de concurrents que d'habitude sont attendus"
-    if ratio < 1.2:
-        return "Passer", "probabilité d'offre unique proche de la moyenne : la concurrence sera habituelle"
+        return "Passer", "probabilité d'offre unique nettement inférieure à la moyenne : plus de concurrents que d'habitude sont attendus"
+    if ratio < 1.0:
+        return "Passer", "probabilité d'offre unique sous la moyenne : la concurrence sera habituelle"
     if ratio >= 1.5 and local and buyer_ok and rival_streak >= 2:
         return "À étudier", "un même titulaire a remporté les dernières éditions de ce marché"
     if ratio >= 1.5 and local and buyer_ok:

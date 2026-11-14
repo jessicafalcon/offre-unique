@@ -122,15 +122,30 @@ def describe_profile(profile: dict, top: int = 2) -> str:
     return " · ".join(parts) + f" · {profile['n_wins']} marchés gagnés"
 
 
+def calibrate(proba: pd.Series, suffix: str) -> pd.Series:
+    """Raw model output -> observed single-bid rate (isotonic, fit on 2025 by src/backtest_rules.py)."""
+    import json
+    import numpy as np
+    from common import ART
+    p = ART / f"calibration{suffix}.json"
+    if not p.exists():
+        return proba
+    c = json.loads(p.read_text())
+    return pd.Series(np.interp(proba.astype(float), c["x"], c["y"]), index=proba.index)
+
+
 def load_all_scored() -> pd.DataFrame:
-    """Scored upcoming purchases from APProch (projects) and, if present, BOAMP (open calls for tender)."""
+    """Scored upcoming purchases from APProch (projects) and, if present, BOAMP (open calls for tender).
+    `proba` is calibrated; the raw model output is kept in `proba_raw`."""
     parts = []
-    for name, src in (("scored.parquet", "APProch"), ("scored_boamp.parquet", "BOAMP")):
+    for name, src, suffix in (("scored.parquet", "APProch", ""), ("scored_boamp.parquet", "BOAMP", "_boamp")):
         p = CLEAN / name
         if p.exists():
             d = pd.read_parquet(p)
             if "source" not in d:
                 d["source"] = src
+            d["proba_raw"] = d["proba"]
+            d["proba"] = calibrate(d["proba"], suffix)
             parts.append(d)
     return pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
 

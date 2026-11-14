@@ -324,6 +324,19 @@ with tab_proof:
         c1.metric("Notre score", f"{round(100 * res['model']['precision_top10'])} %")
         c2.metric("Historique de l'acheteur seul", f"{round(100 * res['baseline_buyer_history']['precision_top10'])} %")
         c3.metric("Moyenne, sans score", f"{round(100 * avg)} %")
+        bt_p = ART / "rules_backtest.json"
+        if bt_p.exists():
+            bt = json.loads(bt_p.read_text())
+            g = bt.get("main", {}).get("groups", {})
+            if g:
+                st.write(f"**Les recommandations, testées sur les marchés {bt['years']}** (seuils et calibration fixés sur "
+                         f"{bt['fit_years']}, avant de regarder {bt['years']}) : part de marchés qui n'ont reçu qu'une offre.")
+                k1, k2, k3 = st.columns(3)
+                for col, k in zip((k1, k2, k3), ("Aller", "À étudier", "Passer")):
+                    col.metric(f"« {k} »", f"{round(100 * g[k]['single_rate'])} %", help=f"{fr_int(g[k]['n'])} marchés")
+                st.caption("Sans la condition « déjà gagné ce métier dans ce département », qui dépend de l'entreprise. "
+                           "Les pourcentages affichés dans l'application sont calibrés : un score de 30 % correspond "
+                           "à environ 30 % d'offres uniques observées.")
         if metrics_boamp:
             mb = metrics_boamp["results"]
             st.caption(f"Appels d'offres ouverts (BOAMP) : ces avis ne donnent ni montant ni durée, ils sont notés par une "
