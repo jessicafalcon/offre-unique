@@ -383,7 +383,8 @@ def render_detail(r: pd.Series, prof: dict) -> None:
     notes = load_notes()
     key = f"{prof['siren']}:{r.get('code')}"
     note = notes.get(key)
-    if note and note.get("verified") and note.get("note", "").strip():
+    has_note = bool(note and note.get("verified") and note.get("note", "").strip())
+    if has_note:
         with st.container(border=True):
             st.write(note["note"])
     elif st.button("Rédiger la note go / no-go", icon=":material/edit_note:"):
@@ -422,7 +423,14 @@ def render_detail(r: pd.Series, prof: dict) -> None:
         c2.link_button("Voir l'avis BOAMP" if r.get("source") == "BOAMP" else "Voir la consultation",
                        r["lien_vers_la_consultation"], icon=":material/open_in_new:")
 
-    st.markdown("**Pourquoi**\n\n" + "\n".join(f"- {s}" for s in fact_sentences(r, prof["siren"])))
+    # Since 12fd910 the notes cite the score, the average, the company's similar contracts and the buyer's
+    # single-bid share: the full fact list goes behind a click when a note is shown, open when there is none.
+    facts = fact_sentences(r, prof["siren"])
+    holder = [s for s in facts if s.startswith(("Vous êtes le titulaire", "Le même titulaire"))]
+    if has_note and holder:  # not always in the note: keep it visible
+        st.markdown(holder[0])
+    with st.expander("Les faits derrière la note", expanded=not has_note):
+        st.markdown("\n".join(f"- {s}" for s in facts))
     mine, n_mine = similar_wins(awards, prof["siren"], r)
     if n_mine:
         with st.expander(f"Vos contrats similaires ({n_mine})"):
