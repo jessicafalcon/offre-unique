@@ -2,13 +2,17 @@
 
     python experiments/notes_compare.py [--models a,b,c] [--judge MODEL] [--workers 2]
 
-Rebuilds the facts of the cached Haiku notes (artifacts/notes.json) with Jessica's own code
+Rebuilds the facts of the Haiku notes (artifacts/notes_haiku.json, Jessica's backup) with her own code
 (profile_of, fit_table, relevant, facts_for), then asks each candidate model to write the same notes
 with the same system prompt and the same acceptance checks (explain.generate: numbers in the facts,
 correct pairing of share and count, complete sentence, 2 retries).
+The prompt is explain.SYSTEM as it is in src/ (Jessica's 11:30 version).
 Metrics per model: share accepted, share accepted at first try, format (2 sentences, <= 45 words,
-2nd sentence starts with the given recommendation, recommendation unchanged), cost, latency, and a
-blind pairwise preference against Haiku by a judge model (order randomised).
+2nd sentence starts with the given recommendation, recommendation unchanged, starts with a capital
+letter, no English), cost, latency, and a blind pairwise preference against Haiku by a judge model
+that is not a candidate (order randomised).
+Complements src/benchmark_llm.py (first try only, automatic checks): retries as in the app,
+per-model settings that switch reasoning off, the truncated-start check and the judge.
 Variant "<model>+fewshot": the prompt also carries 6 Haiku notes as examples; those 6 are removed
 from the evaluation set of every model so the comparison stays fair.
 Writes experiments/results/notes_compare.json, notes_compare.md and notes_<model>.json.
@@ -32,9 +36,10 @@ import explain
 from common import ART, CLEAN
 from profiles import fit_table, load_all_scored, profile_of, relevant
 
-DEFAULT_MODELS = ("deepseek-ai/DeepSeek-V4-Flash,deepseek-ai/DeepSeek-V4-Flash+fewshot,"
-                  "Qwen/Qwen3.8-27B,Qwen/Qwen3.8-27B+fewshot,zai-org/GLM-5.3-Flash,zai-org/GLM-5.3")
-JUDGE = "openai/gpt-oss-120b"
+DEFAULT_MODELS = "google/gemma-4-31B-it,Qwen/Qwen3.8-27B,openai/gpt-oss-120b,zai-org/GLM-5.3-Flash,zai-org/GLM-5.3"
+JUDGE = "deepseek-ai/DeepSeek-V4.1-Flash"
+CHECKS = ("two_sentences", "max_45_words", "starts_with_reco", "reco_unchanged", "starts_upper", "french")
+ENGLISH = re.compile(r"\b(the|and|we|need|must|should|sentence|words?)\b", re.I)  # same as src/benchmark_llm.py
 # Per-model request options: the settings that limited the reasoning best in a quick test
 MODEL_OPTS = {
     "zai-org/GLM-5.3-Flash": {"reasoning_effort": "none"},
@@ -42,6 +47,7 @@ MODEL_OPTS = {
     "Qwen/Qwen3.8-27B": {"chat_template_kwargs": {"enable_thinking": False}},
     "openai/gpt-oss-120b": {"reasoning_effort": "low"},
 }
+PROMPT_EXTRA = ""  # set by --prompt-extra
 MAX_TOKENS = 3000  # reasoning models need room before the answer; caps runaway reasoning
 RECOS = ("Aller", "À étudier", "Passer")
 AWARD_COLS = ["company_siren", "cpv_div", "cpv_grp", "cpv_cls", "dept", "amount_band", "categorie",
@@ -78,6 +84,8 @@ def format_checks(note: str, facts: dict) -> dict:
         "max_45_words": len(re.findall(r"\w+(?:['’]\w+)?", note)) <= 45,
         "starts_with_reco": second.startswith(reco),
         "reco_unchanged": reco in note and not any(r in note for r in RECOS if r != reco),
+        "starts_upper": bool(note) and note[0].isupper(),
+        "french": not ENGLISH.search(note),
     }
 
 
@@ -91,8 +99,8 @@ class Caller:
         self.calls = self.cost = self.secs = 0.0
 
     def __call__(self, user: str) -> str:
-        system = explain.SYSTEM + (("\n\nExemples de notes réussies (faits → note) :\n" + self.examples)
-                                   if self.examples else "")
+        system = explain.SYSTEM + PROMPT_EXTRA + (("\n\nExemples de notes réussies (faits → note) :\n" + self.examples)
+                                                  if self.examples else "")
         t = time.time()
         r = self.client.chat.completions.create(
             model=self.model, temperature=0.2, max_tokens=MAX_TOKENS, extra_body=MODEL_OPTS.get(self.model, {}),
@@ -166,17 +174,19 @@ def judge(facts: dict, haiku: str, cand: str, client, rng: random.Random) -> tup
 
 
 def main():
-    global JUDGE
+    global JUDGE, PROMPT_EXTRA
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", default=DEFAULT_MODELS)
     ap.add_argument("--judge", default=JUDGE)
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--limit", type=int, default=0, help="evaluate only the first N notes (smoke test)")
     ap.add_argument("--tag", default="", help="suffix for the result files")
+    ap.add_argument("--prompt-extra", default="", help="sentence appended to explain.SYSTEM (prompt variant test)")
     a = ap.parse_args()
     JUDGE = a.judge
+    PROMPT_EXTRA = (" " + a.prompt_extra) if a.prompt_extra else ""
 
-    haiku = json.loads((ART / "notes.json").read_text(encoding="utf-8"))
+    haiku = json.loads((ART / "notes_haiku.json").read_text(encoding="utf-8"))
     facts = facts_by_key(list(haiku))
     print(f"rebuilt facts for {len(facts)} of {len(haiku)} cached Haiku notes · mem {guard('facts'):.2f} GB", flush=True)
 
@@ -194,7 +204,7 @@ def main():
     summary = {}
     ref = {"accepted": sum(haiku[k]["verified"] for k in evalset) / len(evalset)}
     ref.update({c: sum(format_checks(haiku[k]["note"], evalset[k])[c] for k in evalset) / len(evalset)
-                for c in ("two_sentences", "max_45_words", "starts_with_reco", "reco_unchanged")})
+                for c in CHECKS})
     summary["claude-haiku-5-5 (référence, notes existantes)"] = ref
     jclient = featherless()
 
@@ -206,7 +216,7 @@ def main():
         s = {"accepted": sum(v["verified"] for v in notes.values()) / n,
              "accepted_first_try": sum(r["first_try"].values()) / n}
         s.update({c: sum(format_checks(notes[k]["note"], evalset[k])[c] for k in evalset) / n
-                  for c in ("two_sentences", "max_45_words", "starts_with_reco", "reco_unchanged")})
+                  for c in CHECKS})
         s.update({"cost_usd": round(r["cost"], 4), "calls": int(r["calls"]),
                   "sec_per_call": round(r["secs"] / max(r["calls"], 1), 1), "wall_min": round((time.time() - t) / 60, 1)})
         # blind pairwise judgement against Haiku, on notes both accepted
@@ -230,14 +240,16 @@ def main():
                                                            ensure_ascii=False, indent=2), encoding="utf-8")
     pct = lambda x: f"{100 * x:.0f} %"
     lines = ["| Modèle | Acceptées | Au 1er essai | 2 phrases | ≤ 45 mots | Commence par la reco | Reco inchangée "
-             "| Juge : préfère le candidat / Haiku / égal | Coût notes | s / appel |", "|---|---|---|---|---|---|---|---|---|---|"]
+             "| Début intact | Sans anglais | Juge : préfère le candidat / Haiku / égal | Coût notes | s / appel |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for name, s in summary.items():
         j = s.get("judge_vs_haiku")
         votes = f"{j['candidate']} / {j['haiku']} / {j['tie']}" if j else "–"
         first = pct(s["accepted_first_try"]) if "accepted_first_try" in s else "–"
         cost = f"${s['cost_usd']}" if "cost_usd" in s else "–"
         lines.append(f"| {name} | {pct(s['accepted'])} | {first} | {pct(s['two_sentences'])} | {pct(s['max_45_words'])} "
-                     f"| {pct(s['starts_with_reco'])} | {pct(s['reco_unchanged'])} | {votes} | {cost} "
+                     f"| {pct(s['starts_with_reco'])} | {pct(s['reco_unchanged'])} | {pct(s['starts_upper'])} "
+                     f"| {pct(s['french'])} | {votes} | {cost} "
                      f"| {s.get('sec_per_call', '–')} |")
     (RESULTS / f"notes_compare{a.tag}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))

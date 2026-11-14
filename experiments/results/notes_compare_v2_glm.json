@@ -1,0 +1,65 @@
+{
+  "n_eval": 20,
+  "few_shot_keys": [
+    "834709248:BOAMP-26-102021",
+    "834709248:BOAMP-26-105339",
+    "798298899:BOAMP-26-106848",
+    "798298899:BOAMP-26-102272",
+    "834709248:BOAMP-26-109616",
+    "834709248:BOAMP-26-95787"
+  ],
+  "judge": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "summary": {
+    "claude-haiku-5-5 (référence, notes existantes)": {
+      "accepted": 1.0,
+      "two_sentences": 0.9,
+      "max_45_words": 1.0,
+      "starts_with_reco": 0.9,
+      "reco_unchanged": 1.0,
+      "starts_upper": 1.0,
+      "french": 1.0
+    },
+    "zai-org/GLM-5.3-Flash": {
+      "accepted": 0.95,
+      "accepted_first_try": 0.6,
+      "two_sentences": 0.95,
+      "max_45_words": 1.0,
+      "starts_with_reco": 0.95,
+      "reco_unchanged": 0.95,
+      "starts_upper": 0.95,
+      "french": 1.0,
+      "cost_usd": 0.0348,
+      "calls": 32,
+      "sec_per_call": 24.9,
+      "wall_min": 6.6,
+      "judge_vs_haiku": {
+        "candidate": 4,
+        "haiku": 7,
+        "tie": 0,
+        "invalid": 8
+      },
+      "judge_cost_usd": 0.0499
+    },
+    "zai-org/GLM-5.3": {
+      "accepted": 1.0,
+      "accepted_first_try": 0.95,
+      "two_sentences": 1.0,
+      "max_45_words": 0.05,
+      "starts_with_reco": 1.0,
+      "reco_unchanged": 1.0,
+      "starts_upper": 1.0,
+      "french": 1.0,
+      "cost_usd": 0.0394,
+      "calls": 21,
+      "sec_per_call": 3.4,
+      "wall_min": 0.6,
+      "judge_vs_haiku": {
+        "candidate": 2,
+        "haiku": 13,
+        "tie": 0,
+        "invalid": 5
+      },
+      "judge_cost_usd": 0.0488
+    }
+  }
+}

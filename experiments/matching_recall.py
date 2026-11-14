@@ -60,6 +60,14 @@ def main():
     rng = np.random.default_rng(0)
     sample = list(rng.choice(eligible, size=min(a.companies, len(eligible)), replace=False))
     print(f"pool {len(pool):,} contracts · {len(eligible):,} eligible companies · sample {len(sample)}", flush=True)
+    # keep only the sampled companies' wins before loading any vectors (memory)
+    past_s = past[past["company_siren"].isin(sample)].copy()
+    now_s = now[now["company_siren"].isin(sample)][["company_siren", "key"]].copy()
+    del past, now, n_past, n_now
+    gc.collect()
+    import pyarrow as pa
+    pa.default_memory_pool().release_unused()
+    print(f"sample wins kept · mem {guard('filter'):.2f} GB", flush=True)
 
     # Embeddings for pool titles and past win titles
     emb = np.load(CACHE / "emb_titles.npy", mmap_mode="r")
@@ -76,10 +84,6 @@ def main():
     P = vecs(pool["objet"])
     print(f"pool vectors {P.shape} · mem {guard('pool emb'):.2f} GB", flush=True)
     pool_pos = pd.Series(np.arange(len(pool)), index=pool["key"])
-    past_s = past[past["company_siren"].isin(sample)]
-    now_s = now[now["company_siren"].isin(sample)]
-    del past, now
-    gc.collect()
 
     def recall_at(ranked_keys: list[str], won: set[str]) -> dict:
         return {f"r@{k}": len(won & set(ranked_keys[:k])) / len(won) for k in KS}

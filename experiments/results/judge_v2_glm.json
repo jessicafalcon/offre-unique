@@ -1,0 +1,303 @@
+{
+  "judge": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "cost_usd": 0.2529,
+  "models": {
+    "zai-org_GLM-5.3-Flash": {
+      "n": 19,
+      "final": {
+        "candidate": 2,
+        "haiku": 8,
+        "tie": 4,
+        "invalid": 5
+      },
+      "order_flips": 0.474,
+      "details": {
+        "798298899:BOAMP-26-110684": {
+          "order1": "invalid",
+          "order2": "haiku",
+          "final": "invalid",
+          "why1": "",
+          "why2": "A reprend uniquement des chiffres et la recommandation « Aller » des faits, tandis que B ajoute « concurrence limitée », affirmation absente, tout en restant claire et concise."
+        },
+        "798298899:BOAMP-26-103676": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est plus exacte car elle n'ajoute pas d'affirmation absente des faits, contrairement à A qui qualifie la consultation d'opportunité, et elle reprend la recommandation Aller.",
+          "why2": "A reprend les chiffres et la recommandation sans ajout absent des faits, alors que B ajoute « cette consultation est une opportunité », non présent dans les faits."
+        },
+        "798298899:66062": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend exactement la recommandation « À étudier » et la raison fournie sans ajouter d’affirmation évaluative absente des faits, tout en restant concise.",
+          "why2": "A reprend fidèlement les chiffres et la recommandation, tandis que B ajoute « adéquation correcte », affirmation absente des faits."
+        },
+        "798298899:BOAMP-26-102943": {
+          "order1": "candidate",
+          "order2": "candidate",
+          "final": "candidate",
+          "why1": "A reprend exactement les chiffres et la recommandation des faits sans ajouter d’affirmation absente, alors que B ajoute « une offre unique reste une opportunité », non présente dans les faits.",
+          "why2": "B reprend fidèlement les chiffres et la recommandation « À étudier » sans ajouter d’affirmation absente des faits, tout en restant concise."
+        },
+        "798298899:BOAMP-26-107539": {
+          "order1": "candidate",
+          "order2": "haiku",
+          "final": "tie",
+          "why1": "A reprend plus exactement les faits, notamment « même département » et la recommandation « À étudier », tout en restant dans la limite de 45 mots.",
+          "why2": "La note A reprend exactement les faits et la recommandation, tout en restant sous la limite de 45 mots, contrairement à la note B."
+        },
+        "798298899:BOAMP-26-102319": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend la recommandation telle quelle et ajoute un fait pertinent sur l'absence de marché comparable avec cet acheteur, tout en restant concise.",
+          "why2": "A reprend la recommandation telle quelle et inclut l’absence de marché comparable avec cet acheteur, tout en restant exacte et concise."
+        },
+        "798298899:BOAMP-26-110097": {
+          "order1": "candidate",
+          "order2": "candidate",
+          "final": "candidate",
+          "why1": "A reprend exactement les chiffres et la recommandation sans ajouter d’affirmation absente, alors que B introduit « peu de concurrents attendus », non présent dans les faits.",
+          "why2": "B reprend fidèlement les chiffres et la recommandation « À étudier » sans ajouter d’interprétation absente des faits, tout en restant concise."
+        },
+        "798298899:BOAMP-26-97489": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend exactement les chiffres et la recommandation des faits, tandis que A ajoute « légèrement » absent des faits.",
+          "why2": "A reprend tous les chiffres et la recommandation exacte sans ajout, tandis que B introduit « légèrement » et « reste », absents des faits."
+        },
+        "798298899:BOAMP-26-107932": {
+          "order1": "candidate",
+          "order2": "haiku",
+          "final": "tie",
+          "why1": "La note A respecte la limite de deux phrases et 45 mots tout en reprenant exactement la recommandation et les faits, alors que la note B compte trois phrases.",
+          "why2": "A est plus exacte et utile car elle reprend la recommandation et les données sur les 41 marchés connus (20 % d'offres uniques) sans qualificatif subjectif."
+        },
+        "798298899:48758": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est aussi exacte et concise, mais elle ajoute un fait directement pertinent sur l'acheteur (aucune offre unique sur les 5 marchés connus) qui éclaire mieux la décision.",
+          "why2": "A reprend la recommandation et la raison telles quelles, et inclut le fait clé des 5 marchés connus sans offre unique, plus utile pour juger la concurrence."
+        },
+        "798298899:60751": {
+          "order1": "candidate",
+          "order2": "haiku",
+          "final": "tie",
+          "why1": "A reprend exactement la recommandation et la raison, avec des chiffres exacts, et évite le chiffre 30 % de B qui, bien qu'exact, peut brouiller la décision.",
+          "why2": "A est exacte, reprend la recommandation et ajoute un élément pertinent (30 % des 53 marchés connus avec une seule offre) tout en restant concise."
+        },
+        "798298899:61233": {
+          "order1": "invalid",
+          "order2": "candidate",
+          "final": "invalid",
+          "why1": "",
+          "why2": "B reprend exactement la recommandation et la raison des faits, avec les chiffres clés, sans le détail superflu des 53 marchés qui peut nuire à la clarté."
+        },
+        "798298899:BOAMP-26-102480": {
+          "order1": "invalid",
+          "order2": "candidate",
+          "final": "invalid",
+          "why1": "",
+          "why2": "B reprend les faits clés et la recommandation avec une formulation plus claire et précise, tout en respectant la concision demandée."
+        },
+        "798298899:BOAMP-26-102175": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend tous les chiffres pertinents, y compris les 2 contrats dans le département, et la recommandation « Passer » avec sa raison, tout en restant concise.",
+          "why2": "A reprend tous les faits pertinents, y compris les 2 contrats dans le département, et respecte la recommandation et la concision."
+        },
+        "798298899:BOAMP-26-100716": {
+          "order1": "candidate",
+          "order2": "haiku",
+          "final": "tie",
+          "why1": "Les deux notes sont exactes et reprennent la recommandation, mais A est plus claire et naturelle, notamment sur l'absence d'historique comparable chez l'acheteur.",
+          "why2": "Les deux notes sont exactes et reprennent la recommandation, mais A est plus concise (42 mots contre 45) et formule plus clairement l'absence de marché comparable chez l'acheteur."
+        },
+        "798298899:BOAMP-26-105546": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend fidèlement la recommandation « Passer » et les chiffres clés (15 %, 20 %, 16 contrats, 3 dans le département, 0 marché comparable) en 42 mots, alors que A est exacte mais moins complète et plus longue.",
+          "why2": "La note A est aussi exacte et concise que B, reprend la recommandation « Passer » et ajoute le fait exact des 3 contrats gagnés dans le département, ce qui la rend plus complète pour décider."
+        },
+        "798298899:BOAMP-26-109011": {
+          "order1": "haiku",
+          "order2": "invalid",
+          "final": "invalid",
+          "why1": "B reprend tous les faits pertinents, y compris les 2 contrats dans le département, tout en respectant la recommandation et la limite de 2 phrases et 45 mots.",
+          "why2": ""
+        },
+        "798298899:BOAMP-26-109907": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend la recommandation et les chiffres clés, inclut le détail du département, et reste concise en deux phrases sous 45 mots.",
+          "why2": "A reprend la recommandation et la raison telles quelles, avec les chiffres exacts et le détail du département, tout en restant dans la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-102698": {
+          "order1": "haiku",
+          "order2": "invalid",
+          "final": "invalid",
+          "why1": "B reprend la recommandation et inclut des faits pertinents sur l'acheteur (8 marchés comparables, 4 connus sans offre unique) sans ajout inexact, alors que A ajoute une mention non explicitée.",
+          "why2": ""
+        }
+      }
+    },
+    "zai-org_GLM-5.3": {
+      "n": 20,
+      "final": {
+        "candidate": 2,
+        "haiku": 14,
+        "tie": 1,
+        "invalid": 3
+      },
+      "order_flips": 0.15,
+      "details": {
+        "798298899:BOAMP-26-110684": {
+          "order1": "invalid",
+          "order2": "invalid",
+          "final": "invalid",
+          "why1": "",
+          "why2": ""
+        },
+        "798298899:BOAMP-26-103676": {
+          "order1": "haiku",
+          "order2": "invalid",
+          "final": "invalid",
+          "why1": "B respecte la limite de 45 mots et reprend fidèlement les faits et la recommandation, tandis que A dépasse cette limite.",
+          "why2": ""
+        },
+        "798298899:66062": {
+          "order1": "invalid",
+          "order2": "haiku",
+          "final": "invalid",
+          "why1": "",
+          "why2": "A reprend fidèlement les faits et la recommandation en 41 mots, tandis que B, exacte aussi, dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-106509": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est préférable car elle reprend les chiffres et la recommandation sans ajouter d’appréciation absente des faits, tout en restant concise (42 mots).",
+          "why2": "A est exacte, reprend la recommandation « À étudier » et tient en 42 mots, alors que B ajoute un jugement absent des faits (« niveau favorable ») et dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-102943": {
+          "order1": "candidate",
+          "order2": "candidate",
+          "final": "candidate",
+          "why1": "A reprend fidèlement les chiffres et la recommandation « À étudier » sans ajouter d’affirmation absente des faits, alors que B ajoute que « une offre unique reste une opportunité », non étayé.",
+          "why2": "B reprend fidèlement les chiffres, l’absence d’historique et la recommandation « À étudier » sans ajout évaluatif, alors que A ajoute une appréciation absente des faits, critère prioritaire sur la concision."
+        },
+        "798298899:BOAMP-26-107539": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est plus concise (40 mots), reprend fidèlement les chiffres et la recommandation, et précise mieux l'absence de marché comparable avec cet acheteur.",
+          "why2": "A reprend fidèlement les chiffres et la recommandation en 43 mots, tandis que B ajoute « sans historique connu » non présent dans les faits et dépasse 45 mots."
+        },
+        "798298899:BOAMP-26-102319": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "La note B est exacte, reprend la recommandation « À étudier » et sa raison, tout en restant plus concise (43 mots) que la note A (49 mots).",
+          "why2": "A reprend exactement les faits et la recommandation en 43 mots, alors que B dépasse la limite de 45 mots et remplace le fait précis « aucun marché comparable » par « sans historique connu »."
+        },
+        "798298899:BOAMP-26-110097": {
+          "order1": "candidate",
+          "order2": "candidate",
+          "final": "candidate",
+          "why1": "A reprend fidèlement les chiffres et la recommandation « À étudier » sans ajouter d’affirmation absente des faits, alors que B introduit « peu de concurrents attendus ».",
+          "why2": "La note B reprend exactement les chiffres, la recommandation et la raison des faits sans ajouter d’affirmation absente, contrairement à A qui introduit « peu de concurrents attendus »."
+        },
+        "798298899:BOAMP-26-97489": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est exacte, reprend la recommandation « À étudier » et sa raison, et ajoute un fait utile sur les 3 marchés connus (33 % à offre unique) tout en étant légèrement plus concise.",
+          "why2": "A reprend exactement les faits et la recommandation en 45 mots, tandis que B, également exacte, dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-107932": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend fidèlement la recommandation et la raison tout en étant plus concise, alors que A dépasse la limite de 45 mots.",
+          "why2": "A reprend exactement les chiffres et la recommandation sans qualificatif absent, et reste plus concise que B qui ajoute « légèrement » et dépasse 45 mots."
+        },
+        "798298899:48758": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est exacte, reprend la recommandation et la raison, et reste concise (39 mots), tandis que A dépasse la limite de 45 mots.",
+          "why2": "A reprend exactement les chiffres et la recommandation, tient en 2 phrases et moins de 45 mots, tandis que B dépasse la limite de mots."
+        },
+        "798298899:60751": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend fidèlement les faits et la recommandation « Passer » en 40 mots, alors que A dépasse la limite de 45 mots.",
+          "why2": "La note A respecte la limite de 45 mots, reprend fidèlement la recommandation et n’ajoute que des chiffres présents dans les faits, alors que la note B dépasse 45 mots."
+        },
+        "798298899:61233": {
+          "order1": "candidate",
+          "order2": "haiku",
+          "final": "tie",
+          "why1": "A reprend exactement la recommandation et sa raison, avec les chiffres clés, tandis que B paraphrase la raison et ajoute un chiffre contextuel qui peut brouiller la décision.",
+          "why2": "La note A reprend fidèlement les chiffres clés, la recommandation « Passer » et la raison, tout en ajoutant un fait utile sur l’acheteur (30 % des 53 marchés connus à offre unique) avec une formulation claire et concise."
+        },
+        "798298899:BOAMP-26-102480": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend fidèlement les faits et la recommandation en 41 mots, alors qu’A dépasse la limite de 45 mots.",
+          "why2": "A reprend fidèlement les chiffres et la recommandation « Passer » en 43 mots, tandis que B dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-102175": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est plus concise (42 mots), reprend fidèlement la recommandation « Passer » et sa raison, et n’ajoute que des faits exacts, tandis que A dépasse la limite de 45 mots.",
+          "why2": "A reprend exactement les chiffres et la recommandation, sans ajout interprétatif, et respecte la limite de 45 mots, contrairement à B qui ajoute « légèrement » et dépasse 45 mots."
+        },
+        "798298899:BOAMP-26-100716": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B respecte la limite de 45 mots et reprend fidèlement la recommandation « Passer » et sa raison sans ajouter d’affirmation absente des faits, alors que A dépasse la limite de concision.",
+          "why2": "A reprend exactement la recommandation et les chiffres utiles en 40 mots, alors que B dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-105546": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend les chiffres et la recommandation sans invention et respecte la limite de 45 mots, alors que A, exacte, dépasse largement la concision demandée.",
+          "why2": "A reprend fidèlement les chiffres et la recommandation en 40 mots, alors que B, exacte aussi, dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-109011": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B est plus concise (2 phrases, moins de 45 mots) et reprend fidèlement les chiffres ainsi que la recommandation « Passer » avec sa raison, sans ajout non fondé.",
+          "why2": "A reprend fidèlement les chiffres et la recommandation en restant sous 45 mots, tandis que B dépasse la limite de concision."
+        },
+        "798298899:BOAMP-26-109907": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend fidèlement la recommandation et les chiffres clés, inclut l'absence de marché comparable et respecte la limite de 45 mots, alors que A la dépasse.",
+          "why2": "A respecte les faits, reprend Passer et tient en 2 phrases/43 mots, alors que B dépasse la limite de 45 mots."
+        },
+        "798298899:BOAMP-26-102698": {
+          "order1": "haiku",
+          "order2": "haiku",
+          "final": "haiku",
+          "why1": "B reprend exactement les chiffres et la recommandation, et reste plus concise et claire que A, qui dépasse la limite de 45 mots.",
+          "why2": "A est exacte, reprend la recommandation et reste concise (42 mots), alors que B, bien qu'en deux phrases, dépasse largement la limite de 45 mots et est plus difficile à lire."
+        }
+      }
+    }
+  }
+}
