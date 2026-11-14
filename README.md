@@ -99,3 +99,27 @@ st.map(m, latitude="buyer_lat", longitude="buyer_lon", color="color", size=300)
 st.caption("Point = adresse de l'acheteur (registre SIRENE), pas forcément le lieu des travaux. "
            f"{int(m['buyer_multi_site'].sum())} acheteurs multi-sites : position indicative.")
 ```
+
+## For the UI: contract size, kind of purchase, two-stage procedures (added 14 Nov, 14:00)
+
+`load_all_scored()` also adds:
+- `taille` = Petit / Moyen / Grand, and `taille_marche` = the label to display ("90 k€ – seuils européens", "≈ 100k – 500k€").
+  Open tenders (BOAMP): official BOAMP size bracket. Planned purchases (APProch): estimated amount band (Petit < 100 k€, Moyen < 1 M€, Grand ≥ 1 M€, approximate).
+- `nature_achat` = Travaux / Services / Fournitures.
+- `procedure_note` = a warning for restricted / negotiated / competitive-dialogue procedures (apply first, bid only if shortlisted), else empty.
+
+```python
+c1, c2 = st.columns(2)
+sizes = c1.multiselect("Taille du marché", ["Petit", "Moyen", "Grand"])
+kinds = c2.multiselect("Nature", ["Travaux", "Services", "Fournitures"])
+if sizes:
+    t = t[t["taille"].isin(sizes)].reset_index(drop=True)
+if kinds:
+    t = t[t["nature_achat"].isin(kinds)].reset_index(drop=True)
+# in the tender detail, under the facts:
+if isinstance(r.get("taille_marche"), str):
+    st.caption(f"Taille : {r['taille_marche']}")
+if isinstance(r.get("procedure_note"), str):
+    st.warning(r["procedure_note"])
+```
+Known gap: BOAMP notices under 90 k€ almost never carry a CPV code (1 %), so the pipeline drops 461 of 466 of them; the open tenders shown are almost all above 90 k€.
