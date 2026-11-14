@@ -15,9 +15,10 @@ import pandas as pd
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
-from common import ART, CLEAN  # noqa: E402
+from common import ART, CLEAN, cpv_label  # noqa: E402
 from siren import clean_siren, siren_valid  # noqa: E402
-from profiles import describe_profile, fit_table, load_all_scored, profile_of, relevant, similar_wins  # noqa: E402
+from profiles import fit_table, load_all_scored, profile_of, relevant, similar_wins  # noqa: E402
+from explain import recommend_row  # noqa: E402
 
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
@@ -47,22 +48,32 @@ PLACEHOLDER_SIRENS = {"123456789", "000000000", "111111111", "999999999", "98765
 
 
 @st.cache_data(ttl=86400, show_spinner=False)
-def _register_is_sole_trader(siren9: str) -> bool:
-    """Raises if the register is unreachable, so a network blip is never cached (only real answers are)."""
+def _register_record(siren9: str) -> dict:
+    """Sole-trader flag and size category (PME / ETI / GE) from the public company register.
+    Raises if the register is unreachable, so a network blip is never cached (only real answers are)."""
     import requests
     r = requests.get("https://recherche-entreprises.api.gouv.fr/search", params={"q": siren9, "per_page": 1}, timeout=4)
     r.raise_for_status()
     for x in r.json().get("results", []):
         if x.get("siren") == siren9:
-            return bool((x.get("complements") or {}).get("est_entrepreneur_individuel")) \
+            sole = bool((x.get("complements") or {}).get("est_entrepreneur_individuel")) \
                 or str(x.get("nature_juridique")) == "1000"
-    return False
+            return {"sole": sole, "categorie": x.get("categorie_entreprise")}
+    return {"sole": False, "categorie": None}
+
+
+def company_size(siren9: str) -> str | None:
+    """'PME', 'ETI' or 'GE' per the register; None if unknown or unreachable (then nothing is shown)."""
+    try:
+        return _register_record(siren9).get("categorie")
+    except Exception:
+        return None
 
 
 def is_sole_trader(siren9: str) -> bool | None:
     """Sole trader (entrepreneur individuel) per the public company register. None if the register is unreachable."""
     try:
-        return _register_is_sole_trader(siren9)
+        return _register_record(siren9)["sole"]
     except Exception:
         return None
 
@@ -289,207 +300,169 @@ def search_companies(idx: pd.DataFrame, q: str, k: int = 12) -> pd.DataFrame:
 has_boamp = "source" in scored and (scored["source"] == "BOAMP").any()
 avg = metrics["test_single_bid_rate"] if metrics else None
 
+# Recommendation badges: always the word, plus an icon and a colour (never colour alone)
+RECO_STYLE = {"Aller": ("green", ":material/check_circle:"), "À étudier": ("orange", ":material/help:"),
+              "Passer": ("gray", ":material/do_not_disturb_on:")}
+RECOS = ("Aller", "À étudier", "Passer")
+# One icon per CPV division (first 2 digits), to recognise a trade at a glance
+TRADE_ICONS = {
+    "03": "agriculture", "09": "bolt", "14": "landscape", "15": "restaurant", "16": "agriculture", "18": "checkroom",
+    "19": "checkroom", "22": "print", "24": "science", "30": "computer", "31": "electrical_services",
+    "32": "cell_tower", "33": "medical_services", "34": "directions_car", "35": "shield", "37": "sports_soccer",
+    "38": "biotech", "39": "chair", "41": "water_drop", "42": "precision_manufacturing", "43": "construction",
+    "44": "foundation", "45": "construction", "48": "terminal", "50": "build", "51": "handyman", "55": "restaurant",
+    "60": "local_shipping", "63": "warehouse", "64": "mail", "65": "water_drop", "66": "account_balance",
+    "70": "apartment", "71": "architecture", "72": "computer", "73": "science", "75": "account_balance",
+    "76": "oil_barrel", "77": "park", "79": "business_center", "80": "school", "85": "health_and_safety",
+    "90": "recycling", "92": "theater_comedy", "98": "work",
+}
+SIZE_LABEL = {"PME": "PME", "ETI": "ETI", "GE": "Grande entreprise"}
+
+
+def trade_of(prof: dict) -> tuple[str, str]:
+    """Main trade(s): CPV divisions with at least 15 % of the company's wins (at least one)."""
+    divs = [k for k in prof["cpv_div"] if k != "NA"]
+    main = [k for k in divs if prof["cpv_div"][k] >= 0.15][:2] or divs[:1]
+    if not main:
+        return ":material/work:", ""
+    return f":material/{TRADE_ICONS.get(main[0], 'work')}:", ", ".join(cpv_label(k) for k in main)
+
+
+def short_when(r: pd.Series) -> str:
+    """List column: '30/11 · J-16' when close, the full date when far, or the planned publication month."""
+    if pd.notna(r.get("due_date")):
+        d = pd.Timestamp(r["due_date"])
+        if (d.normalize() - pd.Timestamp.now().normalize()).days <= 120:
+            return f"{d:%d/%m} · {days_left(d)}"
+        return f"{d:%d/%m/%Y}"
+    if pd.notna(r.get("pub_date")):
+        return "publication " + pd.Timestamp(r["pub_date"]).strftime("%m/%Y")
+    return ""
+
+
+def buyer_city(r: pd.Series) -> str:
+    """City of the buyer's registered address (SIRENE). Left out for multi-site buyers (State, regions…)."""
+    if r.get("buyer_multi_site"):
+        return ""
+    m = re.search(r"\b\d{5}\s+(.+)$", str(r.get("buyer_address") or ""))
+    return re.sub(r"(?i)\s+cedex.*$", "", m.group(1)).strip().title() if m else ""
+
+
+def render_detail(r: pd.Series, prof: dict) -> None:
+    st.markdown(f"#### {r.get('libelle') or 'Achat sans titre'}")
+    reco = str(r.get("reco") or "")
+    badges = []
+    if reco in RECO_STYLE:
+        color, icon = RECO_STYLE[reco]
+        badges.append(f":{color}-badge[{icon} {reco}]")
+    badges.append(":blue-badge[Ouvert maintenant · BOAMP]" if r.get("source") == "BOAMP"
+                  else ":violet-badge[Projet d'achat · APProch]")
+    st.markdown(" ".join(badges))
+
+    buyer = r.get("buyer_name") if isinstance(r.get("buyer_name"), str) else f"SIREN {r.get('buyer_siren')}"
+    city = buyer_city(r)
+    btype = r.get("buyer_type")
+    meta = [buyer + (f" ({city})" if city else ""),
+            btype if isinstance(btype, str) and btype != "Inconnu" else "",
+            r.get("taille_marche") if isinstance(r.get("taille_marche"), str) else "",
+            duration_text(r.get("duree_previsionnelle_du_marche"))]
+    if pd.notna(r.get("due_date")):
+        meta.append(f"offres dues le {fmt_date(r['due_date'])} · {days_left(r['due_date'])}")
+    elif pd.notna(r.get("pub_date")):
+        meta.append(f"publication prévue en {pd.Timestamp(r['pub_date']).strftime('%m/%Y')}")
+    st.caption(" · ".join(m for m in meta if m and m not in {"None", "nan"}))
+    if isinstance(r.get("procedure_note"), str):
+        st.caption(f":material/info: {r['procedure_note']}.")
+
+    risk = round(100 * float(r["proba"]))
+    risk_line = f"**{risk} %** de chances qu'une seule offre soit déposée"
+    if avg:
+        risk_line += f" ({fr_num(float(r['proba']) / avg)} × la moyenne)"
+    st.markdown(risk_line)
+
+    notes = load_notes()
+    key = f"{prof['siren']}:{r.get('code')}"
+    note = notes.get(key)
+    has_note = bool(note and note.get("verified") and note.get("note", "").strip())
+    if has_note:
+        with st.container(border=True):
+            st.write(note["note"])
+    elif st.button("Rédiger la note go / no-go", icon=":material/edit_note:"):
+        try:
+            from explain import facts_for, generate, save_cache
+            with st.spinner("Rédaction de la note par Gemma 4 (Featherless), chaque chiffre vérifié… environ 10 secondes"):
+                res = generate(facts_for(r, prof))
+            notes[key] = res
+            save_cache(notes)
+            st.write(res["note"] if res["verified"] else
+                     "Le modèle a proposé une note qui citait un chiffre absent des données : elle a été écartée. "
+                     "Les faits ci-dessous et la recommandation restent valables.")
+        except Exception as e:  # keep the demo alive if the API fails
+            st.caption(f"Note indisponible ({e.__class__.__name__}).")
+
+    c1, c2 = st.columns([1, 1])
+    if key in load_follows():
+        c1.button("Suivi", icon=":material/check:", disabled=True, key=f"fd_{key}")
+    elif c1.button("Suivre cet appel d'offres", icon=":material/bookmark_add:", key=f"f_{key}"):
+        link = r.get("lien_vers_la_consultation")
+        f = load_follows()
+        f[key] = {
+            "title": str(r.get("libelle") or "Achat sans titre"),
+            "buyer": buyer,
+            "due": pd.Timestamp(r["due_date"]).isoformat() if pd.notna(r.get("due_date")) else None,
+            "when": when(r),
+            "risk": risk,
+            "reco": reco or reco_of(note.get("note", "") if note else ""),
+            "url": link if isinstance(link, str) and link.startswith("http") else "",
+            "source": str(r.get("source") or ""),
+            "followed_at": pd.Timestamp.now().isoformat(timespec="seconds"),
+        }
+        save_follows(f)
+        st.rerun()
+    if isinstance(r.get("lien_vers_la_consultation"), str) and r["lien_vers_la_consultation"].startswith("http"):
+        c2.link_button("Voir l'avis BOAMP" if r.get("source") == "BOAMP" else "Voir la consultation",
+                       r["lien_vers_la_consultation"], icon=":material/open_in_new:")
+
+    # Since 12fd910 the notes cite the score, the average, the company's similar contracts and the buyer's
+    # single-bid share: the full fact list goes behind a click when a note is shown, open when there is none.
+    facts = fact_sentences(r, prof["siren"])
+    holder = [s for s in facts if s.startswith(("Vous êtes le titulaire", "Le même titulaire"))]
+    if has_note and holder:  # not always in the note: keep it visible
+        st.markdown(holder[0])
+    with st.expander("Les faits derrière la note", expanded=not has_note):
+        st.markdown("\n".join(f"- {s}" for s in facts))
+    mine, n_mine = similar_wins(awards, prof["siren"], r)
+    if n_mine:
+        with st.expander(f"Vos contrats similaires ({n_mine})"):
+            st.dataframe(pd.DataFrame({
+                "Date": pd.to_datetime(mine["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
+                "Acheteur": mine["acheteur_nom"].fillna("").astype(str),
+                "Objet": mine["objet"].fillna("").astype(str),
+                "Dép.": mine["dept"].astype(str).replace({"NA": ""}),
+                "Montant": mine["montant"].map(lambda v: "" if pd.isna(v) or v <= 0 else f"{fr_int(round(v))} €"),
+                "Offres": mine["offres"].map(lambda v: "" if pd.isna(v) or v <= 0 else str(int(v))),
+            }), hide_index=True, width="stretch", column_config={
+                "Date": st.column_config.TextColumn(width="small"),
+                "Objet": st.column_config.TextColumn(width="large"),
+                "Dép.": st.column_config.TextColumn(width="small"),
+            })
+            st.caption("Vos marchés gagnés dans la même catégorie d'achat, ce département d'abord · "
+                       "DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
+    render_buyer_history(r)
+
+
 st.title("Offre unique")
 st.caption("1 marché public sur 5 ne reçoit qu'une seule offre. Offre unique montre à une PME les appels d'offres "
-           "de son métier qui manquent de candidats, là où sa candidature compte le plus. D'après les marchés passés"
-           + (", les appels d'offres ouverts (BOAMP) et les projets d'achats de l'État (APProch)." if has_boamp
-              else " et les projets d'achats publiés par l'État."))
+           "de son métier qui manquent de candidats, là où sa candidature compte le plus.")
 
-tab_main, tab_proof = st.tabs(["Appels d'offres", "Preuves"])
-
-with tab_main:
-    if "q" not in st.session_state:
-        st.session_state["q"] = os.environ.get("DEMO_SIREN", "")
-    q = st.text_input("Nom ou SIREN de votre entreprise", key="q", max_chars=80,
-                      help="Le nom d'une société (au moins 3 lettres) ou son SIREN à 9 chiffres (un SIRET marche aussi). "
-                           "Réservé aux sociétés : les entrepreneurs individuels sont exclus.")
-    ex = st.columns([1.1] + [2] * len(EXAMPLES))
-    ex[0].caption("Essayez :")
-    for col, (label, s9) in zip(ex[1:], EXAMPLES):
-        col.button(label, key=f"ex_{s9}", on_click=_pick_example, args=(s9,), use_container_width=True)
-    raw = q
-    if re.search(r"[A-Za-zÀ-ÿ]", q or "") and len(clean_siren(q)) < 9:  # a name, not a number
-        if len(q.strip()) < 3:
-            st.write("Tapez au moins 3 lettres du nom de l'entreprise.")
-            st.stop()
-        found = search_companies(company_index(awards), q)
-        if found.empty:
-            st.write("Aucune société de ce nom parmi celles qui ont gagné des marchés publics depuis 2019. "
-                     "Essayez une partie du nom, ou le SIREN.")
-            st.stop()
-        labels = {r.siren: f"{r.name} · {fr_int(r.n)} marché{'s' if r.n > 1 else ''} · SIREN {r.siren}"
-                  for r in found.itertuples()}
-        raw = st.selectbox(f"{len(found)} société{'s' if len(found) > 1 else ''} trouvée{'s' if len(found) > 1 else ''}",
-                           list(labels), format_func=labels.get)
-    siren = clean_siren(raw)  # accepts spaces, dots and a full SIRET
-    if not (raw or "").strip():
-        st.write("Entrez le nom ou le SIREN d'une entreprise pour voir les appels d'offres qui lui correspondent.")
-        st.stop()
-    if len(siren) < 9:
-        st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
-        st.stop()
-    if siren in PLACEHOLDER_SIRENS:
-        st.write("Ce numéro est un identifiant fictif présent dans certaines données, pas une entreprise.")
-        st.stop()
-    if not siren_valid(siren):
-        st.write("Ce numéro n'est pas un SIREN valide : sa clé de contrôle ne correspond pas. Vérifiez-le "
-                 "(par exemple sur annuaire-entreprises.data.gouv.fr).")
-        st.stop()
-    sole = is_sole_trader(siren)
-    if sole:
-        st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
-                 "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
-        st.stop()
-    prof = profile_of(awards, siren)
-    if not prof:
-        st.write("Aucun marché gagné trouvé pour ce SIREN dans les données publiques.")
-        st.stop()
-    if NON_DIFFUSIBLE.search(str(prof.get("name") or "")):
-        st.write("Cette entité a demandé que ses données ne soient pas diffusées (statut « non diffusible » du "
-                 "répertoire SIRENE) : Offre unique n'affiche pas son profil.")
-        st.stop()
-    if sole is None and siren not in dict((s9, n) for n, s9 in EXAMPLES) and looks_like_person(prof["name"], prof["n_wins"]):
-        st.write("Le répertoire des entreprises est injoignable pour l'instant : impossible de vérifier qu'il ne s'agit "
-                 "pas d'un entrepreneur individuel. Par prudence, ce profil n'est pas affiché. Réessayez dans un instant.")
-        st.stop()
-
-    st.subheader(prof["name"] or f"Entreprise {prof['siren']}")
-    st.caption(describe_profile(prof))
-
-    t = fit_table(prof, scored, awards)
-    t = relevant(t).sort_values("proba", ascending=False).reset_index(drop=True)
-    if t.empty:
-        st.write("Aucun achat à venir ne correspond à votre historique.")
-        st.stop()
-
-    left, right = st.columns([11, 9], gap="large")
-    with left:
-        n_open = int((t["source"] == "BOAMP").sum()) if "source" in t else 0
-        head = f"{len(t)} appels d'offres dans votre métier, les moins disputés d'abord"
-        if n_open:
-            head += f" · {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
-        level = str(t["match_level"].iloc[0]) if "match_level" in t else ""
-        if level and level != "même métier, même département":
-            head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
-        st.caption(head)
-        cols = {}
-        if has_boamp:
-            cols["Type"] = t["source"].map({"BOAMP": "Ouvert", "APProch": "Projet"}).fillna("Projet")
-        view = pd.DataFrame({
-            **cols,
-            "Achat": t["libelle"].astype(str),
-            "Acheteur": t["buyer_name"].fillna(t["buyer_siren"]).astype(str),
-            "Échéance": [when(r) for _, r in t.iterrows()],
-            "Offre unique": (100 * t["proba"]).round().astype(int).astype(str) + " %",
-        })
-        height = min(44 + 36 * len(view), 470)
-        ev = st.dataframe(
-            view, hide_index=True, width="stretch", height=height,
-            on_select="rerun", selection_mode="single-row",
-            column_config={
-                "Type": st.column_config.TextColumn(width="small"),
-                "Achat": st.column_config.TextColumn(width="large"),
-                "Acheteur": st.column_config.TextColumn(width="medium"),
-                "Échéance": st.column_config.TextColumn(width="small"),
-                "Offre unique": st.column_config.TextColumn(width="small"),
-            },
-        )
-        foot = "% = chance qu'une seule offre soit déposée"
-        if avg is not None:
-            foot += f" · moyenne : {round(100 * avg)} %"
-        st.caption(foot)
-        rows = ev.selection.rows if ev and ev.selection else []
-        idx = rows[0] if rows else 0
-
-    r = t.iloc[idx]
-    with right:
-        st.markdown(f"#### {r.get('libelle') or 'Achat sans titre'}")
-        buyer = r.get("buyer_name") if isinstance(r.get("buyer_name"), str) else f"SIREN {r.get('buyer_siren')}"
-        kind = "appel d'offres ouvert (BOAMP)" if r.get("source") == "BOAMP" else "projet d'achat (APProch)"
-        meta = [kind, buyer, str(r.get("montant_estime_du_marche") or ""),
-                duration_text(r.get("duree_previsionnelle_du_marche"))]
-        if pd.notna(r.get("due_date")):
-            meta.append(f"offres dues le {fmt_date(r['due_date'])}")
-        elif pd.notna(r.get("pub_date")):
-            meta.append(f"publication prévue en {pd.Timestamp(r['pub_date']).strftime('%m/%Y')}")
-        st.caption(" · ".join(m for m in meta if m and m not in {"None", "nan"}))
-
-        risk = round(100 * float(r["proba"]))
-        risk_line = f"**{risk} %** de chances qu'une seule offre soit déposée"
-        if avg:
-            risk_line += f" ({fr_num(float(r['proba']) / avg)} × la moyenne)"
-        st.markdown(risk_line)
-        for s in fact_sentences(r, prof["siren"]):
-            st.write(s)
-        mine, n_mine = similar_wins(awards, prof["siren"], r)
-        if n_mine:
-            with st.expander(f"Vos contrats similaires ({n_mine})"):
-                st.dataframe(pd.DataFrame({
-                    "Date": pd.to_datetime(mine["date"], errors="coerce").dt.strftime("%d/%m/%Y").fillna(""),
-                    "Acheteur": mine["acheteur_nom"].fillna("").astype(str),
-                    "Objet": mine["objet"].fillna("").astype(str),
-                    "Dép.": mine["dept"].astype(str).replace({"NA": ""}),
-                    "Montant": mine["montant"].map(lambda v: "" if pd.isna(v) or v <= 0 else f"{fr_int(round(v))} €"),
-                    "Offres": mine["offres"].map(lambda v: "" if pd.isna(v) or v <= 0 else str(int(v))),
-                }), hide_index=True, width="stretch", column_config={
-                    "Date": st.column_config.TextColumn(width="small"),
-                    "Objet": st.column_config.TextColumn(width="large"),
-                    "Dép.": st.column_config.TextColumn(width="small"),
-                })
-                st.caption("Vos marchés gagnés dans la même catégorie d'achat, ce département d'abord · "
-                           "DECP consolidées (data.gouv.fr), Licence Ouverte 2.0")
-
-        notes = load_notes()
-        key = f"{prof['siren']}:{r.get('code')}"
-        note = notes.get(key)
-        st.divider()
-        if note and note.get("verified") and note.get("note", "").strip():
-            st.write(note["note"])
-        elif st.button("Rédiger la note go / no-go"):
-            try:
-                from explain import facts_for, generate, save_cache
-                with st.spinner("Rédaction de la note par Gemma 4 (Featherless), chaque chiffre vérifié… environ 10 secondes"):
-                    res = generate(facts_for(r, prof))
-                notes[key] = res
-                save_cache(notes)
-                st.write(res["note"] if res["verified"] else
-                         "Le modèle a proposé une note qui citait un chiffre absent des données : elle a été écartée. "
-                         "Les faits ci-dessus et la recommandation restent valables.")
-            except Exception as e:  # keep the demo alive if the API fails
-                st.caption(f"Note indisponible ({e.__class__.__name__}).")
-
-        c1, c2 = st.columns([1, 1])
-        fkey = f"{prof['siren']}:{r.get('code')}"
-        if fkey in load_follows():
-            c1.button("✓ Suivi", disabled=True, key=f"fd_{fkey}")
-        elif c1.button("Suivre cet appel d'offres", key=f"f_{fkey}"):
-            link = r.get("lien_vers_la_consultation")
-            f = load_follows()
-            f[fkey] = {
-                "title": str(r.get("libelle") or "Achat sans titre"),
-                "buyer": buyer,
-                "due": pd.Timestamp(r["due_date"]).isoformat() if pd.notna(r.get("due_date")) else None,
-                "when": when(r),
-                "risk": round(100 * float(r["proba"])),
-                "reco": reco_of(note.get("note", "") if note else ""),
-                "url": link if isinstance(link, str) and link.startswith("http") else "",
-                "source": str(r.get("source") or ""),
-                "followed_at": pd.Timestamp.now().isoformat(timespec="seconds"),
-            }
-            save_follows(f)
-            st.rerun()
-        if isinstance(r.get("lien_vers_la_consultation"), str) and r["lien_vers_la_consultation"].startswith("http"):
-            c2.link_button("Voir l'avis BOAMP" if r.get("source") == "BOAMP" else "Voir la consultation",
-                           r["lien_vers_la_consultation"])
-
-        render_buyer_history(r)
+tab_main, tab_proof = st.tabs(["Appels d'offres", "Comment ça marche"])
 
 with tab_proof:
     if not metrics:
         st.write("Lancez `python src/train.py` pour générer les résultats.")
     else:
         res = metrics["results"]
-        st.subheader("Le score fonctionne-t-il ?")
+        st.markdown("### Le score fonctionne-t-il ?")
         st.write(f"Le modèle a appris sur les marchés de {metrics['train_years'][0]}–{metrics['train_years'][1]} "
                  f"({fr_int(metrics['n_train'])} marchés), puis a été testé sur {fr_int(metrics['n_test'])} marchés de "
                  f"{metrics['test_years'][0]}–{metrics['test_years'][1]} qu'il n'avait jamais vus.")
@@ -530,7 +503,7 @@ with tab_proof:
         bm_p = ART / "llm_benchmark.json"
         if bm_p.exists():
             bm = json.loads(bm_p.read_text())
-            st.subheader("Quel modèle écrit les notes ?")
+            st.markdown("### Quel modèle écrit les notes ?")
             st.write(f"Mêmes faits, même consigne, **une seule tentative** par note, sur {bm['n']} appels d'offres de "
                      f"{bm['company']}. Une note est conforme si tous ses chiffres viennent des données, si elle garde la "
                      "recommandation calculée par les règles, et si elle tient en 2 phrases et 45 mots, en français.")
@@ -554,14 +527,14 @@ with tab_proof:
                          f"({round(100 * fr['share_with_aller'])} %).")
                 st.caption("Entreprise active : 10 à 200 marchés gagnés, dont un depuis 2025, et au moins 2 dans le même "
                            "métier et département. Un seul « Aller » suffit à être compté.")
-        st.subheader("Sources")
+        st.markdown("### Sources")
         st.write("Projets d'achats publics (APProch) et derniers marchés de chaque acheteur (« Marchés publics notifiés »), "
                  "via l'API Hémicycle ; historique complet pour l'entraînement du score : DECP consolidées (data.gouv.fr)"
                  + ("; appels d'offres ouverts du BOAMP (DILA)" if has_boamp else "")
                  + " ; type et adresse des acheteurs, vérification des entrepreneurs individuels : répertoire SIRENE "
                    "(INSEE, via recherche-entreprises.api.gouv.fr). Licence Ouverte 2.0 (Etalab). "
                    "Notes rédigées par Gemma 4 31B (modèle ouvert) via Featherless, chaque chiffre vérifié.")
-        st.subheader("Limites")
+        st.markdown("### Limites")
         st.markdown(
             f"- Seuls {SHARE_LABELLED} des marchés publiés indiquent le nombre d'offres reçues : le score apprend sur ceux-là.\n"
             + ("- Les appels d'offres ouverts (BOAMP) ne donnent pas de montant : leur score s'en passe.\n" if has_boamp else
@@ -575,6 +548,181 @@ with tab_proof:
             "- Sur une carte, le point est l'adresse de l'acheteur (SIRENE), pas forcément le lieu des travaux.\n"
             "- Seuls les marchés gagnés sont publiés : on ne connaît ni les offres perdues ni le taux de succès d'une entreprise."
         )
+
+
+with tab_main:
+    if "q" not in st.session_state:
+        st.session_state["q"] = os.environ.get("DEMO_SIREN", "")
+    c_q, c_ex = st.columns([3, 2], vertical_alignment="bottom")
+    q = c_q.text_input("Nom ou SIREN de votre entreprise", key="q", max_chars=80,
+                       help="Le nom d'une société (au moins 3 lettres) ou son SIREN à 9 chiffres (un SIRET marche aussi). "
+                            "Réservé aux sociétés : les entrepreneurs individuels sont exclus.")
+    with c_ex:
+        st.caption("Essayez avec un exemple")
+        for col, (label, s9) in zip(st.columns(len(EXAMPLES)), EXAMPLES):
+            col.button(label, key=f"ex_{s9}", on_click=_pick_example, args=(s9,), use_container_width=True)
+    raw = q
+    if re.search(r"[A-Za-zÀ-ÿ]", q or "") and len(clean_siren(q)) < 9:  # a name, not a number
+        if len(q.strip()) < 3:
+            st.write("Tapez au moins 3 lettres du nom de l'entreprise.")
+            st.stop()
+        found = search_companies(company_index(awards), q)
+        if found.empty:
+            st.write("Aucune société de ce nom parmi celles qui ont gagné des marchés publics depuis 2019. "
+                     "Essayez une partie du nom, ou le SIREN.")
+            st.stop()
+        labels = {r.siren: f"{r.name} · {fr_int(r.n)} marché{'s' if r.n > 1 else ''} · SIREN {r.siren}"
+                  for r in found.itertuples()}
+        raw = st.selectbox(f"{len(found)} société{'s' if len(found) > 1 else ''} trouvée{'s' if len(found) > 1 else ''}",
+                           list(labels), format_func=labels.get)
+    siren = clean_siren(raw)  # accepts spaces, dots and a full SIRET
+    if not (raw or "").strip():
+        st.write("Entrez le nom ou le SIREN de votre entreprise : Offre unique trouve les appels d'offres de votre "
+                 "métier où vous aurez le moins de concurrents.")
+        st.stop()
+    if len(siren) < 9:
+        st.write("Un SIREN compte 9 chiffres (ce sont aussi les 9 premiers chiffres du SIRET).")
+        st.stop()
+    if siren in PLACEHOLDER_SIRENS:
+        st.write("Ce numéro est un identifiant fictif présent dans certaines données, pas une entreprise.")
+        st.stop()
+    if not siren_valid(siren):
+        st.write("Ce numéro n'est pas un SIREN valide : sa clé de contrôle ne correspond pas. Vérifiez-le "
+                 "(par exemple sur annuaire-entreprises.data.gouv.fr).")
+        st.stop()
+    sole = is_sole_trader(siren)
+    if sole:
+        st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, Offre unique "
+                 "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
+        st.stop()
+    prof = profile_of(awards, siren)
+    if not prof:
+        st.write("Aucun marché gagné trouvé pour ce SIREN dans les données publiques.")
+        st.stop()
+    if NON_DIFFUSIBLE.search(str(prof.get("name") or "")):
+        st.write("Cette entité a demandé que ses données ne soient pas diffusées (statut « non diffusible » du "
+                 "répertoire SIRENE) : Offre unique n'affiche pas son profil.")
+        st.stop()
+    if sole is None and siren not in dict((s9, n) for n, s9 in EXAMPLES) and looks_like_person(prof["name"], prof["n_wins"]):
+        st.write("Le répertoire des entreprises est injoignable pour l'instant : impossible de vérifier qu'il ne s'agit "
+                 "pas d'un entrepreneur individuel. Par prudence, ce profil n'est pas affiché. Réessayez dans un instant.")
+        st.stop()
+
+    t = fit_table(prof, scored, awards)
+    t = relevant(t).sort_values("proba", ascending=False).reset_index(drop=True)
+    if not t.empty:
+        try:  # same rules as the notes (src/explain.py)
+            t["reco"] = [recommend_row(row, prof) for _, row in t.iterrows()]
+        except Exception:
+            t["reco"] = ""
+    n_open = int((t["source"] == "BOAMP").sum()) if "source" in t else 0
+    counts = t["reco"].value_counts() if "reco" in t else pd.Series(dtype=int)
+
+    # --- "Votre entreprise": what we inferred from the contracts it has won
+    with st.container(border=True):
+        a, b = st.columns([3, 2], vertical_alignment="center")
+        with a:
+            st.caption("Votre entreprise, d'après ses marchés gagnés")
+            st.subheader(prof["name"] or f"Entreprise {prof['siren']}")
+            icon, trade = trade_of(prof)
+            size = SIZE_LABEL.get(company_size(siren)) if sole is not None else None
+            depts = [k for k in list(prof["dept"])[:3] if k != "NA"]
+            bits = [f"{icon} **{trade}**" if trade else "", size or "",
+                    f"{fr_int(prof['n_wins'])} marché{'s' if prof['n_wins'] > 1 else ''} gagné{'s' if prof['n_wins'] > 1 else ''}",
+                    ("départements " if len(depts) > 1 else "département ") + ", ".join(depts) if depts else "",
+                    f"dernier en {pd.Timestamp(prof['last_win']):%m/%Y}" if pd.notna(prof.get("last_win")) else ""]
+            st.markdown(" · ".join(x for x in bits if x))
+            if not t.empty:
+                head = f"{len(t)} {'appel' if len(t) == 1 else 'appels'} d'offres dans votre métier"
+                if n_open:
+                    head += f" · {n_open} {'ouvert' if n_open == 1 else 'ouverts'} maintenant"
+                level = str(t["match_level"].iloc[0]) if "match_level" in t else ""
+                if level and level != "même métier, même département":
+                    head += f" · critère élargi : {level} (peu d'avis dans vos départements)"
+                st.caption(head)
+        if not t.empty:
+            with b:
+                m = st.columns(3)
+                if has_boamp:
+                    m[0].metric("Ouverts maintenant", n_open)
+                tot = f"sur les {len(t)} appels d'offres de votre métier, ouverts et à venir"
+                m[1].metric("Aller", int(counts.get("Aller", 0)), help=tot)
+                m[2].metric("À étudier", int(counts.get("À étudier", 0)), help=tot)
+    if t.empty:
+        st.write("Aucun achat à venir ne correspond à votre historique.")
+        st.stop()
+
+    left, right = st.columns([3, 2], gap="large")
+    with left:
+        kinds = [k for k in ("BOAMP", "APProch") if (t["source"] == k).any()]
+        n_by = t["source"].value_counts()
+        kind_lab = {"BOAMP": f"Ouverts maintenant ({n_by.get('BOAMP', 0)})",
+                    "APProch": f"Projets à venir ({n_by.get('APProch', 0)})"}
+        kind = kinds[0]
+        if len(kinds) > 1:
+            kind = st.segmented_control("Type d'avis", kinds, format_func=kind_lab.get, default=kinds[0],
+                                        key=f"kind_{siren}", label_visibility="collapsed") or kinds[0]
+        st.caption("Avis publiés au BOAMP : vous pouvez répondre maintenant." if kind == "BOAMP" else
+                   "Achats annoncés par l'État (APProch), pas encore publiés : de quoi vous préparer.")
+        sub = t[t["source"] == kind]
+        rc = sub["reco"].value_counts()
+        opts = ["Tous"] + [k for k in RECOS if rc.get(k, 0)]
+        f1, f2 = st.columns([3, 2])
+        flt = f1.segmented_control("Recommandation", opts, default="Tous", key=f"flt_{siren}_{kind}",
+                                   format_func=lambda k: f"{k} ({len(sub) if k == 'Tous' else int(rc[k])})") or "Tous"
+        order = f2.segmented_control("Trier par", ["chances", "échéance"], default="chances", key=f"sort_{siren}",
+                                     format_func={"chances": "Meilleures chances", "échéance": "Échéance proche"}.get) \
+            or "chances"
+        if flt != "Tous":
+            sub = sub[sub["reco"] == flt]
+        if order == "échéance":
+            sub = sub.assign(_d=sub["due_date"].fillna(sub["pub_date"])).sort_values(
+                ["_d", "proba"], ascending=[True, False], na_position="last")
+        else:
+            sub = sub.sort_values("proba", ascending=False)
+        sub = sub.reset_index(drop=True)
+        view = pd.DataFrame({
+            "Avis": sub["reco"].astype(str),
+            "Achat": sub["libelle"].astype(str),
+            "Acheteur": sub["buyer_name"].fillna(sub["buyer_siren"]).astype(str),
+            "Dép.": sub["dept"].astype(str).replace({"NA": "", "nan": "", "None": ""}),
+            "Échéance": [short_when(row) for _, row in sub.iterrows()],
+            "Offre unique": (100 * sub["proba"]).round().astype(int),
+            "× moyenne": [f"{fr_num(p / avg)} ×" if avg else "" for p in sub["proba"]],
+        })
+        ev = st.dataframe(
+            view, hide_index=True, width="stretch", height=min(39 + 35 * len(view), 520),
+            on_select="rerun", selection_mode="single-row", key=f"list_{siren}_{kind}_{flt}_{order}",
+            column_config={
+                "Avis": st.column_config.TextColumn(width="small"),
+                "Achat": st.column_config.TextColumn(width="large"),
+                "Acheteur": st.column_config.TextColumn(width="medium"),
+                "Dép.": st.column_config.TextColumn(width="small"),
+                "Échéance": st.column_config.TextColumn(width="small"),
+                "Offre unique": st.column_config.ProgressColumn(
+                    width="small", min_value=0, max_value=100, format="%d %%",
+                    help="Chance qu'une seule offre soit déposée (calibrée)"),
+                "× moyenne": st.column_config.TextColumn(width="small"),
+            },
+        )
+        foot = "Cliquez sur une ligne pour voir la note et l'avis · % = chance qu'une seule offre soit déposée"
+        if avg is not None:
+            foot += f" · moyenne : {round(100 * avg)} %"
+        st.caption(foot)
+        rows = ev.selection.rows if ev and ev.selection else []
+        idx = rows[0] if rows and rows[0] < len(sub) else 0
+
+    with right:
+        if sub.empty:
+            st.caption("Aucun appel d'offres pour ce filtre.")
+        else:
+            render_detail(sub.iloc[idx], prof)
+
+    st.divider()
+    st.caption("Sources : appels d'offres ouverts du BOAMP (DILA) · projets d'achats APProch et derniers marchés des "
+               "acheteurs via l'API Hémicycle · marchés passés : DECP consolidées (data.gouv.fr) · entreprises et "
+               "acheteurs : SIRENE (INSEE). Licence Ouverte 2.0 (Etalab). Notes rédigées par Gemma 4 31B (Featherless), "
+               "chaque chiffre vérifié. Limites et méthode : onglet « Comment ça marche ».")
 
 
 if siren and prof:
