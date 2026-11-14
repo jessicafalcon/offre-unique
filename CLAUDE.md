@@ -141,6 +141,20 @@ Backups: `src/explain.py.bak`, `src/profiles.py.bak`, `app.py.bak`, `artifacts/n
 5. Notes regenerated with Claude Haiku. Output checked by hand: all numbers match the facts.
 6. **"Suivre cet appel d'offres" made functional** (see §9).
 
+## 7b. Public link for judges (hands-on, live)
+
+Judges use the tool on their own devices. Run from the repo root, in two terminals, and keep the laptop awake and plugged in:
+
+```bash
+caffeinate -dimsu &                                                       # no sleep while presenting
+python -m streamlit run app.py --server.port 8510 --server.headless true  # terminal 1
+cloudflared tunnel --url http://localhost:8510 --no-autoupdate            # terminal 2: prints https://<random>.trycloudflare.com
+```
+
+- The URL changes each time cloudflared restarts: start it once, put the link on the slide / a QR code, don't restart it.
+- Quick tunnels have no uptime guarantee and depend on the venue wifi: have a phone hotspot ready.
+- Hardened at 16:00 for several visitors: company-name search + "Essayez" buttons (Point Contrôles, Bati Recyclage, Adimeo, all with pre-written notes); follows are per visitor (session), not a shared file; sole traders refused (register check; outages are never cached; if the register is unreachable, person-like names with < 10 contracts are refused); "non diffusible" SIRENE entities refused and hidden from search; note spinner; error details hidden (`.streamlit/config.toml`). Stage check: 34/34.
+
 ## 8b. What changed after the devil's-advocate review (14 Nov, 10:15–11:00)
 
 Git initialised (commits: baseline → fixes → calibration). Pre-change backups in `backup_1015/` (old notes and scored parquet files) and `artifacts/notes_before_calibration.json`.
