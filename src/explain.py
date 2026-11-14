@@ -38,6 +38,9 @@ SYSTEM = (
     "puis le nombre de contrats similaires gagnés par l'entreprise. "
     "Si les faits donnent la part des marchés connus de l'acheteur avec une seule offre, cite-la aussi dans la phrase 1, "
     "avec le nombre de marchés au nombre d'offres connu. Écris les pourcentages avec une espace : « 26 % ». "
+    "Écris toujours « N contrats similaires » (jamais « N contrats » seul). "
+    "Si les faits disent qu'aucun marché connu de l'acheteur n'a reçu une seule offre, écris-le ainsi : "
+    "« aucun des N marchés connus de l'acheteur n'a reçu une seule offre ». "
     "Écris « Aller, car », « Passer, car » ou « À étudier, car », avec la virgule. "
     "Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux. "
     "La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, "
@@ -69,7 +72,7 @@ def recommend(proba: float, avg: float | None, n_dept: int, hist_single: float |
         return "À étudier", "un même titulaire a remporté les dernières éditions de ce marché"
     if ratio >= 1.5 and local and buyer_ok:
         if hist_single is not None:
-            return "Aller", "cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département"
+            return "Aller", "l'entreprise exerce déjà ce métier dans ce département"
         return "Aller", "peu de concurrents attendus, sur un métier que l'entreprise exerce déjà dans ce département"
     if not local:
         return "À étudier", "peu de concurrents attendus, mais l'entreprise n'a pas encore travaillé dans ce département"
@@ -95,8 +98,13 @@ def facts_for(row: pd.Series, profile: dict | None) -> dict:
         "marches_comparables_passes_par_cet_acheteur": int(row.get("hist_n", 0)),
     }
     if pd.notna(row.get("hist_single_share")):
-        f["dont_marches_avec_nombre_d_offres_connu"] = int(row.get("hist_n_lab") or row.get("hist_n", 0))
-        f["part_de_ces_marches_connus_avec_une_seule_offre_pct"] = round(100 * float(row["hist_single_share"]))
+        n_lab = int(row.get("hist_n_lab") or row.get("hist_n", 0))
+        pct = round(100 * float(row["hist_single_share"]))
+        if pct == 0:  # "0 % … sur 13" reads badly: state it as "none of the 13"
+            f["aucun_des_marches_connus_de_l_acheteur_n_a_recu_une_seule_offre_sur"] = n_lab
+        else:
+            f["dont_marches_avec_nombre_d_offres_connu"] = n_lab
+            f["part_de_ces_marches_connus_avec_une_seule_offre_pct"] = pct
     elif int(row.get("hist_n", 0)) > 0:
         f["nombre_d_offres_de_ces_marches"] = "non renseigné"
     hist_single = float(row["hist_single_share"]) if pd.notna(row.get("hist_single_share")) else None
@@ -129,6 +137,20 @@ def pairing_ok(note: str, facts: dict) -> bool:
     if pct is None or n_all is None or n_all == n_lab:
         return True
     return not re.search(rf"{pct}\s*%\s*(?:des|de ses|sur(?: ses)?|parmi(?: ses)?)\s*{n_all}\b", note)
+
+
+MAX_WORDS = 45  # same count as the benchmark's format check: len(note.split()), so "53 %" is 2 words
+
+
+def style_ok(note: str, facts: dict) -> bool:
+    """Length (<= 45 words) and wording: the company's count must stay 'contrats similaires', never bare 'contrats'
+    (a bare '46 contrats gagnés' reads as all its wins)."""
+    if len(note.split()) > MAX_WORDS:
+        return False
+    n = facts.get("contrats_similaires_gagnes_par_l_entreprise")
+    if n is not None and re.search(rf"\b{n}\s+contrats?\b", note) and "similaire" not in note:
+        return False
+    return True
 
 
 def client():
@@ -175,6 +197,7 @@ def generate(facts: dict, retries: int = 2) -> dict:
         ok, bad = numbers_ok(note, facts)
         ok = ok and pairing_ok(note, facts)
         complete_note = len(note) >= 40 and note.rstrip().endswith((".", "!", "»"))
+        ok = ok and style_ok(note, facts)
         if ok and complete_note:  # an empty or cut-off note "passes" the number check: reject it
             return {"note": note, "verified": True, "model": MODEL}
         last = {"note": note, "verified": False, "unsupported_numbers": sorted(bad), "model": MODEL}
