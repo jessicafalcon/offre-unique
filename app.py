@@ -5,6 +5,7 @@ Reads only precomputed files: data/clean/scored.parquet, awards.parquet, artifac
 """
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -23,7 +24,7 @@ from explain import recommend_row  # noqa: E402
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
 
-st.set_page_config(page_title="Offre unique", layout="wide")
+st.set_page_config(page_title="Offre unique", layout="wide", initial_sidebar_state="collapsed")
 
 
 @st.cache_data
@@ -349,7 +350,7 @@ def buyer_city(r: pd.Series) -> str:
 
 
 def render_detail(r: pd.Series, prof: dict) -> None:
-    st.markdown(f"#### {r.get('libelle') or 'Achat sans titre'}")
+    st.markdown(f"#### {html.unescape(str(r.get('libelle') or 'Achat sans titre'))}")
     reco = str(r.get("reco") or "")
     badges = []
     if reco in RECO_STYLE:
@@ -359,7 +360,7 @@ def render_detail(r: pd.Series, prof: dict) -> None:
                   else ":violet-badge[Projet d'achat · APProch]")
     st.markdown(" ".join(badges))
 
-    buyer = r.get("buyer_name") if isinstance(r.get("buyer_name"), str) else f"SIREN {r.get('buyer_siren')}"
+    buyer = html.unescape(r["buyer_name"]) if isinstance(r.get("buyer_name"), str) else f"SIREN {r.get('buyer_siren')}"
     city = buyer_city(r)
     btype = r.get("buyer_type")
     meta = [buyer + (f" ({city})" if city else ""),
@@ -418,6 +419,8 @@ def render_detail(r: pd.Series, prof: dict) -> None:
             "followed_at": pd.Timestamp.now().isoformat(timespec="seconds"),
         }
         save_follows(f)
+        st.toast("Ajouté à vos appels d'offres suivis : ouvrez le menu à gauche (») pour les retrouver.",
+                 icon=":material/bookmark_added:")
         st.rerun()
     if isinstance(r.get("lien_vers_la_consultation"), str) and r["lien_vers_la_consultation"].startswith("http"):
         c2.link_button("Voir l'avis BOAMP" if r.get("source") == "BOAMP" else "Voir la consultation",
@@ -451,9 +454,33 @@ def render_detail(r: pd.Series, prof: dict) -> None:
     render_buyer_history(r)
 
 
-st.title("Offre unique")
-st.caption("1 marché public sur 5 ne reçoit qu'une seule offre. Offre unique montre à une PME les appels d'offres "
-           "de son métier qui manquent de candidats, là où sa candidature compte le plus.")
+# Small custom CSS: Streamlit has no setting for input border thickness, focus colour, page width or panel tints.
+# GOV.UK patterns (start page, hint text, focus ring, inset text), not its brand. Missing selectors fail silently.
+st.html("""<style>
+.ou-header {background:#1f6f65; color:#fff; padding:.9rem 1.25rem; margin:-.5rem 0 0 0; border-bottom:6px solid #2E9E8F;}
+.ou-header b {font-size:1.6rem; letter-spacing:.01em;}
+.ou-header span {display:block; opacity:.9; font-size:.95rem; margin-top:.15rem;}
+.ou-phase {border-bottom:1px solid #b1b4b6; padding:.45rem 0; font-size:.9rem; color:#0b0c0c;}
+.ou-phase strong {display:inline-block; background:#1f6f65; color:#fff; padding:.05rem .45rem; margin-right:.5rem;
+  font-size:.8rem; letter-spacing:.05em;}
+.st-key-start {background:#f3f2f1; padding:1.25rem 1.5rem 1rem 1.5rem; border-radius:0;}
+.st-key-start h2 {font-size:2rem; font-weight:700; padding-top:0; line-height:1.15;}
+.ou-lead {font-size:1.15rem; margin:.25rem 0 .9rem 0; color:#0b0c0c;}
+.ou-label {font-size:1.2rem; font-weight:700; margin:0; color:#0b0c0c;}
+.st-key-q [data-testid="stTextInputRootElement"] {border:2px solid #0b0c0c !important; border-radius:0 !important;
+  background:#fff !important; min-height:3.35rem;}
+.st-key-q [data-testid="stTextInputRootElement"]:focus-within {outline:3px solid #ffdd00; outline-offset:0;
+  box-shadow:inset 0 0 0 2px #0b0c0c;}
+.st-key-q [data-testid="stTextInputField"] {font-size:1.3rem !important; color:#0b0c0c; background:#fff !important;}
+[class*="st-key-ex_"] button p {color:#1d70b8; text-decoration:underline; text-underline-offset:3px; font-size:1rem;}
+[class*="st-key-ex_"] button:hover p {color:#003078; text-decoration-thickness:3px;}
+.st-key-detail h4 {font-size:1.3rem; line-height:1.3;}
+.st-key-go button {min-height:3.35rem; border-radius:0; font-weight:700; font-size:1.1rem; box-shadow:0 3px 0 #164f48;}
+.st-key-go button:focus-visible {outline:3px solid #ffdd00; outline-offset:0;}
+</style>""")
+st.html('<div class="ou-header"><b>Offre unique</b><span>Les marchés publics qui manquent de candidats, '
+        'pour les PME qui y répondent</span></div>'
+        '<div class="ou-phase"><strong>PROTOTYPE</strong>Hackathon Open Data · données publiques uniquement</div>')
 
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Comment ça marche"])
 
@@ -553,14 +580,24 @@ with tab_proof:
 with tab_main:
     if "q" not in st.session_state:
         st.session_state["q"] = os.environ.get("DEMO_SIREN", "")
-    c_q, c_ex = st.columns([3, 2], vertical_alignment="bottom")
-    q = c_q.text_input("Nom ou SIREN de votre entreprise", key="q", max_chars=80,
-                       help="Le nom d'une société (au moins 3 lettres) ou son SIREN à 9 chiffres (un SIRET marche aussi). "
-                            "Réservé aux sociétés : les entrepreneurs individuels sont exclus.")
-    with c_ex:
-        st.caption("Essayez avec un exemple")
-        for col, (label, s9) in zip(st.columns(len(EXAMPLES)), EXAMPLES):
-            col.button(label, key=f"ex_{s9}", on_click=_pick_example, args=(s9,), use_container_width=True)
+    # GOV.UK-style question page: question as label, hint under it, one big input, one main button
+    with st.container(key="start"):
+        if not str(st.session_state.get("q") or "").strip():  # landing screen only: results need the room
+            st.markdown("## Quels marchés publics valent votre candidature ?")
+            st.html('<p class="ou-lead">1 marché public sur 5 ne reçoit qu\'une seule offre. Trouvez ceux de votre '
+                    'métier qui manquent de candidats : c\'est là que votre offre compte le plus.</p>')
+        st.html('<p class="ou-label">Quel est le SIREN ou le nom de votre entreprise ?</p>')
+        st.caption("Le SIREN a 9 chiffres : il figure sur votre extrait Kbis ou sur annuaire-entreprises.data.gouv.fr. "
+                   "Un SIRET marche aussi. Réservé aux sociétés.")
+        c_q, c_go = st.columns([4, 1.5], vertical_alignment="bottom")
+        q = c_q.text_input("Quel est le SIREN ou le nom de votre entreprise ?", key="q", max_chars=80,
+                           label_visibility="collapsed", placeholder="ex. 834 709 248 ou Point Contrôles")
+        c_go.button("Voir mes appels d'offres", key="go", type="primary", icon=":material/arrow_forward:",
+                    use_container_width=True)  # the input already commits on Enter or blur; the button makes it obvious
+        with st.container(horizontal=True, vertical_alignment="center", gap="small"):
+            st.caption("ou essayez avec :", width="content")
+            for label, s9 in EXAMPLES:
+                st.button(label, key=f"ex_{s9}", on_click=_pick_example, args=(s9,), type="tertiary")
     raw = q
     if re.search(r"[A-Za-zÀ-ÿ]", q or "") and len(clean_siren(q)) < 9:  # a name, not a number
         if len(q.strip()) < 3:
@@ -659,20 +696,20 @@ with tab_main:
         kind_lab = {"BOAMP": f"Ouverts maintenant ({n_by.get('BOAMP', 0)})",
                     "APProch": f"Projets à venir ({n_by.get('APProch', 0)})"}
         kind = kinds[0]
+        k1, k2 = st.columns([3, 2], vertical_alignment="bottom")
         if len(kinds) > 1:
-            kind = st.segmented_control("Type d'avis", kinds, format_func=kind_lab.get, default=kinds[0],
+            kind = k1.segmented_control("Type d'avis", kinds, format_func=kind_lab.get, default=kinds[0],
                                         key=f"kind_{siren}", label_visibility="collapsed") or kinds[0]
+        order = k2.segmented_control("Trier par", ["chances", "échéance"], default="chances", key=f"sort_{siren}",
+                                     format_func={"chances": "Meilleures chances", "échéance": "Échéance"}.get,
+                                     label_visibility="collapsed") or "chances"
         st.caption("Avis publiés au BOAMP : vous pouvez répondre maintenant." if kind == "BOAMP" else
                    "Achats annoncés par l'État (APProch), pas encore publiés : de quoi vous préparer.")
         sub = t[t["source"] == kind]
         rc = sub["reco"].value_counts()
         opts = ["Tous"] + [k for k in RECOS if rc.get(k, 0)]
-        f1, f2 = st.columns([3, 2])
-        flt = f1.segmented_control("Recommandation", opts, default="Tous", key=f"flt_{siren}_{kind}",
+        flt = st.segmented_control("Recommandation", opts, default="Tous", key=f"flt_{siren}_{kind}",
                                    format_func=lambda k: f"{k} ({len(sub) if k == 'Tous' else int(rc[k])})") or "Tous"
-        order = f2.segmented_control("Trier par", ["chances", "échéance"], default="chances", key=f"sort_{siren}",
-                                     format_func={"chances": "Meilleures chances", "échéance": "Échéance proche"}.get) \
-            or "chances"
         if flt != "Tous":
             sub = sub[sub["reco"] == flt]
         if order == "échéance":
@@ -684,8 +721,8 @@ with tab_main:
         view = pd.DataFrame({
             "Avis": sub["reco"].astype(str),
             "Achat": sub["libelle"].astype(str),
-            "Acheteur": sub["buyer_name"].fillna(sub["buyer_siren"]).astype(str),
-            "Dép.": sub["dept"].astype(str).replace({"NA": "", "nan": "", "None": ""}),
+            "Acheteur": [html.unescape(str(b)) + (f" · {d}" if d not in {"NA", "nan", "None", ""} else "")
+                         for b, d in zip(sub["buyer_name"].fillna(sub["buyer_siren"]), sub["dept"].astype(str))],
             "Échéance": [short_when(row) for _, row in sub.iterrows()],
             "Offre unique": (100 * sub["proba"]).round().astype(int),
             "× moyenne": [f"{fr_num(p / avg)} ×" if avg else "" for p in sub["proba"]],
@@ -694,15 +731,14 @@ with tab_main:
             view, hide_index=True, width="stretch", height=min(39 + 35 * len(view), 520),
             on_select="rerun", selection_mode="single-row", key=f"list_{siren}_{kind}_{flt}_{order}",
             column_config={
-                "Avis": st.column_config.TextColumn(width="small"),
-                "Achat": st.column_config.TextColumn(width="large"),
-                "Acheteur": st.column_config.TextColumn(width="medium"),
-                "Dép.": st.column_config.TextColumn(width="small"),
-                "Échéance": st.column_config.TextColumn(width="small"),
+                "Avis": st.column_config.TextColumn(width=82),
+                "Achat": st.column_config.TextColumn(width=222),
+                "Acheteur": st.column_config.TextColumn("Acheteur · dép.", width=150),
+                "Échéance": st.column_config.TextColumn(width=100),
                 "Offre unique": st.column_config.ProgressColumn(
-                    width="small", min_value=0, max_value=100, format="%d %%",
+                    width=105, min_value=0, max_value=100, format="%d %%",
                     help="Chance qu'une seule offre soit déposée (calibrée)"),
-                "× moyenne": st.column_config.TextColumn(width="small"),
+                "× moyenne": st.column_config.TextColumn("× moy.", width=62),
             },
         )
         foot = "Cliquez sur une ligne pour voir la note et l'avis · % = chance qu'une seule offre soit déposée"
@@ -716,7 +752,8 @@ with tab_main:
         if sub.empty:
             st.caption("Aucun appel d'offres pour ce filtre.")
         else:
-            render_detail(sub.iloc[idx], prof)
+            with st.container(key="detail"):
+                render_detail(sub.iloc[idx], prof)
 
     st.divider()
     st.caption("Sources : appels d'offres ouverts du BOAMP (DILA) · projets d'achats APProch et derniers marchés des "
