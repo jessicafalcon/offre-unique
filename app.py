@@ -122,7 +122,7 @@ def duration_text(x) -> str:
     return f"{s} mois" if re.fullmatch(r"\d+(?:[.,]\d+)?", s) else s
 
 
-def fact_sentences(r: pd.Series) -> list[str]:
+def fact_sentences(r: pd.Series, siren: str = "") -> list[str]:
     out = []
     n, nd = int(r["n_match"]), int(r["n_match_dept"])
     contrats = "contrat passé" if n == 1 else "contrats passés"
@@ -137,19 +137,24 @@ def fact_sentences(r: pd.Series) -> list[str]:
                    if len(offers) > 1 else "Le dernier marché comparable de cet acheteur n'a reçu qu'une offre.")
     elif hist_n > 0 and pd.notna(r.get("hist_single_share")):
         share = round(100 * float(r["hist_single_share"]))
-        marches = "marché comparable" if hist_n == 1 else "marchés comparables"
+        n_lab = int(r.get("hist_n_lab") or hist_n)
+        marches = ("marché comparable dont le nombre d'offres est connu" if n_lab == 1
+                   else "marchés comparables dont le nombre d'offres est connu")
         mean = ""
         if pd.notna(r.get("hist_mean_offers")):
             m = float(r["hist_mean_offers"])
             mean = f" ({fr_num(m)} {'offre' if m < 2 else 'offres'} en moyenne)"
-        out.append(f"Sur ses {hist_n} {marches}, cet acheteur n'a reçu qu'une offre dans {share} % des cas{mean}.")
+        out.append(f"Sur ses {n_lab} {marches}, cet acheteur n'a reçu qu'une offre dans {share} % des cas{mean}.")
     elif hist_n > 0:
         marches = "un marché comparable" if hist_n == 1 else f"{hist_n} marchés comparables"
         out.append(f"Cet acheteur a passé {marches}, sans nombre d'offres renseigné.")
     else:
         out.append("Aucun marché comparable de cet acheteur dans les données.")
     streak = int(r.get("incumbent_streak", 0))
-    if streak >= 2:
+    inc = str(r.get("incumbent_siren") or "").replace(".0", "")[:9]
+    if siren and inc == str(siren)[:9]:
+        out.append("Vous êtes le titulaire sortant : ce marché est un renouvellement à défendre.")
+    elif streak >= 2:
         out.append(f"Le même titulaire a gagné les {streak} dernières fois.")
     elif hist_n > 0:
         out.append("Pas de titulaire installé sur ce type de marché.")
@@ -161,14 +166,17 @@ has_boamp = "source" in scored and (scored["source"] == "BOAMP").any()
 avg = metrics["test_single_bid_rate"] if metrics else None
 
 st.title("Offre unique")
-st.caption("Les appels d'offres publics où vous aurez le moins de concurrence, d'après les marchés passés"
+st.caption("1 marché public sur 5 ne reçoit qu'une seule offre. Offre unique montre à une PME les appels d'offres "
+           "de son métier qui manquent de candidats, là où sa candidature compte le plus. D'après les marchés passés"
            + (", les appels d'offres ouverts (BOAMP) et les projets d'achats de l'État (APProch)." if has_boamp
               else " et les projets d'achats publiés par l'État."))
 
 tab_main, tab_proof = st.tabs(["Appels d'offres", "Preuves"])
 
 with tab_main:
-    siren = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=14).strip()
+    siren = st.text_input("SIREN de votre entreprise", value=os.environ.get("DEMO_SIREN", ""), max_chars=14,
+                          help="Réservé aux sociétés. N'entrez pas le SIREN d'un entrepreneur individuel : "
+                               "son profil serait celui d'une personne.").strip()
     prof = profile_of(awards, siren[:9]) if siren else None
     if not siren:
         st.write("Entrez un SIREN pour voir les appels d'offres à venir qui vous correspondent.")
@@ -240,7 +248,7 @@ with tab_main:
         if avg:
             risk_line += f" ({fr_num(float(r['proba']) / avg)} × la moyenne)"
         st.markdown(risk_line)
-        for s in fact_sentences(r):
+        for s in fact_sentences(r, prof["siren"]):
             st.write(s)
 
         notes = load_notes()
@@ -299,10 +307,8 @@ with tab_main:
                     "Offres": st.column_config.TextColumn(width="small"),
                     "Titulaire": st.column_config.TextColumn(width="medium"),
                 })
-            facts = json.loads(r.get("factors") or "[]")
-            if facts:
-                st.caption("Ce qui pèse le plus dans le score : " +
-                           " ; ".join(f"{f['label']} ({f['value']}, {f['direction']})" for f in facts))
+            else:
+                st.caption("Aucun marché comparable de cet acheteur dans les données.")
 
 with tab_proof:
     if not metrics:
@@ -335,7 +341,8 @@ with tab_proof:
             st.caption("AUC : capacité à classer les marchés du plus au moins risqué (0,5 = hasard). "
                        "Brier : erreur des probabilités (plus bas = mieux).")
         st.subheader("Sources")
-        st.write("Marchés publics notifiés (DECP) et Projets d'achats publics (APProch), via Hémicycle"
+        st.write("Projets d'achats publics (APProch), via l'API Hémicycle ; marchés publics notifiés "
+                 "(DECP consolidées, data.gouv.fr, également disponibles dans Hémicycle)"
                  + ("; appels d'offres ouverts du BOAMP (DILA)" if has_boamp else "")
                  + ". Licence Ouverte 2.0 (Etalab).")
         st.subheader("Limites")
@@ -344,7 +351,9 @@ with tab_proof:
             + ("- Les appels d'offres ouverts (BOAMP) ne donnent pas de montant : leur score s'en passe.\n" if has_boamp else
                "- Les achats à venir (APProch) viennent surtout de l'État ; beaucoup de collectivités n'y publient pas.\n") +
             "- Le score décrit des régularités passées, pas des causes.\n"
-            "- Un titulaire qui gagne plusieurs fois n'indique en soi aucune irrégularité."
+            "- Un titulaire qui gagne plusieurs fois n'indique en soi aucune irrégularité.\n"
+            "- Une offre unique ne signale pas en soi une irrégularité de l'acheteur : elle peut venir d'un marché étroit ou très spécialisé.\n"
+            "- Le score dit combien d'offres un marché reçoit d'habitude, pas si vous le gagnerez."
         )
 
 

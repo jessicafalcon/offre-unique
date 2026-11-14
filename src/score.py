@@ -80,7 +80,7 @@ def history(purchases: pd.DataFrame, contracts: pd.DataFrame, awards: pd.DataFra
         if h is None or len(h) == 0:
             h, level = by_div.get((b, div)), "division CPV"
         if h is None or len(h) == 0:
-            rows.append({"hist_n": 0, "hist_level": None, "hist_mean_offers": np.nan, "hist_single_share": np.nan,
+            rows.append({"hist_n": 0, "hist_n_lab": 0, "hist_level": None, "hist_mean_offers": np.nan, "hist_single_share": np.nan,
                          "incumbent_siren": None, "incumbent_name": None, "incumbent_wins": 0, "incumbent_streak": 0,
                          "hist_editions": "[]"})
             continue
@@ -106,7 +106,7 @@ def history(purchases: pd.DataFrame, contracts: pd.DataFrame, awards: pd.DataFra
                         "titulaire_nom": r.get("titulaire_nom") if "titulaire_nom" in h else None,
                         "montant": None if pd.isna(r.get("montant")) else float(r["montant"])})
         rows.append({
-            "hist_n": int(len(h)), "hist_level": level,
+            "hist_n": int(len(h)), "hist_n_lab": int(len(lab)), "hist_level": level,
             "hist_mean_offers": float(lab["offres"].mean()) if len(lab) else np.nan,
             "hist_single_share": float((lab["offres"] == 1).mean()) if len(lab) else np.nan,
             "incumbent_siren": inc, "incumbent_name": inc_name,

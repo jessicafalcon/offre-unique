@@ -35,6 +35,8 @@ SYSTEM = (
     "(« Aller », « À étudier » ou « Passer »), puis donne sa raison avec le champ « raison ». "
     "Ne change jamais la recommandation. "
     "Utilise UNIQUEMENT les chiffres présents dans les faits, sans en calculer de nouveaux. "
+    "La part de marchés avec une seule offre se rapporte aux marchés dont le nombre d'offres est connu, "
+    "pas à tous les marchés comparables : ne rapporte jamais ce pourcentage au nombre total de marchés. "
     "N'explique pas le fonctionnement du modèle. Pas de titre, pas de liste. Ton mesuré. "
     "Ne qualifie jamais un acheteur ou un titulaire de suspect. Termine par un point."
 )
@@ -45,15 +47,20 @@ def _avg_rate() -> float | None:
     return json.loads(p.read_text()).get("test_single_bid_rate") if p.exists() else None
 
 
-def recommend(proba: float, avg: float | None, n_dept: int, hist_single: float | None) -> tuple[str, str]:
+def recommend(proba: float, avg: float | None, n_dept: int, hist_single: float | None,
+              is_incumbent: bool = False, rival_streak: int = 0) -> tuple[str, str]:
     """Rule-based go / no-go, so the recommendation is reproducible and not left to the LLM."""
     ratio = proba / avg if avg else 1.0
     local = n_dept >= 1
     buyer_ok = hist_single is None or hist_single >= 0.30
+    if is_incumbent:
+        return "Aller", "l'entreprise est le titulaire sortant : un renouvellement à défendre"
     if ratio < 0.75:
         return "Passer", "probabilité d'offre unique inférieure à la moyenne : plus de concurrents que d'habitude sont attendus"
     if ratio < 1.2:
         return "Passer", "probabilité d'offre unique proche de la moyenne : la concurrence sera habituelle"
+    if ratio >= 1.5 and local and buyer_ok and rival_streak >= 2:
+        return "À étudier", "un même titulaire a remporté les dernières éditions de ce marché"
     if ratio >= 1.5 and local and buyer_ok:
         if hist_single is not None:
             return "Aller", "cet acheteur reçoit souvent une seule offre, et l'entreprise exerce déjà ce métier dans ce département"
@@ -82,13 +89,19 @@ def facts_for(row: pd.Series, profile: dict | None) -> dict:
         "marches_comparables_passes_par_cet_acheteur": int(row.get("hist_n", 0)),
     }
     if pd.notna(row.get("hist_single_share")):
-        f["part_de_ces_marches_avec_une_seule_offre_pct"] = round(100 * float(row["hist_single_share"]))
+        f["dont_marches_avec_nombre_d_offres_connu"] = int(row.get("hist_n_lab") or row.get("hist_n", 0))
+        f["part_de_ces_marches_connus_avec_une_seule_offre_pct"] = round(100 * float(row["hist_single_share"]))
     elif int(row.get("hist_n", 0)) > 0:
         f["nombre_d_offres_de_ces_marches"] = "non renseigné"
     hist_single = float(row["hist_single_share"]) if pd.notna(row.get("hist_single_share")) else None
-    f["recommandation"], f["raison"] = recommend(proba, avg, int(f["dont_dans_le_meme_departement"]), hist_single)
-    if int(row.get("incumbent_streak", 0)) >= 2:
-        f["meme_titulaire_sur_les_dernieres_editions"] = int(row["incumbent_streak"])
+    me = str((profile or {}).get("siren") or "")[:9]
+    is_incumbent = bool(me) and str(row.get("incumbent_siren") or "").replace(".0", "")[:9] == me
+    rival_streak = 0 if is_incumbent else int(row.get("incumbent_streak") or 0)
+    f["recommandation"], f["raison"] = recommend(proba, avg, int(f["dont_dans_le_meme_departement"]), hist_single,
+                                                 is_incumbent, rival_streak)
+    f["l_entreprise_est_le_titulaire_sortant"] = is_incumbent
+    if rival_streak >= 2:
+        f["editions_consecutives_gagnees_par_le_meme_titulaire"] = rival_streak
     return {k: v for k, v in f.items() if v is not None}
 
 
@@ -100,6 +113,16 @@ def numbers_ok(note: str, facts: dict) -> tuple[bool, set[str]]:
     allowed = _numbers(json.dumps(facts, ensure_ascii=False))
     bad = {n for n in _numbers(note) if n not in allowed}
     return (not bad), bad
+
+
+def pairing_ok(note: str, facts: dict) -> bool:
+    """Reject 'X % des N marchés' when N is all comparable contracts but X was computed on the labelled ones."""
+    n_all = facts.get("marches_comparables_passes_par_cet_acheteur")
+    n_lab = facts.get("dont_marches_avec_nombre_d_offres_connu")
+    pct = facts.get("part_de_ces_marches_connus_avec_une_seule_offre_pct")
+    if pct is None or n_all is None or n_all == n_lab:
+        return True
+    return not re.search(rf"{pct}\s*%\s*(?:des|de ses|sur(?: ses)?|parmi(?: ses)?)\s*{n_all}\b", note)
 
 
 def client():
@@ -136,6 +159,7 @@ def generate(facts: dict, retries: int = 2) -> dict:
         note = complete(json.dumps(facts, ensure_ascii=False)).strip()
         note = re.sub(r"<think>.*?</think>", "", note, flags=re.S).strip()  # reasoning models
         ok, bad = numbers_ok(note, facts)
+        ok = ok and pairing_ok(note, facts)
         complete_note = len(note) >= 40 and note.rstrip().endswith((".", "!", "»"))
         if ok and complete_note:  # an empty or cut-off note "passes" the number check: reject it
             return {"note": note, "verified": True, "model": MODEL}
