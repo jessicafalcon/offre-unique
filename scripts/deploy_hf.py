@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BUNDLE = ROOT / "run" / "hf_bundle"
 FILES = [
     "app.py", ".streamlit/config.toml",
-    "data/clean/awards.parquet", "data/clean/scored.parquet", "data/clean/scored_boamp.parquet",
+    "data/clean/awards_app.parquet", "data/clean/company_counts.parquet", "data/clean/scored.parquet", "data/clean/scored_boamp.parquet",
     "data/raw/boamp.parquet",
     *[f"artifacts/{n}.json" for n in (
         "notes", "metrics", "metrics_boamp", "calibration", "calibration_boamp", "rules_backtest", "coverage",

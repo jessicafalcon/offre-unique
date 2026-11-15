@@ -74,6 +74,8 @@ python -m streamlit run app.py
 
 Only the last two steps should be needed today.
 
+**Hosting (added 15 Nov):** the app no longer loads the whole awards table. `python src/build_app_data.py` writes `data/clean/awards_app.parquet` (78 MB, sorted by company, committed to git) and `company_counts.parquet`; `app.py` reads one company's rows on demand (`awards_of()`), peak memory about 400 MB instead of 3 GB. **Rerun it after `prepare.py`**, or the app shows stale contracts. Hosted copy: Streamlit Community Cloud, deployed from GitHub `main`, with `HEMICYCLE_LIVE = "0"` and `LIVE_NOTES_PER_DAY = "200"` in its secrets (no live Hémicycle button, capped notes). `deploy/` + `scripts/deploy_hf.py` are a Docker alternative (Hugging Face needs a PRO plan for Docker Spaces). The stage check's two countdown tests expect J-16 (14 Nov) and fail on later days: 32 PASS / 2 FAIL is the expected result now.
+
 **Helpers:** `find_demo.py [--idf] [--min-risk 0.35]` (companies with real opportunities + share of active companies), `check_fit.py <siren>` (do shown tenders match the trade), `test_option_a.py` (riskiest upcoming purchases, buyer-side idea), `test_option_b.py` (BOAMP field check).
 
 **`.env`:** `HEMICYCLE_API_KEY` (live), `ANTHROPIC_API_KEY`, `FEATHERLESS_API_KEY` (empty for now), `LLM_PROVIDER=anthropic`, `ANTHROPIC_MODEL=claude-haiku-5-5`, `FEATHERLESS_MODEL`, `DEMO_SIREN=798298899`, `SPLIT_YEAR=2025`, `MIN_YEAR=2023`.

@@ -1,7 +1,7 @@
 """QtFetcher (Offre unique project): upcoming public tenders where a company would face little competition.
 
     python -m streamlit run app.py
-Reads only precomputed files: data/clean/scored.parquet, awards.parquet, artifacts/metrics.json, notes.json
+Reads only precomputed files: data/clean/scored.parquet, awards_app.parquet (or awards.parquet), artifacts/metrics.json, notes.json
 """
 from __future__ import annotations
 
@@ -38,11 +38,26 @@ MASCOT = "data:image/jpeg;base64," + __import__("base64").b64encode(
 @st.cache_resource  # one shared copy for all visitors (cache_data copied the 840 MB contracts table at every
 def load():         # interaction); nothing may modify these tables in place: fit_table() works on a copy
     scored = load_all_scored()
-    awards = pd.read_parquet(CLEAN / "awards.parquet")
+    # Hosted copy: with the slim file (src/build_app_data.py) each company's rows are read on demand, see awards_of()
+    awards = None if AWARDS_APP.exists() else pd.read_parquet(CLEAN / "awards.parquet")
     metrics = json.loads((ART / "metrics.json").read_text()) if (ART / "metrics.json").exists() else None
     mb = ART / "metrics_boamp.json"
     metrics_boamp = json.loads(mb.read_text()) if mb.exists() else None
     return scored, awards, metrics, metrics_boamp
+
+
+AWARDS_APP = CLEAN / "awards_app.parquet"        # same rows as awards.parquet, sorted by company
+COMPANY_COUNTS = CLEAN / "company_counts.parquet"  # contracts won per company
+
+
+@st.cache_data(max_entries=32, show_spinner=False)
+def _awards_slim(siren: str) -> pd.DataFrame:
+    return pd.read_parquet(AWARDS_APP, filters=[("company_siren", "==", siren)])
+
+
+def awards_of(siren: str) -> pd.DataFrame:
+    """Past contracts to look a company up in: its own rows from the slim file, or the full table if there is none."""
+    return awards if awards is not None else _awards_slim(str(siren))
 
 
 def load_notes() -> dict:
@@ -313,10 +328,13 @@ def _norm(x) -> str:
 
 
 @st.cache_data(show_spinner=False)
-def company_index(_awards: pd.DataFrame) -> pd.DataFrame:
+def company_index(_awards: pd.DataFrame | None) -> pd.DataFrame:
     """Companies that won public contracts: SIREN, usual name, number of contracts. Built once, shared by visitors."""
     names = json.loads((ART / "company_names.json").read_text()) if (ART / "company_names.json").exists() else {}
-    n = _awards["company_siren"].value_counts()
+    if _awards is None:
+        n = pd.read_parquet(COMPANY_COUNTS).set_index("siren")["n"]
+    else:
+        n = _awards["company_siren"].value_counts()
     d = pd.DataFrame({"siren": n.index.astype(str), "n": n.to_numpy()})
     d["name"] = d["siren"].map(names)
     d = d.dropna(subset=["name"])
@@ -483,7 +501,7 @@ def render_detail(r: pd.Series, prof: dict) -> None:
         st.markdown(holder[0])
     with st.expander("Les faits derrière la note", expanded=not has_note):
         st.markdown("\n".join(f"- {s}" for s in facts))
-    mine, n_mine = similar_wins(awards, prof["siren"], r)
+    mine, n_mine = similar_wins(awards_of(prof["siren"]), prof["siren"], r)
     if n_mine:
         with st.expander(f"Vos contrats similaires ({n_mine})"):
             st.dataframe(pd.DataFrame({
@@ -813,7 +831,7 @@ with tab_main:
         st.write("Ce SIREN est celui d'un entrepreneur individuel. Par respect de la vie privée, QtFetcher "
                  "ne construit pas de profil à partir du nom d'une personne : l'outil est réservé aux sociétés.")
         st.stop()
-    prof = profile_of(awards, siren)
+    prof = profile_of(awards_of(siren), siren)
     if not prof:
         st.write("Aucun marché gagné trouvé pour ce SIREN dans les données publiques.")
         st.stop()
@@ -826,7 +844,7 @@ with tab_main:
                  "pas d'un entrepreneur individuel. Par prudence, ce profil n'est pas affiché. Réessayez dans un instant.")
         st.stop()
 
-    t = fit_table(prof, scored, awards)
+    t = fit_table(prof, scored, awards_of(prof["siren"]))
     t = relevant(t).sort_values("proba", ascending=False).reset_index(drop=True)
     if not t.empty:
         try:  # same rules as the notes (src/explain.py)
