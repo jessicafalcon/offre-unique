@@ -23,6 +23,10 @@ from explain import recommend_row  # noqa: E402
 
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
+# Hosted public copy (see deploy/): HEMICYCLE_LIVE=0 hides the live Hémicycle button (1 credit per click),
+# LIVE_NOTES_PER_DAY caps the notes written on demand, all visitors together (0 = no cap).
+HEMICYCLE_LIVE = os.environ.get("HEMICYCLE_LIVE", "1") != "0"
+NOTES_PER_DAY = int(os.environ.get("LIVE_NOTES_PER_DAY", "0") or 0)
 
 MASCOT_DIR = Path(__file__).parent / "images"
 st.set_page_config(page_title="QtFetcher", page_icon=str(MASCOT_DIR / "mascot_64.png"), layout="wide",
@@ -31,8 +35,8 @@ MASCOT = "data:image/jpeg;base64," + __import__("base64").b64encode(
     (MASCOT_DIR / "mascot_240.jpg").read_bytes()).decode()
 
 
-@st.cache_data
-def load():
+@st.cache_resource  # one shared copy for all visitors (cache_data copied the 840 MB contracts table at every
+def load():         # interaction); nothing may modify these tables in place: fit_table() works on a copy
     scored = load_all_scored()
     awards = pd.read_parquet(CLEAN / "awards.parquet")
     metrics = json.loads((ART / "metrics.json").read_text()) if (ART / "metrics.json").exists() else None
@@ -44,6 +48,24 @@ def load():
 def load_notes() -> dict:
     p = ART / "notes.json"
     return json.loads(p.read_text()) if p.exists() else {}
+
+
+@st.cache_resource
+def _note_budget() -> dict:
+    return {"day": None, "n": 0}  # one counter for the whole server
+
+
+def note_budget_left() -> bool:
+    """True if a note may still be written today; counts the call."""
+    if not NOTES_PER_DAY:
+        return True
+    b, today = _note_budget(), pd.Timestamp.today().date()
+    if b["day"] != today:
+        b.update(day=today, n=0)
+    if b["n"] >= NOTES_PER_DAY:
+        return False
+    b["n"] += 1
+    return True
 
 
 FOLLOWS = ART / "follows.json"
@@ -181,7 +203,7 @@ def render_buyer_history(r: pd.Series) -> None:
             editions_table(eds)
         else:
             st.caption("Aucun marché comparable de cet acheteur dans les données.")
-    if st.button("Actualiser via Hémicycle" if h else "Interroger Hémicycle", key=f"hemi_{code}",
+    if HEMICYCLE_LIVE and st.button("Actualiser via Hémicycle" if h else "Interroger Hémicycle", key=f"hemi_{code}",
                  help="Interroge l'API Hémicycle en direct (1 crédit par établissement de l'acheteur)."):
         try:
             new = history_for(r, load_json(SIRET_MAP), load_json(NAMES))
@@ -412,17 +434,21 @@ def render_detail(r: pd.Series, prof: dict) -> None:
         with st.container(key="note"):  # GOV.UK inset text
             st.write(note["note"])
     elif st.button("Rédiger la note go / no-go", icon=":material/edit_note:"):
-        try:
-            from explain import facts_for, generate, save_cache
-            with st.spinner("Rédaction de la note par Gemma 4 (Featherless), chaque chiffre vérifié… environ 10 secondes"):
-                res = generate(facts_for(r, prof))
-            notes[key] = res
-            save_cache(notes)
-            st.write(res["note"] if res["verified"] else
-                     "Le modèle a proposé une note qui citait un chiffre absent des données : elle a été écartée. "
-                     "Les faits ci-dessous et la recommandation restent valables.")
-        except Exception as e:  # keep the demo alive if the API fails
-            st.caption(f"Note indisponible ({e.__class__.__name__}).")
+        if not note_budget_left():
+            st.caption("Le quota de notes rédigées à la demande est atteint pour aujourd'hui. "
+                       "Les faits ci-dessous et la recommandation restent valables.")
+        else:
+            try:
+                from explain import facts_for, generate, save_cache
+                with st.spinner("Rédaction de la note par Gemma 4 (Featherless), chaque chiffre vérifié… environ 10 secondes"):
+                    res = generate(facts_for(r, prof))
+                notes[key] = res
+                save_cache(notes)
+                st.write(res["note"] if res["verified"] else
+                         "Le modèle a proposé une note qui citait un chiffre absent des données : elle a été écartée. "
+                         "Les faits ci-dessous et la recommandation restent valables.")
+            except Exception as e:  # keep the demo alive if the API fails
+                st.caption(f"Note indisponible ({e.__class__.__name__}).")
 
     c1 = c2 = st.container(horizontal=True, gap="small")  # buttons at their natural width
     if key in load_follows():
