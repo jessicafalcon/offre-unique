@@ -15,4 +15,7 @@ data/clean/awards.parquet
 backup_1015/
 artifacts/follows.json
 *.bak
+
+# experiments: local caches (embeddings)
+experiments/cache/
 run/

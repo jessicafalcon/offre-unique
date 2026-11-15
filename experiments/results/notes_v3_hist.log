@@ -1,0 +1,7 @@
+rebuilt facts for 62 of 66 cached Haiku notes · mem 0.34 GB
+evaluation set: 56 notes {'Aller': 3, 'À étudier': 12, 'Passer': 41}
+google/gemma-4-31B-it: {"accepted": 1.0, "accepted_first_try": 1.0, "two_sentences": 1.0, "max_45_words": 1.0, "starts_with_reco": 1.0, "reco_unchanged": 1.0, "starts_upper": 1.0, "french": 1.0, "cost_usd": 0.0057, "calls": 56, "sec_per_call": 10.8, "wall_min": 5.1, "judge_vs_haiku": {"candidate": 10, "haiku": 36, "tie": 0, "invalid": 10}, "judge_cost_usd": 0.1347} · mem 0.38 GB
+| Modèle | Acceptées | Au 1er essai | 2 phrases | ≤ 45 mots | Commence par la reco | Reco inchangée | Début intact | Sans anglais | Juge : préfère le candidat / Haiku / égal | Coût notes | s / appel |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| claude-haiku-5-5 (référence, notes existantes) | 100 % | – | 96 % | 100 % | 96 % | 100 % | 100 % | 100 % | – | – | – |
+| google/gemma-4-31B-it | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % | 100 % | 10 / 36 / 0 | $0.0057 | 10.8 |
