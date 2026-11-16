@@ -20,6 +20,7 @@ from common import ART, CLEAN, cpv_label  # noqa: E402
 from siren import clean_siren, siren_valid  # noqa: E402
 from profiles import fit_table, load_all_scored, profile_of, relevant, similar_wins  # noqa: E402
 from explain import recommend_row  # noqa: E402
+from references import reference_docx  # noqa: E402
 
 # Share of DECP contracts that report the number of bids (reports/data_check.md). Update if the data changes.
 SHARE_LABELLED = os.environ.get("SHARE_LABELLED", "42 %")
@@ -58,6 +59,12 @@ def _awards_slim(siren: str) -> pd.DataFrame:
 def awards_of(siren: str) -> pd.DataFrame:
     """Past contracts to look a company up in: its own rows from the slim file, or the full table if there is none."""
     return awards if awards is not None else _awards_slim(str(siren))
+
+
+@st.cache_data(max_entries=32, show_spinner=False)
+def references_file(siren: str, name: str | None, day: str) -> bytes | None:
+    """Word list of the company's recent public contracts (src/references.py); `day` renews it daily."""
+    return reference_docx(awards_of(siren), siren, name)
 
 
 def load_notes() -> dict:
@@ -874,6 +881,16 @@ with tab_main:
             # GOV.UK summary list: key / value rows (values are escaped; the icon is Streamlit's Material font)
             st.html('<table class="ou-summary">' + "".join(f"<tr><th>{k_}</th><td>{v_}</td></tr>"
                                                          for k_, v_ in rows if v_) + "</table>")
+            try:  # a broken export must never take the page down
+                refs = references_file(prof["siren"], prof["name"], f"{pd.Timestamp.now():%Y-%m-%d}")
+            except Exception:
+                refs = None
+            if refs:
+                st.download_button("Télécharger ma liste de références (Word)", refs, key="refs_dl",
+                                   file_name=f"references_{prof['siren']}.docx", icon=":material/download:",
+                                   mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                   help="Vos marchés publics récents, prêts à joindre à une candidature : "
+                                        "3 dernières années (5 pour les travaux). À vérifier et compléter avant envoi.")
         if not t.empty:
             with b, st.container(key="banner"):  # the answer in one sentence (GOV.UK notification banner)
                 n_al, n_et = int(counts.get("Aller", 0)), int(counts.get("À étudier", 0))
