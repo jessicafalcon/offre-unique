@@ -19,3 +19,7 @@ artifacts/follows.json
 # experiments: local caches (embeddings)
 experiments/cache/
 run/
+
+# local planning notes (never push)
+docs/local/
+CLAUDE.local.md
